@@ -6,13 +6,13 @@ exports.seed = async function(knex) {
   // Deletes ALL existing entries
   await knex('users').del()
   await knex('users').insert([
-    {userId: 1, username: 'QuantumQuasar', unit: "73rd", admin: true,},
-    {userId: 2, username: 'CelestialCipher', unit: "25th", admin: false,},
-    {userId: 3, username: 'MidnightMarauder', unit: "13th", admin: false,},
-    {userId: 4, username: 'NebulaNomad', unit: "14th", admin: false,},
-    {userId: 5, username: 'SonicSpecter', unit: "7th", admin: false,},
-    {userId: 6, username: 'LunaLabyrinth', unit: "101st", admin: false,},
-    {userId: 7, username: 'ZenithZephyr', unit: "25SOPS", admin: false,},
+    {userID: 1, username: 'QuantumQuasar', unit: "73rd", admin: true,},
+    {userID: 2, username: 'CelestialCipher', unit: "25th", admin: false,},
+    {userID: 3, username: 'MidnightMarauder', unit: "13th", admin: false,},
+    {userID: 4, username: 'NebulaNomad', unit: "14th", admin: false,},
+    {userID: 5, username: 'SonicSpecter', unit: "7th", admin: false,},
+    {userID: 6, username: 'LunaLabyrinth', unit: "101st", admin: false,},
+    {userID: 7, username: 'ZenithZephyr', unit: "25SOPS", admin: false,},
     
   ]);
 };
