@@ -11,3 +11,69 @@ app.use(cors());
 app.listen(port, () => {
   console.log(`server listening on port ${port}`)
 });
+
+app.get('/', (req, res) =>{
+  res.send(`Application up and running on port ${port}`)
+})
+
+app.get('/satellites', (req, res) =>{
+  knex('satellites')
+    .select('*')
+    .then(data => {
+      res.status(200).json(data);
+    })
+})
+
+app.get('/reports', (req, res) =>{
+  knex('reports')
+    .select('*')
+    .then(data => {
+      res.status(200).json(data);
+    })
+})
+
+app.get('/users', (req, res) =>{
+  knex('users')
+    .select('*')
+    .then(data => {
+      res.status(200).json(data);
+    })
+})
+
+app.get('/satellites/:satelliteID', (req, res) =>{
+  knex('satellites')
+    .select('*')
+    .where("satelliteID", req.params.satelliteID)
+    .then(data => {
+      res.status(200).json(data);
+    })
+})
+
+app.get('/reports/:reportID', (req, res) =>{
+  knex('reports')
+    .select('*')
+    .where("reportID", req.params.reportID)
+    .then(data => {
+      res.status(200).json(data);
+    })
+})
+
+app.post('/reports', async(req, res) => {
+  await knex('reports').insert({
+      time: req.body.time,
+      frequency_band: req.body.frequency_band,
+      mission: req.body.mission,
+      latitude: req.body.latitude,
+      longitude: req.body.longitude,
+      userID: req.body.userID,
+      satelliteID: req.body.satelliteID,
+      status: req.body.status,
+      reason: req.body.reason
+      })
+      .then(() => {
+          knex.select()
+              .from('reports')
+              .then(data => res.status(200).json(data));
+      });
+  }
+);
