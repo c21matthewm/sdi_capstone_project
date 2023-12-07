@@ -4,7 +4,7 @@
  */
 exports.up = function(knex) {
     return knex.schema.createTable('users', table =>{
-        table.increments('userID');
+        table.increments('userID').primary();
         table.string('username');
         table.string('unit');
         table.boolean('admin');
