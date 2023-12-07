@@ -4,13 +4,13 @@
  */
 exports.up = function(knex) {
   return knex.schema.createTable('reports', function (table) {
-    table.increments('id').primary();
+    table.increments('report_id');
     table.string('time');
     table.string('location');
     table.string('frequency_band');    
     table.string('mission');   
     table.integer('satellite_id').foreign('satellites.id');  // check satellite table
-    table.integer('user_id').foreign('users.id'); // check user table
+    table.integer('user_id').foreign('users.userId'); // check user table
   })
   
 };
