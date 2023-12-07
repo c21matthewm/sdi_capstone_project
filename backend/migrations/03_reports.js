@@ -10,8 +10,10 @@ exports.up = function(knex) {
     table.string('mission');   
     table.integer('latitude');   
     table.integer('longitude');  
-    table.integer('satellite_id').foreign('satellites.id');  // check satellite table
+    table.integer('satellite_id').unsigned().notNullable()
+    table.foreign('satellites.id').references('id').inTable('satellites');  
     table.integer('user_id').foreign('users.userId'); // check user table
+  
   })
   
 };
