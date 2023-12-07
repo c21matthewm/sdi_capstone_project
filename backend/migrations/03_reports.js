@@ -23,6 +23,12 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-  return knex.schema.dropTableIfExists('reports')
+  return knex.schema.alterTable ('reports', table =>{
+    table.dropForeign('satelliteID');
+    table.dropForeign('userID');
+  })
+  .then(function(){
+    return knex.schema.dropTableIfExists('reports')
+  })
   
 };
