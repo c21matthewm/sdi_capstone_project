@@ -7,6 +7,7 @@ exports.up = function(knex) {
     table.increments('satelliteID').primary();
     table.string('name').notNullable();
     table.integer('longitude').notNullable();
+    table.string('status').notNullable();
     });
 };
 

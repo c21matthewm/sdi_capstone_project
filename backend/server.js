@@ -77,3 +77,59 @@ app.post('/reports', async(req, res) => {
       });
   }
 );
+
+
+app.post('/satellites', async(req, res) => {
+  await knex('satellites').insert({
+      name: req.body.name,
+      longitude: req.body.longitude,
+      status: req.body.status
+      })
+      .then(() => {
+          knex.select()
+              .from('satellites')
+              .then(data => res.status(200).json(data));
+      });
+  }
+);
+
+
+app.post('/users', async(req, res) => {
+  await knex('users').insert({
+      username: req.body.username,
+      unit: req.body.unit,
+      admin: req.body.admin
+      })
+      .then(() => {
+          knex.select()
+              .from('users')
+              .then(data => res.status(200).json(data));
+      });
+  }
+);
+
+
+app.get('/reports/satellites/:satelliteID', (req, res) =>{
+  knex('reports')
+    .select('*')
+    .where("satelliteID", req.params.satelliteID)
+    .then(data => {
+      res.status(200).json(data);
+    })
+})
+
+
+app.patch('/satellites/:satelliteID', (req, res) => {
+  knex('satellites')
+  .where('satelliteID', req.params.satelliteID)
+  .update({
+    name: req.body.name,
+    longitude: req.body.longitude,
+    status: req.body.status
+  })
+  .then(() => {
+    knex('satellites')
+    .where('satelliteID', req.params.satelliteID)
+    .select("*")
+    .then(data => res.json(data))});
+})
