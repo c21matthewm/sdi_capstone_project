@@ -3,7 +3,7 @@ import { userContext } from '../App';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import "./Satellite.css"
 
-export const SatelliteDetails = (props) => {
+export const Satellite = (props) => {
     const location = useLocation();
     const { sat } = location.state;
     const [reports, setReports] = useState([]);

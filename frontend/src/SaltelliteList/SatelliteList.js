@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { userContext } from '../App';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import "../SatelliteDetails/Satellite.css";
+import "../Satellite/Satellite.css";
 
 export const SatelliteList = () => {
     const [satellites, setSatellites] = useState([]);
