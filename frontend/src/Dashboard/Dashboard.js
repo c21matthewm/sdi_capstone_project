@@ -62,7 +62,7 @@ export const Dashboard = () => {
                 {satellites.map((satellite) => {
                     return (
                         <div className="tile">
-                            <Card sx={{ border: satellite.status == 'active' ? "solid 5px #00ff00" : "solid 5px #ff0000"}} variant="outlined">
+                            <Card sx={{ border: satellite.status === 'active' ? "solid 5px #00ff00" : "solid 5px #ff0000"}} variant="outlined">
                                 <CardActionArea >
                                     <Link to={`/satellites/${satellite.satelliteID}`}>
                                         <CardMedia>
