@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // import { Home } from './pages/Home';
 import React, { createContext, useState, useEffect } from 'react';
+import ReportList from './ReportPages/ReportList';
 
 export const userContext = createContext();
 
@@ -34,12 +35,19 @@ function App() {
       reports,
       setReports
     }}>
+      
       <div className="App">
         <h1>SDI Capstone Project</h1>
       </div>
+
+      <Routes>
+        <Route path='/reports' element={<ReportList/>}/>
+      </Routes>
     </userContext.Provider>
-  );
+  )
+    
 }
+        
 
 export default App;
 
