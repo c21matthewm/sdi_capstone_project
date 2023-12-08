@@ -99,7 +99,8 @@ app.post('/users', async(req, res) => {
       email: req.body.email,
       unit: req.body.unit,
       admin: req.body.admin,
-      uid: req.body.uid
+      uid: req.body.uid,
+      name: req.body.name
       })
       .then(() => {
           knex.select()

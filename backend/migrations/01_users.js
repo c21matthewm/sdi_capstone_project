@@ -9,6 +9,7 @@ exports.up = function(knex) {
         table.string('unit');
         table.string('uid');
         table.boolean('admin');
+        table.string('name');
 });
 }
 
