@@ -11,6 +11,7 @@ function App() {
   const [users, setUsers] = useState([]);
   const [satellites, setSatellites] = useState([]);
   const [reports, setReports] = useState([]);
+  const [userSats, setUserSats] = useState([]);
 
   useEffect(() => {
     Promise.all([
@@ -33,7 +34,9 @@ function App() {
       satellites,
       setSatellites,
       reports,
-      setReports
+      setReports,
+      userSats,
+      setUserSats
     }}>
       <div className="App">
         <h1>SDI Capstone Project</h1>
