@@ -2,7 +2,9 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // import { Home } from './pages/Home';
 import React, { createContext, useState, useEffect } from 'react';
-import { Dashboard } from './Dashboard/Dashboard';
+import { SatelliteList } from './SatelliteList';
+import { SatelliteDetails } from './SatelliteDetails';
+import { AddReport } from './AddReport';
 
 export const userContext = createContext();
 
@@ -11,6 +13,7 @@ function App() {
   const [users, setUsers] = useState([]);
   const [satellites, setSatellites] = useState([]);
   const [reports, setReports] = useState([]);
+  const [userSats, setUserSats] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [userIsAdmin, setUserIsAdmin] = useState(false);
 
@@ -33,14 +36,23 @@ function App() {
       users, setUsers,
       satellites, setSatellites,
       reports, setReports,
+      userSats,
+      setUserSats,
       loggedIn, setLoggedIn,
       userIsAdmin, setUserIsAdmin
     }}>
-
-      <div className="App">
-        <h1>SDI Capstone Project</h1>
-        <Dashboard />
-      </div>
+      <Routes>
+        {/* <Route path='/' element={<Home />} /> */}
+        {/* <Route path='/dashboard' element={<Dashboard />} /> */}
+        <Route path='/satellites' element={<SatelliteList />} />
+        <Route path='/satellites/:id' element={<SatelliteDetails />} />
+        {/* <Route path='/reports' element={<ReportList/>} />
+        <Route path='/reports/:id' element={<ReportDetails />} />
+        <Route path='/signup' element={<Signup/>} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/auth' element={<Auth />} /> */}
+        <Route path='/addreport/:id' element={<AddReport />} />
+      </Routes>
     </userContext.Provider>
   );
 }
