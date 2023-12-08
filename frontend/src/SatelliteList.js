@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { userContext } from './App';
 
 export const SatelliteList = () =>  {
     const [satellites, setSatellites] = useState([]);
-    const [userSats, setUserSats] = useState([]);
+    // const [userSats, setUserSats] = useState([]);
+    const {userSats, setUserSats} = useContext(userContext);
 
 
     useEffect(() => {
