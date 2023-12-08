@@ -8,6 +8,7 @@ import { Dashboard } from './Dashboard/Dashboard';
 import { AddReport } from './AddReport/AddReport';
 import { Report } from './Report/Report';
 import { NavBar } from './NavBar/NavBar';
+import ReportList from './ReportPages/ReportList';
 
 export const userContext = createContext();
 
@@ -50,16 +51,20 @@ function App() {
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/satellites' element={<SatelliteList />} />
         <Route path='/satellites/:id' element={<Satellite />} />
-        {/* <Route path='/reports' element={<ReportList/>} /> */}
+        <Route path='/reports' element={<ReportList/>} />
         <Route path='/reports/:id' element={<Report />} />
         {/* <Route path='/signup' element={<Signup/>} />
         <Route path='/login' element={<Login />} />
         <Route path='/auth' element={<Auth />} /> */}
         <Route path='/addreport/:id' element={<AddReport />} />
       </Routes>
+
+
     </userContext.Provider>
-  );
+  )
+    
 }
+        
 
 export default App;
 
