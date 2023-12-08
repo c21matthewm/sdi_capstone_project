@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // import { Home } from './pages/Home';
 import React, { createContext, useState, useEffect } from 'react';
+import { Dashboard } from './Dashboard/Dashboard';
 
 export const userContext = createContext();
 
@@ -10,6 +11,8 @@ function App() {
   const [users, setUsers] = useState([]);
   const [satellites, setSatellites] = useState([]);
   const [reports, setReports] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [userIsAdmin, setUserIsAdmin] = useState(false);
 
   useEffect(() => {
     Promise.all([
@@ -27,15 +30,16 @@ function App() {
   return (
 
     <userContext.Provider value={{
-      users,
-      setUsers,
-      satellites,
-      setSatellites,
-      reports,
-      setReports
+      users, setUsers,
+      satellites, setSatellites,
+      reports, setReports,
+      loggedIn, setLoggedIn,
+      userIsAdmin, setUserIsAdmin
     }}>
+
       <div className="App">
         <h1>SDI Capstone Project</h1>
+        <Dashboard />
       </div>
     </userContext.Provider>
   );

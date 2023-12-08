@@ -1,0 +1,12 @@
+.tileDisplay {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.tile {
+    max-width: 20%;
+    margin: 20px;
+    color: inherit; /* Use the same color as the surrounding text */
+    text-decoration: none; /* Remove underline */
+}
