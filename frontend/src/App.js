@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import React, { createContext, useState, useEffect } from 'react';
 import { SatelliteList } from './SaltelliteList/SatelliteList';
 import { SatelliteDetails } from './SatelliteDetails/SatelliteDetails';
+import { Dashboard } from './Dashboard/Dashboard';
 import { AddReport } from './AddReport';
 
 export const userContext = createContext();
@@ -43,7 +44,7 @@ function App() {
     }}>
       <Routes>
         {/* <Route path='/' element={<Home />} /> */}
-        {/* <Route path='/dashboard' element={<Dashboard />} /> */}
+        <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/satellites' element={<SatelliteList />} />
         <Route path='/satellites/:id' element={<SatelliteDetails />} />
         {/* <Route path='/reports' element={<ReportList/>} />

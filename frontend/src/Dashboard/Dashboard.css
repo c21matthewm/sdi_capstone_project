@@ -1,3 +1,7 @@
+.big-container {
+    text-align: center;
+}
+
 .tileDisplay {
     display: flex;
     flex-direction: row;
