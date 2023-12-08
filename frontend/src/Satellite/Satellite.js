@@ -6,7 +6,7 @@ import "./Satellite.css"
 export const Satellite = (props) => {
     const location = useLocation();
     const { sat } = location.state;
-    const [reports, setReports] = useState([]);
+    const { reports, setReports } = useContext(userContext);
 
     useEffect(() => {
         fetch(`http://localhost:8080/reports/satellites/${sat.satelliteID}`)

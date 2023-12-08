@@ -5,7 +5,6 @@ import "../Satellite/Satellite.css";
 
 export const SatelliteList = () => {
     const [satellites, setSatellites] = useState([]);
-    // const [userSats, setUserSats] = useState([]);
     const { userSats, setUserSats } = useContext(userContext);
 
 
