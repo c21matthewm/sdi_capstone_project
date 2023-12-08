@@ -96,9 +96,10 @@ app.post('/satellites', async(req, res) => {
 
 app.post('/users', async(req, res) => {
   await knex('users').insert({
-      username: req.body.username,
+      email: req.body.email,
       unit: req.body.unit,
-      admin: req.body.admin
+      admin: req.body.admin,
+      uid: req.body.uid
       })
       .then(() => {
           knex.select()

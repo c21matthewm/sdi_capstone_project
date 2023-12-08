@@ -8,6 +8,9 @@ import { Dashboard } from './Dashboard/Dashboard';
 import { AddReport } from './AddReport/AddReport';
 import { Report } from './Report/Report';
 import { NavBar } from './NavBar/NavBar';
+import { AuthDetails } from './AuthDetails';
+import { Login } from './Login/Login';
+import { SignUp } from './SignUp/SignUp';
 
 export const userContext = createContext();
 
@@ -54,8 +57,9 @@ function App() {
         <Route path='/reports/:id' element={<Report />} />
         {/* <Route path='/signup' element={<Signup/>} />
         <Route path='/login' element={<Login />} />
-        <Route path='/auth' element={<Auth />} /> */}
+        */}
         <Route path='/addreport/:id' element={<AddReport />} />
+        <Route path='/auth' element={<AuthDetails />} /> 
       </Routes>
     </userContext.Provider>
   );
