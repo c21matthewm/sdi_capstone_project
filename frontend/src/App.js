@@ -11,7 +11,7 @@ import { NavBar } from './NavBar/NavBar';
 import { AuthDetails } from './AuthDetails';
 import { Login } from './Login/Login';
 import { SignUp } from './SignUp/SignUp';
-import ReportList from './ReportPages/ReportList';
+import ReportList from './ReportList/ReportList';
 import { EditStatus } from './EditStatus/EditStatus';
 
 export const userContext = createContext();

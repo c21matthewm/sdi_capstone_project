@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@mui/material';
 
-export const EditStatus = () => {
+export const EditStatus = (sat) => {
     return (
         <div>
             <h2>Edit Status</h2>

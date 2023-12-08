@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { userContext } from "../App";
 import './Dashboard.css';
 
@@ -8,6 +8,7 @@ import { Grid, Card, CardContent, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ReportIcon from '@mui/icons-material/Report';
+import { EditStatus } from "../EditStatus/EditStatus";
 
 
 
@@ -19,6 +20,7 @@ export const Dashboard = () => {
             userSats, setUserSats,
 			loggedIn, setLoggedIn,
 			userIsAdmin, setUserIsAdmin } = useContext(userContext);
+    const [popupVisible, setPopupVisible] = useState(false);
 
 
   return (
@@ -49,7 +51,7 @@ export const Dashboard = () => {
 										</Link>
 									</CardActionArea >
 									<CardActions >
-										<Button variant="contained" color="primary">Edit status</Button>
+										<Button variant="contained" color="primary" onClick={setPopupVisible(true)}>Edit status</Button>
                                     <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
                                         <Button variant="contained" color="secondary" endIcon={<ReportIcon />}>
                                             <Typography component="span">{reports.filter((report) => (report.satelliteID === sat.satelliteID)).length}</Typography>
@@ -89,7 +91,9 @@ export const Dashboard = () => {
                                         <Button variant="contained" color="success" endIcon={<AddIcon />}>Add Report</Button>
                                     </Link>
                                     <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
-                                        <Button variant="contained" color="secondary">{<ReportIcon />}</Button>
+                                        <Button variant="contained" color="secondary" endIcon={<ReportIcon />}>
+                                            <Typography component="span">{reports.filter((report) => (report.satelliteID === sat.satelliteID)).length}</Typography>
+                                        </Button>
                                     </Link>
 								</CardActions >
 							</Card >
@@ -99,6 +103,11 @@ export const Dashboard = () => {
 				</div>
 			</div>
 		: <h3>Not Logged In</h3>}
+        {popupVisible && 
+            <div className="popup-window">
+                <EditStatus />
+            </div>
+        }
 	</div>
   );
 };
