@@ -5,6 +5,7 @@ import React, { createContext, useState, useEffect } from 'react';
 import { SatelliteList } from './SaltelliteList/SatelliteList';
 import { SatelliteDetails } from './SatelliteDetails/SatelliteDetails';
 import { AddReport } from './AddReport';
+import { ReportDetails } from './ReportDetails';
 
 export const userContext = createContext();
 
@@ -46,9 +47,9 @@ function App() {
         {/* <Route path='/dashboard' element={<Dashboard />} /> */}
         <Route path='/satellites' element={<SatelliteList />} />
         <Route path='/satellites/:id' element={<SatelliteDetails />} />
-        {/* <Route path='/reports' element={<ReportList/>} />
+        {/* <Route path='/reports' element={<ReportList/>} /> */}
         <Route path='/reports/:id' element={<ReportDetails />} />
-        <Route path='/signup' element={<Signup/>} />
+        {/* <Route path='/signup' element={<Signup/>} />
         <Route path='/login' element={<Login />} />
         <Route path='/auth' element={<Auth />} /> */}
         <Route path='/addreport/:id' element={<AddReport />} />

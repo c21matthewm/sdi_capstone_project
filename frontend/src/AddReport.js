@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState} from "react";
 import { useLocation } from "react-router-dom";
 
 export const AddReport = (props) => {
@@ -12,8 +12,6 @@ export const AddReport = (props) => {
   const [long, setLong] = useState(0);
   const [status, setStatus] = useState('');
   const [reason, setReason] = useState('');
-
-  console.log(sat);
   
     const onSubmit = (e) => {
       e.preventDefault();

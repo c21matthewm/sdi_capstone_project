@@ -6,12 +6,12 @@ import "./Satellite.css"
 export const SatelliteDetails = (props) => {
     const location = useLocation();
     const { sat } = location.state;
-    // const [reports, setReports] = useState([]);
+    const [reports, setReports] = useState([]);
 
     useEffect(() => {
         fetch(`http://localhost:8080/reports/satellites/${sat.satelliteID}`)
             .then(res => res.json())
-            // .then(data => setReports(data))
+            .then(data => setReports(data))
     }, [sat]);
 
 
@@ -26,21 +26,15 @@ export const SatelliteDetails = (props) => {
                 <li> country: {sat.country}</li>
                 <li> frequency_band: {sat.frequency_band}</li>
             </ul>
-            {/* <ul>
-                {reports.map(report => {
+            <ul>
+                {reports.map((report, index) => {
                     return (
                         <>
-                            <li> {report.time} </li>
-                            <li> {report.latitude} </li>
-                            <li> {report.longitude} </li>
-                            <li> {report.frequency_band} </li>
-                            <li> {report.mission} </li>
-                            <li> {report.status} </li>
-                            <li> {report.reason} </li>
+                            <li><Link to={`/reports/${report.reportID}`} state={{ report }}>REPORT #{`${report.reportID}`}: {report.time} </Link></li>
                         </>
                     )
                 })}
-            </ul> */}
+            </ul>
         </div>
 
     )
