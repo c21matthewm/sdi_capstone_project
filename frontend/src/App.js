@@ -50,7 +50,7 @@ function App() {
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/satellites' element={<SatelliteList />} />
         <Route path='/satellites/:id' element={<SatelliteDetails />} />
-        {/* <Route path='/reports' element={<ReportList/>} /> */}
+        <Route path='/reports' element={<ReportList/>} />
         <Route path='/reports/:id' element={<ReportDetails />} />
         {/* <Route path='/signup' element={<Signup/>} />
         <Route path='/login' element={<Login />} />
@@ -58,9 +58,7 @@ function App() {
         <Route path='/addreport/:id' element={<AddReport />} />
       </Routes>
 
-      <Routes>
-        <Route path='/reports' element={<ReportList/>}/>
-      </Routes>
+
     </userContext.Provider>
   )
     
