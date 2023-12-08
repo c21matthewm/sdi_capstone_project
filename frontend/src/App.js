@@ -2,8 +2,8 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // import { Home } from './pages/Home';
 import React, { createContext, useState, useEffect } from 'react';
-import { SatelliteList } from './SatelliteList';
-import { SatelliteDetails } from './SatelliteDetails';
+import { SatelliteList } from './SaltelliteList/SatelliteList';
+import { SatelliteDetails } from './SatelliteDetails/SatelliteDetails';
 import { AddReport } from './AddReport';
 
 export const userContext = createContext();
