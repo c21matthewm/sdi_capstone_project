@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-export const ReportDetails = () => {
+export const Report = () => {
   const location = useLocation();
   const { report } = location.state;
 

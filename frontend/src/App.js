@@ -1,12 +1,13 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 // import { Home } from './pages/Home';
 import React, { createContext, useState, useEffect } from 'react';
 import { SatelliteList } from './SaltelliteList/SatelliteList';
-import { SatelliteDetails } from './SatelliteDetails/SatelliteDetails';
+import { Satellite } from './Satellite/Satellite';
 import { Dashboard } from './Dashboard/Dashboard';
-import { AddReport } from './AddReport';
-import { ReportDetails } from './ReportDetails';
+import { AddReport } from './AddReport/AddReport';
+import { Report } from './Report/Report';
+import { NavBar } from './NavBar/NavBar';
 import ReportList from './ReportPages/ReportList';
 
 export const userContext = createContext();
@@ -44,14 +45,14 @@ function App() {
       loggedIn, setLoggedIn,
       userIsAdmin, setUserIsAdmin
     }}>
-      
+      <NavBar />
       <Routes>
         {/* <Route path='/' element={<Home />} /> */}
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/satellites' element={<SatelliteList />} />
-        <Route path='/satellites/:id' element={<SatelliteDetails />} />
+        <Route path='/satellites/:id' element={<Satellite />} />
         <Route path='/reports' element={<ReportList/>} />
-        <Route path='/reports/:id' element={<ReportDetails />} />
+        <Route path='/reports/:id' element={<Report />} />
         {/* <Route path='/signup' element={<Signup/>} />
         <Route path='/login' element={<Login />} />
         <Route path='/auth' element={<Auth />} /> */}

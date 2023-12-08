@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { userContext } from "../App";
+import './Dashboard.css';
+
+import { Link } from 'react-router-dom';
 import { Button, CardActionArea, CardActions, CardMedia } from '@mui/material';
 import { Grid, Card, CardContent, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import './Dashboard.css'
+
 
 
 export const Dashboard = () => {
@@ -18,7 +20,6 @@ export const Dashboard = () => {
 
   return (
     <div className="big-container">
-        {/* <NavBar /> */}
         <h2>Dashboard</h2>
         <Button variant="contained" color="success" onClick={() => {setLoggedIn(false); setUserIsAdmin(false)}}>Logout</Button>
         <Button variant="contained" color="success" onClick={() => {setUserIsAdmin(false); setLoggedIn(true)}}>Make User</Button>
@@ -30,7 +31,7 @@ export const Dashboard = () => {
                     {satellites.map((satellite) => {
                         return (
                             <div className="tile">
-                                <Card sx={{ border: satellite.status == 'active' ? "solid 5px #00ff00" : "solid 5px #ff0000"}} variant="outlined">
+                                <Card sx={{ border: satellite.status === 'active' ? "solid 5px #00ff00" : "solid 5px #ff0000"}} variant="outlined">
                                     <CardActionArea >
                                         <Link to={`/satellites/${satellite.satelliteID}`}>
                                             <CardMedia>
@@ -61,7 +62,7 @@ export const Dashboard = () => {
                 {satellites.map((satellite) => {
                     return (
                         <div className="tile">
-                            <Card sx={{ border: satellite.status == 'active' ? "solid 5px #00ff00" : "solid 5px #ff0000"}} variant="outlined">
+                            <Card sx={{ border: satellite.status === 'active' ? "solid 5px #00ff00" : "solid 5px #ff0000"}} variant="outlined">
                                 <CardActionArea >
                                     <Link to={`/satellites/${satellite.satelliteID}`}>
                                         <CardMedia>
