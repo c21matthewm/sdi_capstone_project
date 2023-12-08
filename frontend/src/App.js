@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import React, { createContext, useState, useEffect } from 'react';
 import { SatelliteList } from './SatelliteList';
 import { SatelliteDetails } from './SatelliteDetails';
+import { AddReport } from './AddReport';
 
 export const userContext = createContext();
 
@@ -49,6 +50,7 @@ function App() {
         <Route path='/signup' element={<Signup/>} />
         <Route path='/login' element={<Login />} />
         <Route path='/auth' element={<Auth />} /> */}
+        <Route path='/addreport/:id' element={<AddReport />} />
       </Routes>
     </userContext.Provider>
   );
