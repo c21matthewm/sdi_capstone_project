@@ -38,10 +38,17 @@ function App() {
       userSats,
       setUserSats
     }}>
-      <div className="App">
-        <h1>SDI Capstone Project</h1>
-        <SatelliteList />
-      </div>
+      <Routes>
+        {/* <Route path='/' element={<Home />} />
+        <Route path='/dashboard' element={<Dashboard />} /> */}
+        <Route path='/satellites' element={<SatelliteList />} />
+        {/* <Route path='/satellites/:id' element={<SatelliteDetails />} />
+        <Route path='/reports' element={<ReportList/>} />
+        <Route path='/reports/:id' element={<ReportDetails />} />
+        <Route path='/signup' element={<Signup/>} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/auth' element={<Auth />} /> */}
+      </Routes>
     </userContext.Provider>
   );
 }
