@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { userContext } from './App';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 export const SatelliteList = () =>  {
     const [satellites, setSatellites] = useState([]);
@@ -23,14 +24,16 @@ export const SatelliteList = () =>  {
     return (
         <>
         <h2>List of Satellites</h2>
+        <ul>
         {satellites.map(sat => {
             return ( 
-                <> 
-                <h2>Name: {sat.name}</h2>
+                <li> 
+                <Link to={`/satellites/${sat.satelliteID}`} state = {{sat}}> {sat.status} {sat.name}</Link>
                 <button onClick={() => {addSat(sat)}}> Add to Dashboard  </button>
-                </>
+                </li>
             )
         })}
+        </ul>
         </>
     )
 
