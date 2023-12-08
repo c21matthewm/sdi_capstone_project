@@ -2,6 +2,11 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // import { Home } from './pages/Home';
 import React, { createContext, useState, useEffect } from 'react';
+import { SatelliteList } from './SaltelliteList/SatelliteList';
+import { SatelliteDetails } from './SatelliteDetails/SatelliteDetails';
+import { Dashboard } from './Dashboard/Dashboard';
+import { AddReport } from './AddReport';
+import { ReportDetails } from './ReportDetails';
 import ReportList from './ReportPages/ReportList';
 
 export const userContext = createContext();
@@ -11,6 +16,9 @@ function App() {
   const [users, setUsers] = useState([]);
   const [satellites, setSatellites] = useState([]);
   const [reports, setReports] = useState([]);
+  const [userSats, setUserSats] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [userIsAdmin, setUserIsAdmin] = useState(false);
 
   useEffect(() => {
     Promise.all([
@@ -28,17 +36,27 @@ function App() {
   return (
 
     <userContext.Provider value={{
-      users,
-      setUsers,
-      satellites,
-      setSatellites,
-      reports,
-      setReports
+      users, setUsers,
+      satellites, setSatellites,
+      reports, setReports,
+      userSats,
+      setUserSats,
+      loggedIn, setLoggedIn,
+      userIsAdmin, setUserIsAdmin
     }}>
       
-      <div className="App">
-        <h1>SDI Capstone Project</h1>
-      </div>
+      <Routes>
+        {/* <Route path='/' element={<Home />} /> */}
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/satellites' element={<SatelliteList />} />
+        <Route path='/satellites/:id' element={<SatelliteDetails />} />
+        {/* <Route path='/reports' element={<ReportList/>} /> */}
+        <Route path='/reports/:id' element={<ReportDetails />} />
+        {/* <Route path='/signup' element={<Signup/>} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/auth' element={<Auth />} /> */}
+        <Route path='/addreport/:id' element={<AddReport />} />
+      </Routes>
 
       <Routes>
         <Route path='/reports' element={<ReportList/>}/>

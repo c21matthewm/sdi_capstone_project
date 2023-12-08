@@ -8,6 +8,10 @@ exports.up = function(knex) {
     table.string('name').notNullable();
     table.integer('longitude').notNullable();
     table.string('status').notNullable();
+    table.string('orbit');
+    table.string('mission');
+    table.string('country');
+    table.string('frequency_band');
     });
 };
 
