@@ -2,8 +2,8 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // import { Home } from './pages/Home';
 import React, { createContext, useState, useEffect } from 'react';
-import { SatelliteList } from './SatelliteList';
-import { SatelliteDetails } from './SatelliteDetails';
+import { SatelliteList } from './SaltelliteList/SatelliteList';
+import { SatelliteDetails } from './SatelliteDetails/SatelliteDetails';
 import { AddReport } from './AddReport';
 
 export const userContext = createContext();
@@ -14,6 +14,8 @@ function App() {
   const [satellites, setSatellites] = useState([]);
   const [reports, setReports] = useState([]);
   const [userSats, setUserSats] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [userIsAdmin, setUserIsAdmin] = useState(false);
 
   useEffect(() => {
     Promise.all([
@@ -31,14 +33,13 @@ function App() {
   return (
 
     <userContext.Provider value={{
-      users,
-      setUsers,
-      satellites,
-      setSatellites,
-      reports,
-      setReports,
+      users, setUsers,
+      satellites, setSatellites,
+      reports, setReports,
       userSats,
-      setUserSats
+      setUserSats,
+      loggedIn, setLoggedIn,
+      userIsAdmin, setUserIsAdmin
     }}>
       <Routes>
         {/* <Route path='/' element={<Home />} /> */}
