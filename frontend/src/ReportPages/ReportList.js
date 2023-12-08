@@ -32,7 +32,17 @@ function ReportList() {
               // {console.log('Hello', report)
                 // console.log('Hi',index, report[index])}
               return(
-                <li key={report.reportID}> {report.status}</li>
+                <li key={report.reportID}> 
+                  {`${report.satelliteID}`}
+                  {` ${report.status}`}
+                  <br/>
+                  {` Most Reported Problems: ${report.reason}`}
+                  <br/>
+                  {` Most Recent Report: ${report.time}`}
+                  {/* Add A state that takes the number of times the a report was filed and display it here*/}
+
+                  
+                </li>
               )
               
             })}
