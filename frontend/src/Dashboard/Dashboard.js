@@ -17,7 +17,7 @@ export const Dashboard = () => {
 
 
   return (
-    <div>
+    <div className="big-container">
         {/* <NavBar /> */}
         <h2>Dashboard</h2>
         <Button variant="contained" color="success" onClick={() => {setLoggedIn(false); setUserIsAdmin(false)}}>Logout</Button>
@@ -30,7 +30,7 @@ export const Dashboard = () => {
                     {satellites.map((satellite) => {
                         return (
                             <div className="tile">
-                                <Card variant="outlined">
+                                <Card sx={{ border: satellite.status == 'active' ? "solid 5px #00ff00" : "solid 5px #ff0000"}} variant="outlined">
                                     <CardActionArea >
                                         <Link to={`/satellites/${satellite.satelliteID}`}>
                                             <CardMedia>
@@ -61,7 +61,7 @@ export const Dashboard = () => {
                 {satellites.map((satellite) => {
                     return (
                         <div className="tile">
-                            <Card>
+                            <Card sx={{ border: satellite.status == 'active' ? "solid 5px #00ff00" : "solid 5px #ff0000"}} variant="outlined">
                                 <CardActionArea >
                                     <Link to={`/satellites/${satellite.satelliteID}`}>
                                         <CardMedia>
