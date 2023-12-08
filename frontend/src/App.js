@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // import { Home } from './pages/Home';
 import React, { createContext, useState, useEffect } from 'react';
+import { SatelliteList } from './SatelliteList';
 
 export const userContext = createContext();
 
@@ -36,6 +37,7 @@ function App() {
     }}>
       <div className="App">
         <h1>SDI Capstone Project</h1>
+        <SatelliteList />
       </div>
     </userContext.Provider>
   );
