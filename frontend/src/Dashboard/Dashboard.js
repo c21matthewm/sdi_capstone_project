@@ -6,87 +6,100 @@ import { Link } from 'react-router-dom';
 import { Button, CardActionArea, CardActions, CardMedia } from '@mui/material';
 import { Grid, Card, CardContent, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ReportIcon from '@mui/icons-material/Report';
 
 
 
 export const Dashboard = () => {
 
-    const { users, setUsers, 
-            satellites, setSatellites, 
-            reports, setReports, 
-            loggedIn, setLoggedIn,
-            userIsAdmin, setUserIsAdmin } = useContext(userContext);
+	const { users, setUsers, 
+			satellites, setSatellites, 
+			reports, setReports,
+            userSats, setUserSats,
+			loggedIn, setLoggedIn,
+			userIsAdmin, setUserIsAdmin } = useContext(userContext);
 
 
   return (
-    <div className="big-container">
-        <h2>Dashboard</h2>
-        <Button variant="contained" color="success" onClick={() => {setLoggedIn(false); setUserIsAdmin(false)}}>Logout</Button>
-        <Button variant="contained" color="success" onClick={() => {setUserIsAdmin(false); setLoggedIn(true)}}>Make User</Button>
-        <Button variant="contained" color="success" onClick={() => {setUserIsAdmin(true); setLoggedIn(true)}}>Make Admin</Button>
-        {userIsAdmin ?
-            <div className="adminDisplay">
-                <h3>Admin</h3>
-                <div className="tileDisplay">
-                    {satellites.map((satellite) => {
-                        return (
-                            <div className="tile">
-                                <Card sx={{ border: satellite.status === 'active' ? "solid 5px #00ff00" : "solid 5px #ff0000"}} variant="outlined">
-                                    <CardActionArea >
-                                        <Link to={`/satellites/${satellite.satelliteID}`}>
-                                            <CardMedia>
-                                                <p>Sat Image</p>
-                                            </CardMedia>
-                                            <CardContent >
-                                                <Typography variant="h5" component="div" >
-                                                    {satellite.name}
-                                                </Typography >
-                                                {/* add any other details later*/}
-                                            </CardContent >
-                                        </Link>
-                                    </CardActionArea >
-                                    <CardActions >
-                                        <Button variant="contained" color="error">Edit status</Button>
-                                    </CardActions >
-                                </Card >
-                            </div>
-                        )
-                    })}
-                </div>
-            </div>
-        :
-        loggedIn ?
-            <div className="userDisplay">
-                <h3>User</h3>
-                <div className="tileDisplay">
-                {satellites.map((satellite) => {
-                    return (
-                        <div className="tile">
-                            <Card sx={{ border: satellite.status === 'active' ? "solid 5px #00ff00" : "solid 5px #ff0000"}} variant="outlined">
-                                <CardActionArea >
-                                    <Link to={`/satellites/${satellite.satelliteID}`}>
-                                        <CardMedia>
-                                            <p>Sat Image</p>
-                                        </CardMedia>
-                                        <CardContent >
-                                            <Typography variant="h5" component="div" >
-                                                {satellite.name}
-                                            </Typography >
-                                            {/* add any other details later*/}
-                                        </CardContent >
+	<div className="big-container">
+		<h2>Dashboard</h2>
+		<Button variant="contained" color="success" onClick={() => {setLoggedIn(false); setUserIsAdmin(false)}}>Logout</Button>
+		<Button variant="contained" color="success" onClick={() => {setUserIsAdmin(false); setLoggedIn(true)}}>Make User</Button>
+		<Button variant="contained" color="success" onClick={() => {setUserIsAdmin(true); setLoggedIn(true)}}>Make Admin</Button>
+		{userIsAdmin ?
+			<div className="adminDisplay">
+				<h3>Admin</h3>
+				<div className="tileDisplay">
+					{satellites.map((sat) => {
+						return (
+							<div className="tile">
+								<Card sx={{ border: sat.status === 'active' ? "solid 5px #00ff00" : "solid 5px #ff0000"}} variant="outlined">
+									<CardActionArea >
+                                        <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
+											<CardMedia>
+												<p>Sat Image</p>
+											</CardMedia>
+											<CardContent >
+												<Typography variant="h5" component="div" >
+													{sat.name}
+												</Typography >
+												{/* add any other details later*/}
+											</CardContent >
+										</Link>
+									</CardActionArea >
+									<CardActions >
+										<Button variant="contained" color="primary">Edit status</Button>
+                                    <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
+                                        <Button variant="contained" color="secondary" endIcon={<ReportIcon />}>
+                                            <Typography component="span">{reports.filter((report) => (report.satelliteID === sat.satelliteID)).length}</Typography>
+                                        </Button>
                                     </Link>
-                                </CardActionArea >
-                                <CardActions >
-                                    <Button variant="contained" color="success" endIcon={<AddIcon />}>Add Report</Button>
-                                </CardActions >
-                            </Card >
-                        </div>
-                    )
-                })}
-                </div>
-            </div>
-        : <h3>Not Logged In</h3>}
-    </div>
+									</CardActions >
+								</Card >
+							</div>
+						)
+					})}
+				</div>
+			</div>
+		:
+		loggedIn ?
+			<div className="userDisplay">
+				<h3>User</h3>
+				<div className="tileDisplay">
+				{userSats.map((sat) => {
+					return (
+						<div className="tile">
+							<Card sx={{ border: sat.status === 'active' ? "solid 5px #00ff00" : "solid 5px #ff0000"}} variant="outlined">
+								<CardActionArea >
+									<Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
+										<CardMedia>
+											<p>Sat Image</p>
+										</CardMedia>
+										<CardContent >
+											<Typography variant="h5" component="div" >
+												{sat.name}
+											</Typography >
+											{/* add any other details later*/}
+										</CardContent >
+									</Link>
+								</CardActionArea >
+								<CardActions >
+									<Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}>
+                                        <Button variant="contained" color="success" endIcon={<AddIcon />}>Add Report</Button>
+                                    </Link>
+                                    <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
+                                        <Button variant="contained" color="secondary">{<ReportIcon />}</Button>
+                                    </Link>
+								</CardActions >
+							</Card >
+						</div>
+					)
+				})}
+				</div>
+			</div>
+		: <h3>Not Logged In</h3>}
+	</div>
   );
 };
 

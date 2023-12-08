@@ -8,6 +8,7 @@ import { Dashboard } from './Dashboard/Dashboard';
 import { AddReport } from './AddReport/AddReport';
 import { Report } from './Report/Report';
 import { NavBar } from './NavBar/NavBar';
+import { EditStatus } from './EditStatus/EditStatus';
 
 export const userContext = createContext();
 
@@ -39,8 +40,7 @@ function App() {
       users, setUsers,
       satellites, setSatellites,
       reports, setReports,
-      userSats,
-      setUserSats,
+      userSats, setUserSats,
       loggedIn, setLoggedIn,
       userIsAdmin, setUserIsAdmin
     }}>
@@ -56,6 +56,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/auth' element={<Auth />} /> */}
         <Route path='/addreport/:id' element={<AddReport />} />
+        <Route path='/editstatus' element={<EditStatus />} />
       </Routes>
     </userContext.Provider>
   );
@@ -67,7 +68,7 @@ export default App;
 
 // Home.js - login page (conditionally render login, once logged in, renders Dashboard.js)
     // Login.js - login form
-    // CreateAccount.js - create account form
+    // SignUp.js - create account form
     // Authorization.js - displays on Home.js once logged in
     // Dashboard.js - displays on Home.js of satellites that admin owns / for users it displays all satellites theyve added
     // NavBar.js - Home / SattelliteList
