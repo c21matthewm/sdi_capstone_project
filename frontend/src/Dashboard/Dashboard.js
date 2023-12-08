@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
 import { userContext } from "../App";
-import { NavBar } from "../NavBar/NavBar";
 import './Dashboard.css';
 
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button, CardActionArea, CardActions, CardMedia } from '@mui/material';
 import { Grid, Card, CardContent, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';

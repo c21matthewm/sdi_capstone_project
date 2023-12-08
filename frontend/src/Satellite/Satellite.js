@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { userContext } from '../App';
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import "./Satellite.css"
 
 export const Satellite = (props) => {

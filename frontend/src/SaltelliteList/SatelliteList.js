@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { userContext } from '../App';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import "../Satellite/Satellite.css";
 
 export const SatelliteList = () => {

@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 // import { Home } from './pages/Home';
 import React, { createContext, useState, useEffect } from 'react';
 import { SatelliteList } from './SaltelliteList/SatelliteList';
