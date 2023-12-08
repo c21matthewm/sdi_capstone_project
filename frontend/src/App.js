@@ -11,6 +11,7 @@ import { NavBar } from './NavBar/NavBar';
 import { AuthDetails } from './AuthDetails';
 import { Login } from './Login/Login';
 import { SignUp } from './SignUp/SignUp';
+import ReportList from './ReportPages/ReportList';
 
 export const userContext = createContext();
 
@@ -53,7 +54,7 @@ function App() {
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/satellites' element={<SatelliteList />} />
         <Route path='/satellites/:id' element={<Satellite />} />
-        {/* <Route path='/reports' element={<ReportList/>} /> */}
+        <Route path='/reports' element={<ReportList/>} />
         <Route path='/reports/:id' element={<Report />} />
         {/* <Route path='/signup' element={<Signup/>} />
         <Route path='/login' element={<Login />} />
@@ -61,9 +62,13 @@ function App() {
         <Route path='/addreport/:id' element={<AddReport />} />
         <Route path='/auth' element={<AuthDetails />} /> 
       </Routes>
+
+
     </userContext.Provider>
-  );
+  )
+    
 }
+        
 
 export default App;
 
