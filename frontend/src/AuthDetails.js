@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { onAuthStateChanged,signOut } from "firebase/auth";
 import { Login } from "./Login/Login";
 import { SignUp } from "./SignUp/SignUp";
+import { Dashboard } from './Dashboard/Dashboard';
 // import { UserInventory } from "../UserInventory";
 // import { AuthHeader } from "./AuthHeader";
 // import { Link } from "react-router-dom";
@@ -40,11 +41,10 @@ export const AuthDetails = () => {
   <h2>hello</h2>
     <p> {`Signed In as ${authUser.email}`}</p>
     <button onClick={userSignOut}> Sign Out </button>
+    <Dashboard />
   </>
   : 
   <>
-  <p> Signed Out </p> 
-  <SignUp />
   <Login />
   </>
   }

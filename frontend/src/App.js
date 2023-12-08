@@ -50,17 +50,15 @@ function App() {
     }}>
       <NavBar />
       <Routes>
-        {/* <Route path='/' element={<Home />} /> */}
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/satellites' element={<SatelliteList />} />
         <Route path='/satellites/:id' element={<Satellite />} />
         <Route path='/reports' element={<ReportList/>} />
         <Route path='/reports/:id' element={<Report />} />
-        {/* <Route path='/signup' element={<Signup/>} />
+        <Route path='/signup' element={<SignUp/>} />
         <Route path='/login' element={<Login />} />
-        */}
         <Route path='/addreport/:id' element={<AddReport />} />
-        <Route path='/auth' element={<AuthDetails />} /> 
+        <Route path='/' element={<AuthDetails />} /> 
       </Routes>
 
 
