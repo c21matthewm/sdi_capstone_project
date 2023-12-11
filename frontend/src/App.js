@@ -15,15 +15,14 @@ import ReportList from './ReportList/ReportList';
 import { EditStatus } from './EditStatus/EditStatus';
 
 export const userContext = createContext();
-
 function App() {
-
   const [users, setUsers] = useState([]);
   const [satellites, setSatellites] = useState([]);
   const [reports, setReports] = useState([]);
   const [userSats, setUserSats] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [userIsAdmin, setUserIsAdmin] = useState(false);
+  const [userUID, setUserUID] = useState('');
 
   useEffect(() => {
     Promise.all([
@@ -46,7 +45,8 @@ function App() {
       reports, setReports,
       userSats, setUserSats,
       loggedIn, setLoggedIn,
-      userIsAdmin, setUserIsAdmin
+      userIsAdmin, setUserIsAdmin,
+      userUID, setUserUID
     }}>
       <NavBar />
       <Routes>
