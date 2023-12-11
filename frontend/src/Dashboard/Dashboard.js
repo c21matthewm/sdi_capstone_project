@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { userContext } from "../App";
 import './Dashboard.css';
 
 import { Link } from 'react-router-dom';
 import { Button, CardActionArea, CardActions, CardMedia } from '@mui/material';
-import { Grid, Card, CardContent, Typography } from '@mui/material';
+import { Card, CardContent, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ReportIcon from '@mui/icons-material/Report';
@@ -21,7 +21,12 @@ export const Dashboard = () => {
 			loggedIn, setLoggedIn,
 			userIsAdmin, setUserIsAdmin } = useContext(userContext);
     const [popupVisible, setPopupVisible] = useState(false);
+    const [selectedSat, setSelectedSat] = useState({});
 
+    useEffect(() => {
+        console.log(selectedSat)
+        console.log(popupVisible)
+    }, [selectedSat, popupVisible]);
 
   return (
 	<div className="big-container">
@@ -51,7 +56,10 @@ export const Dashboard = () => {
 										</Link>
 									</CardActionArea >
 									<CardActions >
-										<Button variant="contained" color="primary" onClick={setPopupVisible(true)}>Edit status</Button>
+										<Button variant="contained" color="primary" onClick={() => {
+                                            setPopupVisible(true);
+                                            setSelectedSat(sat)
+                                        }}>Edit status</Button>
                                     <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
                                         <Button variant="contained" color="secondary" endIcon={<ReportIcon />}>
                                             <Typography component="span">{reports.filter((report) => (report.satelliteID === sat.satelliteID)).length}</Typography>
@@ -103,9 +111,9 @@ export const Dashboard = () => {
 				</div>
 			</div>
 		: <h3>Not Logged In</h3>}
-        {popupVisible && 
+        {popupVisible && selectedSat &&
             <div className="popup-window">
-                <EditStatus />
+                <EditStatus satellite={ selectedSat }/>
             </div>
         }
 	</div>
