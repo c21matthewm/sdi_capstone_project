@@ -3,20 +3,33 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // import { Home } from './pages/Home';
 import React, { useContext, useState, useEffect } from 'react';
 import { userContext } from '../App';
+import PieCenterLabel from './PieChart';
 import './ReportList.css';
 import MixedBarChart from './ProblemMetric'
 
 function ReportList() {
+ 
 
   const allItems= useContext(userContext)
   // let arr = ['Hello', 'Hi', 'This']
   let arr = allItems.reports;
+  // let id = allItems.reports.satelliteID;
 
-  console.log(arr)
+
+  
+  // switch(id) {
+  //   case 1:
+  //     id = 'insight_1'
+  //   break;
+
+  // }
+  // console.log('id', id)
 
 
 
   return (
+    
+
     <div>
       <div className="reports_page">
         <h1>Reports Page</h1>
@@ -49,6 +62,7 @@ function ReportList() {
               )
             })}
           </ul>
+          <PieCenterLabel/>
         </div>
         <div className="metric_view">
           THIS IS THE METRIC PANEL.
