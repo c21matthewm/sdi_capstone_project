@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // import { Home } from './pages/Home';
 import React, { useContext, useState, useEffect } from 'react';
 import { userContext } from '../App';
-
+import './ReportList.css';
+import { BarChart } from '@mui/x-charts/BarChart';
 
 
 function ReportList() {
@@ -17,9 +18,10 @@ function ReportList() {
 
 
   return (
-      <div>
+    <div>
+      <div className="reports_page">
         <h1>Reports Page</h1>
-        <input type='search' placeholder='Search Satellite'/>
+        <input type='search' placeholder='Search Satellite' />
 
         <select>
           <option>Filter</option>
@@ -27,27 +29,44 @@ function ReportList() {
           <option>Option</option>
           <option>Option</option>
         </select>
+        <div className="report_view">
+          THIS IS THE REPORT PANEL.
           <ul>
             {arr.map((report) => {
               // {console.log('Hello', report)
-                // console.log('Hi',index, report[index])}
-              return(
+              // console.log('Hi',index, report[index])}
+              return (
                 <li key={report.reportID}>
                   <b>Satellite:</b> {` Insight ${report.satelliteID}`}
-                  <br/>
+                  <br />
                   <b>User Access to SATCOM:</b> {` ${report.status}`}
-                  <br/>
+                  <br />
                   <b>Description:</b> {` ${report.reason}`}
-                  <br/>
+                  <br />
                   <b>User status on:</b> {` ${report.time}`}
                   {/* Add A state that takes the number of times the a report was filed and display it here*/}
                 </li>
               )
-
             })}
           </ul>
-
+        </div>
+        <div className="metric_view">
+          THIS IS THE METRIC PANEL.
+          <div className="problems_metric">
+              <BarChart
+                xAxis={[
+                {
+                  scaleType: 'band',
+                  data: ['Page 1', 'Page 2', 'Page 3'],
+                  categoryGapRatio: 0.3,
+                  barGapRatio: 0.1
+                }]}
+              />
+          </div>
+          <div className="SATCOM_down_metric"></div>
+        </div>
       </div>
+    </div>
   );
 }
 

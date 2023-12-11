@@ -1,0 +1,20 @@
+.reports_page {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.report_view {
+  display: flex
+}
+
+.metric_view {
+  display: flex
+}
+
+.problems_metric {
+  display: flex
+}
+
+.SATCOM_down_metric {
+  display: flex
+}
