@@ -85,7 +85,7 @@ app.post('/satellites', async(req, res) => {
       longitude: req.body.longitude,
       status: req.body.status,
       image: req.body.image,
-      favorites: [],
+      favorites: req.body.favorites,
       })
       .then(() => {
           knex.select()
