@@ -27,10 +27,6 @@ export const Dashboard = () => {
         console.log(popupVisible)
     }, [selectedSat, popupVisible]);
 
-    const handlePopupOpen = () => {
-        setPopupVisible(true);
-    };
-
     const handlePopupClose = () => {
         setPopupVisible(false);
     };
@@ -68,7 +64,15 @@ export const Dashboard = () => {
                                             setSelectedSat(sat)
                                         }}>Edit status</Button>
                                         <Dialog open={popupVisible}
-                                                onClose={() => {setPopupVisible(false)}}>
+                                                onClose={() => {setPopupVisible(false)}}
+                                                slotProps={{
+                                                    backdrop: {
+                                                        sx: {
+                                                            backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                                                        }
+                                                    }
+                                                }}
+                                         >
                                             <EditStatus satellite={ selectedSat } onClose={ handlePopupClose }/>
                                         </Dialog>
                                     <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
