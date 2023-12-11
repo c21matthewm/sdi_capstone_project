@@ -167,3 +167,17 @@ app.patch('/satellites/favorites/:satelliteID', async(req, res) => {
 //     .select("*")
 //     .then(data => res.json(data))});
 // })
+
+
+app.patch('/satellites/status/:satelliteID', (req, res) => {
+  knex('satellites')
+  .where('satelliteID', req.params.satelliteID)
+  .update({
+    status: req.body.status
+  })
+  .then(() => {
+    knex('satellites')
+    .where('satelliteID', req.params.satelliteID)
+    .select("*")
+    .then(data => res.json(data))});
+})
