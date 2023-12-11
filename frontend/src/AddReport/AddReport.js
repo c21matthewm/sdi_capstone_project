@@ -1,3 +1,5 @@
+import { Checkbox } from "@mui/material";
+import { fontSize } from "@mui/system";
 import React, { useState} from "react";
 import { useLocation } from "react-router-dom";
 
@@ -11,7 +13,8 @@ export const AddReport = (props) => {
   const [lat, setLat] = useState(0);
   const [long, setLong] = useState(0);
   const [status, setStatus] = useState('');
-  const [reason, setReason] = useState('');
+  const [reason, setReason] = useState([]);
+  // const [garbled, setGarbled] = useState('')
   
     const onSubmit = (e) => {
       e.preventDefault();
@@ -44,18 +47,60 @@ export const AddReport = (props) => {
           setReason('');
         })
     }
+  // function convertReason(){
+  //   if (garbled === true) {
+  //     setReason('garbled') 
+  //     console.log('The reason is:', reason)
+  //   }
+  // }
 
   return (
     <>
       <form onSubmit={onSubmit}>
-        <label>Time:</label><input type="text" onChange={(e)=>setTime(e.target.value)} value={time}></input>
-        <label>Frequency Band:</label><input type="text" onChange={(e)=>setFreq(e.target.value)} value={freq}></input>
-        <label>Mission:</label><input type="text" onChange={(e)=>setMission(e.target.value)} value={mission}></input>
-        <label>Latitude:</label><input type="number" onChange={(e)=>setLat(e.target.value)} value={lat}></input>
-        <label>Longitude:</label><input type="number" onChange={(e)=>setLong(e.target.value)} value={long}></input>
-        <label>Status:</label><input type="status" onChange={(e)=>setStatus(e.target.value)} value={status}></input>
-        <label>Reason:</label><textarea onChange={(e)=>setReason(e.target.value)} value={reason}></textarea>
-        <button type="submit" >submit</button>
+        <label>Time:</label>
+          <input type='datetime-local' onChange={(e)=>setTime(e.target.value)} value={time}></input>
+          <h6 >
+            *User access to SATCOM as of this time
+          </h6>
+        <hr/>
+        <label>Frequency Band:</label>
+          <input type='text' onChange={(e)=>setFreq(e.target.value)} value={freq}></input>
+        <hr/>
+
+        <label>Mission:</label>
+          <input type="text" onChange={(e)=>setMission(e.target.value)} value={mission}></input>
+        <hr/>
+        
+        <label>Latitude:</label>
+          <input type="number" onChange={(e)=>setLat(e.target.value)} value={lat}></input>
+        <hr/>
+        
+        <label>Longitude:</label>
+          <input type="number" onChange={(e)=>setLong(e.target.value)} value={long}></input>
+        <hr/>
+        
+        <label>Status:</label>
+          <input type="status" onChange={(e)=>setStatus(e.target.value)} value={status}></input>
+          <h6 >
+            *Green: Can Connect. Quality is Good.<br/>
+            *Yellow: Can Connect. Quality is Degraded.<br/>
+            *Red: Cannot Connect. 
+          </h6>
+
+
+        <hr/>
+        
+        <label>Reason:</label><br/>
+        <input type='text' onChange={(e)=>setReason(e.target.value)} value={reason}/>
+          {/* <input type='checkbox' onChange={(e)=>setGarbled(e.target.checked)} checked={garbled}/>Garbled<br/> */}
+          {/* <input type='checkbox' onClick={(e)=>setReason(e.target.checked)} checked={reason}/>Reason2<br/>
+          <input type='checkbox' onChange={(e)=>setReason(e.target.checked)} checked={reason}/>Reason3<br/>
+          <input type='checkbox' onClick={(e)=>setReason(e.target.checked)} checked={reason}/>Reason4 */}
+
+        <hr/>
+        <button type="submit">submit</button>
+        
+        {/* <button type="submit" onSubmit={convertReason}>submit</button> */}
       </form>
     </>
   )

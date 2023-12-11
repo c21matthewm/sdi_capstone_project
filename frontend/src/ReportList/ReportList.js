@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // import { Home } from './pages/Home';
 import React, { useContext, useState, useEffect } from 'react';
 import { userContext } from '../App';
-
+import PieCenterLabel from './PieChart';
 
 function ReportList() {
  
@@ -29,8 +29,10 @@ function ReportList() {
     
       <div>
         <h1>Reports Page</h1>
+      
         <input type='search' placeholder='Search Satellite'/>
-
+       
+       
         <select>
           <option>Filter</option>
           <option>Subscribed Satellities</option>
@@ -56,6 +58,7 @@ function ReportList() {
 
             })}
           </ul>
+          <PieCenterLabel/>
 
       </div>
   );
