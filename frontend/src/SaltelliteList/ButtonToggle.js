@@ -40,7 +40,7 @@ export const ButtonToggle = ({sat}) => {
 }
 
   return(
-    <button onClick={()=>{setToggle(!toggle); addSat(sat)}}>{toggle ? "Added" : "Add to Dashboard"}</button>
+    <button className="add" onClick={()=>{setToggle(!toggle); addSat(sat)}}>{toggle ? "Added" : "Add to Dashboard"}</button>
   ) 
 
 }
