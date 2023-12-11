@@ -3,6 +3,16 @@ import { userContext } from '../App';
 import { Link } from 'react-router-dom';
 import "../Satellite/Satellite.css";
 import { ButtonToggle } from './ButtonToggle';
+import Box from '@mui/material/Box';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Divider from '@mui/material/Divider';
+import InboxIcon from '@mui/icons-material/Inbox';
+import DraftsIcon from '@mui/icons-material/Drafts';
+
 // import { Auth } from 'firebase/auth';
 // import { auth } from '../firebase';
 
@@ -61,22 +71,26 @@ export const SatelliteList = () => {
 
     return (
         <div className="container">
-            <ul>
+         <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+            <List>
                 <h2>List of Satellites</h2>
                 {satellites.map((sat, index) => {
                     return (
-                        <li className="satinfo" key={index}>
-                            <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}> Name: {sat.name} || status: {sat.status} </Link>
+                        <ListItem disablePadding className="satinfo" key={index}>
+                        {/* <li className="satinfo" key={index}> */}
+                            <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}> <ListItemText primary={`${sat.name.toUpperCase()}`}/> </Link>
                             <ButtonContext.Provider value={addSat}>
                             <ButtonToggle sat={sat} />
                             </ButtonContext.Provider>
                             {/* <button className="add" onClick={() => addSat(sat)}> Add to Dashboard </button> */}
                             <Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}><button className="add"> Submit Report </button></Link>
-                        </li>
+                        {/* </li> */}
+                        </ListItem>
                     )
                 })}
-            </ul>
-        </div>
+            </List>
+        </Box>
+     </div>
     )
 
 }
