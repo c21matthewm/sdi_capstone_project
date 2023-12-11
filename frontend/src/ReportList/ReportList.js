@@ -3,12 +3,9 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // import { Home } from './pages/Home';
 import React, { useContext, useState, useEffect } from 'react';
 import { userContext } from '../App';
-<<<<<<< HEAD
 import PieCenterLabel from './PieChart';
-=======
 import './ReportList.css';
 import MixedBarChart from './ProblemMetric'
->>>>>>> 6f02fdca1b8031ca0e65192834608937e3b012f1
 
 function ReportList() {
  
@@ -31,22 +28,14 @@ function ReportList() {
 
 
   return (
-<<<<<<< HEAD
     
-      <div>
-        <h1>Reports Page</h1>
-      
-        <input type='search' placeholder='Search Satellite'/>
-       
-       
-=======
+
     <div>
       <div className="reports_page">
         <h1>Reports Page</h1>
         < MixedBarChart/>
         <input type='search' placeholder='Search Satellite' />
 
->>>>>>> 6f02fdca1b8031ca0e65192834608937e3b012f1
         <select>
           <option>Filter</option>
           <option>Subscribed Satellities</option>
@@ -73,14 +62,11 @@ function ReportList() {
               )
             })}
           </ul>
-<<<<<<< HEAD
           <PieCenterLabel/>
-=======
         </div>
         <div className="metric_view">
           THIS IS THE METRIC PANEL.
           <div className="problems_metric">
->>>>>>> 6f02fdca1b8031ca0e65192834608937e3b012f1
 
           </div>
           <div className="SATCOM_down_metric"></div>
