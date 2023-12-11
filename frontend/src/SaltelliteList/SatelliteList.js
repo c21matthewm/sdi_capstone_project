@@ -10,8 +10,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
-import InboxIcon from '@mui/icons-material/Inbox';
-import DraftsIcon from '@mui/icons-material/Drafts';
+import SatelliteAltIcon from '@mui/icons-material/SatelliteAlt';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
 
 // import { Auth } from 'firebase/auth';
 // import { auth } from '../firebase';
@@ -72,11 +73,16 @@ export const SatelliteList = () => {
     return (
         <div className="container">
          <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-            <List>
+            <List className="list">
                 <h2>List of Satellites</h2>
                 {satellites.map((sat, index) => {
                     return (
                         <ListItem disablePadding className="satinfo" key={index}>
+                            <ListItemAvatar>
+                            <Avatar>
+                                <SatelliteAltIcon />
+                            </Avatar>
+                        </ListItemAvatar>
                         {/* <li className="satinfo" key={index}> */}
                             <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}> <ListItemText primary={`${sat.name.toUpperCase()}`}/> </Link>
                             <ButtonContext.Provider value={addSat}>
