@@ -16,9 +16,12 @@ export const AddReport = (props) => {
   const [reason, setReason] = useState([]);
   // const [garbled, setGarbled] = useState('')
   
+  // Introduced to facilitate more structured reporting and metrics
+  const [categoryfilter, setCategoryFilter] = useState('Category');
+
     const onSubmit = (e) => {
       e.preventDefault();
-        fetch('http://localhost:8080/reports' , 
+        fetch('http://localhost:8080/reports' ,
         {
           method: "POST",
           mode: "cors",

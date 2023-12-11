@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import './NavBar.css';
+import { AuthDetails } from "../AuthDetails";
 
 export const NavBar = () => {
     return (

@@ -3,7 +3,12 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // import { Home } from './pages/Home';
 import React, { useContext, useState, useEffect } from 'react';
 import { userContext } from '../App';
+<<<<<<< HEAD
 import PieCenterLabel from './PieChart';
+=======
+import './ReportList.css';
+import MixedBarChart from './ProblemMetric'
+>>>>>>> 6f02fdca1b8031ca0e65192834608937e3b012f1
 
 function ReportList() {
  
@@ -26,6 +31,7 @@ function ReportList() {
 
 
   return (
+<<<<<<< HEAD
     
       <div>
         <h1>Reports Page</h1>
@@ -33,34 +39,54 @@ function ReportList() {
         <input type='search' placeholder='Search Satellite'/>
        
        
+=======
+    <div>
+      <div className="reports_page">
+        <h1>Reports Page</h1>
+        < MixedBarChart/>
+        <input type='search' placeholder='Search Satellite' />
+
+>>>>>>> 6f02fdca1b8031ca0e65192834608937e3b012f1
         <select>
           <option>Filter</option>
           <option>Subscribed Satellities</option>
           <option>Option</option>
           <option>Option</option>
         </select>
+        <div className="report_view">
+          THIS IS THE REPORT PANEL.
           <ul>
             {arr.map((report) => {
               // {console.log('Hello', report)
-                // console.log('Hi',index, report[index])}
-              return(
+              // console.log('Hi',index, report[index])}
+              return (
                 <li key={report.reportID}>
                   <b>Satellite:</b> {` Insight ${report.satelliteID}`}
-                  <br/>
+                  <br />
                   <b>User Access to SATCOM:</b> {` ${report.status}`}
-                  <br/>
+                  <br />
                   <b>Description:</b> {` ${report.reason}`}
-                  <br/>
+                  <br />
                   <b>User status on:</b> {` ${report.time}`}
                   {/* Add A state that takes the number of times the a report was filed and display it here*/}
                 </li>
               )
-
             })}
           </ul>
+<<<<<<< HEAD
           <PieCenterLabel/>
+=======
+        </div>
+        <div className="metric_view">
+          THIS IS THE METRIC PANEL.
+          <div className="problems_metric">
+>>>>>>> 6f02fdca1b8031ca0e65192834608937e3b012f1
 
+          </div>
+          <div className="SATCOM_down_metric"></div>
+        </div>
       </div>
+    </div>
   );
 }
 
