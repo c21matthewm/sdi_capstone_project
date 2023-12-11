@@ -15,9 +15,7 @@ import ReportList from './ReportList/ReportList';
 import { EditStatus } from './EditStatus/EditStatus';
 
 export const userContext = createContext();
-
 function App() {
-
   const [users, setUsers] = useState([]);
   const [satellites, setSatellites] = useState([]);
   const [reports, setReports] = useState([]);

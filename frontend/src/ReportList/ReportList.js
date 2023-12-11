@@ -5,18 +5,28 @@ import React, { useContext, useState, useEffect } from 'react';
 import { userContext } from '../App';
 
 
-
 function ReportList() {
+ 
 
   const allItems= useContext(userContext)
   // let arr = ['Hello', 'Hi', 'This']
   let arr = allItems.reports;
+  // let id = allItems.reports.satelliteID;
 
-  console.log(arr)
+
+  
+  // switch(id) {
+  //   case 1:
+  //     id = 'insight_1'
+  //   break;
+
+  // }
+  // console.log('id', id)
 
 
 
   return (
+    
       <div>
         <h1>Reports Page</h1>
         <input type='search' placeholder='Search Satellite'/>
