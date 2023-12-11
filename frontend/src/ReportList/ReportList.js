@@ -4,8 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import React, { useContext, useState, useEffect } from 'react';
 import { userContext } from '../App';
 import './ReportList.css';
-import { BarChart } from '@mui/x-charts/BarChart';
-
+import MixedBarChart from './ProblemMetric'
 
 function ReportList() {
 
@@ -21,6 +20,7 @@ function ReportList() {
     <div>
       <div className="reports_page">
         <h1>Reports Page</h1>
+        < MixedBarChart/>
         <input type='search' placeholder='Search Satellite' />
 
         <select>
@@ -53,15 +53,7 @@ function ReportList() {
         <div className="metric_view">
           THIS IS THE METRIC PANEL.
           <div className="problems_metric">
-              <BarChart
-                xAxis={[
-                {
-                  scaleType: 'band',
-                  data: ['Page 1', 'Page 2', 'Page 3'],
-                  categoryGapRatio: 0.3,
-                  barGapRatio: 0.1
-                }]}
-              />
+
           </div>
           <div className="SATCOM_down_metric"></div>
         </div>
