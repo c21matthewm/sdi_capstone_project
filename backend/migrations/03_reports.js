@@ -11,9 +11,9 @@ exports.up = function(knex) {
     table.integer('latitude');
     table.integer('longitude');
     table.integer('userID')
-      table.foreign('userID').references('users.userID');
+    table.foreign('userID').references('users.userID');
     table.integer('satelliteID')
-      table.foreign('satelliteID').references('satellites.satelliteID');
+    table.foreign('satelliteID').references('satellites.satelliteID');
     table.string('status');
     table.string('reason');
   })

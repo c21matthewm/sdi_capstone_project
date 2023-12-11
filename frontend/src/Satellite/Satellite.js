@@ -18,6 +18,7 @@ export const Satellite = (props) => {
                 <li> mission: {sat.mission}</li>
                 <li> country: {sat.country}</li>
                 <li> frequency_band: {sat.frequency_band}</li>
+                <li> <img src = {sat.image} width={300}></img></li>
             </ul>
             <ul>
                 {reports.filter((report) => (report.satelliteID === sat.satelliteID))
