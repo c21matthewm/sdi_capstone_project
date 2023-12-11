@@ -123,19 +123,47 @@ app.get('/reports/satellites/:satelliteID', (req, res) =>{
 })
 
 
-app.patch('/satellites/:satelliteID', (req, res) => {
-  knex('satellites')
+app.patch('/satellites/:satelliteID', async(req, res) => {
+  await knex('satellites')
   .where('satelliteID', req.params.satelliteID)
   .update({
-    // name: req.body.name,
-    // longitude: req.body.longitude,
-    // status: req.body.status,
-    favorites: req.body.favorites
+    name: req.body.name || null,
+    longitude: req.body.longitude || null,
+    status: req.body.status || null,
   })
-
   .then(() => {
     knex('satellites')
     .where('satelliteID', req.params.satelliteID)
     .select("*")
     .then(data => res.json(data))});
 })
+
+app.patch('/satellites/favorites/:satelliteID', async(req, res) => {
+  await knex('satellites')
+  .where('satelliteID', req.params.satelliteID)
+  .update({
+    favorites: req.body.favorites || null
+  })
+  .then(() => {
+    knex('satellites')
+    .where('satelliteID', req.params.satelliteID)
+    .select("*")
+    .then(data => res.json(data))});
+})
+
+
+// app.put('/satellites/:satelliteID', (req, res) => {
+//   knex('satellites')
+//   .where('satelliteID', req.params.satelliteID)
+//   .update({
+//     name: req.body.name,
+//     longitude: req.body.longitude,
+//     status: req.body.status,
+//     favorites: req.body.favorites
+//   })
+//   .then(() => {
+//     knex('satellites')
+//     .where('satelliteID', req.params.satelliteID)
+//     .select("*")
+//     .then(data => res.json(data))});
+// })
