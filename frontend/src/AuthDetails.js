@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { onAuthStateChanged,signOut } from "firebase/auth";
 import { Login } from "./Login/Login";
 import { SignUp } from "./SignUp/SignUp";
@@ -7,15 +7,19 @@ import { Dashboard } from './Dashboard/Dashboard';
 // import { AuthHeader } from "./AuthHeader";
 // import { Link } from "react-router-dom";
 import { auth } from "./firebase";
+import { userContext } from "./App";
 // import '../../CSS/AuthDetails.css';
 
 export const AuthDetails = () => {
   const [authUser, setAuthUser] = useState(null);
+  const { userUID, setUserUID } = useContext(userContext)
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setAuthUser(user)
+        setAuthUser(user);
+        setUserUID(user.uid);
+        console.log(userUID)
       } else {
         setAuthUser(null)
       }
