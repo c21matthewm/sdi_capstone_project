@@ -9,6 +9,7 @@ import { Dashboard } from './Dashboard/Dashboard';
 import { auth } from "./firebase";
 import { userContext } from "./App";
 // import '../../CSS/AuthDetails.css';
+import { NavBar } from "./NavBar/NavBar";
 
 export const AuthDetails = () => {
   const [authUser, setAuthUser] = useState(null);
@@ -45,6 +46,7 @@ export const AuthDetails = () => {
   <h2>hello</h2>
     <p> {`Signed In as ${authUser.email}`}</p>
     <button onClick={userSignOut}> Sign Out </button>
+    <NavBar/>
     <Dashboard />
   </>
   : 
