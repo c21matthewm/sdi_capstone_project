@@ -12,6 +12,9 @@ exports.up = function(knex) {
     table.string('mission');
     table.string('country');
     table.string('frequency_band');
+    table.specificType('favorites', 'text ARRAY');
+    table.string('image');
+    
     });
 };
 

@@ -83,7 +83,9 @@ app.post('/satellites', async(req, res) => {
   await knex('satellites').insert({
       name: req.body.name,
       longitude: req.body.longitude,
-      status: req.body.status
+      status: req.body.status,
+      image: req.body.image,
+      favorites: [],
       })
       .then(() => {
           knex.select()
@@ -125,10 +127,12 @@ app.patch('/satellites/:satelliteID', (req, res) => {
   knex('satellites')
   .where('satelliteID', req.params.satelliteID)
   .update({
-    name: req.body.name,
-    longitude: req.body.longitude,
-    status: req.body.status
+    // name: req.body.name,
+    // longitude: req.body.longitude,
+    // status: req.body.status,
+    favorites: req.body.favorites
   })
+
   .then(() => {
     knex('satellites')
     .where('satelliteID', req.params.satelliteID)
