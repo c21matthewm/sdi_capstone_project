@@ -6,14 +6,7 @@ import "./Satellite.css"
 export const Satellite = (props) => {
     const location = useLocation();
     const { sat } = location.state;
-    const { reports, setReports } = useContext(userContext);
-
-    useEffect(() => {
-        fetch(`http://localhost:8080/reports/satellites/${sat.satelliteID}`)
-            .then(res => res.json())
-            .then(data => setReports(data))
-    }, [sat]);
-
+    const { reports } = useContext(userContext);
 
     return (
         <div className="container">
@@ -27,7 +20,8 @@ export const Satellite = (props) => {
                 <li> frequency_band: {sat.frequency_band}</li>
             </ul>
             <ul>
-                {reports.map((report, index) => {
+                {reports.filter((report) => (report.satelliteID === sat.satelliteID))
+                .map((report, index) => {
                     return (
                         <>
                             <li><Link to={`/reports/${report.reportID}`} state={{ report }}>REPORT #{`${report.reportID}`}: {report.time} </Link></li>
