@@ -1,23 +1,25 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, createContext } from 'react';
 import { userContext } from '../App';
 import { Link } from 'react-router-dom';
 import "../Satellite/Satellite.css";
+import { ButtonToggle } from './ButtonToggle';
 // import { Auth } from 'firebase/auth';
 // import { auth } from '../firebase';
 
+export const ButtonContext = createContext()
+
 export const SatelliteList = () => {
     const [satellites, setSatellites] = useState([]);
-    // const [faves, setFaves] = useState("");
     const { userUID } = useContext(userContext)
-
+    
     // const { userSats, setUserSats } = useContext(userContext);
     // console.log(auth.user.uid)
-
+    // const value = {addSat}
 
     useEffect(() => {
         fetch('http://localhost:8080/satellites')
             .then(res => res.json())
-            .then(data => {setSatellites(data); console.log("UID" + userUID)})
+            .then(data => setSatellites(data))
     }, [])
 
     const addSat = (sat) => {
@@ -30,7 +32,7 @@ export const SatelliteList = () => {
                 // console.log(data[0].favorites)
                 // let currentUser = userUID
                 // temp = faves + ' ' + userUID;
-                console.log(faves)
+                // console.log(faves)
             })
             .then(() => {
                 fetch(`http://localhost:8080/satellites/favorites/${sat.satelliteID}`,
@@ -50,6 +52,13 @@ export const SatelliteList = () => {
             })
     }
 
+    // const CustomButton = () => {
+    //     const [toggle, setToggle] = useState(false)
+    //     return (
+    //         <button onClick={()=>{setToggle(!toggle)}}> { toggle ? "added" : "add to dashboard" } </button>
+    //     )
+    // }
+
     return (
         <div className="container">
             <ul>
@@ -58,7 +67,10 @@ export const SatelliteList = () => {
                     return (
                         <li className="satinfo" key={index}>
                             <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}> Name: {sat.name} || status: {sat.status} </Link>
-                            <button className="add" onClick={() => { addSat(sat) }}> Add to Dashboard  </button>
+                            <ButtonContext.Provider value={addSat}>
+                            <ButtonToggle sat={sat} />
+                            </ButtonContext.Provider>
+                            {/* <button className="add" onClick={() => addSat(sat)}> Add to Dashboard </button> */}
                             <Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}><button className="add"> Submit Report </button></Link>
                         </li>
                     )
