@@ -32,22 +32,21 @@ function ReportList() {
               // {console.log('Hello', report)
                 // console.log('Hi',index, report[index])}
               return(
-                <li key={report.reportID}> 
-                  {`${report.satelliteID}`}
-                  {` ${report.status}`}
+                <li key={report.reportID}>
+                  <b>Satellite:</b> {` Insight ${report.satelliteID}`}
                   <br/>
-                  {` Most Reported Problems: ${report.reason}`}
+                  <b>User Access to SATCOM:</b> {` ${report.status}`}
                   <br/>
-                  {` Most Recent Report: ${report.time}`}
+                  <b>Description:</b> {` ${report.reason}`}
+                  <br/>
+                  <b>User status on:</b> {` ${report.time}`}
                   {/* Add A state that takes the number of times the a report was filed and display it here*/}
-
-                  
                 </li>
               )
-              
+
             })}
           </ul>
-        
+
       </div>
   );
 }
