@@ -1,5 +1,4 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import { Button } from '@mui/material';
 
 export const EditStatus = ({ satellite, onClose }) => {
