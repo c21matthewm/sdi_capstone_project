@@ -9,6 +9,7 @@ import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ReportIcon from '@mui/icons-material/Report';
 import { EditStatus } from "../EditStatus/EditStatus";
+import { NavBar } from "../NavBar/NavBar";
 
 
 export const Dashboard = () => {
@@ -32,6 +33,8 @@ export const Dashboard = () => {
     };
 
   return (
+		<>
+	<NavBar/>
 	<div className="big-container">
 		<h2>Dashboard</h2>
 		<Button variant="contained" color="success" onClick={() => {setLoggedIn(false); setUserIsAdmin(false)}}>Logout</Button>
@@ -132,6 +135,7 @@ export const Dashboard = () => {
             </div>
         } */}
 	</div>
+	</>
   );
 };
 

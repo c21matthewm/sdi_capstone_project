@@ -43,10 +43,6 @@ export const AuthDetails = () => {
   return (
   <div> {authUser ?
   <>
-  <h2>hello</h2>
-    <p> {`Signed In as ${authUser.email}`}</p>
-    <button onClick={userSignOut}> Sign Out </button>
-    <NavBar/>
     <Dashboard />
   </>
   : 

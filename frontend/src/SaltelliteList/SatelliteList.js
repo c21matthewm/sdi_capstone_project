@@ -13,6 +13,7 @@ import Divider from '@mui/material/Divider';
 import SatelliteAltIcon from '@mui/icons-material/SatelliteAlt';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
+import { NavBar } from '../NavBar/NavBar';
 
 // import { Auth } from 'firebase/auth';
 // import { auth } from '../firebase';
@@ -71,6 +72,8 @@ export const SatelliteList = () => {
     // }
 
     return (
+        <>
+        <NavBar/>
         <div className="container">
          <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
             <List className="list">
@@ -97,6 +100,7 @@ export const SatelliteList = () => {
             </List>
         </Box>
      </div>
+     </>
     )
 
 }

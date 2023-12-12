@@ -2,6 +2,7 @@ import { Checkbox } from "@mui/material";
 import { fontSize } from "@mui/system";
 import React, { useState} from "react";
 import { useLocation } from "react-router-dom";
+import { NavBar } from "../NavBar/NavBar";
 
 export const AddReport = (props) => {
   const location = useLocation();
@@ -14,6 +15,7 @@ export const AddReport = (props) => {
   const [long, setLong] = useState(0);
   const [status, setStatus] = useState('');
   const [reason, setReason] = useState([]);
+ 
   // const [garbled, setGarbled] = useState('')
   
   // Introduced to facilitate more structured reporting and metrics
@@ -59,6 +61,7 @@ export const AddReport = (props) => {
 
   return (
     <>
+    <NavBar/>
       <form onSubmit={onSubmit}>
         <label>Time:</label>
           <input type='datetime-local' onChange={(e)=>setTime(e.target.value)} value={time}></input>

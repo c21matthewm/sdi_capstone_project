@@ -9,6 +9,7 @@ import Divider from '@mui/material/Divider';
 import { ListItemButton } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { NavBar } from '../NavBar/NavBar';
 
 export const Satellite = (props) => {
     const location = useLocation();
@@ -16,7 +17,10 @@ export const Satellite = (props) => {
     const { reports } = useContext(userContext);
 
     return (
+        <>
+      
         <div className="sat-full">
+        <NavBar/>
             <Box className="box" component="section" sx={{ p: 2, border: '1px solid grey' }}>
                 <div className="sat-container">
                     <div className="sat-box">
@@ -74,6 +78,7 @@ export const Satellite = (props) => {
                 </div>
             </Box>
         </div>
+        </>
 
     )
 }
