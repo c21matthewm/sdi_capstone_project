@@ -50,7 +50,7 @@ export const NavBar = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        SATSTAT
+                        SatBridge
                     </Typography>
                     <Box sx={{ justifyContent: 'flex-start' }}>
                         {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex'}, mr: 1 }} /> */}
