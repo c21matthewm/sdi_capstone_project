@@ -10,6 +10,7 @@ import { ListItemButton } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { NavBar } from '../NavBar/NavBar';
+import { Chart } from './Chart';
 
 export const Satellite = (props) => {
     const location = useLocation();
@@ -21,6 +22,7 @@ export const Satellite = (props) => {
       
         <div className="sat-full">
         <NavBar/>
+        <Chart/>
             <Box className="box" component="section" sx={{ p: 2}}>
                 <div className="sat-container">
                     <div className="sat-box">
@@ -62,7 +64,7 @@ export const Satellite = (props) => {
                                 .map((report, index) => {
                                     return (
                                         <>
-                                            <ListItemButton component={Link} to={`/reports/${report.reportID}`} state={{ report }}>
+                                            <ListItemButton component={Link} to={`/reports/${report.reportID}`} state={{ report, sat }}>
                                                 <ListItemText primary={`REPORT#${report.reportID}: ${report.time}`} />
                                             </ListItemButton>
                                             {/* <li><Link to={`/reports/${report.reportID}`} state={{ report }}>REPORT #{`${report.reportID}`}: {report.time} </Link></li> */}

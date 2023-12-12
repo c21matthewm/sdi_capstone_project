@@ -1,0 +1,20 @@
+#report-box{
+  display:flex;
+  width:450px;
+}
+
+#reports-side{
+  display:flex;
+  overflow:auto;
+  width:400px;
+  overflow-x: hidden;
+}
+
+#flex-report {
+  display:flex;
+  justify-content: center;
+  height:650px;
+  margin:40px auto;
+  gap: 50px;
+
+}
