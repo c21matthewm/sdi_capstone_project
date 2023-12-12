@@ -18,8 +18,6 @@ export const ButtonToggle = ({sat}) => {
         console.log('updatedFavorites: ', updatedFavorites)
         console.log(loggedInUser.uid)
 
-        // const buttonText = sat.favorites.includes(loggedInUser.uid) ? "Added" : "Add to Dashboard"
-
         updatedFavorites.length > 0 &&
 
             fetch(`http://localhost:8080/satellites/favorites/${sat.satelliteID}`,
