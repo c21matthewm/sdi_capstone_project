@@ -34,6 +34,9 @@
   padding:10px;
   flex-direction: column;
   margin:10px;
+  /* max-height:420px; */
+  min-width: 420px;
+  max-width: 400px;
 
 
 }
