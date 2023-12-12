@@ -5,10 +5,8 @@ import { useLocation } from "react-router-dom";
 import { NavBar } from "../NavBar/NavBar";
 import { userContext } from "../App";
 
-export const AddReport = (props) => {
-  const { userUID } = useContext(userContext);
-  const location = useLocation();
-  const { sat } = location.state;
+export const SubmitReport = () => {
+  const { userUID, satellites } = useContext(userContext);
 
   const [time, setTime] = useState('');
   const [freq, setFreq] = useState('');
@@ -17,11 +15,7 @@ export const AddReport = (props) => {
   const [long, setLong] = useState(0);
   const [status, setStatus] = useState('');
   const [reason, setReason] = useState([]);
- 
-  // const [garbled, setGarbled] = useState('')
-  
-  // Introduced to facilitate more structured reporting and metrics
-  const [categoryfilter, setCategoryFilter] = useState('Category');
+  const [satID, setSatID] = useState(1);
 
     const onSubmit = (e) => {
       e.preventDefault();
@@ -40,7 +34,7 @@ export const AddReport = (props) => {
             "longitude": long,
             "status": status,
             "reason": reason,
-            "satelliteID": sat.satelliteID,
+            "satelliteID": satID,
             "userID": userUID
           }),
         })
@@ -54,17 +48,20 @@ export const AddReport = (props) => {
           setReason('');
         })
     }
-  // function convertReason(){
-  //   if (garbled === true) {
-  //     setReason('garbled') 
-  //     console.log('The reason is:', reason)
-  //   }
-  // }
 
   return (
     <>
     <NavBar/>
       <form onSubmit={onSubmit}>
+      <label>Satellite:</label>
+          <select name="satellites" onChange={(e)=>setSatID(e.target.value)}>
+            {satellites.map(satellite => {
+              return(
+                <option value={satellite.satelliteID}>{satellite.name}</option>
+              )
+            })}
+          </select>
+      <hr></hr>
         <label>Time:</label>
           <input type='datetime-local' onChange={(e)=>setTime(e.target.value)} value={time}></input>
           <h6 >

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, createContext } from 'react';
 import { userContext } from '../App';
 import { Link } from 'react-router-dom';
-import "../Satellite/Satellite.css";
+import '../SatelliteList/SatelliteList.css';
 import { ButtonToggle } from './ButtonToggle';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
@@ -14,6 +14,7 @@ import SatelliteAltIcon from '@mui/icons-material/SatelliteAlt';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import { NavBar } from '../NavBar/NavBar';
+import { Typography } from '@mui/material';
 
 // import { Auth } from 'firebase/auth';
 // import { auth } from '../firebase';
@@ -23,7 +24,7 @@ export const ButtonContext = createContext()
 export const SatelliteList = () => {
     const [satellites, setSatellites] = useState([]);
     const { userUID } = useContext(userContext)
-    
+
     // const { userSats, setUserSats } = useContext(userContext);
     // console.log(auth.user.uid)
     // const value = {addSat}
@@ -73,34 +74,41 @@ export const SatelliteList = () => {
 
     return (
         <>
-        <NavBar/>
-        <div className="container">
-         <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-            <List className="list">
-                <h2>List of Satellites</h2>
-                {satellites.map((sat, index) => {
-                    return (
-                        <ListItem disablePadding className="satinfo" key={index}>
-                            <ListItemAvatar>
-                            <Avatar>
-                                <SatelliteAltIcon />
-                            </Avatar>
-                        </ListItemAvatar>
-                        {/* <li className="satinfo" key={index}> */}
-                            <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}> <ListItemText primary={`${sat.name.toUpperCase()}`}/> </Link>
-                            <ButtonContext.Provider value={addSat}>
-                            <ButtonToggle sat={sat} />
-                            </ButtonContext.Provider>
-                            {/* <button className="add" onClick={() => addSat(sat)}> Add to Dashboard </button> */}
-                            <Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}><button className="add"> Submit Report </button></Link>
-                        {/* </li> */}
-                        </ListItem>
-                    )
-                })}
-            </List>
-        </Box>
-     </div>
-     </>
+            <NavBar />
+            <div className="list-container" >
+                {/* <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', alignItems:"center" }}> */}
+                <div className="list-sat">
+                <Typography className="satT" variant="h5" gutterBottom>Satellite Index</Typography>    
+                    <div className="box-list">
+                    {satellites.map((sat, index) => {
+                        return (
+
+                            <ListItem className="sat-info" sx={{ boxShadow: 1, border: '1px solid grey' }} key={index}>
+
+                                {/* <li className="satinfo" key={index}> */}
+                                <ListItemButton component={Link} to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
+                                    <ListItemAvatar>
+                                        <Avatar>
+                                            <SatelliteAltIcon />
+                                        </Avatar>
+                                    </ListItemAvatar>
+                                    <ListItemText primary={`${sat.name.toUpperCase()}`} />
+                                    <ButtonContext.Provider value={addSat}>
+                                        <ButtonToggle sat={sat} />
+                                    </ButtonContext.Provider>
+                                    {/* <button className="add" onClick={() => addSat(sat)}> Add to Dashboard </button> */}
+                                    <Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}><button className="add"> Submit Report </button></Link>
+                                    {/* </li> */}
+                                </ListItemButton>
+                            </ListItem>
+
+                        )
+                    })}
+                   </div>
+                </div>
+                {/* </Box> */}
+            </div>
+        </>
     )
 
 }
