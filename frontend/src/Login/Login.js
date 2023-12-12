@@ -38,7 +38,7 @@ export const Login = () => {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://www.verdict.co.uk/wp-content/uploads/2020/01/satellite-breakthrough.jpg)',
+            backgroundImage: 'url(https://www.ncia.nato.int/resources/uploads/1487/space_2000_v2-iidnr1.jpg)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],

@@ -6,6 +6,7 @@ import { userContext } from '../App';
 import PieCenterLabel from './PieChart';
 import './ReportList.css';
 import MixedBarChart from './ProblemMetric'
+import { NavBar } from '../NavBar/NavBar';
 
 function ReportList() {
  
@@ -31,6 +32,7 @@ function ReportList() {
     
 
     <div>
+      <NavBar/>
       <div className="reports_page">
         <h1>Reports Page</h1>
         < MixedBarChart/>

@@ -48,7 +48,6 @@ function App() {
       userIsAdmin, setUserIsAdmin,
       userUID, setUserUID
     }}>
-      <NavBar />
       <Routes>
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/satellites' element={<SatelliteList />} />
