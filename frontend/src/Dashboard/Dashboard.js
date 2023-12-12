@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { userContext } from "../App";
 import './Dashboard.css';
+import { AddSatellite } from './AddSatellite';
 
 import { Link } from 'react-router-dom';
 import { Button, CardActionArea, CardActions, CardMedia, Dialog } from '@mui/material';
@@ -56,6 +57,9 @@ export const Dashboard = () => {
         {loggedInUser && loggedInUser.admin ?
 			<div className="adminDisplay">
 				<h3>Logged in as {loggedInUser.name}</h3>
+				<Link to={`/addsatellite`}>
+					<Button variant="contained" color="success">Add Satellite</Button>
+				</Link>
 				<div className="tileDisplay">
 					{satellites.map((sat) => {
 						return (
@@ -105,7 +109,6 @@ export const Dashboard = () => {
 				</div>
 			</div>
 		:
-		// loggedIn ?
         loggedInUser && !loggedInUser.admin ?
 			<div className="userDisplay">
 				<h3>User</h3>
@@ -113,7 +116,8 @@ export const Dashboard = () => {
 				{satellites.filter((satellite) => satellite.favorites.includes(loggedInUser.uid)).map((sat) => {
 					return (
 						<div className="tile">
-							<Card sx={{ border: sat.status === 'active' ? "solid 5px #00ff00" : "solid 5px #ff0000"}} variant="outlined">
+							<Card sx={{ border: sat.status === 'GREEN' ? "solid 5px #00ff00" :
+                                        sat.status === 'YELLOW' ? "solid 5px #facb6c" : "solid 5px #ff0000"}} variant="outlined">
 								<CardActionArea >
 									<Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
 										<CardMedia>
