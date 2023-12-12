@@ -3,17 +3,17 @@
   justify-content: space-evenly;
 }
 
-.report_view {
+/* .report_view {
   display: flex
-}
+} */
 
-.metric_view {
+/* .metric_view {
   display: flex
-}
+} */
 
-.problems_metric {
+/* .problems_metric {
   display: flex
-}
+} */
 
 .SATCOM_down_metric {
   display: flex
