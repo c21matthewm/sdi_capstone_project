@@ -33,8 +33,8 @@ export const Dashboard = () => {
     };
 
   return (
-    <>
-    <NavBar />
+		<>
+	<NavBar/>
 	<div className="big-container">
 		<h2>Dashboard</h2>
 		<Button variant="contained" color="success" onClick={() => {setLoggedIn(false); setUserIsAdmin(false)}}>Logout</Button>
@@ -130,7 +130,7 @@ export const Dashboard = () => {
 			</div>
 		: <h3>Not Logged In</h3>}
 	</div>
-    </>
+	</>
   );
 };
 
