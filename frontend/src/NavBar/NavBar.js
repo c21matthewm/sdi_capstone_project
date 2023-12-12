@@ -34,8 +34,8 @@ export const NavBar = () => {
 
     return (
         <AppBar sx={{ background: "#4169E1" }} position="static">
-            <Container maxWidth="xl">
-                <Toolbar disableGutters>
+            <div className="left-align">
+                <Toolbar disableGutters="true" sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex',justifyContent: 'space-between' } }}>
                     <Typography
                         variant="h6"
                         noWrap
@@ -85,8 +85,41 @@ export const NavBar = () => {
 
                         </Box>
                     </Box>
+                    <Box sx={{ flexGrow: 0 }}>
+                    <ListItemButton component={Link} to={`/reports`} >
+                            <ListItemText primary={`REPORT LIST`} />
+                        </ListItemButton>
+
+                        {/* <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+            </Tooltip> */}
+                        <Menu
+                            sx={{ mt: '45px' }}
+                            id="menu-appbar"
+                            //   anchorEl={anchorElUser}
+                            anchorOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                        //   open={Boolean(anchorElUser)}
+                        //   onClose={handleCloseUserMenu}
+                        >
+                            {/* {settings.map((setting) => (
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))} */}
+                        </Menu>
+                    </Box>
                 </Toolbar>
-            </Container>
+            </div>
         </AppBar>
     );
 };

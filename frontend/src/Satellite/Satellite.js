@@ -21,41 +21,39 @@ export const Satellite = (props) => {
       
         <div className="sat-full">
         <NavBar/>
-            <Box className="box" component="section" sx={{ p: 2, border: '1px solid grey' }}>
+            <Box className="box" component="section" sx={{ p: 2}}>
                 <div className="sat-container">
                     <div className="sat-box">
                         <Box className="box" component="section" sx={{boxShadow: 3, p: 2, border: '1px solid grey' }}>
                             {/* <div className="sat-box"> */}
                             <div className="components">
                                 <Typography variant="h5" gutterBottom>{sat.name.toUpperCase()}</Typography>
-                                <img src={sat.image} width={500} alt="satellite"></img>
+                                <img src={sat.image} height={300} alt="satellite"></img>
                             </div>
                             <div className="components">
                                 <List sx={{ p: 0, m: 0 }} component="nav" aria-label="mailbox folders">
 
-                                    <Typography variant="h6" gutterBottom>Status: {sat.status.toUpperCase()}   </Typography>
+                                    <Typography variant="h6" gutterBottom>Status: {sat.status.toUpperCase()} </Typography>                             
+                                    <ListItem>
+                                    <Typography variant="h7" gutterBottom>{`Orbit: ${sat.orbit}`} </Typography>
+                                    </ListItem >
                                     <ListItem >
-                                        <ListItemText primary={`Orbit: ${sat.orbit}`} />
+                                    <Typography variant="h7" gutterBottom>{`Frequency Band: ${sat.frequency_band}`} </Typography>   
                                     </ListItem>
                                     <ListItem >
-                                        <ListItemText primary={`Frequency Band: ${sat.frequency_band}`} />
+                                    <Typography variant="h7" gutterBottom>{`Longitude: ${sat.longitude}`} </Typography>   
                                     </ListItem>
                                     <ListItem >
-                                        <ListItemText primary={`Longitude: ${sat.longitude}`} />
+                                    <Typography variant="h7" gutterBottom>{`Mission: ${sat.mission}`}</Typography>   
                                     </ListItem>
                                     <ListItem >
-                                        <ListItemText primary={`Mission: ${sat.mission}`} />
-                                    </ListItem>
-                                    <ListItem >
-                                        <ListItemText primary={`Country: ${sat.country}`} />
+                                    <Typography variant="h7" gutterBottom>{`Country: ${sat.country}`}</Typography>   
                                     </ListItem>
                                 </List>
                             </div>
                             {/* </div> */}
                         </Box>
                     </div>
-
-                    <Divider></Divider>
                     <Box className="box" component="section" sx={{ boxShadow: 3,p: 2, border: '1px solid grey' }}>
                         {/* <div className="sat-box"> */}
                         <div className="components" id="reports">
