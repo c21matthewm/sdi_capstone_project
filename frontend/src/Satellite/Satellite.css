@@ -47,7 +47,7 @@
 
 #reports{
   min-width:450px;
-  flex-wrap: wrap;
+  height:260px;
   overflow: auto;
 }
 
@@ -60,3 +60,9 @@ margin:50px;
 /* .sat-title {
   margin-left:10%;
 } */
+
+.stacked {
+  display:flex;
+  flex-direction: column;
+  gap:30px;
+}
