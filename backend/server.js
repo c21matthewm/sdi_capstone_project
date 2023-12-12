@@ -19,6 +19,7 @@ app.get('/', (req, res) =>{
 app.get('/satellites', (req, res) =>{
   knex('satellites')
     .select('*')
+    .orderBy('satelliteID', 'asc')
     .then(data => {
       res.status(200).json(data);
     })
@@ -27,6 +28,7 @@ app.get('/satellites', (req, res) =>{
 app.get('/reports', (req, res) =>{
   knex('reports')
     .select('*')
+    .orderBy('reportID', 'asc')
     .then(data => {
       res.status(200).json(data);
     })
@@ -35,6 +37,7 @@ app.get('/reports', (req, res) =>{
 app.get('/users', (req, res) =>{
   knex('users')
     .select('*')
+    .orderBy('userID', 'asc')
     .then(data => {
       res.status(200).json(data);
     })

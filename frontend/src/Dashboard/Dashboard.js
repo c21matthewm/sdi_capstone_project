@@ -18,8 +18,8 @@ export const Dashboard = () => {
 			satellites, setSatellites, 
 			reports, setReports,
             userSats, setUserSats,
-			loggedIn, setLoggedIn,
-			userIsAdmin, setUserIsAdmin,
+			// loggedIn, setLoggedIn,
+			// userIsAdmin, setUserIsAdmin,
             userUID, setUserUID,
             loggedInUser, setLoggedInUser } = useContext(userContext);
     const [popupVisible, setPopupVisible] = useState(false);
@@ -49,13 +49,13 @@ export const Dashboard = () => {
     <div>Logged in as {loggedInUser.name}</div>}
 	<div className="big-container">
 		<h2>Dashboard</h2>
-		<Button variant="contained" color="success" onClick={() => {setLoggedIn(false); setUserIsAdmin(false)}}>Logout</Button>
+		{/* <Button variant="contained" color="success" onClick={() => {setLoggedIn(false); setUserIsAdmin(false)}}>Logout</Button>
 		<Button variant="contained" color="success" onClick={() => {setUserIsAdmin(false); setLoggedIn(true)}}>Make User</Button>
-		<Button variant="contained" color="success" onClick={() => {setUserIsAdmin(true); setLoggedIn(true)}}>Make Admin</Button>
+		<Button variant="contained" color="success" onClick={() => {setUserIsAdmin(true); setLoggedIn(true)}}>Make Admin</Button> */}
 		{/* {userIsAdmin ? */}
         {loggedInUser && loggedInUser.admin ?
 			<div className="adminDisplay">
-				<h3>Admin</h3>
+				<h3>Logged in as {loggedInUser.name}</h3>
 				<div className="tileDisplay">
 					{satellites.map((sat) => {
 						return (

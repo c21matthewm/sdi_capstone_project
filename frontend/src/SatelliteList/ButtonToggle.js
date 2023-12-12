@@ -1,16 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { userContext } from '../App';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import "../Satellite/Satellite.css";
-import { ButtonContext } from './SatelliteList';
+// import { ButtonContext } from './SatelliteList';
 
 export const ButtonToggle = ({sat}) => {
-  const { userUID,
-        loggedInUser,
+  const { loggedInUser,
         // userSats, setUserSats 
     } = useContext(userContext)
   // const { addSat } = useContext(ButtonContext)
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(sat.favorites.includes(loggedInUser.uid) ? true : false);
   const [updatedFavorites, setUpdatedFavorites] = useState([])
 
     useEffect(() => {
@@ -58,12 +57,8 @@ export const ButtonToggle = ({sat}) => {
     }
 
   return(
-    <button className="add" onClick={()=>{setToggle(!toggle); addSat(sat)}}>{toggle ? "Added" : "Add to Dashboard"}</button>
+    <button className="add" onClick={()=>{ setToggle(!toggle); addSat(sat) }}>{
+          toggle ? "Added" : "Add to Dashboard"
+         }</button>
   ) 
 }
-
-// toggle button text should change to "Added" if the satellite is already in the user's dashboard
-// if the satellite is not in the user's dashboard, the button text should be "Add to Dashboard"
-// this can be managed by checking if the user's uid is in the satellite's favorites array
-
-//dont worry about this, bigger problems after merge
