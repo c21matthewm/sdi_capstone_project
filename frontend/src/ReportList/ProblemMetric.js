@@ -1,7 +1,29 @@
 import * as React from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
 
-// Garbled State Variable for Insight Constellation
+// LOS
+// Atmospheric Conditions
+// Signal Interference
+// Signal Latency
+// Equipment Malfunction
+// Power Supply Issues
+// Frequency Coordination
+
+// Connection State Variable for Insight Constellation (Primary: Can Connect, Cannot Connect)
+// const [connection1, setConnection1] = useState([]); // Insight 1
+// const [connection2, setConnection2] = useState([]); // Insight 2
+// const [connection3, setConnection3] = useState([]); // Insight 3
+// const [connection4, setConnection4] = useState([]); // Insight 4
+// const [connection5, setConnection5] = useState([]); // Insight 5
+// const [connection6, setConnection6] = useState([]); // Insight 6
+// const [connection7, setConnection7] = useState([]); // Insight 7
+// const [connection8, setConnection8] = useState([]); // Insight 8
+// const [connection9, setConnection9] = useState([]); // Insight 9
+// const [connection10, setConnection10] = useState([]); // Insight 10
+// const [connection11, setConnection11] = useState([]); // Insight 11
+// const [connection12, setConnection12] = useState([]); // Insight 12
+
+// Garbled State Variable for Insight Constellation (Primary: Quality is Degraded)
 // const [garbled1, setGarbled1] = useState([]); // Insight 1
 // const [garbled2, setGarbled2] = useState([]); // Insight 2
 // const [garbled3, setGarbled3] = useState([]); // Insight 3
@@ -15,19 +37,7 @@ import { BarChart } from '@mui/x-charts/BarChart';
 // const [garbled11, setGarbled11] = useState([]); // Insight 11
 // const [garbled12, setGarbled12] = useState([]); // Insight 12
 
-// Connection State Variable for Insight Constellation
-// const [connection1, setConnection1] = useState([]); // Insight 1
-// const [connection2, setConnection2] = useState([]); // Insight 2
-// const [connection3, setConnection3] = useState([]); // Insight 3
-// const [connection4, setConnection4] = useState([]); // Insight 4
-// const [connection5, setConnection5] = useState([]); // Insight 5
-// const [connection6, setConnection6] = useState([]); // Insight 6
-// const [connection7, setConnection7] = useState([]); // Insight 7
-// const [connection8, setConnection8] = useState([]); // Insight 8
-// const [connection9, setConnection9] = useState([]); // Insight 9
-// const [connection10, setConnection10] = useState([]); // Insight 10
-// const [connection11, setConnection11] = useState([]); // Insight 11
-// const [connection12, setConnection12] = useState([]); // Insight 12
+
 
 const Garbled = [4000, 3000, 2000, 2780, 1890, 2390, 3490];
 const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
