@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
+
 
 export const EditStatus = ({ satellite, onClose }) => {
 
@@ -24,12 +26,15 @@ export const EditStatus = ({ satellite, onClose }) => {
         <div>
             <h2>Edit Status</h2>
             <p>{satellite.name}</p>
-            <Button variant="contained" color="success" value="active" onClick={
+            <Button variant="contained" color="success" value="GREEN" onClick={
                 handleButtonClick
-                }>Active</Button>
-            <Button variant="contained" color="error" value="inactive" onClick={
+                }>Green</Button>
+            <Button variant="contained" color='warning' value="YELLOW" onClick={
                 handleButtonClick
-                }>Inactive</Button>
+                }>Yellow</Button>
+            <Button variant="contained" color="error" value="RED" onClick={
+                handleButtonClick
+                }>Red</Button>
         </div>
     )
 }

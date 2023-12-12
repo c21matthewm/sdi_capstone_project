@@ -12,7 +12,7 @@ import { userContext } from "./App";
 import { NavBar } from "./NavBar/NavBar";
 
 export const AuthDetails = () => {
-  const [authUser, setAuthUser] = useState(null);
+  const { authUser, setAuthUser } = useContext(userContext);
   const { userUID, setUserUID } = useContext(userContext)
 
   useEffect(() => {
