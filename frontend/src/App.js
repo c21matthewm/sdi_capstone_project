@@ -24,6 +24,8 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userIsAdmin, setUserIsAdmin] = useState(false);
   const [userUID, setUserUID] = useState('');
+  const [authUser, setAuthUser] = useState(null);
+  const [loggedInUser, setLoggedInUser] = useState(null);
 
   useEffect(() => {
     Promise.all([
@@ -47,7 +49,9 @@ function App() {
       userSats, setUserSats,
       loggedIn, setLoggedIn,
       userIsAdmin, setUserIsAdmin,
-      userUID, setUserUID
+      userUID, setUserUID,
+      authUser, setAuthUser,
+      loggedInUser, setLoggedInUser
     }}>
       <Routes>
         <Route path='/dashboard' element={<Dashboard />} />
@@ -65,8 +69,7 @@ function App() {
 
 
     </userContext.Provider>
-  )
-    
+  ) 
 }
         
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, createContext } from 'react';
 import { userContext } from '../App';
 import { Link } from 'react-router-dom';
-import '../SatelliteList/SatelliteList.css';
+import './SatelliteList.css';
 import { ButtonToggle } from './ButtonToggle';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
@@ -19,7 +19,7 @@ import { Typography } from '@mui/material';
 // import { Auth } from 'firebase/auth';
 // import { auth } from '../firebase';
 
-export const ButtonContext = createContext()
+// export const ButtonContext = createContext()
 
 export const SatelliteList = () => {
     const [satellites, setSatellites] = useState([]);
@@ -35,35 +35,35 @@ export const SatelliteList = () => {
             .then(data => setSatellites(data))
     }, [])
 
-    const addSat = (sat) => {
-        let faves;
-        fetch(`http://localhost:8080/satellites/${sat.satelliteID}`)
-            .then(res => res.json())
-            .then(data => {
-                faves = data[0].favorites;
-                // let temp = userUID.concat(faves)
-                // console.log(data[0].favorites)
-                // let currentUser = userUID
-                // temp = faves + ' ' + userUID;
-                // console.log(faves)
-            })
-            .then(() => {
-                fetch(`http://localhost:8080/satellites/favorites/${sat.satelliteID}`,
-                    {
-                        method: "PATCH",
-                        mode: "cors",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-                            "favorites": faves + ' ' + userUID
-                        })
-                    })
+    // const addSat = (sat) => {
+    //     let faves;
+    //     fetch(`http://localhost:8080/satellites/${sat.satelliteID}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             faves = data[0].favorites;
+    //             // let temp = userUID.concat(faves)
+    //             // console.log(data[0].favorites)
+    //             // let currentUser = userUID
+    //             // temp = faves + ' ' + userUID;
+    //             // console.log(faves)
+    //         })
+    //         .then(() => {
+    //             fetch(`http://localhost:8080/satellites/favorites/${sat.satelliteID}`,
+    //                 {
+    //                     method: "PATCH",
+    //                     mode: "cors",
+    //                     headers: {
+    //                         "Content-Type": "application/json",
+    //                     },
+    //                     body: JSON.stringify({
+    //                         "favorites": faves + ' ' + userUID
+    //                     })
+    //                 })
 
-                // setUserSats(prev => [...prev, sat])
+    //             // setUserSats(prev => [...prev, sat])
 
-            })
-    }
+    //         })
+    // }
 
     // const CustomButton = () => {
     //     const [toggle, setToggle] = useState(false)
@@ -93,13 +93,14 @@ export const SatelliteList = () => {
                                         </Avatar>
                                     </ListItemAvatar>
                                     <ListItemText primary={`${sat.name.toUpperCase()}`} />
-                                    <ButtonContext.Provider value={addSat}>
-                                        <ButtonToggle sat={sat} />
-                                    </ButtonContext.Provider>
-                                    {/* <button className="add" onClick={() => addSat(sat)}> Add to Dashboard </button> */}
-                                    <Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}><button className="add"> Submit Report </button></Link>
+                                    {/* <ButtonContext.Provider value={addSat}> */}
+
                                     {/* </li> */}
                                 </ListItemButton>
+                                <ButtonToggle sat={sat} />
+                                {/* </ButtonContext.Provider> */}
+                                {/* <button className="add" onClick={() => addSat(sat)}> Add to Dashboard </button> */}
+                                <Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}><button className="add"> Submit Report </button></Link>
                             </ListItem>
 
                         )

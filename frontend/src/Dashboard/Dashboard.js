@@ -19,14 +19,24 @@ export const Dashboard = () => {
 			reports, setReports,
             userSats, setUserSats,
 			loggedIn, setLoggedIn,
-			userIsAdmin, setUserIsAdmin } = useContext(userContext);
+			userIsAdmin, setUserIsAdmin,
+            userUID, setUserUID,
+            loggedInUser, setLoggedInUser } = useContext(userContext);
     const [popupVisible, setPopupVisible] = useState(false);
     const [selectedSat, setSelectedSat] = useState({});
 
+    // useEffect(() => {
+    //     console.log(selectedSat)
+    //     console.log(popupVisible)
+    // }, [selectedSat, popupVisible]);
+
     useEffect(() => {
-        console.log(selectedSat)
-        console.log(popupVisible)
-    }, [selectedSat, popupVisible]);
+        console.log(userUID)
+        userUID &&
+            users.find((user) => {
+                return user.uid === userUID ? setLoggedInUser(user) : console.log('no user found')
+            })
+    }, []);
 
     const handlePopupClose = () => {
         setPopupVisible(false);
@@ -35,19 +45,23 @@ export const Dashboard = () => {
   return (
 		<>
 	<NavBar/>
+    {loggedInUser &&
+    <div>Logged in as {loggedInUser.name}</div>}
 	<div className="big-container">
 		<h2>Dashboard</h2>
 		<Button variant="contained" color="success" onClick={() => {setLoggedIn(false); setUserIsAdmin(false)}}>Logout</Button>
 		<Button variant="contained" color="success" onClick={() => {setUserIsAdmin(false); setLoggedIn(true)}}>Make User</Button>
 		<Button variant="contained" color="success" onClick={() => {setUserIsAdmin(true); setLoggedIn(true)}}>Make Admin</Button>
-		{userIsAdmin ?
+		{/* {userIsAdmin ? */}
+        {loggedInUser && loggedInUser.admin ?
 			<div className="adminDisplay">
 				<h3>Admin</h3>
 				<div className="tileDisplay">
 					{satellites.map((sat) => {
 						return (
 							<div className="tile">
-								<Card sx={{ border: sat.status === 'active' ? "solid 5px #00ff00" : "solid 5px #ff0000"}} variant="outlined">
+								<Card sx={{ border: sat.status === 'GREEN' ? "solid 5px #00ff00" :
+                                        sat.status === 'YELLOW' ? "solid 5px #facb6c" : "solid 5px #ff0000"}} variant="outlined">
 									<CardActionArea >
                                         <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
 											<CardMedia>
@@ -91,11 +105,12 @@ export const Dashboard = () => {
 				</div>
 			</div>
 		:
-		loggedIn ?
+		// loggedIn ?
+        loggedInUser && !loggedInUser.admin ?
 			<div className="userDisplay">
 				<h3>User</h3>
 				<div className="tileDisplay">
-				{userSats.map((sat) => {
+				{satellites.filter((satellite) => satellite.favorites.includes(loggedInUser.uid)).map((sat) => {
 					return (
 						<div className="tile">
 							<Card sx={{ border: sat.status === 'active' ? "solid 5px #00ff00" : "solid 5px #ff0000"}} variant="outlined">
@@ -129,11 +144,6 @@ export const Dashboard = () => {
 				</div>
 			</div>
 		: <h3>Not Logged In</h3>}
-        {/* {popupVisible && selectedSat &&
-            <div className="popup-window">
-                <EditStatus satellite={ selectedSat }/>
-            </div>
-        } */}
 	</div>
 	</>
   );
