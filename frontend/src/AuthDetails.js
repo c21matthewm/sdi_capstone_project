@@ -9,9 +9,10 @@ import { Dashboard } from './Dashboard/Dashboard';
 import { auth } from "./firebase";
 import { userContext } from "./App";
 // import '../../CSS/AuthDetails.css';
+import { NavBar } from "./NavBar/NavBar";
 
 export const AuthDetails = () => {
-  const [authUser, setAuthUser] = useState(null);
+  const { authUser, setAuthUser } = useContext(userContext);
   const { userUID, setUserUID } = useContext(userContext)
 
   useEffect(() => {
@@ -42,9 +43,6 @@ export const AuthDetails = () => {
   return (
   <div> {authUser ?
   <>
-  <h2>hello</h2>
-    <p> {`Signed In as ${authUser.email}`}</p>
-    <button onClick={userSignOut}> Sign Out </button>
     <Dashboard />
   </>
   : 

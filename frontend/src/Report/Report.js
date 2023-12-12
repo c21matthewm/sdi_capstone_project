@@ -1,11 +1,14 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import { NavBar } from "../NavBar/NavBar";
 
 export const Report = () => {
   const location = useLocation();
   const { report } = location.state;
 
   return (
+    <>
+  <NavBar/>
     <div className="container">
       <ul>
       <h2>REPORT #{report.reportID}</h2>
@@ -18,5 +21,6 @@ export const Report = () => {
         <li> {report.reason} </li>
       </ul>
     </div>
+    </>
   )
 }

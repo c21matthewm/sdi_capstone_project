@@ -6,9 +6,10 @@ import { userContext } from '../App';
 import PieCenterLabel from './PieChart';
 import './ReportList.css';
 import MixedBarChart from './ProblemMetric'
+import { NavBar } from '../NavBar/NavBar';
 
 function ReportList() {
- 
+
 
   const allItems= useContext(userContext)
   // let arr = ['Hello', 'Hi', 'This']
@@ -16,7 +17,7 @@ function ReportList() {
   // let id = allItems.reports.satelliteID;
 
 
-  
+
   // switch(id) {
   //   case 1:
   //     id = 'insight_1'
@@ -28,22 +29,25 @@ function ReportList() {
 
 
   return (
-    
+
 
     <div>
-      <div className="reports_page">
-        <h1>Reports Page</h1>
-        < MixedBarChart/>
-        <input type='search' placeholder='Search Satellite' />
+      <NavBar/>
+      <h1>Reports Page</h1>
 
-        <select>
-          <option>Filter</option>
-          <option>Subscribed Satellities</option>
-          <option>Option</option>
-          <option>Option</option>
-        </select>
+      <div className="reports_page">
+
         <div className="report_view">
-          THIS IS THE REPORT PANEL.
+          <h3>THIS IS THE REPORT PANEL.</h3>
+          <input type='search' placeholder='Search Satellite' />
+
+          <select>
+            <option>Filter</option>
+            <option>Subscribed Satellities</option>
+            <option>Option</option>
+            <option>Option</option>
+          </select>
+
           <ul>
             {arr.map((report) => {
               // {console.log('Hello', report)
@@ -62,12 +66,12 @@ function ReportList() {
               )
             })}
           </ul>
-          <PieCenterLabel/>
         </div>
         <div className="metric_view">
-          THIS IS THE METRIC PANEL.
+          <h3>THIS IS THE METRIC PANEL.</h3>
           <div className="problems_metric">
-
+          < MixedBarChart/>
+          <PieCenterLabel/>
           </div>
           <div className="SATCOM_down_metric"></div>
         </div>

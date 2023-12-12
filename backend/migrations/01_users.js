@@ -7,7 +7,7 @@ exports.up = function(knex) {
         table.increments('userID').primary();
         table.string('email');
         table.string('unit');
-        table.string('uid');
+        table.string('uid').unique();
         table.boolean('admin');
         table.string('name');
 });
