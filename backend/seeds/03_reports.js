@@ -6,10 +6,10 @@ exports.seed = async function(knex) {
   // Deletes ALL existing entries
   await knex('reports').del()
   await knex('reports').insert([
-    {time: '2022-12-17T03:24:00', latitude: 30, longitude: 40, frequency_band: "UHF", mission: "Alpha", satelliteID: 1, userID: "vzzdW6FCYXhs8tCRCyAo33higXk1", status: "green", reason: "no issues"},
-    {time: '2022-12-15T03:14:00', latitude: 40, longitude: 30, frequency_band: "UHF", mission: "Bravo", satelliteID: 1, userID: "vzzdW6FCYXhs8tCRCyAo33higXk1", status: "green", reason: "reconnected"},
-    {time: '2022-12-12T02:24:00', latitude: 50, longitude: 20, frequency_band: "UHF", mission: "Charlie", satelliteID: 1, userID: "vzzdW6FCYXhs8tCRCyAo33higXk1", status: "red", reason: "garbled voice"},
-    {time: '2022-12-17T03:24:00', latitude: 30, longitude: 40, frequency_band: "UHF", mission: "Delta", satelliteID: 1, userID: "vzzdW6FCYXhs8tCRCyAo33higXk1", status: "green", reason: "no issues"},
+    {time: '2022-10-17T03:24:00', latitude: 30, longitude: 40, frequency_band: "UHF", mission: "Alpha", satelliteID: 1, userID: "vzzdW6FCYXhs8tCRCyAo33higXk1", status: "green", reason: "no issues"},
+    {time: '2022-11-15T03:14:00', latitude: 40, longitude: 30, frequency_band: "UHF", mission: "Bravo", satelliteID: 1, userID: "vzzdW6FCYXhs8tCRCyAo33higXk1", status: "green", reason: "reconnected"},
+    {time: '2022-11-12T02:24:00', latitude: 50, longitude: 20, frequency_band: "UHF", mission: "Charlie", satelliteID: 1, userID: "vzzdW6FCYXhs8tCRCyAo33higXk1", status: "red", reason: "garbled voice"},
+    {time: '2022-11-17T03:24:00', latitude: 30, longitude: 40, frequency_band: "UHF", mission: "Delta", satelliteID: 1, userID: "vzzdW6FCYXhs8tCRCyAo33higXk1", status: "green", reason: "no issues"},
     {time: '2022-12-15T03:14:00', latitude: 40, longitude: 30, frequency_band: "UHF", mission: "Echo", satelliteID: 1, userID: "vzzdW6FCYXhs8tCRCyAo33higXk1", status: "green", reason: "reconnected"},
     {time: '2022-12-12T02:24:00', latitude: 50, longitude: 20, frequency_band: "UHF", mission: "Foxtrot", satelliteID: 1, userID: "vzzdW6FCYXhs8tCRCyAo33higXk1", status: "red", reason: "garbled voice"},
     {time: '2022-12-17T03:24:00', latitude: 30, longitude: 40, frequency_band: "UHF", mission: "Golf", satelliteID: 1, userID: "vzzdW6FCYXhs8tCRCyAo33higXk1", status: "green", reason: "no issues"},

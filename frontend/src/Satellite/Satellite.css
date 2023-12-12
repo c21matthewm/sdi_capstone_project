@@ -51,7 +51,9 @@
   overflow: auto;
 }
 
-
+a {
+  color:black;
+}
 /* .box {
 margin:50px;
 } */
