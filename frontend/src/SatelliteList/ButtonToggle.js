@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { userContext } from '../App';
-// import { Link } from 'react-router-dom';
 import "../Satellite/Satellite.css";
-// import { ButtonContext } from './SatelliteList';
+import { Button } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export const ButtonToggle = ({sat}) => {
-  const { loggedInUser,
-        // userSats, setUserSats 
-    } = useContext(userContext)
-  // const { addSat } = useContext(ButtonContext)
+  const { loggedInUser } = useContext(userContext)
   const [toggle, setToggle] = useState(sat.favorites.includes(loggedInUser.uid) ? true : false);
   const [updatedFavorites, setUpdatedFavorites] = useState([])
 
@@ -31,34 +29,34 @@ export const ButtonToggle = ({sat}) => {
                     "favorites":  updatedFavorites
                 })
             })
-
     }, [updatedFavorites])
 
 
 
   const addSat = (sat) => {
 
-    sat.favorites.includes(loggedInUser.uid) ? console.log('already added') 
-    : setUpdatedFavorites([...sat.favorites, loggedInUser.uid])
+    if (sat.favorites.includes(loggedInUser.uid)) {
+      const newFavorites = sat.favorites.filter((uid) => uid !== loggedInUser.uid);
+      setUpdatedFavorites(newFavorites);
+    } else {
+      setUpdatedFavorites([...sat.favorites, loggedInUser.uid])
+    }
+    setToggle(!toggle);
     
-    console.log(`${sat.name}: ${updatedFavorites}`)
-
-//     fetch(`http://localhost:8080/satellites/favorites/${sat.satelliteID}`,
-//         {
-//             method: "PATCH",
-//             mode: "cors",
-//             headers: {
-//                 "Content-Type": "application/json",
-//             },
-//             body: JSON.stringify({
-//                 "favorites":  updatedFavorites
-//             })
-//         })
+    // console.log('already added') 
+    // : setUpdatedFavorites([...sat.favorites, loggedInUser.uid])
+    
+    // console.log(`${sat.name}: ${updatedFavorites}`)
     }
 
   return(
-    <button className="add" onClick={()=>{ setToggle(!toggle); addSat(sat) }}>{
-          toggle ? "Added" : "Add to Dashboard"
-         }</button>
+    <Button 
+      variant="contained" 
+      color={toggle ? "error" : "success"} 
+      startIcon={toggle ? <DeleteIcon /> : <AddIcon />} 
+      className="add" 
+      onClick={()=>{ addSat(sat) }}>
+      {toggle ? "Remove from Dashboard" : "Add to Dashboard"}
+    </Button >
   ) 
 }

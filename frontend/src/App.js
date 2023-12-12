@@ -14,6 +14,7 @@ import { SignUp } from './SignUp/SignUp';
 import ReportList from './ReportList/ReportList';
 import { EditStatus } from './EditStatus/EditStatus';
 import { SubmitReport } from './AddReport/SubmitReport';
+import { AddSatellite } from './Dashboard/AddSatellite';
 
 export const userContext = createContext();
 function App() {
@@ -65,6 +66,7 @@ function App() {
         <Route path='/' element={<AuthDetails />} /> 
         <Route path='/editstatus' element={<EditStatus />} />
         <Route path='/addreport/' element={<SubmitReport />} />
+        <Route path='/addsatellite' element={<AddSatellite />} />
       </Routes>
 
 

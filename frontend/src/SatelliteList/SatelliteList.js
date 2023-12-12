@@ -15,11 +15,14 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import { NavBar } from '../NavBar/NavBar';
 import { Typography } from '@mui/material';
+import { Button } from '@mui/material';
+import ReportIcon from '@mui/icons-material/Report';
 
 
 export const SatelliteList = () => {
     const [satellites, setSatellites] = useState([]);
-    const { userUID } = useContext(userContext)
+    const { loggedInUser,
+            reports } = useContext(userContext)
 
     useEffect(() => {
         fetch('http://localhost:8080/satellites')
@@ -46,10 +49,24 @@ export const SatelliteList = () => {
                                     </ListItemAvatar>
                                     <ListItemText primary={`${sat.name.toUpperCase()}`} />
                                 </ListItemButton>
-                                <ButtonToggle sat={sat} />
-                                <Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}><button className="add"> Submit Report </button></Link>
+                                {!loggedInUser.admin && <ButtonToggle sat={sat} />}
+                                {/* <ButtonToggle sat={sat} /> */}
+                                <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
+                                    <Button variant="contained" color="secondary" endIcon={<ReportIcon />}>
+                                        <Typography component="span">{reports.filter((report) => (report.satelliteID === sat.satelliteID)).length}</Typography>
+                                    </Button>
+                                </Link>
+                                
+                                {/* <Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}>
+                                    <Button 
+                                        variant="contained" 
+                                        color="primary" 
+                                        startIcon={<ReportIcon />} 
+                                        className="add"> 
+                                        Submit Report 
+                                    </ Button>
+                                </Link> */}
                             </ListItem>
-
                         )
                     })}
                    </div>
@@ -57,5 +74,4 @@ export const SatelliteList = () => {
             </div>
         </>
     )
-
 }
