@@ -2,7 +2,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 // import { Home } from './pages/Home';
 import React, { createContext, useState, useEffect } from 'react';
-import { SatelliteList } from './SaltelliteList/SatelliteList';
+import { SatelliteList } from './SatelliteList/SatelliteList';
 import { Satellite } from './Satellite/Satellite';
 import { Dashboard } from './Dashboard/Dashboard';
 import { AddReport } from './AddReport/AddReport';
@@ -13,6 +13,7 @@ import { Login } from './Login/Login';
 import { SignUp } from './SignUp/SignUp';
 import ReportList from './ReportList/ReportList';
 import { EditStatus } from './EditStatus/EditStatus';
+import { SubmitReport } from './AddReport/SubmitReport';
 
 export const userContext = createContext();
 function App() {
@@ -59,6 +60,7 @@ function App() {
         <Route path='/addreport/:id' element={<AddReport />} />
         <Route path='/' element={<AuthDetails />} /> 
         <Route path='/editstatus' element={<EditStatus />} />
+        <Route path='/addreport/' element={<SubmitReport />} />
       </Routes>
 
 
