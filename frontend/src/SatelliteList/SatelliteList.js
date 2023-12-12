@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, createContext } from 'react';
 import { userContext } from '../App';
 import { Link } from 'react-router-dom';
-import '../SatelliteList/SatelliteList.css';
+import './SatelliteList.css';
 import { ButtonToggle } from './ButtonToggle';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
@@ -19,7 +19,7 @@ import { Typography } from '@mui/material';
 // import { Auth } from 'firebase/auth';
 // import { auth } from '../firebase';
 
-export const ButtonContext = createContext()
+// export const ButtonContext = createContext()
 
 export const SatelliteList = () => {
     const [satellites, setSatellites] = useState([]);
@@ -94,12 +94,13 @@ export const SatelliteList = () => {
                                     </ListItemAvatar>
                                     <ListItemText primary={`${sat.name.toUpperCase()}`} />
                                     {/* <ButtonContext.Provider value={addSat}> */}
-                                        <ButtonToggle sat={sat} />
-                                    {/* </ButtonContext.Provider> */}
-                                    {/* <button className="add" onClick={() => addSat(sat)}> Add to Dashboard </button> */}
-                                    <Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}><button className="add"> Submit Report </button></Link>
+
                                     {/* </li> */}
                                 </ListItemButton>
+                                <ButtonToggle sat={sat} />
+                                {/* </ButtonContext.Provider> */}
+                                {/* <button className="add" onClick={() => addSat(sat)}> Add to Dashboard </button> */}
+                                <Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}><button className="add"> Submit Report </button></Link>
                             </ListItem>
 
                         )

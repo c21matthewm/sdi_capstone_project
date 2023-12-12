@@ -65,3 +65,5 @@ export const ButtonToggle = ({sat}) => {
 // toggle button text should change to "Added" if the satellite is already in the user's dashboard
 // if the satellite is not in the user's dashboard, the button text should be "Add to Dashboard"
 // this can be managed by checking if the user's uid is in the satellite's favorites array
+
+//dont worry about this, bigger problems after merge
