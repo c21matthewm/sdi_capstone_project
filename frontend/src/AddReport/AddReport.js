@@ -1,6 +1,6 @@
 import { Checkbox } from "@mui/material";
 import { fontSize } from "@mui/system";
-import React, { useState, useContext} from "react";
+import React, { useEffect, useState, useContext} from "react";
 import { useLocation } from "react-router-dom";
 import { NavBar } from "../NavBar/NavBar";
 import { userContext } from "../App";
@@ -17,9 +17,18 @@ export const AddReport = (props) => {
   const [long, setLong] = useState(0);
   const [status, setStatus] = useState('');
   const [reason, setReason] = useState([]);
- 
+
+  const [connection, setConnection] = useState(false);
+  const [quality, setQuality] = useState(false);
+
+  useEffect(() =>{
+    if (connection) {
+      setReason(reason => "Cannot Connect");
+    }
+  }, [connection]);
+
   // const [garbled, setGarbled] = useState('')
-  
+
   // Introduced to facilitate more structured reporting and metrics
   const [categoryfilter, setCategoryFilter] = useState('Category');
 
@@ -56,7 +65,7 @@ export const AddReport = (props) => {
     }
   // function convertReason(){
   //   if (garbled === true) {
-  //     setReason('garbled') 
+  //     setReason('garbled')
   //     console.log('The reason is:', reason)
   //   }
   // }
@@ -78,36 +87,34 @@ export const AddReport = (props) => {
         <label>Mission:</label>
           <input type="text" onChange={(e)=>setMission(e.target.value)} value={mission}></input>
         <hr/>
-        
+
         <label>Latitude:</label>
           <input type="number" onChange={(e)=>setLat(e.target.value)} value={lat}></input>
         <hr/>
-        
+
         <label>Longitude:</label>
           <input type="number" onChange={(e)=>setLong(e.target.value)} value={long}></input>
         <hr/>
-        
+
         <label>Status:</label>
           <input type="status" onChange={(e)=>setStatus(e.target.value)} value={status}></input>
           <h6 >
             *Green: Can Connect. Quality is Good.<br/>
             *Yellow: Can Connect. Quality is Degraded.<br/>
-            *Red: Cannot Connect. 
+            *Red: Cannot Connect.
           </h6>
 
 
         <hr/>
-        
+
         <label>Reason:</label><br/>
-        <input type='text' onChange={(e)=>setReason(e.target.value)} value={reason}/>
-          {/* <input type='checkbox' onChange={(e)=>setGarbled(e.target.checked)} checked={garbled}/>Garbled<br/> */}
-          {/* <input type='checkbox' onClick={(e)=>setReason(e.target.checked)} checked={reason}/>Reason2<br/>
-          <input type='checkbox' onChange={(e)=>setReason(e.target.checked)} checked={reason}/>Reason3<br/>
-          <input type='checkbox' onClick={(e)=>setReason(e.target.checked)} checked={reason}/>Reason4 */}
+        {/* <input type='text' onChange={(e)=>setReason(e.target.value)} value={reason}/> */}
+          <input type='checkbox' onChange={(e)=>setConnection(e.target.checked)} checked={connection}/>Cannot Connect<br/>
+          <input type='checkbox' onChange={(e)=>setQuality(e.target.checked)} checked={quality}/>Quality is Degraded<br/>
 
         <hr/>
         <button type="submit">submit</button>
-        
+
         {/* <button type="submit" onSubmit={convertReason}>submit</button> */}
       </form>
     </>
