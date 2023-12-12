@@ -5,7 +5,7 @@ import { AddSatellite } from './AddSatellite';
 
 import { Link } from 'react-router-dom';
 import { Button, CardActionArea, CardActions, CardMedia, Dialog } from '@mui/material';
-import { Card, CardContent, Typography } from '@mui/material';
+import { Card, CardContent, Typography, Box } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ReportIcon from '@mui/icons-material/Report';
@@ -69,7 +69,15 @@ export const Dashboard = () => {
 									<CardActionArea >
                                         <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
 											<CardMedia>
-												<p>Sat Image</p>
+												<Box
+													component="img"
+													sx={{
+														height: 'auto',
+														width: '100px',
+													}}
+													src={sat.image}
+													alt="satellite image"
+												/>
 											</CardMedia>
 											<CardContent >
 												<Typography variant="h5" component="div" >
