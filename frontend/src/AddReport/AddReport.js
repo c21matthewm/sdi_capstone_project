@@ -4,6 +4,23 @@ import React, { useState} from "react";
 import { useLocation } from "react-router-dom";
 
 export const AddReport = (props) => {
+
+    const reasonsForReport = [
+      {
+        issue: 'Garbled'
+      },
+      {
+        issue: 'Latency'
+      },
+      {
+        issue: 'Disconnect'
+      },
+      {
+        issue: 'Interference'
+      },
+    ];
+
+
   const location = useLocation();
   const { sat } = location.state;
 
@@ -14,42 +31,65 @@ export const AddReport = (props) => {
   const [long, setLong] = useState(0);
   const [status, setStatus] = useState('');
   const [reason, setReason] = useState([]);
-  // const [garbled, setGarbled] = useState('')
-  
-  // Introduced to facilitate more structured reporting and metrics
-  const [categoryfilter, setCategoryFilter] = useState('Category');
 
-    const onSubmit = (e) => {
-      e.preventDefault();
-        fetch('http://localhost:8080/reports' ,
-        {
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            "time": time,
-            "frequency_band": freq,
-            "mission": mission,
-            "latitude": lat,
-            "longitude": long,
-            "status": status,
-            "reason": reason,
-            "satelliteID": sat.satelliteID,
-            "userID": 1 // HARD CODED UNTIL AUTH / LOGIN
-          }),
-        })
-        .then(()=>{
-          setTime('');
-          setFreq('');
-          setMission('');
-          setLat(0);
-          setLong(0);
-          setStatus('');
-          setReason('');
-        })
-    }
+  const [checked, setChecked] = useState(
+    new Array(reasonsForReport.length).fill(false)
+  );
+
+  function handleOnChange(position) {
+    let isItChecked = checked.map((item, index) =>
+      index === position ? !item : item
+    );
+
+    setChecked(isItChecked);
+
+
+    let totalIssues = isItChecked.reduce((sum, report, index) => {
+      if (report === true) {
+        return sum += reasonsForReport[index].issue;
+      }
+      return sum;
+    });
+
+    setReason(totalIssues)
+
+    console.log(totalIssues)
+
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+      fetch('http://localhost:8080/reports' ,
+      {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          "time": time,
+          "frequency_band": freq,
+          "mission": mission,
+          "latitude": lat,
+          "longitude": long,
+          "status": status,
+          "reason": reason,
+          "satelliteID": sat.satelliteID,
+          "userID": 1 // HARD CODED UNTIL AUTH / LOGIN
+        }),
+      })
+      .then(()=>{
+        setTime('');
+        setFreq('');
+        setMission('');
+        setLat(0);
+        setLong(0);
+        setStatus('');
+        setReason('');
+      })
+  }
+
+
   // function convertReason(){
   //   if (garbled === true) {
   //     setReason('garbled') 
@@ -94,11 +134,26 @@ export const AddReport = (props) => {
         <hr/>
         
         <label>Reason:</label><br/>
-        <input type='text' onChange={(e)=>setReason(e.target.value)} value={reason}/>
-          {/* <input type='checkbox' onChange={(e)=>setGarbled(e.target.checked)} checked={garbled}/>Garbled<br/> */}
-          {/* <input type='checkbox' onClick={(e)=>setReason(e.target.checked)} checked={reason}/>Reason2<br/>
+        <ul>
+          {reasonsForReport.map(({ issue }, index) => {
+            return (
+              <li key={index}>
+                <input
+                  type="checkbox"
+                  checked={checked[index]}
+                  onChange={() => handleOnChange(index)}
+                />
+                <label>{issue}</label>
+              </li>
+            );
+          })}
+        </ul>
+
+        {/* <input type='text' onChange={(e)=>setReason(e.target.value)} value={reason}/> */}
+          {/* <input type='checkbox' onChange={(e)=>setGarbled(e.target.checked)} checked={garbled}/>Garbled<br/>
+          <input type='checkbox' onClick={(e)=>setReason(e.target.checked)} checked={reason}/>Reason2<br/> 
           <input type='checkbox' onChange={(e)=>setReason(e.target.checked)} checked={reason}/>Reason3<br/>
-          <input type='checkbox' onClick={(e)=>setReason(e.target.checked)} checked={reason}/>Reason4 */}
+          <input type='checkbox' onClick={(e)=>setReason(e.target.checked)} checked={reason}/>Reason4  */}
 
         <hr/>
         <button type="submit">submit</button>
