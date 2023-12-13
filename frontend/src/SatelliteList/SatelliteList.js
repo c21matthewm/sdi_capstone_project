@@ -53,37 +53,21 @@ export const SatelliteList = () => {
                                     <ListItemText primary={`${sat.name.toUpperCase()}`} />
                                 </ListItemButton>
                                 {!loggedInUser.admin && <ButtonToggle sat={sat} />}
-<<<<<<< HEAD
                                 {/* <ButtonToggle sat={sat} /> */}
                                                 
                                 <Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}>
                                     <Button 
                                         variant="contained" 
                                         color="primary"             
-=======
-                                <Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}>
-                                    <Button 
-                                        variant="contained" 
-                                        color="primary"  
->>>>>>> f8b45fc7f55e9784d6945f117c1b4b698e9f8d7b
                                         className="add"> 
                                         Add Report 
                                     </ Button>
                                 </Link>
-<<<<<<< HEAD
                                 <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
                                     <Button variant="contained" color="secondary" endIcon={<ReportIcon />}>
                                         <Typography component="span">{reports.filter((report) => (report.satelliteID === sat.satelliteID)).length}</Typography>
                                     </Button>
                                 </Link>  
-=======
-                                {/* <ButtonToggle sat={sat} /> */}
-                                <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
-                                    <Button variant="contained" color="primary" endIcon={<ReportIcon />}>
-                                        <Typography component="span">{reports.filter((report) => (report.satelliteID === sat.satelliteID)).length}</Typography>
-                                    </Button>
-                                </Link>                          
->>>>>>> f8b45fc7f55e9784d6945f117c1b4b698e9f8d7b
                             </ListItem>
                         )
                     })}
