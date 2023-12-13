@@ -10,8 +10,7 @@ export const AddSatellite = () => {
   const [mission, setMission] = useState("");
   const [country, setCountry] = useState("");
   const [frequencyBand, setFrequencyBand] = useState("");
-//   const [favorites, setFavorites] = useState([]);
-const { loggedInUser } = useContext(userContext)
+  const { loggedInUser } = useContext(userContext)
   const [image, setImage] = useState("");
 
   const onSatelliteSubmit = (e) => {
@@ -41,7 +40,6 @@ const { loggedInUser } = useContext(userContext)
       setMission("");
       setCountry("");
       setFrequencyBand("");
-    //   setFavorites([]);
       setImage("");
     });
   };
@@ -105,14 +103,6 @@ const { loggedInUser } = useContext(userContext)
           value={frequencyBand}
         ></input>
         <hr />
-
-        {/* <label>Favorites:</label>
-        <input
-          type="text"
-          onChange={(e) => setFavorites(e.target.value.split(","))}
-          value={favorites.join(",")}
-        ></input>
-        <hr /> */}
 
         <label>Image:</label>
         <input

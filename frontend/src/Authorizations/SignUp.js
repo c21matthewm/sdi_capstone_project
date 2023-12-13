@@ -5,8 +5,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -132,10 +130,3 @@ export const SignUp = () => {
     </>
   )
 }
-
-//  {/* <form onSubmit={signUp}>
-//         <input type='email' onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Enter email..."></input>
-//         <input type='password' onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Enter password..."></input>
-//         <input type='text' onChange={(e) => setUnit(e.target.value)} value={unit} placeholder="Enter unit..."></input>
-//         <button type="submit">Sign Up</button>
-//       </form> */}
