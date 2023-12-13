@@ -3,6 +3,7 @@ import { LineChart } from '@mui/x-charts/LineChart';
 import { useEffect, useState, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { userContext } from '../App';
+import "./Satellite.css"
 
 export function Chart() {
   const location = useLocation();
@@ -82,7 +83,7 @@ export function Chart() {
 
 return (
   <>
-    <LineChart
+    <LineChart className="chart"
       xAxis={[{ data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }]}
       series={[
         {

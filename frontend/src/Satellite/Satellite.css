@@ -24,7 +24,6 @@
 }
 
 .components {
-
   display:flex;
   padding:10px;
   flex-direction: column;
@@ -33,12 +32,24 @@
   max-width: 400px;
 
 
+
 }
 
 .sat-box{
   display:flex;
+  background-color: var(--component-color);
+  color:var(--text-color);
 }
 
+.report-box {
+  background-color: var(--component-color);
+  color:var(--text-color);
+}
+
+.chart-box {
+  background-color: var(--component-color);
+  color:var(--text-color);
+}
 #reports{
   min-width:450px;
   height:260px;
@@ -53,6 +64,7 @@ a {
   display:flex;
   flex-direction: column;
   gap:30px;
+  
 }
 
 #return{
