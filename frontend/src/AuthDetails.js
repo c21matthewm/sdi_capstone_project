@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { onAuthStateChanged,signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { Login } from "./Login/Login";
 import { SignUp } from "./SignUp/SignUp";
 import { Dashboard } from './Dashboard/Dashboard';
@@ -12,7 +12,7 @@ import { userContext } from "./App";
 import { NavBar } from "./NavBar/NavBar";
 
 export const AuthDetails = () => {
-  const { authUser, setAuthUser, setLoggedInUser } = useContext(userContext);
+  const { users, authUser, setAuthUser, setLoggedInUser } = useContext(userContext);
   const { userUID, setUserUID } = useContext(userContext)
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export const AuthDetails = () => {
         setAuthUser(user);
         setUserUID(user.uid);
         console.log(userUID)
-        // setLoggedInUser(user);
+        users.find((user) => { user.uid === userUID ? setLoggedInUser(user) : console.log('no user found') })
       } else {
         setAuthUser(null)
       }
@@ -34,25 +34,25 @@ export const AuthDetails = () => {
 
   const userSignOut = () => {
     signOut(auth)
-    .then(() => {
-    console.log('sign out succesful')
-    })
-    .catch((error)=>console.log(error))
+      .then(() => {
+        console.log('sign out succesful')
+      })
+      .catch((error) => console.log(error))
   }
 
 
   return (
-  <div> {authUser ?
-  <>
-    <Dashboard />
-  </>
-  : 
-  <>
-  <Login />
-  </>
-  }
-  </div>
-    )
+    <div> {authUser ?
+      <>
+        <Dashboard />
+      </>
+      :
+      <>
+        <Login />
+      </>
+    }
+    </div>
+  )
 }
 
 

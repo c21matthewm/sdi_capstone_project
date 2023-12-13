@@ -52,7 +52,8 @@ export const SatelliteList = () => {
                                     </ListItemAvatar>
                                     <ListItemText primary={`${sat.name.toUpperCase()}`} />
                                 </ListItemButton>
-                                {!loggedInUser.admin && <ButtonToggle sat={sat} />}
+                                {/* {!loggedInUser.admin && <ButtonToggle sat={sat} />} */}
+                                <ButtonToggle sat={sat} />
                                 {/* <ButtonToggle sat={sat} /> */}
                                                 
                                 <Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}>
