@@ -47,11 +47,13 @@
 
 #reports{
   min-width:450px;
-  flex-wrap: wrap;
+  height:260px;
   overflow: auto;
 }
 
-
+a {
+  color:black;
+}
 /* .box {
 margin:50px;
 } */
@@ -60,3 +62,9 @@ margin:50px;
 /* .sat-title {
   margin-left:10%;
 } */
+
+.stacked {
+  display:flex;
+  flex-direction: column;
+  gap:30px;
+}

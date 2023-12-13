@@ -35,7 +35,7 @@ export const SatelliteList = () => {
             <NavBar />
             <div className="list-container" >
                 <div className="list-sat">
-                <Typography className="satT" variant="h5" gutterBottom>Satellite Index</Typography>    
+                    <Typography className="satT" variant="h5" gutterBottom>Satellite Index</Typography>
                     <div className="box-list">
                     {satellites.map((sat, index) => {
                         return (

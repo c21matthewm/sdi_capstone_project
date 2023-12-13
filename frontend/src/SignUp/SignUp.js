@@ -40,13 +40,13 @@ export const SignUp = () => {
               "name": name
             }),
           })
-          .then(() => { navigate(-1)})
+          .then(() => { navigate(-1) })
       })
   }
 
   return (
     <>
-       <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
@@ -72,8 +72,8 @@ export const SignUp = () => {
                   id="name"
                   label="Name"
                   autoFocus
-                  onChange={(e) => setName(e.target.value)} 
-                  value={name} 
+                  onChange={(e) => setName(e.target.value)}
+                  value={name}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -83,8 +83,8 @@ export const SignUp = () => {
                   id="unit"
                   label="Unit"
                   name="Unit"
-                  onChange={(e) => setUnit(e.target.value)} 
-                  value={unit} 
+                  onChange={(e) => setUnit(e.target.value)}
+                  value={unit}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -94,7 +94,7 @@ export const SignUp = () => {
                   id="email"
                   label="Email Address"
                   name="email"
-                  onChange={(e) => setEmail(e.target.value)} 
+                  onChange={(e) => setEmail(e.target.value)}
                   value={email}
                 />
               </Grid>
@@ -106,7 +106,7 @@ export const SignUp = () => {
                   label="Password"
                   type="password"
                   id="password"
-                  onChange={(e) => setPassword(e.target.value)} 
+                  onChange={(e) => setPassword(e.target.value)}
                   value={password}
                 />
               </Grid>
