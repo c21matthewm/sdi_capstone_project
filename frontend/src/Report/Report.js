@@ -1,10 +1,17 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React,{useContext } from "react";
+import { useLocation} from "react-router-dom";
 import { NavBar } from "../NavBar/NavBar";
+import { userContext } from '../App';
+
 
 export const Report = () => {
   const location = useLocation();
   const { report } = location.state;
+
+  // const allItems= useContext(userContext)
+
+  // let report = allItems.reports;
+
 
   return (
     <>

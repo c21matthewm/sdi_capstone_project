@@ -9,17 +9,26 @@ export const AddReport = (props) => {
 
     const reasonsForReport = [
       {
-        issue: 'Garbled'
+        issue: 'Cannot Connect'
+      },
+      {
+        issue: 'Quality is Degraded'
       },
       {
         issue: 'Latency'
       },
       {
-        issue: 'Disconnect'
-      },
-      {
         issue: 'Interference'
       },
+      {
+        issue: 'Equipment Malfunction'
+      },
+      {
+        issue: 'Power Supply Issues'
+      },
+      {
+        issue: 'Frequency Coordination'
+      }
     ];
 
 
@@ -49,7 +58,7 @@ export const AddReport = (props) => {
 
     let totalIssues = isItChecked.reduce((sum, report, index) => {
       if (report === true) {
-        return sum += reasonsForReport[index].issue;
+        return ` ${sum += reasonsForReport[index].issue}, `;
       }
       return sum;
     });
@@ -63,11 +72,6 @@ export const AddReport = (props) => {
   
 
  
-  // const [garbled, setGarbled] = useState('')
-  
-  // Introduced to facilitate more structured reporting and metrics
-  const [categoryfilter, setCategoryFilter] = useState('Category');
-
     const onSubmit = (e) => {
       e.preventDefault();
         fetch('http://localhost:8080/reports' ,
@@ -158,12 +162,6 @@ export const AddReport = (props) => {
             );
           })}
         </ul>
-
-        {/* <input type='text' onChange={(e)=>setReason(e.target.value)} value={reason}/> */}
-          {/* <input type='checkbox' onChange={(e)=>setGarbled(e.target.checked)} checked={garbled}/>Garbled<br/>
-          <input type='checkbox' onClick={(e)=>setReason(e.target.checked)} checked={reason}/>Reason2<br/> 
-          <input type='checkbox' onChange={(e)=>setReason(e.target.checked)} checked={reason}/>Reason3<br/>
-          <input type='checkbox' onClick={(e)=>setReason(e.target.checked)} checked={reason}/>Reason4  */}
 
         <hr/>
         <button type="submit">submit</button>
