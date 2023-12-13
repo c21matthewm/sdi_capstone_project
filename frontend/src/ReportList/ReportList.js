@@ -16,7 +16,8 @@ function ReportList() {
   let arr = allItems.reports;
   // let id = allItems.reports.satelliteID;
 
-
+  let allSatellites= allItems.satellites
+  const [selectedFruit, setSelectedFruit] = useState(true)
 
   // switch(id) {
   //   case 1:
@@ -41,40 +42,55 @@ function ReportList() {
           <h3>THIS IS THE REPORT PANEL.</h3>
           <input type='search' placeholder='Search Satellite' />
 
-          <select>
+          <select  onChange={e => setSelectedFruit(e.target.value)}>
             <option>Filter</option>
             <option>Subscribed Satellities</option>
-            <option>Option</option>
+            <option>My Reports</option>
             <option>Option</option>
           </select>
-          {/* MUI <Select /> component ^^ */}
+          {selectedFruit ?
+            <ul>
+              
+              {arr.map((report) => {
+                // {console.log('Hello', report)
+                // console.log('Hi',index, report[index])}
+                return (
+                    /* MUI <Select /> component ^^ */
 
-          <ul>
-            {arr.map((report) => {
-              // {console.log('Hello', report)
-              // console.log('Hi',index, report[index])}
-              return (
-                <li key={report.reportID}>
-                  <b>Satellite:</b> {` Insight ${report.satelliteID}`}
-                  <br />
-                  <b>User Access to SATCOM:</b> {` ${report.status}`}
-                  <br />
-                  <b>Description:</b> {` ${report.reason}`}
-                  <br />
-                  <b>User status on:</b> {` ${report.time}`}
-                  {/* Add A state that takes the number of times the a report was filed and display it here*/}
-                </li>
+
+
+                    <li key={report.reportID}>
+                      <b>Satellite:</b> {` Insight ${report.satelliteID}`}
+                      <br />
+                      <b>User Access to SATCOM:</b> {` ${report.status}`}
+                      <br />
+                      <b>Description:</b> {` ${report.reason}`}
+                      <br />
+                      <b>User status on:</b> {` ${report.time}`}
+                      {/* Add A state that takes the number of times the a report was filed and display it here*/}
+                    </li>
+
+                )
+              })}
+            </ul>
+          :
+          <p>this worked</p>}
+          </div>
+          <div className="metric_view">
+            <p>THIS IS THE METRIC PANEL.</p>
+
+            < MixedBarChart/>
+            {allSatellites.map((satellite) => {
+              return(
+                <section>
+                  <h3>{` Insight ${satellite.satelliteID}`}</h3>
+                  <PieCenterLabel/>
+                </section>
               )
             })}
-          </ul>
-        </div>
-        <div className="metric_view">
-          <h3>THIS IS THE METRIC PANEL.</h3>
-          <div className="problems_metric">
-          < MixedBarChart/>
-          <PieCenterLabel/>
-          </div>
-          <div className="SATCOM_down_metric"></div>
+          
+
+
         </div>
       </div>
     </div>

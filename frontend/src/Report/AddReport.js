@@ -6,6 +6,32 @@ import { NavBar } from "../NavBar/NavBar";
 import { userContext } from "../App";
 
 export const AddReport = (props) => {
+
+    const reasonsForReport = [
+      {
+        issue: 'Cannot Connect'
+      },
+      {
+        issue: 'Quality is Degraded'
+      },
+      {
+        issue: 'Latency'
+      },
+      {
+        issue: 'Interference'
+      },
+      {
+        issue: 'Equipment Malfunction'
+      },
+      {
+        issue: 'Power Supply Issues'
+      },
+      {
+        issue: 'Frequency Coordination'
+      }
+    ];
+
+
   const { userUID } = useContext(userContext);
   const location = useLocation();
   const { sat } = location.state;
@@ -18,20 +44,34 @@ export const AddReport = (props) => {
   const [status, setStatus] = useState('');
   const [reason, setReason] = useState([]);
 
-  const [connection, setConnection] = useState(false);
-  const [quality, setQuality] = useState(false);
+  const [checked, setChecked] = useState(
+    new Array(reasonsForReport.length).fill(false)
+  );
 
-  useEffect(() =>{
-    if (connection) {
-      setReason(reason => "Cannot Connect");
-    }
-  }, [connection]);
+  function handleOnChange(position) {
+    let isItChecked = checked.map((item, index) =>
+      index === position ? !item : item
+    );
 
-  // const [garbled, setGarbled] = useState('')
+    setChecked(isItChecked);
 
-  // Introduced to facilitate more structured reporting and metrics
-  const [categoryfilter, setCategoryFilter] = useState('Category');
 
+    let totalIssues = isItChecked.reduce((sum, report, index) => {
+      if (report === true) {
+        return ` ${sum += reasonsForReport[index].issue}, `;
+      }
+      return sum;
+    });
+
+    setReason(totalIssues)
+
+    console.log(totalIssues)
+
+  }
+
+  
+
+ 
     const onSubmit = (e) => {
       e.preventDefault();
         fetch('http://localhost:8080/reports' ,
@@ -108,9 +148,20 @@ export const AddReport = (props) => {
         <hr/>
 
         <label>Reason:</label><br/>
-        {/* <input type='text' onChange={(e)=>setReason(e.target.value)} value={reason}/> */}
-          <input type='checkbox' onChange={(e)=>setConnection(e.target.checked)} checked={connection}/>Cannot Connect<br/>
-          <input type='checkbox' onChange={(e)=>setQuality(e.target.checked)} checked={quality}/>Quality is Degraded<br/>
+        <ul>
+          {reasonsForReport.map(({ issue }, index) => {
+            return (
+              <li key={index}>
+                <input
+                  type="checkbox"
+                  checked={checked[index]}
+                  onChange={() => handleOnChange(index)}
+                />
+                <label>{issue}</label>
+              </li>
+            );
+          })}
+        </ul>
 
         <hr/>
         <button type="submit">submit</button>
