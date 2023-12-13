@@ -30,7 +30,7 @@ export const Satellite = (props) => {
                                     <img src={sat.image} height={300} alt="satellite"></img>
                                 </div>
                                 <div className="components">
-                                    <List sx={{ p: 0, m: 0 }} component="nav" aria-label="mailbox folders">
+                                    <List sx={{ p: 0, m: 0 }} component="nav" >
                                         <Typography variant="h6" gutterBottom>Status: {sat.status.toUpperCase()} </Typography>
                                         <ListItem>
                                             <Typography variant="h7" gutterBottom>{`Orbit: ${sat.orbit}`} </Typography>
@@ -52,7 +52,7 @@ export const Satellite = (props) => {
                             </Box>
                         </div>
                         <div className="stacked">
-                            <Box className="box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
+                            <Box className="report-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
                                 <div className="components" id="reports">
                                     <Typography variant="h6" gutterBottom> Recent Reports:</Typography>
                                     {reports.filter((report) => (report.satelliteID === sat.satelliteID))
@@ -67,7 +67,7 @@ export const Satellite = (props) => {
                                         })}
                                 </div>
                             </Box>
-                            <Box className="box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
+                            <Box className="chart-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
                                 <Chart state={{ sat }}/>
                             </Box>
                         </div>

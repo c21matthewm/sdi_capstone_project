@@ -13,11 +13,13 @@
     justify-content:flex-start;
     margin:15px 125px 0px 125px;
     padding:10px;
+    
 }
 
 .tile {
     width: 275px;
     margin: 20px;
-    color: inherit; 
     text-decoration: none; 
+    background-color: var(--component-color);
+    color:var(--text-color);
 }

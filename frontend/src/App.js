@@ -13,6 +13,7 @@ import ReportList from './ReportList/ReportList';
 import { EditStatus } from './Satellite/EditStatus';
 import { SubmitReport } from './Report/SubmitReport';
 import { AddSatellite } from './Dashboard/AddSatellite';
+import { Map } from './Map/Map';
 
 export const userContext = createContext();
 function App() {
@@ -54,7 +55,7 @@ function App() {
     }}>
 
       <Routes>
-        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/map' element={<Map />} />
         <Route path='/satellites' element={<SatelliteList />} />
         <Route path='/satellites/:id' element={<Satellite />} />
         <Route path='/reports' element={<ReportList />} />
