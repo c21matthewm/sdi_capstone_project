@@ -14,6 +14,7 @@ import { SignUp } from './SignUp/SignUp';
 import ReportList from './ReportList/ReportList';
 import { EditStatus } from './EditStatus/EditStatus';
 import { SubmitReport } from './AddReport/SubmitReport';
+import { AddSatellite } from './Dashboard/AddSatellite';
 
 export const userContext = createContext();
 function App() {
@@ -24,6 +25,8 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userIsAdmin, setUserIsAdmin] = useState(false);
   const [userUID, setUserUID] = useState('');
+  const [authUser, setAuthUser] = useState(null);
+  const [loggedInUser, setLoggedInUser] = useState(null);
 
   useEffect(() => {
     Promise.all([
@@ -47,7 +50,9 @@ function App() {
       userSats, setUserSats,
       loggedIn, setLoggedIn,
       userIsAdmin, setUserIsAdmin,
-      userUID, setUserUID
+      userUID, setUserUID,
+      authUser, setAuthUser,
+      loggedInUser, setLoggedInUser
     }}>
       <Routes>
         <Route path='/dashboard' element={<Dashboard />} />
@@ -61,12 +66,12 @@ function App() {
         <Route path='/' element={<AuthDetails />} /> 
         <Route path='/editstatus' element={<EditStatus />} />
         <Route path='/addreport/' element={<SubmitReport />} />
+        <Route path='/addsatellite' element={<AddSatellite />} />
       </Routes>
 
 
     </userContext.Provider>
-  )
-    
+  ) 
 }
         
 
