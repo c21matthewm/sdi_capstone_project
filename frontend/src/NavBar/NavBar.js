@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import './NavBar.css';
-import { AuthDetails } from "../AuthDetails";
+import { AuthDetails } from "../Authorizations/AuthDetails";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -50,15 +50,12 @@ export const NavBar = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        SATSTAT
+                        SatBridge
                     </Typography>
                     <Box sx={{ justifyContent: 'flex-start' }}>
-                        {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex'}, mr: 1 }} /> */}
-
-
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                            <ListItemButton component={Link} to={`/dashboard`} >
+                            <ListItemButton component={Link} to={`/`} >
                                 <ListItemText primary={`DASHBOARD`} />
                             </ListItemButton>
 
@@ -84,39 +81,6 @@ export const NavBar = () => {
                             </Box>
 
                         </Box>
-                    </Box>
-                    <Box sx={{ flexGrow: 0 }}>
-                    <ListItemButton component={Link} to={`/reports`} >
-                            <ListItemText primary={`REPORT LIST`} />
-                        </ListItemButton>
-
-                        {/* <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip> */}
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            id="menu-appbar"
-                            //   anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                        //   open={Boolean(anchorElUser)}
-                        //   onClose={handleCloseUserMenu}
-                        >
-                            {/* {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))} */}
-                        </Menu>
                     </Box>
                 </Toolbar>
             </div>

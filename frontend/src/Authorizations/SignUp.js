@@ -5,8 +5,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -40,13 +38,13 @@ export const SignUp = () => {
               "name": name
             }),
           })
-          .then(() => { navigate(-1)})
+          .then(() => { navigate(-1) })
       })
   }
 
   return (
     <>
-       <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
@@ -72,8 +70,8 @@ export const SignUp = () => {
                   id="name"
                   label="Name"
                   autoFocus
-                  onChange={(e) => setName(e.target.value)} 
-                  value={name} 
+                  onChange={(e) => setName(e.target.value)}
+                  value={name}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -83,8 +81,8 @@ export const SignUp = () => {
                   id="unit"
                   label="Unit"
                   name="Unit"
-                  onChange={(e) => setUnit(e.target.value)} 
-                  value={unit} 
+                  onChange={(e) => setUnit(e.target.value)}
+                  value={unit}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -94,7 +92,7 @@ export const SignUp = () => {
                   id="email"
                   label="Email Address"
                   name="email"
-                  onChange={(e) => setEmail(e.target.value)} 
+                  onChange={(e) => setEmail(e.target.value)}
                   value={email}
                 />
               </Grid>
@@ -106,7 +104,7 @@ export const SignUp = () => {
                   label="Password"
                   type="password"
                   id="password"
-                  onChange={(e) => setPassword(e.target.value)} 
+                  onChange={(e) => setPassword(e.target.value)}
                   value={password}
                 />
               </Grid>
@@ -132,10 +130,3 @@ export const SignUp = () => {
     </>
   )
 }
-
-//  {/* <form onSubmit={signUp}>
-//         <input type='email' onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Enter email..."></input>
-//         <input type='password' onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Enter password..."></input>
-//         <input type='text' onChange={(e) => setUnit(e.target.value)} value={unit} placeholder="Enter unit..."></input>
-//         <button type="submit">Sign Up</button>
-//       </form> */}
