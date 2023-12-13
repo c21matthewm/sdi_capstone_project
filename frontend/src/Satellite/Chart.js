@@ -35,8 +35,9 @@ export function Chart() {
     let xnov = 0;
     let xdec = 0;
 
-    reports.filter((report) => (report.satelliteID === sat.satelliteID))
-      .map((report) => {
+    let filtered = reports.filter((report) => (report.satelliteID === sat.satelliteID))
+
+    for (let report of filtered) {
         let date = new Date(report.time);
         let month = date.getMonth();
         if (month === 0)
@@ -63,21 +64,20 @@ export function Chart() {
           xnov++;
         else if (month === 11)
           xdec++;
-  })
-  // .then(() => {
-  //   setDec(xdec);
-  //   setNov(xnov);
-  //   setOct(xoct);
-  //   setSep(xsep);
-  //   setAug(xaug);
-  //   setJul(xjul);
-  //   setJun(xjun);
-  //   setMay(xmay);
-  //   setApr(xapr);
-  //   setMar(xmar);
-  //   setFeb(xfeb);
-  //   setJan(xjan);
-  // })
+  }
+    setDec(xdec);
+    setNov(xnov);
+    setOct(xoct);
+    setSep(xsep);
+    setAug(xaug);
+    setJul(xjul);
+    setJun(xjun);
+    setMay(xmay);
+    setApr(xapr);
+    setMar(xmar);
+    setFeb(xfeb);
+    setJan(xjan);
+
 }, []);
 
 return (
