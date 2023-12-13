@@ -11,6 +11,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import ReportIcon from '@mui/icons-material/Report';
 import { EditStatus } from "../EditStatus/EditStatus";
 import { NavBar } from "../NavBar/NavBar";
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Divider from '@mui/material/Divider';
+import { ListItemButton } from '@mui/material';
 import { yellow} from '@mui/material/colors';
 
 export const Dashboard = () => {
@@ -46,10 +51,11 @@ export const Dashboard = () => {
   return (
 		<>
 	<NavBar/>
-    {loggedInUser &&
-    <div>Logged in as {loggedInUser.name}</div>}
+	
+    {/* {loggedInUser &&
+    <div>Logged in as {loggedInUser.name}</div>} */}
 	<div className="big-container">
-		<h2>Dashboard</h2>
+	<Typography variant="h5" component="div" >Dashboard</Typography>
 		{/* <Button variant="contained" color="success" onClick={() => {setLoggedIn(false); setUserIsAdmin(false)}}>Logout</Button>
 		<Button variant="contained" color="success" onClick={() => {setUserIsAdmin(false); setLoggedIn(true)}}>Make User</Button>
 		<Button variant="contained" color="success" onClick={() => {setUserIsAdmin(true); setLoggedIn(true)}}>Make Admin</Button> */}
@@ -64,7 +70,7 @@ export const Dashboard = () => {
 					{satellites.map((sat) => {
 						return (
 							<div className="tile">
-								<Card sx={{ border: sat.status === 'GREEN' ? "solid 5px #00ff00" :
+								<Box sx={{  boxShadow: 3, p: 2, border: sat.status === 'GREEN' ? "solid 2px #00ff00" :
                                         sat.status === 'YELLOW' ? "solid 5px #facb6c" : "solid 5px #ff0000"}} variant="outlined">
 									<CardActionArea >
                                         <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
@@ -110,7 +116,7 @@ export const Dashboard = () => {
                                         </Button>
                                     </Link>
 									</CardActions >
-								</Card >
+								</Box >
 							</div>
 						)
 					})}
@@ -119,21 +125,22 @@ export const Dashboard = () => {
 		:
         loggedInUser && !loggedInUser.admin ?
 			<div className="userDisplay">
-				<h3>User</h3>
-				<div className="tileDisplay">
+				{/* <h3>User</h3> */}
+				<Box className="tileDisplay" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
+				{/* <div className="tileDisplay"> */}
 				{satellites.filter((satellite) => satellite.favorites.includes(loggedInUser.uid)).map((sat) => {
 					return (
 						<div className="tile">
-							<Card sx={{ border: sat.status === 'GREEN' ? "solid 5px #00ff00" :
-                                        sat.status === 'YELLOW' ? "solid 5px #facb6c" : "solid 5px #ff0000"}} variant="outlined">
+							<Box className="box" component="section" sx={{ boxShadow: 3, p: 2, border: sat.status === 'GREEN' ? "solid 2px #00ff00" :
+                                        sat.status === 'YELLOW' ? "solid 2px #facb6c" : "solid 2px #ff0000"}} variant="outlined">
 								<CardActionArea >
 									<Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
 										<CardMedia>
-											<p>Sat Image</p>
+											<img src={sat.image} width={220} height={170} alt='sat'/>
 										</CardMedia>
 										<CardContent >
 											<Typography variant="h5" component="div" >
-												{sat.name}
+												{sat.name.toUpperCase()}
 											</Typography >
 											{/* add any other details later*/}
 										</CardContent >
@@ -141,7 +148,7 @@ export const Dashboard = () => {
 								</CardActionArea >
 								<CardActions >
 									<Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}>
-                                        <Button variant="contained" color="success" endIcon={<AddIcon />}>Add Report</Button>
+                                        <Button variant="contained" color="success" >Add Report</Button>
                                     </Link>
                                     <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
                                         <Button variant="contained" color="secondary" endIcon={<ReportIcon />}>
@@ -149,11 +156,12 @@ export const Dashboard = () => {
                                         </Button>
                                     </Link>
 								</CardActions >
-							</Card >
+							</Box >
 						</div>
 					)
 				})}
-				</div>
+				{/* </div> */}
+				</Box>
 			</div>
 		: <h3>Not Logged In</h3>}
 	</div>

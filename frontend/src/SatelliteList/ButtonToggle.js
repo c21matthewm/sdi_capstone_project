@@ -53,10 +53,10 @@ export const ButtonToggle = ({sat}) => {
     <Button 
       variant="contained" 
       color={toggle ? "error" : "success"} 
-      startIcon={toggle ? <DeleteIcon /> : <AddIcon />} 
+      startIcon={toggle ? <DeleteIcon /> : <AddIcon/>} 
       className="add" 
       onClick={()=>{ addSat(sat) }}>
-      {toggle ? "Remove from Dashboard" : "Add to Dashboard"}
+      {toggle ? "Dashboard" :  "Dashboard" }
     </Button >
   ) 
 }
