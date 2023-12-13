@@ -31,8 +31,6 @@ export const ButtonToggle = ({sat}) => {
             })
     }, [updatedFavorites])
 
-
-
   const addSat = (sat) => {
 
     if (sat.favorites.includes(userUID)) {
@@ -42,11 +40,7 @@ export const ButtonToggle = ({sat}) => {
       setUpdatedFavorites([...sat.favorites, userUID])
     }
     setToggle(!toggle);
-    
-    // console.log('already added') 
-    // : setUpdatedFavorites([...sat.favorites, loggedInUser.uid])
-    
-    // console.log(`${sat.name}: ${updatedFavorites}`)
+  
     }
 
   return(

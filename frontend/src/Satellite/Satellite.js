@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { userContext } from '../App';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import "./Satellite.css"
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-import { ListItemButton } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { NavBar } from '../NavBar/NavBar';
@@ -23,13 +21,12 @@ export const Satellite = (props) => {
         <>
             <div className="sat-full">
                 <NavBar />
-                <Button onClick={() => navigate(-1)}>return to satellist list</Button>
                 <Box className="box" component="section" sx={{ p: 2 }}>
                     <div className="sat-container">
                         <div className="sat-box">
                             <Box className="box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
                                 <div className="components">
-                                    <Typography variant="h5" gutterBottom>{sat.name.toUpperCase()}</Typography>
+                                    <Typography variant="h5" gutterBottom>{sat.name.toUpperCase()} <Button id="return" onClick={() => navigate(-1)}>RETURN</Button></Typography>
                                     <img src={sat.image} height={300} alt="satellite"></img>
                                 </div>
                                 <div className="components">
@@ -74,7 +71,8 @@ export const Satellite = (props) => {
                                 <Chart state={{ sat }}/>
                             </Box>
                         </div>
-                    </div>
+                        </div>
+               
                 </Box>
             </div>
         </>
