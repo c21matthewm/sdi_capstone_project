@@ -43,23 +43,6 @@ export const AddReport = (props) => {
   const [long, setLong] = useState(0);
   const [status, setStatus] = useState('');
   const [reason, setReason] = useState([]);
-<<<<<<< HEAD:frontend/src/AddReport/AddReport.js
-=======
-
-  const [connection, setConnection] = useState(false);
-  const [quality, setQuality] = useState(false);
-
-  useEffect(() =>{
-    if (connection) {
-      setReason(reason => "Cannot Connect");
-    }
-  }, [connection]);
-
-  // const [garbled, setGarbled] = useState('')
-
-  // Introduced to facilitate more structured reporting and metrics
-  const [categoryfilter, setCategoryFilter] = useState('Category');
->>>>>>> 05cc2ca34367a7f84e6b5b416a8023507cd8302b:frontend/src/Report/AddReport.js
 
   const [checked, setChecked] = useState(
     new Array(reasonsForReport.length).fill(false)
@@ -165,7 +148,6 @@ export const AddReport = (props) => {
         <hr/>
 
         <label>Reason:</label><br/>
-<<<<<<< HEAD:frontend/src/AddReport/AddReport.js
         <ul>
           {reasonsForReport.map(({ issue }, index) => {
             return (
@@ -180,11 +162,6 @@ export const AddReport = (props) => {
             );
           })}
         </ul>
-=======
-        {/* <input type='text' onChange={(e)=>setReason(e.target.value)} value={reason}/> */}
-          <input type='checkbox' onChange={(e)=>setConnection(e.target.checked)} checked={connection}/>Cannot Connect<br/>
-          <input type='checkbox' onChange={(e)=>setQuality(e.target.checked)} checked={quality}/>Quality is Degraded<br/>
->>>>>>> 05cc2ca34367a7f84e6b5b416a8023507cd8302b:frontend/src/Report/AddReport.js
 
         <hr/>
         <button type="submit">submit</button>

@@ -48,7 +48,6 @@ function ReportList() {
             <option>My Reports</option>
             <option>Option</option>
           </select>
-<<<<<<< HEAD
           {selectedFruit ?
             <ul>
               
@@ -56,11 +55,9 @@ function ReportList() {
                 // {console.log('Hello', report)
                 // console.log('Hi',index, report[index])}
                 return (
-=======
-          {/* MUI <Select /> component ^^ */}
->>>>>>> 05cc2ca34367a7f84e6b5b416a8023507cd8302b
+                    /* MUI <Select /> component ^^ */
 
-                  <Link to={`/reports/${report.reportID}`}>
+
 
                     <li key={report.reportID}>
                       <b>Satellite:</b> {` Insight ${report.satelliteID}`}
@@ -72,7 +69,7 @@ function ReportList() {
                       <b>User status on:</b> {` ${report.time}`}
                       {/* Add A state that takes the number of times the a report was filed and display it here*/}
                     </li>
-                  </Link>
+
                 )
               })}
             </ul>
