@@ -49,7 +49,7 @@ exports.seed = async function(knex) {
     {time: '2022-12-15T03:14:00', latitude: 40, longitude: 30, frequency_band: "UHF", mission: "Echo", satelliteID: 4, userID: "vzzdW6FCYXhs8tCRCyAo33higXk1", status: "green", reason: "reconnected"},
     {time: '2022-12-12T02:24:00', latitude: 50, longitude: 20, frequency_band: "UHF", mission: "Foxtrot", satelliteID: 4, userID: "vzzdW6FCYXhs8tCRCyAo33higXk1", status: "red", reason: "garbled voice"},
     {time: '2022-12-17T03:24:00', latitude: 30, longitude: 40, frequency_band: "UHF", mission: "Golf", satelliteID: 4, userID: "vzzdW6FCYXhs8tCRCyAo33higXk1", status: "green", reason: "no issues"},
-    {time: '2022-12-15T03:14:00', latitude: 40, longitude: 30, frequency_band: "UHF", mission: "Hotel", satelliteID: 5, userID: "vzzdW6FCYXhs8tCRCyAo33higXk1", status: "green", reason: "reconnected"},
+    {time: '2022-11-15T03:14:00', latitude: 40, longitude: 30, frequency_band: "UHF", mission: "Hotel", satelliteID: 5, userID: "vzzdW6FCYXhs8tCRCyAo33higXk1", status: "green", reason: "reconnected"},
     {time: '2022-12-12T02:24:00', latitude: 50, longitude: 20, frequency_band: "UHF", mission: "India", satelliteID: 5, userID: "vzzdW6FCYXhs8tCRCyAo33higXk1", status: "red", reason: "garbled voice"},
     {time: '2022-12-17T03:24:00', latitude: 30, longitude: 40, frequency_band: "UHF", mission: "Juliett", satelliteID: 5, userID: "vzzdW6FCYXhs8tCRCyAo33higXk1", status: "green", reason: "no issues"},
     {time: '2022-12-15T03:14:00', latitude: 40, longitude: 30, frequency_band: "UHF", mission: "Kilo", satelliteID: 5, userID: "vzzdW6FCYXhs8tCRCyAo33higXk1", status: "green", reason: "reconnected"},
