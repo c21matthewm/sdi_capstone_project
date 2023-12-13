@@ -12,7 +12,7 @@ import { userContext } from "./App";
 import { NavBar } from "./NavBar/NavBar";
 
 export const AuthDetails = () => {
-  const { authUser, setAuthUser } = useContext(userContext);
+  const { authUser, setAuthUser, setLoggedInUser } = useContext(userContext);
   const { userUID, setUserUID } = useContext(userContext)
 
   useEffect(() => {
@@ -21,6 +21,7 @@ export const AuthDetails = () => {
         setAuthUser(user);
         setUserUID(user.uid);
         console.log(userUID)
+        // setLoggedInUser(user);
       } else {
         setAuthUser(null)
       }

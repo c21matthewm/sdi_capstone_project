@@ -5,7 +5,7 @@
 
 .list-sat {
   margin: auto;
-  width: 700px;
+  width: 750px;
 }
 
 .box-list {
@@ -16,4 +16,8 @@
 
 .satT {
   padding: 30px 0 10px 0;
+}
+
+.index-return {
+  display: inline-block
 }

@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import { NavBar } from "../NavBar/NavBar";
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -8,15 +8,18 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { userContext } from "../App";
 import ListItemButton from '@mui/material/ListItemButton';
+import { Button } from '@mui/material';
 import "./Report.css";
 
 export const Report = () => {
   const location = useLocation();
   const { report, sat} = location.state;
   const { reports } = useContext(userContext)
+  const navigate = useNavigate();
   return (
     <>
   <NavBar/>
+  <Button onClick={() => navigate(-1)}>return to satellite</Button>
   <Box className="box" id="flex-report" component="section" sx={{ p: 2}}>
                         <Box className="box" id="report-box"component="section" sx={{boxShadow: 3, p: 2, border: '1px solid grey' }}>
                             {/* <div className="sat-box"> */}

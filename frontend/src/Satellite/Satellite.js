@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { userContext } from '../App';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import "./Satellite.css"
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -11,16 +11,19 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { NavBar } from '../NavBar/NavBar';
 import { Chart } from './Chart';
+import { Button } from '@mui/material';
 
 export const Satellite = (props) => {
     const location = useLocation();
     const { sat } = location.state;
     const { reports } = useContext(userContext);
+    const navigate = useNavigate();
 
     return (
         <>
             <div className="sat-full">
                 <NavBar />
+                <Button onClick={() => navigate(-1)}>return to satellist list</Button>
                 <Box className="box" component="section" sx={{ p: 2 }}>
                     <div className="sat-container">
                         <div className="sat-box">
