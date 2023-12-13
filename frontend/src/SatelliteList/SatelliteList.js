@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext, createContext } from 'react';
+import React, { useState, useEffect, useContext, createContext} from 'react';
 import { userContext } from '../App';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './SatelliteList.css';
 import { ButtonToggle } from './ButtonToggle';
 // import Box from '@mui/material/Box';
@@ -17,18 +17,21 @@ import { NavBar } from '../NavBar/NavBar';
 import { Typography } from '@mui/material';
 import { Button } from '@mui/material';
 import ReportIcon from '@mui/icons-material/Report';
+import { yellow } from '@mui/material/colors';
 
 
 export const SatelliteList = () => {
     const [satellites, setSatellites] = useState([]);
     const { loggedInUser,
             reports } = useContext(userContext)
+    const primary = yellow[300];
 
     useEffect(() => {
         fetch('http://localhost:8080/satellites')
             .then(res => res.json())
             .then(data => setSatellites(data))
     }, [])
+
 
     return (
         <>
@@ -50,21 +53,20 @@ export const SatelliteList = () => {
                                     <ListItemText primary={`${sat.name.toUpperCase()}`} />
                                 </ListItemButton>
                                 {!loggedInUser.admin && <ButtonToggle sat={sat} />}
-                                {/* <ButtonToggle sat={sat} /> */}
-                                <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
-                                    <Button variant="contained" color="secondary" endIcon={<ReportIcon />}>
-                                        <Typography component="span">{reports.filter((report) => (report.satelliteID === sat.satelliteID)).length}</Typography>
-                                    </Button>
-                                </Link>                          
                                 <Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}>
                                     <Button 
                                         variant="contained" 
-                                        color="primary" 
-                                        startIcon={<ReportIcon />} 
+                                        color="primary"  
                                         className="add"> 
-                                        + Add Report 
+                                        Add Report 
                                     </ Button>
                                 </Link>
+                                {/* <ButtonToggle sat={sat} /> */}
+                                <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
+                                    <Button variant="contained" color="primary" endIcon={<ReportIcon />}>
+                                        <Typography component="span">{reports.filter((report) => (report.satelliteID === sat.satelliteID)).length}</Typography>
+                                    </Button>
+                                </Link>                          
                             </ListItem>
                         )
                     })}
