@@ -51,20 +51,20 @@ export const SatelliteList = () => {
                                 </ListItemButton>
                                 {!loggedInUser.admin && <ButtonToggle sat={sat} />}
                                 {/* <ButtonToggle sat={sat} /> */}
+                                                
+                                <Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}>
+                                    <Button 
+                                        variant="contained" 
+                                        color="primary"             
+                                        className="add"> 
+                                        Add Report 
+                                    </ Button>
+                                </Link>
                                 <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
                                     <Button variant="contained" color="secondary" endIcon={<ReportIcon />}>
                                         <Typography component="span">{reports.filter((report) => (report.satelliteID === sat.satelliteID)).length}</Typography>
                                     </Button>
-                                </Link>                          
-                                <Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}>
-                                    <Button 
-                                        variant="contained" 
-                                        color="primary" 
-                                        startIcon={<ReportIcon />} 
-                                        className="add"> 
-                                        + Add Report 
-                                    </ Button>
-                                </Link>
+                                </Link>  
                             </ListItem>
                         )
                     })}

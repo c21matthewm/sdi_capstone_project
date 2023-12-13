@@ -148,7 +148,7 @@ export const Dashboard = () => {
 								</CardActionArea >
 								<CardActions >
 									<Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}>
-                                        <Button variant="contained" color="success" endIcon={<AddIcon />}>Add Report</Button>
+                                        <Button variant="contained" color="success" >Add Report</Button>
                                     </Link>
                                     <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
                                         <Button variant="contained" color="secondary" endIcon={<ReportIcon />}>
