@@ -10,10 +10,12 @@ import { auth } from "./firebase";
 import { userContext } from "./App";
 // import '../../CSS/AuthDetails.css';
 import { NavBar } from "./NavBar/NavBar";
+import { AdminDashboard } from "./Dashboard/AdminDashboard";
 
 export const AuthDetails = () => {
-  const { users, authUser, setAuthUser, setLoggedInUser } = useContext(userContext);
+  const { authUser, setAuthUser } = useContext(userContext);
   const { userUID, setUserUID } = useContext(userContext)
+  const [admin, setAdmin ] = useState(false);
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
@@ -21,7 +23,10 @@ export const AuthDetails = () => {
         setAuthUser(user);
         setUserUID(user.uid);
         console.log(userUID)
-        users.find((user) => { user.uid === userUID ? setLoggedInUser(user) : console.log('no user found') })
+        fetch(`http://localhost:8080/users/${user.uid}`)
+        .then((res) => res.json())
+        .then(data => setAdmin(data[0].admin))
+        // users.find((user) => { user.uid === userUID ? setLoggedInUser(user) : console.log('no user found') })
       } else {
         setAuthUser(null)
       }
@@ -32,24 +37,23 @@ export const AuthDetails = () => {
     }
   }, []);
 
-  const userSignOut = () => {
-    signOut(auth)
-      .then(() => {
-        console.log('sign out succesful')
-      })
-      .catch((error) => console.log(error))
-  }
+  // const userSignOut = () => {
+  //   signOut(auth)
+  //     .then(() => {
+  //       console.log('sign out succesful')
+  //     })
+  //     .catch((error) => console.log(error))
+  // }
 
 
   return (
     <div> {authUser ?
-      <>
-        <Dashboard />
+      <> { admin ?
+      <AdminDashboard /> : <Dashboard />
+          }
       </>
       :
-      <>
         <Login />
-      </>
     }
     </div>
   )

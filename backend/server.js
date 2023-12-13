@@ -43,6 +43,17 @@ app.get('/users', (req, res) =>{
     })
 })
 
+app.get('/users/:uid', (req, res) =>{
+  knex('users')
+    .select('*')
+    .where("uid", req.params.uid)
+    .orderBy('userID', 'asc')
+    .then(data => {
+      res.status(200).json(data);
+    })
+})
+
+
 app.get('/satellites/:satelliteID', (req, res) =>{
   knex('satellites')
     .select('*')
