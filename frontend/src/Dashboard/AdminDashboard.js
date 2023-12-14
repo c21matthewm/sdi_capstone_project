@@ -50,7 +50,7 @@ export const AdminDashboard = () => {
                         </CardMedia>
                         <CardContent >
                           <Typography variant="h5" component="div" >
-                            {sat.name}
+                            {sat.name.toUpperCase()}
                           </Typography >
                         </CardContent >
                       </Link>

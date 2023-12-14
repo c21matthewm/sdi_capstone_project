@@ -1,6 +1,18 @@
 import React, { useState, useContext } from "react";
 import { NavBar } from "../NavBar/NavBar";
 import { userContext } from "../App";
+import { useNavigate } from "react-router-dom";
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
+import ListItemText from '@mui/material/ListItemText';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import { Divider } from '@mui/material';
+import Button from '@mui/material/Button';
+import {Typography} from "@mui/material";
 
 export const AddSatellite = () => {
   const [name, setName] = useState("");
@@ -10,8 +22,9 @@ export const AddSatellite = () => {
   const [mission, setMission] = useState("");
   const [country, setCountry] = useState("");
   const [frequencyBand, setFrequencyBand] = useState("");
-  const { loggedInUser } = useContext(userContext)
-  const [image, setImage] = useState("");
+  const navigate = useNavigate();
+  // const { userUID } = useContext(userContext)
+  // const [image, setImage] = useState("");
 
   const onSatelliteSubmit = (e) => {
     e.preventDefault();
@@ -29,8 +42,8 @@ export const AddSatellite = () => {
         mission: mission,
         country: country,
         frequency_band: frequencyBand,
-        favorites: loggedInUser.uid,
-        image: image,
+        favorites: ["pMr2t4qkIgMwisegISjdwOMW9UU2"],
+        image: "https://spacenews.com/wp-content/uploads/2015/02/DMSP-USAF-e1458009205961.jpg",
       }),
     }).then(() => {
       setName("");
@@ -40,80 +53,81 @@ export const AddSatellite = () => {
       setMission("");
       setCountry("");
       setFrequencyBand("");
-      setImage("");
+      navigate('/')
+      // setImage("");
     });
   };
 
   return (
     <>
       <NavBar />
-      <form onSubmit={onSatelliteSubmit}>
-        <label>Name:</label>
-        <input
-          type="text"
-          onChange={(e) => setName(e.target.value)}
-          value={name}
-        ></input>
-        <hr />
+      <div className='report-container'>
+        <Box className="box" id="add-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
+        <Typography variant="h6" gutterBottom>Add Satellite</Typography>
+        <Divider></Divider>
+          <form onSubmit={onSatelliteSubmit}>
+            <InputLabel>Name:</InputLabel>
+            <TextField
+              type="text"
+              onChange={(e) => setName(e.target.value)}
+              value={name}
+            />
+            <Divider></Divider>
 
-        <label>Longitude:</label>
-        <input
-          type="number"
-          onChange={(e) => setLongitude(e.target.value)}
-          value={longitude}
-        ></input>
-        <hr />
+            <InputLabel>Longitude:</InputLabel>
+            <TextField
+              type="number"
+              onChange={(e) => setLongitude(e.target.value)}
+              value={longitude}
+            />
+            <Divider></Divider>
 
-        <label>Status:</label>
-        <input
-          type="text"
-          onChange={(e) => setStatus(e.target.value)}
-          value={status}
-        ></input>
-        <hr />
 
-        <label>Orbit:</label>
-        <input
-          type="text"
-          onChange={(e) => setOrbit(e.target.value)}
-          value={orbit}
-        ></input>
-        <hr />
+            <InputLabel>Status:</InputLabel>
+            <TextField
+              type="text"
+              onChange={(e) => setStatus(e.target.value)}
+              value={status}
+            />
+            <Divider></Divider>
 
-        <label>Mission:</label>
-        <input
-          type="text"
-          onChange={(e) => setMission(e.target.value)}
-          value={mission}
-        ></input>
-        <hr />
+            <InputLabel>Orbit:</InputLabel>
+            <Select id="orbitl" value={orbit} name="orbit" onChange={(e) => setOrbit(e.target.value)}>
+              <MenuItem value="UHF">LEO</MenuItem>
+              <MenuItem value="SHF">MEO</MenuItem>
+              <MenuItem value="EHF">GEO</MenuItem>
+              <MenuItem value="EHF">HEO</MenuItem>
+            </Select>
+            <Divider></Divider>
 
-        <label>Country:</label>
-        <input
-          type="text"
-          onChange={(e) => setCountry(e.target.value)}
-          value={country}
-        ></input>
-        <hr />
+            <InputLabel>Mission:</InputLabel>
+            <TextField
+              type="text"
+              onChange={(e) => setMission(e.target.value)}
+              value={mission}
+            />
+            <Divider></Divider>
 
-        <label>Frequency Band:</label>
-        <input
-          type="text"
-          onChange={(e) => setFrequencyBand(e.target.value)}
-          value={frequencyBand}
-        ></input>
-        <hr />
+            <InputLabel>Country:</InputLabel>
+            <TextField
+              type="text"
+              onChange={(e) => setCountry(e.target.value)}
+              value={country}
+            />
+            <Divider></Divider>
 
-        <label>Image:</label>
-        <input
-          type="text"
-          onChange={(e) => setImage(e.target.value)}
-          value={image}
-        ></input>
-        <hr />
+            <InputLabel>Frequency Band:</InputLabel>
+            <Select id="freq-label" value={frequencyBand} name="frequency bands" onChange={(e) => setFrequencyBand(e.target.value)}>
+              <MenuItem value="UHF">UHF</MenuItem>
+              <MenuItem value="SHF">SHF</MenuItem>
+              <MenuItem value="EHF">EHF</MenuItem>
+            </Select>
+            <Divider></Divider>
 
-        <button type="submit">Submit</button>
-      </form>
+            <Button type="submit">Submit</Button>
+          </form>
+        </Box>
+      </div>
     </>
   );
 };
