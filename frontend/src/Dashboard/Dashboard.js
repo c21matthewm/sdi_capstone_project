@@ -37,6 +37,10 @@ export const Dashboard = () => {
 		setPopupVisible(false);
 	};
 
+	useEffect(() => {
+		console.log('userUID: ', userUID)
+	}, [])
+
 	return (
 		<>
 			<NavBar />
