@@ -54,7 +54,6 @@ export const AddSatellite = () => {
       setCountry("");
       setFrequencyBand("");
       navigate('/')
-      // setImage("");
     });
   };
 

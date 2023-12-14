@@ -26,7 +26,7 @@ export const Satellite = (props) => {
                         <div className="sat-box">
                             <Box className="box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
                                 <div className="components">
-                                    <Typography variant="h5" gutterBottom>{sat.name.toUpperCase()} <Button id="return" onClick={() => navigate(-1)}>RETURN</Button></Typography>
+                                    <Typography variant="h5" gutterBottom>{sat.name.toUpperCase()} <Button id="return" variant='contained' color='primary' onClick={() => navigate(-1)}>RETURN</Button></Typography>
                                     <img src={sat.image} height={300} alt="satellite"></img>
                                 </div>
                                 <div className="components">
