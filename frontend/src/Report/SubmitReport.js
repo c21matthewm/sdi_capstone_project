@@ -1,4 +1,4 @@
-import { Checkbox } from "@mui/material";
+import Checkbox from '@mui/material/Checkbox';
 import { fontSize } from "@mui/system";
 import React, { useEffect, useState, useContext} from "react";
 import { useLocation } from "react-router-dom";
@@ -11,48 +11,47 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import ListItemText from '@mui/material/ListItemText';
-
+import OutlinedInput from '@mui/material/OutlinedInput';
 
 export const SubmitReport = () => {
-
-
+  const ITEM_HEIGHT = 48;
+  const ITEM_PADDING_TOP = 8;
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+        width: 250,
+      },
+    },
+  };
+  
   const reasonsForReport = [
     {
       issue: 'Cannot Connect',
-      checked: false
-
     },
     {
       issue: 'Quality is Degraded',
-      checked: false
     },
     {
       issue: 'Blocked LOS',
-      checked: false
     },
     {
       issue: 'Atmospheric Conditions',
-      checked: false
     },
     {
       issue: 'Signal Latency',
-      checked: false
     },
     {
       issue: 'Signal Interference',
-      checked: false
     },
     {
       issue: 'Equipment Malfunction',
-      checked: false
     },
     {
       issue: 'Power Supply Issue',
-      checked: false
     },
     {
       issue: 'Frequency Coordination',
-      checked: false
     }
   ];
 
@@ -66,30 +65,19 @@ export const SubmitReport = () => {
   const [lat, setLat] = useState(0);
   const [long, setLong] = useState(0);
   const [status, setStatus] = useState('');
-  const [reason, setReason] = useState([]);
   const [satID, setSatID] = useState(1);
-  const [checked, setChecked] = useState([]);
+  const [reason, setReason] = useState([]);
 
-  function handleOnChange(position) {
-    let isItChecked = checked.map((item, index) =>
-      index === position ? !item : item
+  
+  const handleChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setReason(
+      // On autofill we get a stringified value.
+      typeof value === 'string' ? value.split(',') : value,
     );
-
-    setChecked(isItChecked);
-
-
-    let totalIssues = isItChecked.reduce((sum, report, index) => {
-      if (report === true) {
-        return sum += reasonsForReport[index].issue;
-      }
-      return sum;
-    });
-
-    setReason(totalIssues)
-
-    console.log(totalIssues)
-
-  }
+  };
 
 
     const onSubmit = (e) => {
@@ -123,16 +111,6 @@ export const SubmitReport = () => {
           setReason('');
         })
     }
-
-    const handleChange = (event) => {
-      const {
-        target: { value },
-      } = event;
-      setReason(
-        // On autofill we get a stringified value.
-        typeof value === 'string' ? value.split(',') : value,
-      );
-    };
 
     useEffect(()=> {
       console.log(reason)
@@ -191,62 +169,31 @@ export const SubmitReport = () => {
 
 
         <hr/>
-        
-        <InputLabel>Reason:</InputLabel>
-            <Select
-              value={reason}
-              multiple
-              onChange={(e)=>{setReason([...reason, e.target.value]);
-              
-              }}
-
-              >
-
-              {reasonsForReport.map(x => {
-              return(
-                <MenuItem value={x.issue}>
-                  <Checkbox checked={reason.includes(x.issue)} /> 
-                  <ListItemText primary={x.issue} />
-                </MenuItem>
-              )
-            })}
-
-
-              {/* <MenuItem value="Cannot Connect">
-                <Checkbox checked={reason.indexOf("Cannot Connect") > -1} /> 
-                <ListItemText primary="Cannot Connect" />
-              </MenuItem> 
-              <MenuItem value="Quality is Degrqaded">
-                <Checkbox checked={reason.indexOf("Quality is Degraded") > -1} /> 
-                <ListItemText primary="Quality is Degraded" />
-                </MenuItem>  */}
-              {/* <MenuItem value="Blocked LOS">Blocked LOS</MenuItem> 
-              <MenuItem value="Atmospheric Conditions">Atmospheric Conditions</MenuItem> 
-              <MenuItem value="Signal Interference">Signal Interference</MenuItem> 
-              <MenuItem value="Signal Latency">Signal Latency</MenuItem> 
-              <MenuItem value="Equipment Malfunction">Equipment Malfunction</MenuItem> 
-              <MenuItem value="Power Supply Issues">Power Supply Issues</MenuItem> 
-              <MenuItem value="Frequency Coordination">Frequency Coordination</MenuItem>  */}
-            </Select>
+        <FormControl sx={{ m: 1, width: 300 }}>
+        <InputLabel id="reason">Tag</InputLabel>
+        <Select
+          labelId="reason"
+          id="demo-multiple-checkbox"
+          multiple
+          value={reason}
+          onChange={handleChange}
+          input={<OutlinedInput label="Tag" />}
+          renderValue={(selected) => selected.join(', ')}
+          MenuProps={MenuProps}
+        >
+          {reasonsForReport.map((string) => (
+            <MenuItem key={string.issue} value={string.issue}>
+              <Checkbox checked={reason.indexOf(string.issue) > -1} />
+              <ListItemText primary={string.issue} />
+            </MenuItem>
+          ))}
+        </Select>
+        </FormControl>
 
         <hr/>
         <button type="submit">submit</button>
-        
-        {/* <button type="submit" onSubmit={convertReason}>submit</button> */}
       </form>
     </>
   )
 }
 
-
-// table.string('time');
-// table.string('frequency_band');
-// table.string('mission');
-// table.integer('latitude');
-// table.integer('longitude');
-// table.integer('userID')
-//   table.foreign('userID').references('users.userID');
-// table.integer('satelliteID')
-//   table.foreign('satelliteID').references('satellites.satelliteID');
-// table.string('status');
-// table.string('reason');
