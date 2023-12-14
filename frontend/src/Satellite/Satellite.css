@@ -57,7 +57,7 @@
 }
 
 a {
-  color:black;
+  color:var(--text-color);
 }
 
 .stacked {
