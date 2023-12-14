@@ -55,7 +55,7 @@ function App() {
     }}>
 
       <Routes>
-        <Route path='/map' element={<Map />} />
+        {/* <Route path='/map' element={<Map />} /> */}
         <Route path='/satellites' element={<SatelliteList />} />
         <Route path='/satellites/:id' element={<Satellite />} />
         <Route path='/reports' element={<ReportList />} />

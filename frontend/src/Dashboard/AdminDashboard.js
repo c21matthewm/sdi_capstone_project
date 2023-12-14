@@ -28,9 +28,9 @@ export const AdminDashboard = () => {
             <Button variant="contained" color="success">Add Satellite</Button>
           </Link>
           <div className="tileDisplay">
-            {satellites.map((sat) => {
+            {satellites.map((sat, index) => {
               return (
-                <div className="tile">
+                <div id={index} className="tile">
                   <Box sx={{
                     boxShadow: 3, p: 2, borderRadius: '10px', border: sat.status === 'GREEN' ? "solid 5px #00ff00" :
                       sat.status === 'YELLOW' ? "solid 5px #facb6c" : "solid 5px #ff0000"
@@ -41,8 +41,8 @@ export const AdminDashboard = () => {
                           <Box
                             component="img"
                             sx={{
-                              height: 'auto',
-                              width: '100px',
+                              height: '95px',
+                              width: '120px',
                             }}
                             src={sat.image}
                             alt="satellite image"

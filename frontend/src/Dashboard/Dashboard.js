@@ -54,7 +54,15 @@ export const Dashboard = () => {
 										<CardActionArea >
 											<Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
 												<CardMedia>
-													<img src={sat.image} width={220} height={170} alt='sat' />
+													<Box
+														component="img"
+														sx={{
+														height: '95px',
+														width: '120px',
+														}}
+														src={sat.image}
+														alt="satellite image"
+													/>
 												</CardMedia>
 												<CardContent >
 													<Typography variant="h5" component="div" >
