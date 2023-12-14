@@ -22,4 +22,5 @@
     text-decoration: none; 
     background-color: var(--component-color);
     color:var(--text-color);
+    border-radius: 10px;
 }

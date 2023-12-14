@@ -32,8 +32,8 @@ export const AdminDashboard = () => {
               return (
                 <div className="tile">
                   <Box sx={{
-                    boxShadow: 3, p: 2, border: sat.status === 'GREEN' ? "solid 2px #00ff00" :
-                      sat.status === 'YELLOW' ? "solid 2px #facb6c" : "solid 2px #ff0000"
+                    boxShadow: 3, p: 2, borderRadius: '10px', border: sat.status === 'GREEN' ? "solid 5px #00ff00" :
+                      sat.status === 'YELLOW' ? "solid 5px #facb6c" : "solid 5px #ff0000"
                   }} variant="outlined">
                     <CardActionArea >
                       <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
