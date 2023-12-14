@@ -43,20 +43,6 @@ export default Map;
 
 
 
-// const ComponentResize = () => {
-// 	const map = useMap();
-
-// 	setTimeout(() => {
-// 		map.invalidateSize();
-// 	}, 0);
-
-// 	return null;
-// };
 
 
 
-// {/* <Marker position={position}>
-			// 	<Popup>
-			// 		A pretty CSS3 popup. <br /> Easily customizable.
-			// 	</Popup>
-			// </Marker> */}

@@ -6,15 +6,15 @@ import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 export const ButtonToggle = ({sat}) => {
-  const { loggedInUser } = useContext(userContext)
-  const [toggle, setToggle] = useState(sat.favorites.includes(loggedInUser.uid) ? true : false);
+  const { userUID } = useContext(userContext)
+  const [toggle, setToggle] = useState(sat.favorites.includes(userUID) ? true : false);
   const [updatedFavorites, setUpdatedFavorites] = useState([])
 
     useEffect(() => {
         console.log(sat)
         console.log('sat.favorites: ', sat.favorites)
         console.log('updatedFavorites: ', updatedFavorites)
-        console.log(loggedInUser.uid)
+        console.log(userUID)
 
         updatedFavorites.length > 0 &&
 
@@ -31,32 +31,25 @@ export const ButtonToggle = ({sat}) => {
             })
     }, [updatedFavorites])
 
-
-
   const addSat = (sat) => {
 
-    if (sat.favorites.includes(loggedInUser.uid)) {
-      const newFavorites = sat.favorites.filter((uid) => uid !== loggedInUser.uid);
+    if (sat.favorites.includes(userUID)) {
+      const newFavorites = sat.favorites.filter((uid) => uid !== userUID);
       setUpdatedFavorites(newFavorites);
     } else {
-      setUpdatedFavorites([...sat.favorites, loggedInUser.uid])
+      setUpdatedFavorites([...sat.favorites, userUID])
     }
     setToggle(!toggle);
-    
-    // console.log('already added') 
-    // : setUpdatedFavorites([...sat.favorites, loggedInUser.uid])
-    
-    // console.log(`${sat.name}: ${updatedFavorites}`)
     }
 
   return(
     <Button 
       variant="contained" 
       color={toggle ? "error" : "success"} 
-      startIcon={toggle ? <DeleteIcon /> : <AddIcon />} 
+      startIcon={toggle ? <DeleteIcon /> : <AddIcon/>} 
       className="add" 
       onClick={()=>{ addSat(sat) }}>
-      {toggle ? "Remove from Dashboard" : "Add to Dashboard"}
+      {toggle ? "Dashboard" :  "Dashboard" }
     </Button >
   ) 
 }

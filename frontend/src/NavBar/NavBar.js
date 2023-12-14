@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import './NavBar.css';
-import { AuthDetails } from "../AuthDetails";
+import { AuthDetails } from "../Authorizations/AuthDetails";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -53,12 +53,9 @@ export const NavBar = () => {
                         SatBridge
                     </Typography>
                     <Box sx={{ justifyContent: 'flex-start' }}>
-                        {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex'}, mr: 1 }} /> */}
-
-
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                            <ListItemButton component={Link} to={`/dashboard`} >
+                            <ListItemButton component={Link} to={`/`} >
                                 <ListItemText primary={`DASHBOARD`} />
                             </ListItemButton>
 

@@ -1,16 +1,31 @@
 .big-container {
     text-align: center;
+    margin-top:50px;
+    display:flex;
+    flex-direction: column;
+
 }
 
 .tileDisplay {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content:space-around;
+    margin:15px 100px 0px 100px;
+    padding:10px;
+    
 }
 
 .tile {
-    max-width: 20%;
+    width: 275px;
     margin: 20px;
-    color: inherit; /* Use the same color as the surrounding text */
-    text-decoration: none; /* Remove underline */
+    text-decoration: none; 
+    background-color: var(--component-color);
+    color:var(--text-color);
+    border-radius: 10px;
+}
+
+.popup {
+    text-align: center;
+    transition: all 0.3s ease;
 }
