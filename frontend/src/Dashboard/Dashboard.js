@@ -77,10 +77,10 @@ export const Dashboard = () => {
 										</CardActionArea >
 										<CardActions >
 											<Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}>
-												<Button variant="contained" color="success" >Add Report</Button>
+												<Button variant="contained" color="info" >Add Report</Button>
 											</Link>
 											<Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
-												<Button variant="contained" color="secondary" endIcon={<ReportIcon />}>
+												<Button variant="contained" color="error" endIcon={<ReportIcon />}>
 													<Typography component="span">{reports.filter((report) => (report.satelliteID === sat.satelliteID)).length}</Typography>
 												</Button>
 											</Link>

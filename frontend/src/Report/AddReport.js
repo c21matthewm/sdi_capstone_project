@@ -176,7 +176,7 @@ export const AddReport = () => {
             </FormControl>
 
             <Divider/>
-            <Button type="submit" variant='contained' color='success'>submit</Button>
+            <Button type="submit" variant='contained' color='info'>submit</Button>
           </form>
         </Box>
       </div>
