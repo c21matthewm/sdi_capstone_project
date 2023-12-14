@@ -45,7 +45,7 @@ export const Dashboard = () => {
 		<>
 			<NavBar />
 			<div className="big-container">
-				<Typography variant="h5" component="div" > USER Dashboard</Typography>
+				<Typography variant="h5" component="div" className="dashtitle" > USER Dashboard</Typography>
 				<div className="userDisplay">
 					<Box className="tileDisplay" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
 						{satellites.filter((satellite) => satellite.favorites.includes(userUID)).map((sat) => {

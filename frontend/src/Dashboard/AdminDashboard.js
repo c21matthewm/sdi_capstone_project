@@ -22,7 +22,7 @@ export const AdminDashboard = () => {
     <>
       <NavBar />
       <div className="big-container">
-        <Typography variant="h5" component="div" >ADMIN Dashboard</Typography>
+        <Typography variant="h5" component="div" ><div className="dashtitle">ADMIN Dashboard</div></Typography>
         <div className="adminDisplay">
           <Link to={`/addsatellite`}>
             <Button variant="contained" color="success">Add Satellite</Button>
@@ -50,7 +50,7 @@ export const AdminDashboard = () => {
                         </CardMedia>
                         <CardContent >
                           <Typography variant="h5" component="div" >
-                            {sat.name}
+                            {sat.name.toUpperCase()}
                           </Typography >
                         </CardContent >
                       </Link>

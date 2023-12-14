@@ -20,18 +20,25 @@
   height:650px;
   margin:40px auto;
   gap: 50px;
+  
 
 }
 
+
+
 #add-box {
-  margin:50px;
+  /* margin:50px; */
   width:800px;
   /* display:flex;
   width:700px; */
-  /* height: 700px; */
+  height: 700px;
+  overflow: scroll;
+  background-color: var(--component-color);
 }
 
 .report-container {
   display:flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }

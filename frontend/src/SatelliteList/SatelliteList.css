@@ -16,6 +16,7 @@
 
 .satT {
   padding: 30px 0 10px 0;
+  color:var(--title-color)
 }
 
 .index-return {

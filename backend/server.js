@@ -98,7 +98,11 @@ app.post('/satellites', async(req, res) => {
       name: req.body.name,
       longitude: req.body.longitude,
       status: req.body.status,
+      orbit: req.body.orbit,
       image: req.body.image,
+      mission: req.body.mission,
+      country: req.body.country,
+      frequency_band: req.body.frequency_band,
       favorites: req.body.favorites,
       })
       .then(() => {
