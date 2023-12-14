@@ -12,6 +12,8 @@ import ListItemText from '@mui/material/ListItemText';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import { Divider } from '@mui/material';
 import Button from '@mui/material/Button';
+import { useLocation } from 'react-router-dom';
+
 export const AddReport = () => {
 
   const ITEM_HEIGHT = 48;
@@ -26,6 +28,8 @@ export const AddReport = () => {
   };
 
   const { userUID, satellites } = useContext(userContext);
+  const location = useLocation();
+  const { sat } = location.state;
 
   const [time, setTime] = useState('');
   const [freq, setFreq] = useState('');
@@ -33,7 +37,7 @@ export const AddReport = () => {
   const [lat, setLat] = useState(0);
   const [long, setLong] = useState(0);
   const [status, setStatus] = useState('');
-  const [satID, setSatID] = useState(1);
+  // const [satID, setSatID] = useState(1);
   const [reason, setReason] = useState([]);
   const reasonsForReport = [
     {issue: 'Cannot Connect'},
@@ -77,7 +81,7 @@ export const AddReport = () => {
           "longitude": long,
           "status": status,
           "reason": reason,
-          "satelliteID": satID,
+          "satelliteID": sat.satelliteID,
           "userID": userUID
         }),
       })
@@ -103,14 +107,14 @@ export const AddReport = () => {
       <div className='report-container'>
         <Box className="box" id="add-box" component="section" sx={{  boxShadow: 3, p: 2, border: '1px solid grey' }}>
           <form onSubmit={onSubmit}>
-            <InputLabel id="sat-label">Satellite:</InputLabel>
-            <Select id="sat-label" value={satID} name="satellites" onChange={(e) => setSatID(e.target.value)}>
+            <InputLabel id="sat-label">Satellite:<b>{sat.name.toUpperCase()}</b></InputLabel>
+            {/* <Select id="sat-label" value={satID} name="satellites" onChange={(e) => setSatID(e.target.value)}>
               {satellites.map(satellite => {
                 return (
                   <MenuItem value={satellite.satelliteID}>{satellite.name}</MenuItem>
                 )
               })}
-            </Select>
+            </Select> */}
             <Divider />
             <InputLabel>Time:</InputLabel>
             <TextField variant="outlined" type='datetime-local' onChange={(e) => setTime(e.target.value)} value={time} />

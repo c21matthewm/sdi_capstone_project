@@ -67,6 +67,7 @@ function App() {
         <Route path='/editstatus' element={<EditStatus />} />
         <Route path='/addreport/' element={<SubmitReport />} />
         <Route path='/addsatellite' element={<AddSatellite />} />
+        <Route path='/map' element={<Map />} />
       </Routes>
     </userContext.Provider>
   )

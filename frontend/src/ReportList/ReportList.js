@@ -50,7 +50,7 @@ function ReportList() {
           </select>
           {selectedFruit ?
             <ul>
-              
+
               {arr.map((report) => {
                 // {console.log('Hello', report)
                 // console.log('Hi',index, report[index])}
@@ -80,15 +80,15 @@ function ReportList() {
             <p>THIS IS THE METRIC PANEL.</p>
 
             < MixedBarChart/>
-            {allSatellites.map((satellite) => {
+            {/* {allSatellites.map((satellite) => {
               return(
                 <section>
                   <h3>{` Insight ${satellite.satelliteID}`}</h3>
                   <PieCenterLabel/>
                 </section>
               )
-            })}
-          
+            })} */}
+
 
 
         </div>
