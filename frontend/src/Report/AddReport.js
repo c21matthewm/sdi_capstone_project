@@ -35,6 +35,19 @@ export const AddReport = () => {
   const [status, setStatus] = useState('');
   const [satID, setSatID] = useState(1);
   const [reason, setReason] = useState([]);
+
+
+
+  // const [checked, setChecked] = useState(
+  //   new Array(reasonsForReport.length).fill(false)
+  // );
+
+  // function handleOnChange(position) {
+  //   let isItChecked = checked.map((item, index) =>
+  //     index === position ? !item : item
+  //   );
+
+  //   setChecked(isItChecked);
   const reasonsForReport = [
     {issue: 'Cannot Connect'},
     {issue: 'Quality is Degraded'},
@@ -54,6 +67,9 @@ export const AddReport = () => {
     } = event;
     setReason(value);
 
+    
+
+    // setReason(totalIssues)
       // On autofill we get a stringified value.
     //   typeof value === 'string' ? value.split(',') : value,
     // );
@@ -176,7 +192,7 @@ export const AddReport = () => {
             </FormControl>
 
             <Divider/>
-            <Button type="submit" variant='contained' color='success'>submit</Button>
+            <Button type="submit" variant='contained' color='info'>submit</Button>
           </form>
         </Box>
       </div>
