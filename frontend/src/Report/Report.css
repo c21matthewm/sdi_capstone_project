@@ -20,6 +20,7 @@
   height:650px;
   margin:40px auto;
   gap: 50px;
+  
 
 }
 
@@ -28,7 +29,9 @@
   width:800px;
   /* display:flex;
   width:700px; */
-  /* height: 700px; */
+  height: 700px;
+  overflow: scroll;
+  background-color: var(--component-color);
 }
 
 .report-container {
