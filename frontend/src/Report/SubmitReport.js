@@ -1,7 +1,5 @@
 import Checkbox from '@mui/material/Checkbox';
-import { fontSize } from "@mui/system";
 import React, { useEffect, useState, useContext } from "react";
-import { useLocation } from "react-router-dom";
 import { NavBar } from "../NavBar/NavBar";
 import { userContext } from "../App";
 import Box from '@mui/material/Box';
