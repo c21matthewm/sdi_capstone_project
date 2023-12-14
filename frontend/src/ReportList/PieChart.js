@@ -15,17 +15,17 @@ import { userContext } from '../App';
 // setTestValue(60)
 
 // const data = [
-  // { value: thisData, label: 'A' },
+  // { value: 60, label: 'A' },
 //   { value: 40, label: 'B' },
 
 // ];
 // const differentData = [
-//   { value: thatData, label: 'A' },
+//   { value: 60, label: 'A' },
 //   { value: 40, label: 'B' },
 
 // ];
 // const data3 = [
-//   { value: hereData, label: 'A' },
+//   { value: , label: 'A' },
 //   { value: 40, label: 'B' },
 
 // ];

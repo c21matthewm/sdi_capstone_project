@@ -7,6 +7,7 @@ import { userContext } from '../App';
 import './ReportList.css';
 import MixedBarChart from './ProblemMetric'
 import { NavBar } from '../NavBar/NavBar';
+import SatelliteDropDown from './SatelliteDropDown';
 
 function ReportList() {
 
@@ -80,15 +81,12 @@ function ReportList() {
             <p>THIS IS THE METRIC PANEL.</p>
 
             < MixedBarChart/>
-            {allSatellites.map((satellite) => {
-              return(
-                <section>
-                  <h3>{` Insight ${satellite.satelliteID}`}</h3>
-                  {/* <PieCenterLabel/> */}
-                </section>
-              )
-            })}
-          
+            <section>
+              <h3 style={{ display: 'flex'}}>Satellite Status</h3>
+
+                      <SatelliteDropDown/>
+
+            </section>
 
 
         </div>
