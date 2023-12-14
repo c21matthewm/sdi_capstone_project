@@ -52,11 +52,11 @@ export const SatelliteList = () => {
                                             Add Report
                                         </ Button>
                                     </Link>
-                                    <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
+                                    {/* <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
                                         <Button variant="contained" color="secondary" endIcon={<ReportIcon />}>
                                             <Typography component="span">{reports.filter((report) => (report.satelliteID === sat.satelliteID)).length}</Typography>
                                         </Button>
-                                    </Link>
+                                    </Link> */}
                                 </ListItem>
                             )
                         })}
