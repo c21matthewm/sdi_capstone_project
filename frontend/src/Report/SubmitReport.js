@@ -1,6 +1,6 @@
 import Checkbox from '@mui/material/Checkbox';
 import { fontSize } from "@mui/system";
-import React, { useEffect, useState, useContext} from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { NavBar } from "../NavBar/NavBar";
 import { userContext } from "../App";
@@ -12,7 +12,8 @@ import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import ListItemText from '@mui/material/ListItemText';
 import OutlinedInput from '@mui/material/OutlinedInput';
-
+import { Divider } from '@mui/material';
+import Button from '@mui/material/Button';
 export const SubmitReport = () => {
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
@@ -24,7 +25,7 @@ export const SubmitReport = () => {
       },
     },
   };
-  
+
   const reasonsForReport = [
     {
       issue: 'Cannot Connect',
@@ -68,7 +69,7 @@ export const SubmitReport = () => {
   const [satID, setSatID] = useState(1);
   const [reason, setReason] = useState([]);
 
-  
+
   const handleChange = (event) => {
     const {
       target: { value },
@@ -80,119 +81,121 @@ export const SubmitReport = () => {
   };
 
 
-    const onSubmit = (e) => {
-      e.preventDefault();
-        fetch('http://localhost:8080/reports' ,
-        {
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            "time": time,
-            "frequency_band": freq,
-            "mission": mission,
-            "latitude": lat,
-            "longitude": long,
-            "status": status,
-            "reason": reason,
-            "satelliteID": satID,
-            "userID": userUID
-          }),
-        })
-        .then(()=>{
-          setTime('');
-          setFreq('');
-          setMission('');
-          setLat(0);
-          setLong(0);
-          setStatus('');
-          setReason('');
-        })
-    }
+  const onSubmit = (e) => {
+    e.preventDefault();
+    fetch('http://localhost:8080/reports',
+      {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          "time": time,
+          "frequency_band": freq,
+          "mission": mission,
+          "latitude": lat,
+          "longitude": long,
+          "status": status,
+          "reason": reason,
+          "satelliteID": satID,
+          "userID": userUID
+        }),
+      })
+      .then(() => {
+        setTime('');
+        setFreq('');
+        setMission('');
+        setLat(0);
+        setLong(0);
+        setStatus('');
+        setReason('');
+      })
+  }
 
-    useEffect(()=> {
-      console.log(reason)
-    }, [reason])
+  useEffect(() => {
+    console.log(reason)
+  }, [reason])
 
   return (
     <>
-    <NavBar/>
-      <form onSubmit={onSubmit}>
-      <InputLabel id="sat-label">Satellite:</InputLabel>
-          <Select id="sat-label" value={satID} name="satellites" onChange={(e)=>setSatID(e.target.value)}>
-            {satellites.map(satellite => {
-              return(
-                <MenuItem value={satellite.satelliteID}>{satellite.name}</MenuItem>
-              )
-            })}
-          </Select>
-      <hr/>
-      <label>Time:</label>
-          <TextField variant="outlined" type='datetime-local' onChange={(e)=>setTime(e.target.value)} value={time}/>
-          <h6 >
-            *User access to SATCOM as of this time
-          </h6>
-        <hr/>
-        <InputLabel id="freq-label">Frequency Band:</InputLabel>
-          <Select id="freq-label" value={freq} name="frequency bands" onChange={(e)=>setFreq(e.target.value)}>
-            <MenuItem value="UHF">UHF</MenuItem>
-            <MenuItem value="SHF">SHF</MenuItem>
-            <MenuItem value="EHF">EHF</MenuItem>
-          </Select>
-        <hr/>
+      <NavBar />
+      <div className='report-container'>
+        <Box className="box" id="add-box" component="section" sx={{  boxShadow: 3, p: 2, border: '1px solid grey' }}>
+          <form onSubmit={onSubmit}>
+            <InputLabel id="sat-label">Satellite:</InputLabel>
+            <Select id="sat-label" value={satID} name="satellites" onChange={(e) => setSatID(e.target.value)}>
+              {satellites.map(satellite => {
+                return (
+                  <MenuItem value={satellite.satelliteID}>{satellite.name}</MenuItem>
+                )
+              })}
+            </Select>
+            <Divider />
+            <InputLabel>Time:</InputLabel>
+            <TextField variant="outlined" type='datetime-local' onChange={(e) => setTime(e.target.value)} value={time} />
+            <h6 >
+              *User access to SATCOM as of this time
+            </h6>
+            <Divider />
+            <InputLabel id="freq-label">Frequency Band:</InputLabel>
+            <Select id="freq-label" value={freq} name="frequency bands" onChange={(e) => setFreq(e.target.value)}>
+              <MenuItem value="UHF">UHF</MenuItem>
+              <MenuItem value="SHF">SHF</MenuItem>
+              <MenuItem value="EHF">EHF</MenuItem>
+            </Select>
+            <Divider />
+            <InputLabel>Mission:</InputLabel>
+            <TextField variant="outlined" onChange={(e) => setMission(e.target.value)} value={mission} />
+            <Divider />
 
-        <label>Mission:</label>
-          <TextField variant="outlined" onChange={(e)=>setMission(e.target.value)} value={mission}/>
-        <hr/>
-        
-        <label>Latitude:</label>
-          <TextField variant="outlined" onChange={(e)=>setLat(e.target.value)} value={lat}/>
-        <hr/>
-        
-        <label>Longitude:</label>
-          <TextField variant="outlined"  onChange={(e)=>setLong(e.target.value)} value={long}/>
-        <hr/>
-        
-        <InputLabel id="status-label">Status:</InputLabel>
-          <Select id="status-label" value={status} name="status" onChange={(e)=>setStatus(e.target.value)}>
-            <MenuItem value="GREEN">Green</MenuItem>
-            <MenuItem value="YELLOW">Yellow</MenuItem>
-            <MenuItem value="RED">Red</MenuItem>
-          </Select>
-          <h6 >
-            *Green: Can Connect. Quality is Good.<br/>
-            *Yellow: Can Connect. Quality is Degraded.<br/>
-            *Red: Cannot Connect. 
-          </h6>
+            <InputLabel>Latitude:</InputLabel>
+            <TextField variant="outlined" onChange={(e) => setLat(e.target.value)} value={lat} />
+            <Divider />
 
+            <InputLabel>Longitude:</InputLabel>
+            <TextField variant="outlined" onChange={(e) => setLong(e.target.value)} value={long} />
+            <Divider />
 
-        <hr/>
-        <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="reason">Tag</InputLabel>
-        <Select
-          labelId="reason"
-          id="demo-multiple-checkbox"
-          multiple
-          value={reason}
-          onChange={handleChange}
-          input={<OutlinedInput label="Tag" />}
-          renderValue={(selected) => selected.join(', ')}
-          MenuProps={MenuProps}
-        >
-          {reasonsForReport.map((string) => (
-            <MenuItem key={string.issue} value={string.issue}>
-              <Checkbox checked={reason.indexOf(string.issue) > -1} />
-              <ListItemText primary={string.issue} />
-            </MenuItem>
-          ))}
-        </Select>
-        </FormControl>
+            <InputLabel id="status-label">Status:</InputLabel>
+            <Select id="status-label" value={status} name="status" onChange={(e) => setStatus(e.target.value)}>
+              <MenuItem value="GREEN">Green</MenuItem>
+              <MenuItem value="YELLOW">Yellow</MenuItem>
+              <MenuItem value="RED">Red</MenuItem>
+            </Select>
+            <h6 >
+              *Green: Can Connect. Quality is Good.<br />
+              *Yellow: Can Connect. Quality is Degraded.<br />
+              *Red: Cannot Connect.
+            </h6>
 
-        <hr/>
-        <button type="submit">submit</button>
-      </form>
+            <Divider />
+            <FormControl sx={{ m: 1, width: 300 }}>
+              <InputLabel id="reason">Reason</InputLabel>
+              <Select
+                labelId="reason"
+                id="reason"
+                multiple
+                value={reason}
+                onChange={handleChange}
+                input={<OutlinedInput label="Reason" />}
+                renderValue={(selected) => selected.join(', ')}
+                MenuProps={MenuProps}
+              >
+                {reasonsForReport.map((string) => (
+                  <MenuItem key={string.issue} value={string.issue}>
+                    <Checkbox checked={reason.indexOf(string.issue) > -1} />
+                    <ListItemText primary={string.issue} />
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
+            <Divider/>
+            <Button type="submit">submit</Button>
+          </form>
+        </Box>
+      </div>
     </>
   )
 }

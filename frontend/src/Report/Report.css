@@ -22,3 +22,16 @@
   gap: 50px;
 
 }
+
+#add-box {
+  margin:50px;
+  width:800px;
+  /* display:flex;
+  width:700px; */
+  /* height: 700px; */
+}
+
+.report-container {
+  display:flex;
+  justify-content: center;
+}
