@@ -26,6 +26,9 @@ function App() {
   const [userUID, setUserUID] = useState('');
   const [authUser, setAuthUser] = useState(null);
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [firstData, setFirstData] = useState(60)
+  const [secondData, setSecondData] = useState(40)
+  const [thirdData, setThirdData] = useState(30)
 
   useEffect(() => {
     Promise.all([
@@ -55,7 +58,7 @@ function App() {
     }}>
 
       <Routes>
-        {/* <Route path='/map' element={<Map />} /> */}
+        <Route path='/map' element={<Map />} />
         <Route path='/satellites' element={<SatelliteList />} />
         <Route path='/satellites/:id' element={<Satellite />} />
         <Route path='/reports' element={<ReportList />} />
