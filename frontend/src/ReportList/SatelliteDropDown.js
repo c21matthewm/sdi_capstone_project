@@ -30,28 +30,16 @@ function SatelliteDropDown() {
 
     const reportReasons = [
         {
-          issue: 'Cannot Connect'
+          issue: 'Connection Quality'
         },
         {
-          issue: 'Quality is Degraded'
-        },
-        {
-          issue: 'Blocked LOS'
+          issue: 'Line Of Sight'
         },
         {
           issue: 'Atmospheric Conditions'
         },
         {
           issue: 'Signal Latency'
-        },
-        {
-          issue: 'Signal Interference'
-        },
-        {
-          issue: 'Equipment Malfunction'
-        },
-        {
-          issue: 'Power Supply Issue'
         },
         {
           issue: 'Frequency Coordination'
