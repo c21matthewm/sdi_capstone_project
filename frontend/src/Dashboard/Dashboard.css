@@ -10,14 +10,22 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content:flex-start;
-    margin:15px 125px 0px 125px;
+    justify-content:space-around;
+    margin:15px 100px 0px 100px;
     padding:10px;
+    
 }
 
 .tile {
     width: 275px;
     margin: 20px;
-    color: inherit; 
     text-decoration: none; 
+    background-color: var(--component-color);
+    color:var(--text-color);
+    border-radius: 10px;
+}
+
+.popup {
+    text-align: center;
+    transition: all 0.3s ease;
 }

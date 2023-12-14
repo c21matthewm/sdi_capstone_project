@@ -4,6 +4,7 @@ import React, { useEffect, useState, useContext} from "react";
 import { useLocation } from "react-router-dom";
 import { NavBar } from "../NavBar/NavBar";
 import { userContext } from "../App";
+import "./AddReport.css"
 
 export const AddReport = (props) => {
 
@@ -15,16 +16,22 @@ export const AddReport = (props) => {
         issue: 'Quality is Degraded'
       },
       {
-        issue: 'Latency'
+        issue: 'Blocked LOS'
       },
       {
-        issue: 'Interference'
+        issue: 'Atmospheric Conditions'
+      },
+      {
+        issue: 'Signal Latency'
+      },
+      {
+        issue: 'Signal Interference'
       },
       {
         issue: 'Equipment Malfunction'
       },
       {
-        issue: 'Power Supply Issues'
+        issue: 'Power Supply Issue'
       },
       {
         issue: 'Frequency Coordination'
@@ -60,6 +67,7 @@ export const AddReport = (props) => {
 
     let totalIssues = isItChecked.reduce((sum, report, index) => {
       if (report === true) {
+        console.log(reasonsForReport[index].issue)
         return ` ${sum += reasonsForReport[index].issue}, `;
       }
       return sum;
@@ -73,9 +81,9 @@ export const AddReport = (props) => {
 
   }
 
-  
 
- 
+
+
     const onSubmit = (e) => {
       e.preventDefault();
         fetch('http://localhost:8080/reports' ,
@@ -152,21 +160,38 @@ export const AddReport = (props) => {
         <hr/>
 
         <label>Reason:</label><br/>
-        <ul>
-          {reasonsForReport.map(({ issue }, index) => {
-            return (
-              <li key={index}>
-                <input
-                  type="checkbox"
-                  checked={checked[index]}
-                  onChange={() => handleOnChange(index)}
-                />
-                <label>{issue}</label>
-              </li>
-            );
-          })}
-        </ul>
+        <div className="reason-box">
+          <div className="reason-select">
+            <ul>
+              {reasonsForReport.map(({ issue }, index) => {
+                return (
+                  <li key={index}>
+                    <input
+                      type="checkbox"
+                      checked={checked[index]}
+                      onChange={() => handleOnChange(index)}
+                    />
+                    <label>{issue}</label>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
 
+          <div className="reason-guide">
+            <ul>
+              <b>Cannot Connect</b> to SATCOM<br/>
+              <b>Quality is Degraded</b> or garbled<br/>
+              <b>Blocked LOS</b> (line of sight) with target satellite<br/>
+              <b>Atmospheric Conditions</b> are present (precipitation, thunder or sand storms)<br/>
+              <b>Signal Interference</b> (waveform is distorted and/or other voices or sounds are mixed in with your voices)<br/>
+              <b>Signal Latency</b> (the voices are late and/or unnaturally stretched in time)<br/>
+              <b>Equipment Malfunction</b> (the antenna or radio is giving an error)<br/>
+              <b>Power Supply Issues</b> (the local power source is weak or recently known to be unreliable)<br/>
+              <b>Frequency Coordination</b> (there are other users intentionally trying to use your frequencies)<br/>
+            </ul>
+          </div>
+        </div>
         <hr/>
         <button type="submit">submit</button>
 

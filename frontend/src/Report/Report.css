@@ -1,6 +1,8 @@
 #report-box{
   display:flex;
   width:450px;
+  background-color: var(--component-color);
+  color: var(--text-color);
 }
 
 #reports-side{
@@ -8,6 +10,8 @@
   overflow:auto;
   width:400px;
   overflow-x: hidden;
+  background-color: var(--component-color);
+  color: var(--text-color);
 }
 
 #flex-report {
@@ -17,4 +21,17 @@
   margin:40px auto;
   gap: 50px;
 
+}
+
+#add-box {
+  margin:50px;
+  width:800px;
+  /* display:flex;
+  width:700px; */
+  /* height: 700px; */
+}
+
+.report-container {
+  display:flex;
+  justify-content: center;
 }

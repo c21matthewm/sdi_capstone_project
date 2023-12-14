@@ -40,7 +40,6 @@ export const ButtonToggle = ({sat}) => {
       setUpdatedFavorites([...sat.favorites, userUID])
     }
     setToggle(!toggle);
-  
     }
 
   return(

@@ -37,6 +37,10 @@ export const Dashboard = () => {
 		setPopupVisible(false);
 	};
 
+	useEffect(() => {
+		console.log('userUID: ', userUID)
+	}, [])
+
 	return (
 		<>
 			<NavBar />
@@ -48,13 +52,21 @@ export const Dashboard = () => {
 							return (
 								<div className="tile">
 									<Box className="box" component="section" sx={{
-										boxShadow: 3, p: 2, border: sat.status === 'GREEN' ? "solid 2px #00ff00" :
-											sat.status === 'YELLOW' ? "solid 2px #facb6c" : "solid 2px #ff0000"
+										boxShadow: 3, p: 2, borderRadius: '10px', border: sat.status === 'GREEN' ? "solid 5px #00ff00" :
+											sat.status === 'YELLOW' ? "solid 5px #facb6c" : "solid 5px #ff0000"
 									}} variant="outlined">
 										<CardActionArea >
 											<Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
 												<CardMedia>
-													<img src={sat.image} width={220} height={170} alt='sat' />
+													<Box
+														component="img"
+														sx={{
+														height: '95px',
+														width: '120px',
+														}}
+														src={sat.image}
+														alt="satellite image"
+													/>
 												</CardMedia>
 												<CardContent >
 													<Typography variant="h5" component="div" >

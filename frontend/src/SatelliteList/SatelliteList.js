@@ -32,7 +32,6 @@ export const SatelliteList = () => {
                     <div className="box-list">
                         {satellites.map((sat, index) => {
                             return (
-
                                 <ListItem className="sat-info" sx={{ boxShadow: 1, border: '1px solid grey' }} key={index}>
                                     <ListItemButton component={Link} to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
                                         <ListItemAvatar>

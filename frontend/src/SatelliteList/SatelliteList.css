@@ -5,7 +5,7 @@
 
 .list-sat {
   margin: auto;
-  width: 750px;
+  width: 800px;
 }
 
 .box-list {
@@ -20,4 +20,10 @@
 
 .index-return {
   display: inline-block
+}
+
+.sat-info {
+  margin-bottom: 10px;
+  background-color: var(--component-color);
+  color: var(--text-color);
 }

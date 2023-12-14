@@ -1,28 +1,29 @@
-import { Checkbox } from "@mui/material";
-import { fontSize } from "@mui/system";
-import React, { useState, useContext} from "react";
-import { useLocation } from "react-router-dom";
+import Checkbox from '@mui/material/Checkbox';
+import React, { useEffect, useState, useContext } from "react";
 import { NavBar } from "../NavBar/NavBar";
 import { userContext } from "../App";
-
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
+import ListItemText from '@mui/material/ListItemText';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import { Divider } from '@mui/material';
+import Button from '@mui/material/Button';
 export const SubmitReport = () => {
 
-
-  const reasonsForReport = [
-    {
-      issue: 'Garbled'
+  const ITEM_HEIGHT = 48;
+  const ITEM_PADDING_TOP = 8;
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+        width: 250,
+      },
     },
-    {
-      issue: 'Latency'
-    },
-    {
-      issue: 'Disconnect'
-    },
-    {
-      issue: 'Interference'
-    },
-  ];
-
+  };
 
   const { userUID, satellites } = useContext(userContext);
 
@@ -32,147 +33,154 @@ export const SubmitReport = () => {
   const [lat, setLat] = useState(0);
   const [long, setLong] = useState(0);
   const [status, setStatus] = useState('');
-  const [reason, setReason] = useState([]);
   const [satID, setSatID] = useState(1);
+  const [reason, setReason] = useState([]);
+  const reasonsForReport = [
+    {issue: 'Cannot Connect'},
+    {issue: 'Quality is Degraded'},
+    {issue: 'Blocked LOS'},
+    {issue: 'Atmospheric Conditions'},
+    {issue: 'Signal Latency'},
+    {issue: 'Signal Interference'},
+    {issue: 'Equipment Malfunction'},
+    {issue: 'Power Supply Issue'},
+    {issue: 'Frequency Coordination'}
+  ];
 
-  const [checked, setChecked] = useState(
-    new Array(reasonsForReport.length).fill(false)
-  );
 
-  function handleOnChange(position) {
-    let isItChecked = checked.map((item, index) =>
-      index === position ? !item : item
-    );
+  const handleChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setReason(value);
 
-    setChecked(isItChecked);
+      // On autofill we get a stringified value.
+    //   typeof value === 'string' ? value.split(',') : value,
+    // );
+  };
 
 
-    let totalIssues = isItChecked.reduce((sum, report, index) => {
-      if (report === true) {
-        return sum += reasonsForReport[index].issue;
-      }
-      return sum;
-    });
-
-    setReason(totalIssues)
-
-    console.log(totalIssues)
-
+  const onSubmit = (e) => {
+    e.preventDefault();
+    fetch('http://localhost:8080/reports',
+      {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          "time": time,
+          "frequency_band": freq,
+          "mission": mission,
+          "latitude": lat,
+          "longitude": long,
+          "status": status,
+          "reason": reason,
+          "satelliteID": satID,
+          "userID": userUID
+        }),
+      })
+      .then(() => {
+        setTime('');
+        setFreq('');
+        setMission('');
+        setLat(0);
+        setLong(0);
+        setStatus('');
+        setReason([]);
+      })
   }
 
-
-    const onSubmit = (e) => {
-      e.preventDefault();
-        fetch('http://localhost:8080/reports' ,
-        {
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            "time": time,
-            "frequency_band": freq,
-            "mission": mission,
-            "latitude": lat,
-            "longitude": long,
-            "status": status,
-            "reason": reason,
-            "satelliteID": satID,
-            "userID": userUID
-          }),
-        })
-        .then(()=>{
-          setTime('');
-          setFreq('');
-          setMission('');
-          setLat(0);
-          setLong(0);
-          setStatus('');
-          setReason('');
-        })
-    }
+  useEffect(() => {
+    console.log('reason: ', reason)
+    console.log('userUID: ', userUID)
+  }, [reason])
 
   return (
     <>
-    <NavBar/>
-      <form onSubmit={onSubmit}>
-      <label>Satellite:</label>
-          <select name="satellites" onChange={(e)=>setSatID(e.target.value)}>
-            {satellites.map(satellite => {
-              return(
-                <option value={satellite.satelliteID}>{satellite.name}</option>
-              )
-            })}
-          </select>
-      <hr/>
-      <label>Time:</label>
-          <input type='datetime-local' onChange={(e)=>setTime(e.target.value)} value={time}></input>
-          <h6 >
-            *User access to SATCOM as of this time
-          </h6>
-        <hr/>
-        <label>Frequency Band:</label>
-          <input type='text' onChange={(e)=>setFreq(e.target.value)} value={freq}></input>
-        <hr/>
+      <NavBar />
+      <div className='report-container'>
+        <Box className="box" id="add-box" component="section" sx={{  boxShadow: 3, p: 2, border: '1px solid grey' }}>
+          <form onSubmit={onSubmit}>
+            <InputLabel id="sat-label">Satellite:</InputLabel>
+            <Select id="sat-label" value={satID} name="satellites" onChange={(e) => setSatID(e.target.value)}>
+              {satellites.map(satellite => {
+                return (
+                  <MenuItem value={satellite.satelliteID}>{satellite.name}</MenuItem>
+                )
+              })}
+            </Select>
+            <Divider />
+            <InputLabel>Time:</InputLabel>
+            <TextField variant="outlined" type='datetime-local' onChange={(e) => setTime(e.target.value)} value={time} />
+            <h6 >
+              *User access to SATCOM as of this time
+            </h6>
+            <Divider />
+            <InputLabel id="freq-label">Frequency Band:</InputLabel>
+            <Select id="freq-label" value={freq} name="frequency bands" onChange={(e) => setFreq(e.target.value)}>
+              <MenuItem value="UHF">UHF</MenuItem>
+              <MenuItem value="SHF">SHF</MenuItem>
+              <MenuItem value="EHF">EHF</MenuItem>
+            </Select>
+            <Divider />
+            <InputLabel>Mission:</InputLabel>
+            <TextField variant="outlined" onChange={(e) => setMission(e.target.value)} value={mission} />
+            <Divider />
 
-        <label>Mission:</label>
-          <input type="text" onChange={(e)=>setMission(e.target.value)} value={mission}></input>
-        <hr/>
-        
-        <label>Latitude:</label>
-          <input type="number" onChange={(e)=>setLat(e.target.value)} value={lat}></input>
-        <hr/>
-        
-        <label>Longitude:</label>
-          <input type="number" onChange={(e)=>setLong(e.target.value)} value={long}></input>
-        <hr/>
-        
-        <label>Status:</label>
-          <input type="status" onChange={(e)=>setStatus(e.target.value)} value={status}></input>
-          <h6 >
-            *Green: Can Connect. Quality is Good.<br/>
-            *Yellow: Can Connect. Quality is Degraded.<br/>
-            *Red: Cannot Connect. 
-          </h6>
+            <InputLabel>Latitude:</InputLabel>
+            <TextField variant="outlined" onChange={(e) => setLat(e.target.value)} value={lat} />
+            <Divider />
 
+            <InputLabel>Longitude:</InputLabel>
+            <TextField variant="outlined" onChange={(e) => setLong(e.target.value)} value={long} />
+            <Divider />
 
-        <hr/>
-        
-        <label>Reason:</label><br/>
-        <ul>
-          {reasonsForReport.map(({ issue }, index) => {
-            return (
-              <li key={index}>
-                <input
-                  type="checkbox"
-                  checked={checked[index]}
-                  onChange={() => handleOnChange(index)}
-                />
-                <label>{issue}</label>
-              </li>
-            );
-          })}
-        </ul>
+            <InputLabel id="status-label">Status:</InputLabel>
+            <Select id="status-label" value={status} name="status" onChange={(e) => setStatus(e.target.value)}>
+              <MenuItem value="GREEN">Green</MenuItem>
+              <MenuItem value="YELLOW">Yellow</MenuItem>
+              <MenuItem value="RED">Red</MenuItem>
+            </Select>
+            <h6 >
+              *Green: Can Connect. Quality is Good.<br />
+              *Yellow: Can Connect. Quality is Degraded.<br />
+              *Red: Cannot Connect.
+            </h6>
 
-        <hr/>
-        <button type="submit">submit</button>
-        
-        {/* <button type="submit" onSubmit={convertReason}>submit</button> */}
-      </form>
+            <Divider />
+            <FormControl sx={{ m: 1, width: 300 }}>
+              <InputLabel id="reason">Reason</InputLabel>
+              <Select
+                labelId="reason"
+                id="reason"
+                multiple
+                value={reason}
+                onChange ={ (e) => {
+                  console.log(e.target.value); 
+                  setReason(e.target.value);
+                  // handleChange
+                }}
+                input={<OutlinedInput label="Reason" />}
+                renderValue={(selected) => selected.join(', ')}
+                MenuProps={MenuProps}
+              >
+                {reasonsForReport.map((string) => (
+                  <MenuItem key={string.issue} value={string.issue}>
+                    <Checkbox checked={reason.indexOf(string.issue) > -1} />
+                    <ListItemText primary={string.issue} />
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
+            <Divider/>
+            <Button type="submit" variant='contained' color='success'>submit</Button>
+          </form>
+        </Box>
+      </div>
     </>
   )
 }
 
-
-// table.string('time');
-// table.string('frequency_band');
-// table.string('mission');
-// table.integer('latitude');
-// table.integer('longitude');
-// table.integer('userID')
-//   table.foreign('userID').references('users.userID');
-// table.integer('satelliteID')
-//   table.foreign('satelliteID').references('satellites.satelliteID');
-// table.string('status');
-// table.string('reason');

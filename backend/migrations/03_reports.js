@@ -15,7 +15,7 @@ exports.up = function(knex) {
     table.integer('satelliteID')
     table.foreign('satelliteID').references('satellites.satelliteID');
     table.string('status');
-    table.string('reason');
+    table.specificType('reason', 'text[]');
   })
 
 };
