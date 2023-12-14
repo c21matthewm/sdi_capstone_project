@@ -13,6 +13,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import { Divider } from '@mui/material';
 import Button from '@mui/material/Button';
 export const SubmitReport = () => {
+
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
   const MenuProps = {
@@ -24,38 +25,6 @@ export const SubmitReport = () => {
     },
   };
 
-  const reasonsForReport = [
-    {
-      issue: 'Cannot Connect',
-    },
-    {
-      issue: 'Quality is Degraded',
-    },
-    {
-      issue: 'Blocked LOS',
-    },
-    {
-      issue: 'Atmospheric Conditions',
-    },
-    {
-      issue: 'Signal Latency',
-    },
-    {
-      issue: 'Signal Interference',
-    },
-    {
-      issue: 'Equipment Malfunction',
-    },
-    {
-      issue: 'Power Supply Issue',
-    },
-    {
-      issue: 'Frequency Coordination',
-    }
-  ];
-
-
-
   const { userUID, satellites } = useContext(userContext);
 
   const [time, setTime] = useState('');
@@ -66,16 +35,28 @@ export const SubmitReport = () => {
   const [status, setStatus] = useState('');
   const [satID, setSatID] = useState(1);
   const [reason, setReason] = useState([]);
+  const reasonsForReport = [
+    {issue: 'Cannot Connect'},
+    {issue: 'Quality is Degraded'},
+    {issue: 'Blocked LOS'},
+    {issue: 'Atmospheric Conditions'},
+    {issue: 'Signal Latency'},
+    {issue: 'Signal Interference'},
+    {issue: 'Equipment Malfunction'},
+    {issue: 'Power Supply Issue'},
+    {issue: 'Frequency Coordination'}
+  ];
 
 
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
-    setReason(
+    setReason(value);
+
       // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
+    //   typeof value === 'string' ? value.split(',') : value,
+    // );
   };
 
 
@@ -107,12 +88,13 @@ export const SubmitReport = () => {
         setLat(0);
         setLong(0);
         setStatus('');
-        setReason('');
+        setReason([]);
       })
   }
 
   useEffect(() => {
-    console.log(reason)
+    console.log('reason: ', reason)
+    console.log('userUID: ', userUID)
   }, [reason])
 
   return (
@@ -175,7 +157,11 @@ export const SubmitReport = () => {
                 id="reason"
                 multiple
                 value={reason}
-                onChange={handleChange}
+                onChange ={ (e) => {
+                  console.log(e.target.value); 
+                  setReason(e.target.value);
+                  // handleChange
+                }}
                 input={<OutlinedInput label="Reason" />}
                 renderValue={(selected) => selected.join(', ')}
                 MenuProps={MenuProps}
