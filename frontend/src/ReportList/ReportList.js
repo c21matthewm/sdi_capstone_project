@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // import { Home } from './pages/Home';
 import React, { useContext, useState, useEffect } from 'react';
 import { userContext } from '../App';
-import PieCenterLabel from './PieChart';
+// import PieCenterLabel from './PieChart';
 import './ReportList.css';
 import MixedBarChart from './ProblemMetric'
 import { NavBar } from '../NavBar/NavBar';
@@ -84,7 +84,7 @@ function ReportList() {
               return(
                 <section>
                   <h3>{` Insight ${satellite.satelliteID}`}</h3>
-                  <PieCenterLabel/>
+                  {/* <PieCenterLabel/> */}
                 </section>
               )
             })}

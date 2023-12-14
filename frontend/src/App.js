@@ -25,6 +25,9 @@ function App() {
   const [userUID, setUserUID] = useState('');
   const [authUser, setAuthUser] = useState(null);
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [firstData, setFirstData] = useState(60)
+  const [secondData, setSecondData] = useState(40)
+  const [thirdData, setThirdData] = useState(30)
 
   useEffect(() => {
     Promise.all([

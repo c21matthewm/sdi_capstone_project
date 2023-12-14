@@ -44,6 +44,8 @@ export const AddReport = (props) => {
   const [status, setStatus] = useState('');
   const [reason, setReason] = useState([]);
 
+
+
   const [checked, setChecked] = useState(
     new Array(reasonsForReport.length).fill(false)
   );
@@ -62,6 +64,8 @@ export const AddReport = (props) => {
       }
       return sum;
     });
+
+    
 
     setReason(totalIssues)
 
