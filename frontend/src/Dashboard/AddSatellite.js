@@ -84,15 +84,15 @@ export const AddSatellite = () => {
 
 
             <InputLabel>Status:</InputLabel>
-            <TextField
-              type="text"
-              onChange={(e) => setStatus(e.target.value)}
-              value={status}
-            />
+            <Select id="status" value={status} name="status" onChange={(e) => setStatus(e.target.value)}>
+              <MenuItem value="GREEN">Green</MenuItem>
+              <MenuItem value="YELLOW">Yellow</MenuItem>
+              <MenuItem value="RED">Red</MenuItem>
+            </Select>
             <Divider></Divider>
 
             <InputLabel>Orbit:</InputLabel>
-            <Select id="orbitl" value={orbit} name="orbit" onChange={(e) => setOrbit(e.target.value)}>
+            <Select id="orbit" value={orbit} name="orbit" onChange={(e) => setOrbit(e.target.value)}>
               <MenuItem value="UHF">LEO</MenuItem>
               <MenuItem value="SHF">MEO</MenuItem>
               <MenuItem value="EHF">GEO</MenuItem>
@@ -124,7 +124,7 @@ export const AddSatellite = () => {
             </Select>
             <Divider></Divider>
 
-            <Button type="submit">Submit</Button>
+            <Button type="submit" variant="contained" color="success">Submit</Button>
           </form>
         </Box>
       </div>
