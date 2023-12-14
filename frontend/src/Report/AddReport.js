@@ -65,6 +65,7 @@ export const AddReport = (props) => {
 
     let totalIssues = isItChecked.reduce((sum, report, index) => {
       if (report === true) {
+        console.log(reasonsForReport[index].issue)
         return ` ${sum += reasonsForReport[index].issue}, `;
       }
       return sum;
