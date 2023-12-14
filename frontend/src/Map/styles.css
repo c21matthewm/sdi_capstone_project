@@ -1,32 +1,36 @@
-/* * {
+.Map {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-
-
-#mapid { height: 1000px; }
-
 #root {
   height: 100vh;
-  display: flex;
+/*   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 1em;
   font-family: sans-serif;
   color: #333;
-  background-color: #f3e4d7;
+  background-color: #f3e4d7; */
 }
+
+/* #mapid {
+  height: 1000px;
+} */
 
 .leaflet-container {
-  height: 90vh;
-  height: 300px;
-  border-radius: 2rem;
+  height: 100vh;
+/*   border-radius: 2rem; */
 }
 
-.cluster-icon {
+/* .cluster-icon {
   background-color: #333;
   height: 2em;
   width: 2em;
