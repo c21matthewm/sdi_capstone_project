@@ -12,18 +12,54 @@ import React, { useState, useEffect, useContext } from "react";
 // Power Supply Issues
 // Frequency Coordination
 
-const unknownData = [1,1,1,1,1,1,1,1,1,1,1,1];
-const losData = [1,1,1,1,1,1,1,1,1,1,1,1];
-const atmoData = [1,1,1,1,1,1,1,1,1,1,1,1];
-const interferenceData = [1,1,1,1,1,1,1,1,1,1,1,1];
-const latencyData = [1,1,1,1,1,1,1,1,1,1,1,1];
-const malfunctionData = [1,1,1,1,1,1,1,1,1,1,1,1];
-const powerData = [1,1,1,1,1,1,1,1,1,1,1,1];
-const coordinationData = [1,1,1,1,1,1,1,1,1,1,1,1];
+const unknownData = [0,0,0,0,0,0,0,0,0,0,0,0];
+const losData = [0,0,0,0,0,0,0,0,0,0,0,0];
+const atmoData = [0,0,0,0,0,0,0,0,0,0,0,0];
+const interferenceData = [0,0,0,0,0,0,0,0,0,0,0,0];
+const latencyData = [0,0,0,0,0,0,0,0,0,0,0,0];
+const malfunctionData = [0,0,0,0,0,0,0,0,0,0,0,0];
+const powerData = [0,0,0,0,0,0,0,0,0,0,0,0];
+const coordinationData = [0,0,0,0,0,0,0,0,0,0,0,0];
 
 export default function MixedBarChart() {
 
   const{reports, satellites} = useContext(userContext);
+
+    useEffect(() => {
+      reports.map((report) => {
+        report.reason.map((string) => {
+          console.log(string);
+          switch (string) {
+            case 'Unknown Issue':
+              unknownData[report.satelliteID - 1] += 1;
+              break;
+            case 'Blocked LOS':
+              losData[report.satelliteID - 1] += 1;
+              break;
+            case 'Atmospheric Conditions':
+              atmoData[report.satelliteID - 1] += 1;
+              break;
+            case 'Signal Interference':
+              interferenceData[report.satelliteID - 1] += 1;
+              break;
+            case 'Signal Latency':
+              latencyData[report.satelliteID - 1] += 1;
+              break;
+            case 'Equipment Malfunction':
+              malfunctionData[report.satelliteID - 1] += 1;
+              break;
+            case 'Power Supply Issue':
+              powerData[report.satelliteID - 1] += 1;
+              break;
+            case 'Frequency Coordination':
+              coordinationData[report.satelliteID - 1] += 1;
+              break;
+            default:
+              return true;
+          }
+        })
+      })
+    }, [])
 
   return (
     <BarChart
@@ -47,7 +83,6 @@ export default function MixedBarChart() {
           padding: 0,
           labelStyle: {
             fontsize: 10,
-            // fill: 'blue',
           },
         }
       }}
