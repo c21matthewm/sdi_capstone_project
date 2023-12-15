@@ -49,17 +49,17 @@ function ReportList() {
               search the satellite name field when conditionally rendering
               the list */}
             <TextField id='search'
-                      variant="outlined" 
-                      value={searchValue} 
-                      onChange={(e) => setSearchValue(e.target.value)} 
+                      variant="outlined"
+                      value={searchValue}
+                      onChange={(e) => setSearchValue(e.target.value)}
                       // style={{height: '30px'}}
                       />
           <Divider />
 
           <InputLabel id="filter-label">Filter By: </InputLabel>
-            <Select id="filter" 
-                    value={selectedFilter} 
-                    name="not_sure" 
+            <Select id="filter"
+                    value={selectedFilter}
+                    name="not_sure"
                     onChange={(e) => setSelectedFilter(e.target.value)}
                     style={{height: '30px'}}
             >

@@ -4,12 +4,21 @@
 }
 
 .report_view {
+  background-color: var(--component-color);
+  padding: 30px;
+  height: 700px;
   width: 40%;
+  overflow: auto;
 }
 
-/* .metric_view {
-  display: flex
-} */
+li{
+  margin-bottom: 10px;
+}
+
+.metric_view {
+  background-color: var(--component-color);
+  padding: 30px;
+}
 
 /* .problems_metric {
   display: flex
