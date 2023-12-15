@@ -13,6 +13,8 @@ import { NavBar } from '../NavBar/NavBar';
 import { Typography } from '@mui/material';
 import { Button } from '@mui/material';
 import ReportIcon from '@mui/icons-material/Report';
+import SatelliteDropDown from '../ReportList/SatelliteDropDown';
+import { Satellite } from '../Satellite/Satellite';
 
 export const SatelliteList = () => {
     
@@ -56,6 +58,7 @@ export const SatelliteList = () => {
                         })}
                     </div>
                 </div>
+                <SatelliteDropDown />
             </div>
         </>
     )

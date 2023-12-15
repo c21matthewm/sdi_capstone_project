@@ -120,12 +120,12 @@ function ReportList() {
             <p>THIS IS THE METRIC PANEL.</p>
 
             < MixedBarChart/>
-            <section>
+            {/* <section>
               <h3 style={{ display: 'flex'}}>Satellite Status</h3>
 
                       <SatelliteDropDown/>
 
-            </section>
+            </section> */}
 
 
         </div>
