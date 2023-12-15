@@ -2,7 +2,8 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // import { Home } from './pages/Home';
 import React, { useContext, useState, useEffect } from 'react';
-import { Select, MenuItem, InputLabel, Divider, TextField, Box } from '@mui/material';
+import { Select, MenuItem, InputLabel, Divider, TextField, Box , Button } from '@mui/material';
+import ArchiveIcon from '@mui/icons-material/Archive';
 import { userContext } from '../App';
 // import PieCenterLabel from './PieChart';
 import './ReportList.css';
@@ -17,11 +18,22 @@ function ReportList() {
   const [selectedFilter, setSelectedFilter] = useState('')
   const [searchValue, setSearchValue] = useState('')
 
+  // const archiveReport = (e, report) => {
+  //   fetch(`http://localhost:8080/reports/archived/${report.reportID}`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       archived: e.target.value
+  //     })
+  //   })
+  //   Fetch and use post method to change the status of the report to archived
+  //   but do not delete the report from the database
+  // }
 
 
   return (
-
-
     <div>
       <NavBar/>
       <h1>Reports Page</h1>
@@ -79,7 +91,10 @@ function ReportList() {
                   <b>Description: </b> {`${report.reason}`}
                   <br />
                   <b>User status on: </b> {`${report.time}`}
+                  <br />
+                  <Button variant='contained' color='primary' endIcon={<ArchiveIcon />}>Archive</Button>
                 </Box>
+
               ))}
             </Box>
             ) : (
@@ -93,6 +108,9 @@ function ReportList() {
                   <b>Description: </b> {`${report.reason}`}
                   <br />
                   <b>Time: </b> {`${report.time}`}
+                  <br />
+                  <Button variant='contained' color='primary' endIcon={<ArchiveIcon />}
+                    >Archive</Button>
                 </Box>
               ))}
             </Box>
