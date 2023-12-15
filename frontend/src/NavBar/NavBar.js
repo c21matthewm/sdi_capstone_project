@@ -75,6 +75,11 @@ export const NavBar = () => {
                                 </ListItemButton>
                             </Box>
                             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                                <ListItemButton component={Link} to={`/map`} >
+                                    <ListItemText primary={`MAP`} />
+                                </ListItemButton>
+                            </Box>
+                            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                                 <ListItemButton component={Link} to={`/`} onClick={userSignOut} >
                                     <ListItemText primary={`SIGN OUT`} />
                                 </ListItemButton>

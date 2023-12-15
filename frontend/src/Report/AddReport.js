@@ -94,7 +94,8 @@ export const AddReport = () => {
           "status": status,
           "reason": reason,
           "satelliteID": satID,
-          "userID": userUID
+          "userID": userUID,
+          "archived": false
         }),
       })
       .then(() => {

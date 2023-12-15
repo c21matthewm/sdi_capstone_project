@@ -15,13 +15,8 @@ import { Button } from '@mui/material';
 import ReportIcon from '@mui/icons-material/Report';
 
 export const SatelliteList = () => {
-    const [satellites, setSatellites] = useState([]);
-    const { reports } = useContext(userContext);
-    useEffect(() => {
-        fetch('http://localhost:8080/satellites')
-            .then(res => res.json())
-            .then(data => setSatellites(data))
-    }, [])
+    
+    const { reports, satellites, setSatellites } = useContext(userContext);
 
     return (
         <>

@@ -21,7 +21,7 @@ export const Report = () => {
             <Box className="box" id="flex-report" component="section" sx={{ p: 2 }}>
                 <Box className="box" id="report-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
                     <div className="components" >
-                        <Typography variant="h5" gutterBottom>REPORT #{report.reportID}   <Button component={Link} to={`/satellites/${sat.satelliteID}`} state={{ report, sat }} id="return2" >RETURN</Button></Typography>
+                        <Typography variant="h5" gutterBottom>REPORT #{report.reportID}   <Button component={Link} to={`/satellites/${sat.satelliteID}`} state={{ report, sat }} id="return2" variant="contained" color="primary">RETURN</Button></Typography>
                         <Divider></Divider>
                         <List sx={{ p: 0, m: 0 }} component="nav">
                             <ListItem>
