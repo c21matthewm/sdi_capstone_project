@@ -10,12 +10,30 @@ import './ReportList.css';
 import MixedBarChart from './ProblemMetric'
 import { NavBar } from '../NavBar/NavBar';
 import SatelliteDropDown from './SatelliteDropDown';
+import ReportTableData from './ReportTableData';
 
 function ReportList() {
 
   const {satellites, reports, setReports, userUID}= useContext(userContext)
   const [selectedFilter, setSelectedFilter] = useState('')
   const [searchValue, setSearchValue] = useState('')
+  const [filteredReports, setFilteredReports] = useState([])
+
+  useEffect(() => {
+    setFilteredReports(reports
+      .filter((report) => {
+        switch (selectedFilter) {
+          case 'Date':
+            return true;
+          case 'current':
+            return report.archived === false
+          case 'archived':
+            return report.archived === true
+          default:
+            return true;
+        }})
+      .sort((a, b) => selectedFilter === "Date" ? new Date(b.time) - new Date(a.time) : 0))
+  }, [selectedFilter, reports]);
 
   return (
     <div>
@@ -30,10 +48,6 @@ function ReportList() {
 
 
           <InputLabel>Search: </InputLabel>
-          {/* change input label to <Select /> component with different categories
-              of values to search, the user selects "Satellite", it should
-              search the satellite name field when conditionally rendering
-              the list */}
             <TextField id='search'
                       variant="outlined"
                       value={searchValue}
@@ -53,7 +67,8 @@ function ReportList() {
               <MenuItem value="current">Current</MenuItem>
               <MenuItem value="archived">Archived</MenuItem>
             </Select>
-            <Box sx={{ margin: '20px 0' }}>
+            <ReportTableData tableData={filteredReports} />
+            {/* <Box sx={{ margin: '20px 0' }}>
               {reports
                 .filter((report) => {
                   switch (selectedFilter) {
@@ -67,6 +82,7 @@ function ReportList() {
                       return true;
                   }})
                 .sort((a, b) => selectedFilter === "Date" ? new Date(b.time) - new Date(a.time) : 0)
+
                 .map((report) => (
                   <Box key={report.reportID} sx={{ mb: 2 }}>
                     <b>Satellite: </b> {`Insight ${report.satelliteID}`}
@@ -79,9 +95,11 @@ function ReportList() {
                     <br />
                     <ArchiveButtonToggle report={report} />
                   </Box>
-              ))}
-            </Box>
+              ))
+              }
+            </Box> */}
           </div>
+
           <div className="metric_view">
 
             < MixedBarChart/>

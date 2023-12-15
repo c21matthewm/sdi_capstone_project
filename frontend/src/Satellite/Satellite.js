@@ -75,7 +75,6 @@ export const Satellite = (props) => {
                             </Box>
                         </div>
                         </div>
-               
                 </Box>
             </div>
         </>
