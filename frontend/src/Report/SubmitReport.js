@@ -50,18 +50,6 @@ export const SubmitReport = () => {
   ];
 
 
-  // const handleChange = (event) => {
-  //   const {
-  //     target: { value },
-  //   } = event;
-  //   setReason(value);
-
-      // On autofill we get a stringified value.
-    //   typeof value === 'string' ? value.split(',') : value,
-    // );
-  // };
-
-
   const onSubmit = (e) => {
     e.preventDefault();
     fetch('http://localhost:8080/reports',
@@ -80,7 +68,8 @@ export const SubmitReport = () => {
           "status": status,
           "reason": reason,
           "satelliteID": satID,
-          "userID": userUID
+          "userID": userUID,
+          "archived": false
         }),
       })
       .then(() => {
@@ -186,4 +175,3 @@ export const SubmitReport = () => {
     </>
   )
 }
-

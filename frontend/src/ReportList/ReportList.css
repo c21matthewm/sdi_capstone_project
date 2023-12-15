@@ -3,9 +3,9 @@
   justify-content: space-evenly;
 }
 
-/* .report_view {
-  display: flex
-} */
+.report_view {
+  width: 40%;
+}
 
 /* .metric_view {
   display: flex

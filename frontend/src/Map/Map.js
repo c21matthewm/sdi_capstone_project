@@ -14,11 +14,8 @@ export const Map = () => {
   const [map, setMap] = useState(null);
   const [marker, setMarker] = useState();
   const [circle, setCircle] = useState();
+  // const [cursorInfo, setCursorInfo] = useState({ top: 0, left: 0, lat: 0, lng: 0});
   const { reports, satellites } = useContext(userContext);
-
-  useEffect(() => {
-    console.log("reports: ", reports);
-  });
 
   useEffect(() => {
     if (!navigator.geolocation) {
@@ -59,6 +56,22 @@ export const Map = () => {
         minZoom={2}
         scrollWheelZoom={true}
         whenCreated={setMap}
+        // onMouseMove={(e) => {
+        //   console.log("Mouse coordinates:", e.latlng.lat, e.latlng.lng);
+        //   const { lat, lng } = e.latlng;
+        //   const container = map.getContainer();
+        //   const bounds = container.getBoundingClientRect();
+
+        //   const left = e.containerPoint.x - bounds.left;
+        //   const top = e.containerPoint.y - bounds.top;
+
+        //   setCursorInfo({
+        //     top: `${top}px`,
+        //     left: `${left}px`,
+        //     lat: lat.toFixed(4),
+        //     lng: lng.toFixed(4),
+        //   });
+        //   }}
       >
         <TileLayer
           className="ion-hide"
@@ -79,6 +92,10 @@ export const Map = () => {
           )
         })}
       </MapContainer>
+      {/* <div className="cursor-info" style={{top: 0, left: 0}}>
+        <p>Latitude: {cursorInfo.lat}</p>
+        <p>Longitude: {cursorInfo.lng}</p>
+      </div> */}
     </>
   );
 };

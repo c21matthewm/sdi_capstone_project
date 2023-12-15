@@ -2,6 +2,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // import { Home } from './pages/Home';
 import React, { useContext, useState, useEffect } from 'react';
+import { Select, MenuItem, InputLabel, Divider, TextField, Box } from '@mui/material';
 import { userContext } from '../App';
 // import PieCenterLabel from './PieChart';
 import './ReportList.css';
@@ -12,21 +13,9 @@ import SatelliteDropDown from './SatelliteDropDown';
 function ReportList() {
 
 
-  const allItems= useContext(userContext)
-  // let arr = ['Hello', 'Hi', 'This']
-  let arr = allItems.reports;
-  // let id = allItems.reports.satelliteID;
-
-  let allSatellites= allItems.satellites
-  const [selectedFruit, setSelectedFruit] = useState(true)
-
-  // switch(id) {
-  //   case 1:
-  //     id = 'insight_1'
-  //   break;
-
-  // }
-  // console.log('id', id)
+  const {satellites, reports, setReports}= useContext(userContext)
+  const [selectedFilter, setSelectedFilter] = useState('')
+  const [searchValue, setSearchValue] = useState('')
 
 
 
@@ -41,41 +30,73 @@ function ReportList() {
 
         <div className="report_view">
           <h3>THIS IS THE REPORT PANEL.</h3>
-          <input type='search' placeholder='Search Satellite' />
+
+          <InputLabel>Search: </InputLabel>
+          {/* change input label to <Select /> component with different categories
+              of values to search, the user selects "Satellite", it should
+              search the satellite name field when conditionally rendering
+              the list */}
+            <TextField id='search'
+                      variant="outlined" 
+                      value={searchValue} 
+                      onChange={(e) => setSearchValue(e.target.value)} 
+                      // style={{height: '30px'}}
+                      />
+          <Divider />
+
+          <InputLabel id="filter-label">Filter By: </InputLabel>
+            <Select id="filter" 
+                    value={selectedFilter} 
+                    name="not_sure" 
+                    onChange={(e) => setSelectedFilter(e.target.value)}
+                    style={{height: '30px'}}
+            >
+              <MenuItem value="" disabled>Filter By</MenuItem>
+              <MenuItem value="Subscribed Satellites">Subscribed Satellites</MenuItem>
+              <MenuItem value="Date">Date</MenuItem>
+              <MenuItem value="Status">Status</MenuItem>
+              <MenuItem value="Satellite">Satellite</MenuItem>
+            </Select>
+
+          {/* <input type='search' placeholder='Search Satellite' />
 
           <select  onChange={e => setSelectedFruit(e.target.value)}>
             <option>Filter</option>
             <option>Subscribed Satellities</option>
             <option>My Reports</option>
             <option>Option</option>
-          </select>
-          {selectedFruit ?
-            <ul>
-              
-              {arr.map((report) => {
-                // {console.log('Hello', report)
-                // console.log('Hi',index, report[index])}
-                return (
-                    /* MUI <Select /> component ^^ */
-
-
-
-                    <li key={report.reportID}>
-                      <b>Satellite:</b> {` Insight ${report.satelliteID}`}
-                      <br />
-                      <b>User Access to SATCOM:</b> {` ${report.status}`}
-                      <br />
-                      <b>Description:</b> {` ${report.reason}`}
-                      <br />
-                      <b>User status on:</b> {` ${report.time}`}
-                      {/* Add A state that takes the number of times the a report was filed and display it here*/}
-                    </li>
-
-                )
-              })}
-            </ul>
-          :
-          <p>this worked</p>}
+          </select> */}
+          {selectedFilter ? (
+            <Box sx={{ margin: '20px 0' }}>
+              {/* only the date filter works right now, the .sort or .filter needs to be conditional */}
+              {reports.sort((a, b) => new Date(b.time) - new Date(a.time))
+              .map((report) => (
+                <Box key={report.reportID} sx={{ mb: 2 }}>
+                  <b>Satellite: </b> {`Insight ${report.satelliteID}`}
+                  <br />
+                  <b>User Access to SATCOM: </b> {`${report.status}`}
+                  <br />
+                  <b>Description: </b> {`${report.reason}`}
+                  <br />
+                  <b>User status on: </b> {`${report.time}`}
+                </Box>
+              ))}
+            </Box>
+            ) : (
+            <Box sx={{ margin: '20px 0' }}>
+              {reports.map((report) => (
+                <Box key={report.reportID} sx={{ mb: 2 }}>
+                  <b>Satellite: </b> {`Insight ${report.satelliteID}`}
+                  <br />
+                  <b>Status: </b> {`${report.status}`}
+                  <br />
+                  <b>Description: </b> {`${report.reason}`}
+                  <br />
+                  <b>Time: </b> {`${report.time}`}
+                </Box>
+              ))}
+            </Box>
+          )}
           </div>
           <div className="metric_view">
             <p>THIS IS THE METRIC PANEL.</p>
