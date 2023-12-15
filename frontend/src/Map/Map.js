@@ -16,12 +16,12 @@ export const Map = () => {
   const [marker, setMarker] = useState();
   const [circle, setCircle] = useState();
   const { reports, satellites } = useContext(userContext);
-  const [cursorInfo, setCursorInfo] = useState({
-    top: 0,
-    left: 0,
-    lat: 0,
-    lng: 0,
-  });
+  // const [cursorInfo, setCursorInfo] = useState({
+  //   top: 0,
+  //   left: 0,
+  //   lat: 0,
+  //   lng: 0,
+  // });
 
   useEffect(() => {
     if (!navigator.geolocation) {
@@ -38,18 +38,18 @@ export const Map = () => {
       });
 
       map.on('mousemove', function (e) {
-        document.getElementsByClassName('coordinate')[0].innerHTML = 'lat: ' + e.latlng.lat + 'lng: ' + e.latlng.lng;
-        console.log('lat: ' + e.latlng.lat, 'lng: ' + e.latlng.lng);
+        document.getElementsByClassName('coordinate')[0].innerHTML = 'lat: ' + e.latlng.lat.toFixed(4) + 'lng: ' + e.latlng.lng.toFixed(4);
+        // console.log('lat: ' + e.latlng.lat, 'lng: ' + e.latlng.lng);
       });
     }
   }, [map]);
 
-  useEffect(() => {
-    if (map && marker && circle) {
-      const featureGroup = L.featureGroup([marker, circle]).addTo(map);
-      map.fitBounds(featureGroup.getBounds());
-    }
-  }, [map, marker, circle]);
+  // useEffect(() => {
+  //   if (map && marker && circle) {
+  //     const featureGroup = L.featureGroup([marker, circle]).addTo(map);
+  //     map.fitBounds(featureGroup.getBounds());
+  //   }
+  // }, [map, marker, circle]);
 
   function getPosition(position) {
     const { latitude: lat, longitude: long, accuracy } = position.coords;
@@ -74,22 +74,22 @@ export const Map = () => {
           minZoom={2}
           scrollWheelZoom={true}
           ref={setMap}
-          onMouseMove={(e) => {
-            if (map){
-            const { lat, lng } = e.latlng;
-            const container = map.getContainer();
-            const bounds = container.getBoundingClientRect();
+          // onMouseMove={(e) => {
+          //   if (map){
+          //   const { lat, lng } = e.latlng;
+          //   const container = map.getContainer();
+          //   const bounds = container.getBoundingClientRect();
 
-            const left = e.containerPoint.x - bounds.left;
-            const top = e.containerPoint.y - bounds.top;
+          //   const left = e.containerPoint.x - bounds.left;
+          //   const top = e.containerPoint.y - bounds.top;
 
-          setCursorInfo({
-              top: `${top}px`,
-              left: `${left}px`,
-              lat: lat.toFixed(4),
-              lng: lng.toFixed(4),
-            });
-          }}}
+          // setCursorInfo({
+          //     top: `${top}px`,
+          //     left: `${left}px`,
+          //     lat: lat.toFixed(4),
+          //     lng: lng.toFixed(4),
+          //   });
+          // }}}
         >
           <TileLayer
             className="ion-hide"
@@ -104,7 +104,6 @@ export const Map = () => {
                 <Marker
                   key={report.reportID}
                   position={[report.latitude, report.longitude]}
-
                 >
                   <Popup>
                     <h3>Report: {report.reportID}</h3>
@@ -121,13 +120,9 @@ export const Map = () => {
               );
             })}
           {/* </MarkerClusterGroup> */}
-          {marker && <Marker position={marker.getLatLng()} />}
-          {circle && <Circle center={circle.getLatLng()} radius={circle.options.radius} />}
+          {/* {marker && <Marker position={marker.getLatLng()} />}
+          {circle && <Circle center={circle.getLatLng()} radius={circle.options.radius} />} */}
         </MapContainer>
-        <div className="cursor-info" style={{ top: cursorInfo.top, left: cursorInfo.left }}>
-          <p>Latitude: {cursorInfo.lat}</p>
-          <p>Longitude: {cursorInfo.lng}</p>
-        </div>
       </div>
     </>
   );
