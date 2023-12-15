@@ -26,7 +26,7 @@ function ReportList() {
 
       <div className="reports_page">
 
-        <div className="report_view">
+      <Box className="report_view" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
 
 
           <InputLabel>Search: </InputLabel>
@@ -81,15 +81,15 @@ function ReportList() {
                   </Box>
               ))}
             </Box>
-          </div>
-          <div className="metric_view">
+          </Box>
+          <Box className="metric_view" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
 
             < MixedBarChart/>
             {/* <section>
               <h3 style={{ display: 'flex'}}>Satellite Status</h3>
               <SatelliteDropDown/>
             </section> */}
-          </div>
+          </Box>
       </div>
     </div>
   );

@@ -34,7 +34,10 @@ li{
 
 .report-title {
   color: var(--title-color);
-  padding: 30px  600px 0  ;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
 
 }
 
