@@ -71,7 +71,7 @@ export const AddReport = () => {
     } = event;
     setReason(value);
 
-    
+
 
     // setReason(totalIssues)
       // On autofill we get a stringified value.
@@ -98,7 +98,8 @@ export const AddReport = () => {
           "status": status,
           "reason": reason,
           "satelliteID": sat.satelliteID,
-          "userID": userUID
+          "userID": userUID,
+          "archived": false
         }),
       })
       .then(() => {

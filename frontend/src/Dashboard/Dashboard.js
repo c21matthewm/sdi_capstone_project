@@ -48,12 +48,12 @@ export const Dashboard = () => {
 				<Typography variant="h5" component="div" className="dashtitle" > USER Dashboard</Typography>
 				<div className="userDisplay">
 					<Box className="tileDisplay" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
-						{satellites.filter((satellite) => satellite.favorites.includes(userUID)).map((sat) => {
+						{satellites.filter((satellite) => satellite.favorites.includes(userUID)).map((sat, index) => {
 							return (
-								<div className="tile">
+								<div id={index}className="tile">
 									<Box className="box" component="section" sx={{
-										boxShadow: 3, p: 2, borderRadius: '10px', border: sat.status === 'GREEN' ? "solid 5px #00ff00" :
-											sat.status === 'YELLOW' ? "solid 5px #facb6c" : "solid 5px #ff0000"
+										boxShadow: 3, p: 2, borderRadius: '10px', border: sat.status === 'GREEN' ? "solid 10px #00ff00" :
+											sat.status === 'YELLOW' ? "solid 10px #facb6c" : "solid 10px #ff0000"
 									}} variant="outlined">
 										<CardActionArea >
 											<Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
@@ -61,7 +61,7 @@ export const Dashboard = () => {
 													<Box
 														component="img"
 														sx={{
-														height: '95px',
+														height: '90px',
 														width: '120px',
 														}}
 														src={sat.image}
@@ -75,12 +75,12 @@ export const Dashboard = () => {
 												</CardContent >
 											</Link>
 										</CardActionArea >
-										<CardActions >
+										<CardActions className="buttons">
 											<Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}>
-												<Button variant="contained" color="info" >Add Report</Button>
+												<Button variant="contained" color="success" startIcon={<AddIcon />}>Add Report</Button>
 											</Link>
 											<Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
-												<Button variant="contained" color="error" endIcon={<ReportIcon />}>
+												<Button variant="contained" color="warning" endIcon={<ReportIcon />}>
 													<Typography component="span">{reports.filter((report) => (report.satelliteID === sat.satelliteID)).length}</Typography>
 												</Button>
 											</Link>

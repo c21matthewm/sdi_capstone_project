@@ -15,10 +15,10 @@ import CheckCircleTwoToneIcon from '@mui/icons-material/CheckCircleTwoTone';
 import SatelliteAltIcon from '@mui/icons-material/SatelliteAlt';
 
 import { userContext } from '../App';
-import React, { useContext} from 'react';
+import React, { useState, useContext} from 'react';
 
 function SatelliteDropDown() {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState(true);
 
   const handleClick = () => {
     setOpen(!open);

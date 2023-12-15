@@ -10,7 +10,7 @@ import { NavBar } from "../NavBar/NavBar";
 
 export const AdminDashboard = () => {
 
-  const { satellites, reports } = useContext(userContext);
+  const { satellites, reports, userUID } = useContext(userContext);
   const [popupVisible, setPopupVisible] = useState(false);
   const [selectedSat, setSelectedSat] = useState({});
 
@@ -28,12 +28,12 @@ export const AdminDashboard = () => {
             <Button variant="contained" color="success">Add Satellite</Button>
           </Link>
           <div className="tileDisplay">
-            {satellites.map((sat, index) => {
+          {satellites.filter((satellite) => satellite.favorites.includes(userUID)).map((sat, index) => {
               return (
                 <div id={index} className="tile">
-                  <Box sx={{
-                    boxShadow: 3, p: 2, borderRadius: '10px', border: sat.status === 'GREEN' ? "solid 8px #00ff00" :
-                      sat.status === 'YELLOW' ? "solid 8px #facb6c" : "solid 8px #ff0000"
+                  <Box className='box' sx={{
+                    boxShadow: 3, p: 2, borderRadius: '10px', border: sat.status === 'GREEN' ? "solid 10px #00ff00" :
+                      sat.status === 'YELLOW' ? "solid 10px #facb6c" : "solid 10px #ff0000"
                   }} variant="outlined">
                     <CardActionArea >
                       <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
@@ -55,7 +55,7 @@ export const AdminDashboard = () => {
                         </CardContent >
                       </Link>
                     </CardActionArea >
-                    <CardActions >
+                    <CardActions className="buttons">
                       <Button variant="contained" color="primary" onClick={() => {
                         setPopupVisible(true);
                         setSelectedSat(sat)

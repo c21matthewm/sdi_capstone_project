@@ -82,7 +82,8 @@ app.post('/reports', async(req, res) => {
       userID: req.body.userID,
       satelliteID: req.body.satelliteID,
       status: req.body.status,
-      reason: req.body.reason
+      reason: req.body.reason,
+      archived: false
       })
       .then(() => {
           knex.select()
@@ -196,6 +197,19 @@ app.patch('/satellites/status/:satelliteID', (req, res) => {
   .then(() => {
     knex('satellites')
     .where('satelliteID', req.params.satelliteID)
+    .select("*")
+    .then(data => res.json(data))});
+})
+
+app.patch('/reports/archived/:reportID', (req, res) => {
+  knex('reports')
+  .where('reportID', req.params.reportID)
+  .update({
+    archived: req.body.archived
+  })
+  .then(() => {
+    knex('reports')
+    .where('reportID', req.params.reportID)
     .select("*")
     .then(data => res.json(data))});
 })

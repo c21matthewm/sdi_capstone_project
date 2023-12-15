@@ -16,6 +16,7 @@ exports.up = function(knex) {
     table.foreign('satelliteID').references('satellites.satelliteID');
     table.string('status');
     table.specificType('reason', 'text[]');
+    table.boolean('archived');
   })
 
 };
