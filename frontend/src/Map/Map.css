@@ -43,14 +43,14 @@
 .leaflet-container {
   height: 80vh;
   width: 85%;
-  margin:50px;
+  margin: 50px;
   border-radius: 20px;
   border: 2px solid black;
   /* height: 300px;
   border-radius: 2rem; */
 }
 
-/*
+
 .cluster-icon {
   background-color: #333;
   height: 2em;
@@ -62,4 +62,4 @@
   border-radius: 50%;
   font-size: 1.2rem;
   box-shadow: 0 0 0px 5px #fff;
-} */
+}
