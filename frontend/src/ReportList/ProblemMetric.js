@@ -3,8 +3,7 @@ import { userContext } from "../App";
 import React, { useState, useEffect, useContext } from "react";
 
 
-// Cannot Connect
-// Quality is Degraded
+// Unknown Issue
 // LOS
 // Atmospheric Conditions
 // Signal Interference
@@ -13,10 +12,14 @@ import React, { useState, useEffect, useContext } from "react";
 // Power Supply Issues
 // Frequency Coordination
 
-
-const Garbled = [4000, 3000, 2000, 2780, 1890, 2390, 3490];
-const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
-const amtData = [2400, 2210, 2290, 2000, 2181, 2500, 2100];
+const unknownData = [1,1,1,1,1,1,1,1,1,1,1,1];
+const losData = [1,1,1,1,1,1,1,1,1,1,1,1];
+const atmoData = [1,1,1,1,1,1,1,1,1,1,1,1];
+const interferenceData = [1,1,1,1,1,1,1,1,1,1,1,1];
+const latencyData = [1,1,1,1,1,1,1,1,1,1,1,1];
+const malfunctionData = [1,1,1,1,1,1,1,1,1,1,1,1];
+const powerData = [1,1,1,1,1,1,1,1,1,1,1,1];
+const coordinationData = [1,1,1,1,1,1,1,1,1,1,1,1];
 
 export default function MixedBarChart() {
 
@@ -24,14 +27,30 @@ export default function MixedBarChart() {
 
   return (
     <BarChart
-      width={500}
-      height={300}
+      width={1000}
+      height={500}
       series={[
-        { data: pData, label: 'pv', stack: 'stack1' },
-        { data: amtData, label: 'amt', stack:'stack1' },
-        { data: Garbled, label: 'Garbled', stack: 'stack1' },
+        { data: unknownData, label: 'Unknown', stack:'stack1' },
+        { data: losData, label: 'User LOS', stack: 'stack1' },
+        { data: atmoData, label: 'User Weather', stack: 'stack1' },
+        { data: interferenceData, label: 'Interference', stack: 'stack1' },
+        { data: latencyData, label: 'Latency', stack: 'stack1' },
+        { data: malfunctionData, label: 'Malfunction', stack: 'stack1' },
+        { data: powerData, label: 'Power', stack: 'stack1' },
+        { data: coordinationData, label: 'Frequency Coord', stack: 'stack1' },
       ]}
-      xAxis={[{ data: satellites.map(sat => sat.name), scaleType: 'band' }]}
+      xAxis={[{ data: satellites.map(sat => sat.name), label: 'Satellite Vehicles', scaleType: 'band' }]}
+      yAxis={[{label: 'Reported Problems Per Satellite'}]}
+      slotProps={{
+        legend: {
+          position: {vertical: 'top', horizontal: 'middle'},
+          padding: 0,
+          labelStyle: {
+            fontsize: 10,
+            // fill: 'blue',
+          },
+        }
+      }}
     />
   );
 }

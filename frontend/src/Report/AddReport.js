@@ -53,8 +53,7 @@ export const AddReport = () => {
 
   //   setChecked(isItChecked);
   const reasonsForReport = [
-    {issue: 'Cannot Connect'},
-    {issue: 'Quality is Degraded'},
+    {issue: 'Unknown Issue'},
     {issue: 'Blocked LOS'},
     {issue: 'Atmospheric Conditions'},
     {issue: 'Signal Latency'},
