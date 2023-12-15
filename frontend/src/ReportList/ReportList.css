@@ -1,7 +1,6 @@
 .reports_page {
   display: flex;
-  justify-content: center;
-  gap: 30px;
+  justify-content: space-around;
   color: var(--text-color);
 }
 
@@ -22,11 +21,13 @@ li{
   background-color: var(--component-color);
   padding: 30px;
   border-radius: 20px;
+  width: 58%;
 }
 
-/* .problems_metric {
-  display: flex
-} */
+.problems_metric {
+  display: flex;
+  width: 100%;
+}
 
 .SATCOM_down_metric {
   display: flex
