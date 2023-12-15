@@ -47,13 +47,13 @@ function ReportList() {
         <div className="report_view">
 
 
-          <InputLabel>Search: </InputLabel>
+          {/* <InputLabel>Search: </InputLabel>
             <TextField id='search'
                       variant="outlined"
                       value={searchValue}
                       onChange={(e) => setSearchValue(e.target.value)}
                       />
-          <Divider />
+          <Divider /> */}
 
           <InputLabel id="filter-label">Filter By: </InputLabel>
             <Select id="filter"
@@ -67,6 +67,7 @@ function ReportList() {
               <MenuItem value="current">Current</MenuItem>
               <MenuItem value="archived">Archived</MenuItem>
             </Select>
+
             <ReportTableData tableData={filteredReports} />
             {/* <Box sx={{ margin: '20px 0' }}>
               {reports
