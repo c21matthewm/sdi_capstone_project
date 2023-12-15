@@ -85,7 +85,9 @@ export const Dashboard = () => {
 											</Link>
 											<Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
 												<Button variant="contained" color="warning" endIcon={<ReportIcon />}>
-													<Typography component="span">{reports.filter((report) => (report.satelliteID === sat.satelliteID)).length}</Typography>
+													<Typography component="span">{reports.filter((report) => 
+														report.satelliteID === sat.satelliteID &&
+														report.archived === false).length}</Typography>
 												</Button>
 											</Link>
 										</CardActions >
