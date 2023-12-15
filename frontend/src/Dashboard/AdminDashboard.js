@@ -10,7 +10,7 @@ import { NavBar } from "../NavBar/NavBar";
 
 export const AdminDashboard = () => {
 
-  const { satellites, reports } = useContext(userContext);
+  const { satellites, reports, userUID } = useContext(userContext);
   const [popupVisible, setPopupVisible] = useState(false);
   const [selectedSat, setSelectedSat] = useState({});
 
@@ -28,7 +28,7 @@ export const AdminDashboard = () => {
             <Button variant="contained" color="success">Add Satellite</Button>
           </Link>
           <div className="tileDisplay">
-            {satellites.map((sat, index) => {
+          {satellites.filter((satellite) => satellite.favorites.includes(userUID)).map((sat, index) => {
               return (
                 <div id={index} className="tile">
                   <Box sx={{

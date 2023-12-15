@@ -1,13 +1,24 @@
-import { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Circle } from "react-leaflet";
+import { useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
+import { MapContainer, TileLayer, Marker, Circle, Popup } from "react-leaflet";
+import Button from '@mui/material/Button';
+import { NavBar } from "../NavBar/NavBar";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
+import "leaflet-defaulticon-compatibility";
+import { userContext } from "../App";
 import "./Map.css";
 
 export const Map = () => {
   const [map, setMap] = useState(null);
-  const [marker, setMarker] = useState(null);
-  const [circle, setCircle] = useState(null);
+  const [marker, setMarker] = useState();
+  const [circle, setCircle] = useState();
+  const { reports, satellites } = useContext(userContext);
+
+  useEffect(() => {
+    console.log("reports: ", reports);
+  });
 
   useEffect(() => {
     if (!navigator.geolocation) {
@@ -36,24 +47,38 @@ export const Map = () => {
     setCircle(newCircle);
   }
 
-  return (
-    <MapContainer
-      className="leaflet-container"
-      center={[38.8257, -104.6996]}
-      attributionControl={true}
-      zoom={15}
-      minZoom={3}
-      scrollWheelZoom={true}
-      whenCreated={setMap}
-    >
-      <TileLayer
-        className="ion-hide"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
 
-      {marker && <Marker position={marker.getLatLng()} />}
-      {circle && <Circle center={circle.getLatLng()} radius={circle.options.radius} />}
-    </MapContainer>
+  return (
+    <>
+      <NavBar />
+      <MapContainer
+        className="leaflet-container"
+        center={[0, 0]}
+        attributionControl={true}
+        zoom={3}
+        minZoom={2}
+        scrollWheelZoom={true}
+        whenCreated={setMap}
+      >
+        <TileLayer
+          className="ion-hide"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {/* {marker && <Marker position={marker.getLatLng()} />} */}
+        {/* {circle && <Circle center={circle.getLatLng()} radius={circle.options.radius} />} */}
+        {reports.map((report) => {
+          const sat = (satellites.find((satellite) => satellite.satelliteID === report.satelliteID));
+          return (
+          <Marker key={report.reportID} position={[report.latitude, report.longitude]}>
+            <Popup>
+              <h3>Report: {report.reportID}</h3>
+              <Link to={`/reports/${report.reportID}`} state={{ report, sat}}><Button variant="contained" color="primary">View Report</Button></Link>
+            </Popup>
+          </Marker>
+          )
+        })}
+      </MapContainer>
+    </>
   );
 };

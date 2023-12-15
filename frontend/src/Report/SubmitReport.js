@@ -50,16 +50,16 @@ export const SubmitReport = () => {
   ];
 
 
-  const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setReason(value);
+  // const handleChange = (event) => {
+  //   const {
+  //     target: { value },
+  //   } = event;
+  //   setReason(value);
 
       // On autofill we get a stringified value.
     //   typeof value === 'string' ? value.split(',') : value,
     // );
-  };
+  // };
 
 
   const onSubmit = (e) => {
