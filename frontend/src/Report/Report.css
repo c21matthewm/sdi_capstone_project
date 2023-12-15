@@ -19,22 +19,18 @@
   flex-direction: row;
   justify-content: center;
   height:650px;
-  margin:40px auto;
+  margin:20px auto;
   gap: 50px;
   
-  
-
 }
 
-
-
 #add-box {
-  /* margin:50px; */
   width:800px;
   /* display:flex;
   width:700px; */
-  height: 700px;
-  overflow: scroll;
+  height: 725px;
+  margin-bottom: 30px;
+  overflow: auto;
   background-color: var(--component-color);
 }
 
@@ -43,4 +39,8 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+
+.satT {
+  margin-bottom: 5px;
 }

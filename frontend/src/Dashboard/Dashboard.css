@@ -13,16 +13,18 @@
     justify-content:space-around;
     margin:15px 100px 0px 100px;
     padding:12px;
+    height: 700px;
+    overflow: auto;
     
 }
 
 .tile {
-    width: 300px;
+    width: 320px;
     height: 300px;
     margin: 20px;
     text-decoration: none; 
     background-color: var(--component-color);
-    color:var(--text-color);
+    /* color:var(--text-color); */
     border-radius: 10px;
 }
 
@@ -50,4 +52,13 @@
 
 .dashtitle {
     color:white;
+}
+
+.sat-name {
+    margin: -10px auto -20px auto ;
+    text-decoration: none ;
+}
+ 
+a {
+    text-decoration: none;
 }

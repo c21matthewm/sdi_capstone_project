@@ -1,6 +1,8 @@
 .reports_page {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 30px;
+  color: var(--text-color);
 }
 
 .report_view {
@@ -9,6 +11,7 @@
   height: 700px;
   width: 40%;
   overflow: auto;
+  border-radius: 20px;
 }
 
 li{
@@ -18,6 +21,7 @@ li{
 .metric_view {
   background-color: var(--component-color);
   padding: 30px;
+  border-radius: 20px;
 }
 
 /* .problems_metric {
@@ -27,3 +31,10 @@ li{
 .SATCOM_down_metric {
   display: flex
 }
+
+.report-title {
+  color: var(--title-color);
+  padding: 30px  600px 0  ;
+
+}
+
