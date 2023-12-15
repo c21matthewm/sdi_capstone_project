@@ -34,8 +34,16 @@
   height: 1000px;
 } */
 
+.map-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .leaflet-container {
-  height: 100vh;
+  height: 90vh;
+  width: 95%;
+  margin: 5px auto;
   /* height: 300px;
   border-radius: 2rem; */
 }

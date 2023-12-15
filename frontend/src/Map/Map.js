@@ -48,54 +48,56 @@ export const Map = () => {
   return (
     <>
       <NavBar />
-      <MapContainer
-        className="leaflet-container"
-        center={[0, 0]}
-        attributionControl={true}
-        zoom={3}
-        minZoom={2}
-        scrollWheelZoom={true}
-        whenCreated={setMap}
-        // onMouseMove={(e) => {
-        //   console.log("Mouse coordinates:", e.latlng.lat, e.latlng.lng);
-        //   const { lat, lng } = e.latlng;
-        //   const container = map.getContainer();
-        //   const bounds = container.getBoundingClientRect();
+      <div className="map-title">
+        <MapContainer
+          className="leaflet-container"
+          center={[0, 0]}
+          attributionControl={true}
+          zoom={3}
+          minZoom={2}
+          scrollWheelZoom={true}
+          whenCreated={setMap}
+          // onMouseMove={(e) => {
+          //   console.log("Mouse coordinates:", e.latlng.lat, e.latlng.lng);
+          //   const { lat, lng } = e.latlng;
+          //   const container = map.getContainer();
+          //   const bounds = container.getBoundingClientRect();
 
-        //   const left = e.containerPoint.x - bounds.left;
-        //   const top = e.containerPoint.y - bounds.top;
+          //   const left = e.containerPoint.x - bounds.left;
+          //   const top = e.containerPoint.y - bounds.top;
 
-        //   setCursorInfo({
-        //     top: `${top}px`,
-        //     left: `${left}px`,
-        //     lat: lat.toFixed(4),
-        //     lng: lng.toFixed(4),
-        //   });
-        //   }}
-      >
-        <TileLayer
-          className="ion-hide"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {/* {marker && <Marker position={marker.getLatLng()} />} */}
-        {/* {circle && <Circle center={circle.getLatLng()} radius={circle.options.radius} />} */}
-        {reports.map((report) => {
-          const sat = (satellites.find((satellite) => satellite.satelliteID === report.satelliteID));
-          return (
-          <Marker key={report.reportID} position={[report.latitude, report.longitude]}>
-            <Popup>
-              <h3>Report: {report.reportID}</h3>
-              <Link to={`/reports/${report.reportID}`} state={{ report, sat}}><Button variant="contained" color="primary">View Report</Button></Link>
-            </Popup>
-          </Marker>
-          )
-        })}
-      </MapContainer>
-      {/* <div className="cursor-info" style={{top: 0, left: 0}}>
-        <p>Latitude: {cursorInfo.lat}</p>
-        <p>Longitude: {cursorInfo.lng}</p>
-      </div> */}
+          //   setCursorInfo({
+          //     top: `${top}px`,
+          //     left: `${left}px`,
+          //     lat: lat.toFixed(4),
+          //     lng: lng.toFixed(4),
+          //   });
+          //   }}
+        >
+          <TileLayer
+            className="ion-hide"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          {/* {marker && <Marker position={marker.getLatLng()} />} */}
+          {/* {circle && <Circle center={circle.getLatLng()} radius={circle.options.radius} />} */}
+          {reports.map((report) => {
+            const sat = (satellites.find((satellite) => satellite.satelliteID === report.satelliteID));
+            return (
+            <Marker key={report.reportID} position={[report.latitude, report.longitude]}>
+              <Popup>
+                <h3>Report: {report.reportID}</h3>
+                <Link to={`/reports/${report.reportID}`} state={{ report, sat}}><Button variant="contained" color="primary">View Report</Button></Link>
+              </Popup>
+            </Marker>
+            )
+          })}
+        </MapContainer>
+        {/* <div className="cursor-info" style={{top: 0, left: 0}}>
+          <p>Latitude: {cursorInfo.lat}</p>
+          <p>Longitude: {cursorInfo.lng}</p>
+        </div> */}
+      </div>
     </>
   );
 };
