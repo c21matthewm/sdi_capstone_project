@@ -44,7 +44,7 @@ function ReportList() {
 
       <div className="reports_page">
 
-        <div className="report_view">
+      <Box className="report_view" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
 
 
           {/* <InputLabel>Search: </InputLabel>
@@ -96,19 +96,26 @@ function ReportList() {
                     <br />
                     <ArchiveButtonToggle report={report} />
                   </Box>
+<<<<<<< HEAD
+              ))}
+            </Box>
+          </Box>
+          <Box className="metric_view" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
+=======
               ))
               }
             </Box> */}
           </div>
 
           <div className="metric_view">
+>>>>>>> bb28aa484b3b834893917b575ed14a9c3f5b849b
 
             < MixedBarChart/>
             {/* <section>
               <h3 style={{ display: 'flex'}}>Satellite Status</h3>
               <SatelliteDropDown/>
             </section> */}
-          </div>
+          </Box>
       </div>
     </div>
   );
