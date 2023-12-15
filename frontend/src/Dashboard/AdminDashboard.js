@@ -74,7 +74,9 @@ export const AdminDashboard = () => {
                       </Dialog>
                       <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
                         <Button variant="contained" color="secondary" endIcon={<ReportIcon />}>
-                          <Typography component="span">{reports.filter((report) => (report.satelliteID === sat.satelliteID)).length}</Typography>
+                        <Typography component="span">{reports.filter((report) => 
+														report.satelliteID === sat.satelliteID &&
+														report.archived === false).length}</Typography>
                         </Button>
                       </Link>
                     </CardActions >
