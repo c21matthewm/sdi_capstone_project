@@ -55,7 +55,10 @@ export const Satellite = (props) => {
                             <Box className="report-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
                                 <div className="components" id="reports">
                                     <Typography variant="h6" gutterBottom> Recent Reports:</Typography>
-                                    {reports.filter((report) => (report.satelliteID === sat.satelliteID))
+                                    {/* {reports.filter((report) => (report.satelliteID === sat.satelliteID)) */}
+                                    {reports.filter((report) => 
+                                        report.satelliteID === sat.satelliteID &&
+                                        report.archived === false)
                                         .map((report, index) => {
                                             return (
                                                 <>
