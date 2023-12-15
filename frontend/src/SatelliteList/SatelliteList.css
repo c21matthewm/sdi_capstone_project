@@ -8,12 +8,16 @@
 .list-sat {
   margin: auto;
   width: 800px;
+  
+  
 }
 
 .box-list {
   max-height: 700px;
   overflow: auto;
-  border: 1px solid rgb(204, 204, 204);
+  /* border: 2px solid rgb(158, 158, 158); */
+  border-radius: 15px;
+  /* background-color: rgba(255, 255, 255, 0.5); */
 }
 
 .satT {
@@ -29,4 +33,5 @@
   margin-bottom: 10px;
   background-color: var(--component-color);
   color: var(--text-color);
+  border-radius: 15px;
 }

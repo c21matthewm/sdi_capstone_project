@@ -16,10 +16,12 @@
 
 #flex-report {
   display:flex;
+  flex-direction: row;
   justify-content: center;
   height:650px;
   margin:40px auto;
   gap: 50px;
+  
   
 
 }

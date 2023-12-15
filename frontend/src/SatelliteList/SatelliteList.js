@@ -58,7 +58,7 @@ export const SatelliteList = () => {
                         })}
                     </div>
                 </div>
-                <SatelliteDropDown />
+                {/* <SatelliteDropDown /> */}
             </div>
         </>
     )
