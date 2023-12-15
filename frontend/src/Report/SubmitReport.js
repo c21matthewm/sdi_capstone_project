@@ -39,8 +39,7 @@ export const SubmitReport = () => {
   const [satID, setSatID] = useState(1);
   const [reason, setReason] = useState([]);
   const reasonsForReport = [
-    {issue: 'Cannot Connect'},
-    {issue: 'Quality is Degraded'},
+    {issue: 'Unknown Issue'},
     {issue: 'Blocked LOS'},
     {issue: 'Atmospheric Conditions'},
     {issue: 'Signal Latency'},
@@ -151,7 +150,7 @@ export const SubmitReport = () => {
                 multiple
                 value={reason}
                 onChange ={ (e) => {
-                  console.log(e.target.value); 
+                  console.log(e.target.value);
                   setReason(e.target.value);
                 }}
                 input={<OutlinedInput label="Reason" />}
