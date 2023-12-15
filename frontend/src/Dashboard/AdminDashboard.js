@@ -25,33 +25,34 @@ export const AdminDashboard = () => {
         <Typography variant="h5" component="div" ><div className="dashtitle">ADMIN Dashboard</div></Typography>
         <div className="adminDisplay">
           <Link to={`/addsatellite`}>
-            <Button variant="contained" color="success">Add Satellite</Button>
+            <Button variant="contained" color="info">Add Satellite</Button>
           </Link>
           <div className="tileDisplay">
           {satellites.filter((satellite) => satellite.favorites.includes(userUID)).map((sat, index) => {
               return (
                 <div id={index} className="tile">
-                  <Box className='box' sx={{
-                    boxShadow: 3, p: 2, borderRadius: '10px', border: sat.status === 'GREEN' ? "solid 10px #00ff00" :
-                      sat.status === 'YELLOW' ? "solid 10px #facb6c" : "solid 10px #ff0000"
-                  }} variant="outlined">
+                 <Box className="box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }} style={{backgroundColor: sat.status === 'GREEN' ? "rgb(60, 179, 113, .8)" :
+											sat.status === 'YELLOW' ? "#facb6c" : "rgb(255, 0, 0, .8)"}}>
                     <CardActionArea >
                       <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
                         <CardMedia>
                           <Box
                             component="img"
                             sx={{
-                              height: '95px',
-                              width: '120px',
+                              height: '150px',
+                              width: '200px',
+                              margin: '20px 0 0 0' ,
                             }}
                             src={sat.image}
                             alt="satellite image"
                           />
                         </CardMedia>
                         <CardContent >
+                        <div className="sat-name">
                           <Typography variant="h5" component="div" >
                             {sat.name.toUpperCase()}
                           </Typography >
+                        </div>
                         </CardContent >
                       </Link>
                     </CardActionArea >

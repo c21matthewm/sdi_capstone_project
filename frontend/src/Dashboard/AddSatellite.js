@@ -60,10 +60,9 @@ export const AddSatellite = () => {
   return (
     <>
       <NavBar />
+      <Typography className="AddSat" variant="h5" gutterBottom>Add Satellite</Typography>
       <div className='report-container'>
         <Box className="box" id="add-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
-        <Typography variant="h6" gutterBottom>Add Satellite</Typography>
-        <Divider></Divider>
           <form onSubmit={onSatelliteSubmit}>
             <InputLabel>Name:</InputLabel>
             <TextField
@@ -123,7 +122,7 @@ export const AddSatellite = () => {
             </Select>
             <Divider></Divider>
 
-            <Button type="submit" variant="contained" color="success">Submit</Button>
+            <Button type="submit" variant="contained" color="info">Submit</Button>
           </form>
         </Box>
       </div>
