@@ -13,6 +13,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import { Divider } from '@mui/material';
 import Button from '@mui/material/Button';
 import {Typography} from '@mui/material';
+import "./Report.css"
 
 export const SubmitReport = () => {
 

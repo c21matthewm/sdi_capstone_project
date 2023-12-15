@@ -13,6 +13,8 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import { Divider } from '@mui/material';
 import Button from '@mui/material/Button';
 import { useLocation } from 'react-router-dom';
+import {Typography} from '@mui/material';
+import "./Report.css"
 
 export const AddReport = () => {
 
@@ -122,6 +124,7 @@ export const AddReport = () => {
     <>
       <NavBar />
       <div className='report-container'>
+      <Typography className="satT" variant="h5" gutterBottom>Submit Report</Typography>
         <Box className="box" id="add-box" component="section" sx={{  boxShadow: 3, p: 2, border: '1px solid grey' }}>
           <form onSubmit={onSubmit}>
             <InputLabel id="sat-label">Satellite:<b>{sat.name.toUpperCase()}</b></InputLabel>

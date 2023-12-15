@@ -18,6 +18,8 @@ import Divider from '@mui/material/Divider';
 import { ListItemButton } from '@mui/material';
 import { yellow } from '@mui/material/colors';
 import { ButtonToggle } from "../SatelliteList/ButtonToggle";
+import { withStyles } from "@mui/system";
+
 
 export const Dashboard = () => {
 
@@ -51,27 +53,29 @@ export const Dashboard = () => {
 						{satellites.filter((satellite) => satellite.favorites.includes(userUID)).map((sat, index) => {
 							return (
 								<div id={index}className="tile">
-									<Box className="box" component="section" sx={{
-										boxShadow: 3, p: 2, borderRadius: '10px', border: sat.status === 'GREEN' ? "solid 10px #00ff00" :
-											sat.status === 'YELLOW' ? "solid 10px #facb6c" : "solid 10px #ff0000"
-									}} variant="outlined">
+									<Box className="box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }} style={{backgroundColor: sat.status === 'GREEN' ? "rgb(60, 179, 113, .8)" :
+											sat.status === 'YELLOW' ? "#facb6c" : "rgb(255, 0, 0, .8)"}}
+									variant="outlined">
 										<CardActionArea >
 											<Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
 												<CardMedia>
 													<Box
 														component="img"
 														sx={{
-														height: '90px',
-														width: '120px',
+														height: '150px',
+														width: '200px',
+														margin: '20px 0 0 0' ,
 														}}
 														src={sat.image}
 														alt="satellite image"
 													/>
 												</CardMedia>
 												<CardContent >
-													<Typography variant="h5" component="div" >
+													<div className="sat-name">
+													<Typography  variant="h5" component="div" sx={{margin:"0"}} >
 														{sat.name.toUpperCase()}
 													</Typography >
+													</div>
 												</CardContent >
 											</Link>
 										</CardActionArea >

@@ -2,7 +2,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // import { Home } from './pages/Home';
 import React, { useContext, useState, useEffect } from 'react';
-import { Select, MenuItem, InputLabel, Divider, TextField, Box , Button, OutlinedInput } from '@mui/material';
+import { Select, MenuItem, InputLabel, Divider, TextField, Box , Button, OutlinedInput, Typography } from '@mui/material';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import { userContext } from '../App';
 // import PieCenterLabel from './PieChart';
@@ -36,12 +36,14 @@ function ReportList() {
   return (
     <div>
       <NavBar/>
-      <h1>Reports Page</h1>
+      <div className="report-flex">
+       <Typography className="report-title" variant="h5" gutterBottom>Reports Page</Typography>
+      </div>
 
       <div className="reports_page">
 
         <div className="report_view">
-          <h3>THIS IS THE REPORT PANEL.</h3>
+
 
           <InputLabel>Search: </InputLabel>
           {/* change input label to <Select /> component with different categories
@@ -117,7 +119,6 @@ function ReportList() {
           )}
           </div>
           <div className="metric_view">
-            <p>THIS IS THE METRIC PANEL.</p>
 
             < MixedBarChart/>
             {/* <section>
