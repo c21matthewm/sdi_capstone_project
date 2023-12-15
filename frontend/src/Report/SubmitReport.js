@@ -93,7 +93,7 @@ export const SubmitReport = () => {
       <NavBar />
       <div className='report-container'>
       <Typography className="satT" variant="h5" gutterBottom>Submit Report</Typography>
-        <Box className="box" id="add-box" component="section" sx={{  boxShadow: 3, p: 2, border: '1px solid grey' }}>
+        <Box className="submitform" id="add-box" component="section" sx={{  boxShadow: 3, p: 2, border: '1px solid grey' }}>
           <form onSubmit={onSubmit}>
             <InputLabel id="sat-label">Satellite:</InputLabel>
             <Select id="sat-label" value={satID} name="satellites" onChange={(e) => setSatID(e.target.value)}>
