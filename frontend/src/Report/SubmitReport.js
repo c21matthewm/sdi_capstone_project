@@ -152,7 +152,6 @@ export const SubmitReport = () => {
                 onChange ={ (e) => {
                   console.log(e.target.value); 
                   setReason(e.target.value);
-                  // handleChange
                 }}
                 input={<OutlinedInput label="Reason" />}
                 renderValue={(selected) => selected.join(', ')}
