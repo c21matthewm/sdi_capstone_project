@@ -61,3 +61,19 @@ INSTALLATION:
   - Launch Frontend Client
     -- In new terminal, *cd frontend*
     -- *npm start*
+
+
+    // ADMIN ACCOUNTS
+    INSIGHT:
+      user: admin@gmail.com
+      password: password
+    OUTSTAR:
+      user: user@gmail.com
+      password: password
+    
+    // USER ACCOUNTS
+      user: user2@gmail.com
+      password: password
+
+       user: user3@gmail.com
+      password: password
