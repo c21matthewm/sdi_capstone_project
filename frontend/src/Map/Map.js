@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Circle, Popup } from "react-leaflet";
 import Button from "@mui/material/Button";
@@ -17,6 +17,45 @@ export const Map = () => {
   const [marker, setMarker] = useState();
   const [circle, setCircle] = useState();
   const { reports, satellites } = useContext(userContext);
+
+  var greenIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
+
+  var yellowIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
+
+  var redIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
+  
+  
+  
+  // L.marker([51.5, -0.09], {icon: yellowIcon}).addTo(map);
+  
+  // L.marker([51.5, -0.09], {icon: redIcon}).addTo(map);
+  
+  // L.marker([51.5, -0.09], {icon: greenIcon}).addTo(map);
+  // add marker
+  // this.marker = L.marker(this.props.markerPosition, {
+  //   icon: redIcon
+  // }).addTo(this.map);
   // const [cursorInfo, setCursorInfo] = useState({
   //   top: 0,
   //   left: 0,
@@ -58,12 +97,49 @@ export const Map = () => {
   function getPosition(position) {
     const { latitude: lat, longitude: long, accuracy } = position.coords;
 
-    const newMarker = L.marker([lat, long]);
+    const newMarker = L.redIcon([lat, long]);
     const newCircle = L.circle([lat, long], { radius: accuracy });
 
     setMarker(newMarker);
     setCircle(newCircle);
   }
+  
+  // useEffect(()=> {
+  //   reports.map((report) => {
+  //     const sat = satellites.find(
+  //       (satellite) => satellite.satelliteID === report.satelliteID,
+  //     );
+  //     return (
+  //       <>
+  //       {/* {L.marker([report.latitude, report.longitude], {icon: redIcon}).addTo(map)} */}
+  //       <Marker
+  //         key={report.reportID}
+  //         position={[report.latitude, report.longitude]}
+  //       >
+  //         <Popup>
+  //           <h3>{sat.name.toUpperCase()} </h3>
+  //           <h3>Report #{report.reportID} </h3>
+  //           <Link
+  //             to={`/reports/${report.reportID}`}
+  //             state={{ report, sat }}
+  //           >
+  //             <Button variant="contained" color="primary">
+  //               View Report
+  //             </Button>
+  //           </Link>
+  //         </Popup>
+  //       </Marker>
+  //       </>
+  //     );
+  //   })
+  //   return (
+  //       <>
+  //       </>
+  //   )
+  // }, [])
+  // L.marker([50, 50], {icon: redIcon}).addTo(map)
+  // L.marker([40, 40], {icon: yellowIcon}).addTo(map)
+
 
   return (
     <>
@@ -108,14 +184,32 @@ export const Map = () => {
             noWrap={true}
             
           />
+          
             {reports.map((report) => {
               const sat = satellites.find(
                 (satellite) => satellite.satelliteID === report.satelliteID,
               );
+              let newIcon;
+                if (report.status === "GREEN" )
+                newIcon = greenIcon
+                else if(report.status === "YELLOW")
+                newIcon = yellowIcon
+                else if(report.status === "RED")
+                newIcon = redIcon
+                else 
+                newIcon = greenIcon
+
+
+              // let newIcon = {report.status == "GREEN" ? greenIcon : 
+              // report.status == "YELLOW" ? yellowIcon :  redIcon}
               return (
+                <>
+                {/* {L.marker([report.latitude, report.longitude], {icon: redIcon}).addTo(map)} */}
+              
                 <Marker
                   key={report.reportID}
                   position={[report.latitude, report.longitude]}
+                  icon={newIcon}
                 >
                   <Popup>
                     <h3>{sat.name.toUpperCase()} </h3>
@@ -130,6 +224,7 @@ export const Map = () => {
                     </Link>
                   </Popup>
                 </Marker>
+                </>
               );
             })}
           {/* </MarkerClusterGroup> */}
