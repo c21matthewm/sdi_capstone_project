@@ -209,16 +209,3 @@ app.delete('/satellites/:satelliteID', (req, res) => {
   })
   .catch(err => res.status(400).json('Error: ' + err));
 })
-
-// app.delete('/reports/:satelliteID', (req, res) => {
-//   knex('reports').where('satelliteID', req.params.satelliteID)
-//   .del()
-//   .then(() => {
-//       knex('reports')
-//           .select('*')
-//           .then(data => {
-//               res.json(data);
-//           })
-//   })
-//   .catch(err => res.status(400).json('Error: ' + err));
-// })

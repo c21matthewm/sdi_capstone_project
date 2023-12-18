@@ -41,22 +41,13 @@ export const AdminDashboard = () => {
       .then(data => {
         console.log(data);
       })
-    // fetch(`/reports/${satelliteToDelete.satelliteID}`, {
-    //   method: 'DELETE',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   }
-    // })
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     console.log(data);
-    //   })
     setDeletePopupVisible(false);
   };
 
   return (
     <>
       <NavBar />
+
       {/* Delete Confirmation Popup */}
       <Dialog open={deletePopupVisible} onClose={handleDeletePopupClose}>
         <DialogTitle>Confirm Deletion</DialogTitle>
@@ -70,6 +61,7 @@ export const AdminDashboard = () => {
           <Button variant="contained" color="error" onClick={handleDeletePopupClose}>No</Button>
         </DialogActions>
       </Dialog>
+
       <div className="big-container">
         <Typography variant="h5" component="div" ><div className="dashtitle">ADMIN Dashboard</div></Typography>
         <div className="adminDisplay">
@@ -114,7 +106,7 @@ export const AdminDashboard = () => {
                       <Button variant="contained" color="primary" onClick={() => {
                         setPopupVisible(true);
                         setSelectedSat(sat)
-                      }}>Edit status</Button>
+                      }}>EDIT STATUS</Button>
                       <Dialog open={popupVisible}
                         onClose={() => { setPopupVisible(false) }}
                         slotProps={{
@@ -125,6 +117,12 @@ export const AdminDashboard = () => {
                           }
                         }}
                       >
+                        <DialogTitle>Edit Status</DialogTitle>
+                        <DialogContent>
+                          <DialogContentText>
+                            Update status for {selectedSat.name}
+                          </DialogContentText>
+                        </DialogContent>
                         <EditStatus satellite={selectedSat} onClose={handlePopupClose} />
                       </Dialog>
 

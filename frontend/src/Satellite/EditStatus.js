@@ -23,8 +23,6 @@ export const EditStatus = ({ satellite, onClose }) => {
 
     return (
         <div className='popup'>
-            <h2>Edit Status</h2>
-            <p>{satellite.name}</p>
             <Button 
                 variant="contained"
                 color="success"
