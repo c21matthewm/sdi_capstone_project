@@ -2,9 +2,10 @@ import React, { useContext, useState } from "react";
 import { userContext } from "../App";
 import './Dashboard.css';
 import { Link } from 'react-router-dom';
-import { Button, CardActionArea, CardActions, CardMedia, Dialog } from '@mui/material';
+import { Button, CardActionArea, CardActions, CardMedia, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import { CardContent, Typography, Box } from '@mui/material';
 import ReportIcon from '@mui/icons-material/Report';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { EditStatus } from "../Satellite/EditStatus";
 import { NavBar } from "../NavBar/NavBar";
 
@@ -13,14 +14,54 @@ export const AdminDashboard = () => {
   const { satellites, reports, userUID } = useContext(userContext);
   const [popupVisible, setPopupVisible] = useState(false);
   const [selectedSat, setSelectedSat] = useState({});
+  const [deletePopupVisible, setDeletePopupVisible] = useState(false);
+  const [satelliteToDelete, setSatelliteToDelete] = useState(null);
 
   const handlePopupClose = () => {
     setPopupVisible(false);
   };
 
+  const handleDeletePopupClose = () => {
+    setDeletePopupVisible(false);
+  }
+
+  const confirmDelete = (satellite) => {
+    setSatelliteToDelete(satellite);
+    setDeletePopupVisible(true);
+  }
+
+  const deleteSatellite = () => {
+    fetch(`http://localhost:8080/satellites/${satelliteToDelete.satelliteID}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      })
+    setDeletePopupVisible(false);
+  };
+
   return (
     <>
       <NavBar />
+
+      {/* Delete Confirmation Popup */}
+      <Dialog open={deletePopupVisible} onClose={handleDeletePopupClose}>
+        <DialogTitle>Confirm Deletion</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Are you sure you want to delete {satelliteToDelete?.name}?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button variant="contained" color="success" onClick={deleteSatellite}>Yes</Button>
+          <Button variant="contained" color="error" onClick={handleDeletePopupClose}>No</Button>
+        </DialogActions>
+      </Dialog>
+
       <div className="big-container">
         <Typography variant="h5" component="div" ><div className="dashtitle">ADMIN Dashboard</div></Typography>
         <div className="adminDisplay">
@@ -65,7 +106,7 @@ export const AdminDashboard = () => {
                       <Button variant="contained" color="primary" onClick={() => {
                         setPopupVisible(true);
                         setSelectedSat(sat)
-                      }}>Edit status</Button>
+                      }}>EDIT STATUS</Button>
                       <Dialog open={popupVisible}
                         onClose={() => { setPopupVisible(false) }}
                         slotProps={{
@@ -76,8 +117,17 @@ export const AdminDashboard = () => {
                           }
                         }}
                       >
+                        <DialogTitle>Edit Status</DialogTitle>
+                        <DialogContent>
+                          <DialogContentText>
+                            Update status for {selectedSat.name}
+                          </DialogContentText>
+                        </DialogContent>
                         <EditStatus satellite={selectedSat} onClose={handlePopupClose} />
                       </Dialog>
+
+                      <Button variant="contained" color="error" onClick={() => confirmDelete(sat)}><DeleteIcon /></Button>
+                      
                       <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
                         <Button variant="contained" color="secondary" endIcon={<ReportIcon />}>
                         <Typography component="span">{reports.filter((report) => 
@@ -95,5 +145,4 @@ export const AdminDashboard = () => {
       </div>
     </>
   );
-};
-
+}
