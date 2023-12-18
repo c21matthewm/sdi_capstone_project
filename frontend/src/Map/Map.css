@@ -57,15 +57,48 @@
 .coordinate{
   z-index: 3;
   color:var(--text-color);
-  position: relative;
+  position: absolute;
   left:75%;
-  top: 550px;
+  top: 400px;
   padding:25px;
   height:200px;
   width:190px;
   background-color: rgba(242,239,233,255);
   border:dashed 1px grey
   
+}
+
+.legend {
+  display:flex;
+  position: relative;
+  z-index: 3;
+  left:75%;
+  flex-direction: column;
+  top: 550px;
+  padding:25px;
+  height:200px;
+  width:190px;
+  background-color: rgba(242,239,233,255);
+  justify-content: center;
+  border:dashed 1px grey;
+  gap:15px; 
+  color:var(--text-color);
+}
+
+.marks {
+  display: flex;
+  font-size: medium;
+  line-height: 1;
+  align-items: center;
+
+}
+
+.marks img {
+  margin-right: 10px;
+}
+
+.l-title {
+  margin-bottom: -15px;
 }
 /* 
 .coord-box{
