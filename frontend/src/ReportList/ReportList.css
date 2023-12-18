@@ -9,7 +9,7 @@
   background-color: var(--component-color);
   padding: 30px;
   height: 700px;
-  width: 40%;
+  width: 50%;
   overflow: auto;
   border-radius: 20px;
 }
@@ -22,7 +22,7 @@ li{
   background-color: var(--component-color);
   padding: 30px;
   border-radius: 20px;
-  width: 58%;
+  width: 40%;
   overflow: auto;
 }
 

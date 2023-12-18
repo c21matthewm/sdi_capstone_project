@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react";
 import { Box, Table, TableRow, TableCell, TableHead, TableBody, TableContainer } from "@mui/material";
 import ArchiveButtonToggle from "./ArchiveButtonToggle";
+import { userContext } from "../App";
 
 export const ReportTableData = ({ tableData }) => {
-
+    const { admin, setAdmin}= useContext(userContext)
     return (
         <Box sx={{ width: '100%' }}>
             <TableContainer>
@@ -31,7 +32,9 @@ export const ReportTableData = ({ tableData }) => {
                                 <TableCell align="right">{report.status}</TableCell>
                                 <TableCell align="right">{report.reason}</TableCell>
                                 <TableCell align="right">{report.time}</TableCell>
+                                {admin ?
                                 <TableCell align="right"><ArchiveButtonToggle report={report} /></TableCell>
+                                : <TableCell align="right">{report.archived}</TableCell>}
                             </TableRow>
                         ))}
                     </TableBody>

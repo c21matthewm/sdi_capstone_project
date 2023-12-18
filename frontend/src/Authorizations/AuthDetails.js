@@ -7,8 +7,8 @@ import { userContext } from "../App";
 import { AdminDashboard } from "../Dashboard/AdminDashboard";
 
 export const AuthDetails = () => {
-  const { authUser, setAuthUser, setUserUID } = useContext(userContext);
-  const [admin, setAdmin ] = useState(false);
+  const { authUser, setAuthUser, setUserUID, admin, setAdmin } = useContext(userContext);
+  // const [admin, setAdmin ] = useState(false);
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
