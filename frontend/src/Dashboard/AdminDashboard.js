@@ -63,11 +63,11 @@ export const AdminDashboard = () => {
       </Dialog>
 
       <div className="big-container">
-        <Typography variant="h5" component="div" ><div className="dashtitle">ADMIN Dashboard</div></Typography>
-        <div className="adminDisplay">
-          <Link to={`/addsatellite`}>
+        <Typography variant="h5" component="div" ><span className="dashtitle">ADMIN Dashboard</span> <Link to={`/addsatellite`}>
             <Button variant="contained" color="info">Add Satellite</Button>
-          </Link>
+          </Link></Typography>
+        <div className="adminDisplay">
+         
           <Box className="tileDisplay" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
           {satellites.filter((satellite) => satellite.favorites.includes(userUID)).map((sat, index) => {
               return (
