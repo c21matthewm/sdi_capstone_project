@@ -2,7 +2,7 @@ import { BarChart } from '@mui/x-charts/BarChart';
 import { userContext } from "../App";
 import React, { useState, useEffect, useContext } from "react";
 
-
+/* THIS IS THE LIST OF ADDITIONAL REASONS CONTRIBUTING TO A USER REPORTING YELLOW OR RED */
 // Unknown Issue
 // LOS
 // Atmospheric Conditions
@@ -12,19 +12,47 @@ import React, { useState, useEffect, useContext } from "react";
 // Power Supply Issues
 // Frequency Coordination
 
-const unknownData = [0,0,0,0,0,0,0,0,0,0,0,0];
-const losData = [0,0,0,0,0,0,0,0,0,0,0,0];
-const atmoData = [0,0,0,0,0,0,0,0,0,0,0,0];
-const interferenceData = [0,0,0,0,0,0,0,0,0,0,0,0];
-const latencyData = [0,0,0,0,0,0,0,0,0,0,0,0];
-const malfunctionData = [0,0,0,0,0,0,0,0,0,0,0,0];
-const powerData = [0,0,0,0,0,0,0,0,0,0,0,0];
-const coordinationData = [0,0,0,0,0,0,0,0,0,0,0,0];
+/* THESE ARE IN THE DEFAULT X-CHART FORMAT AND MUST BE HARD CODED TO HAVE ARRAYS EQUAL TO NUMBER OF SATELLITES*/
+// const unknownData = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+// const losData = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+// const atmoData = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+// const interferenceData = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+// const latencyData = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+// const malfunctionData = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+// const powerData = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+// const coordinationData = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+/* THIS FORMAT ALLOWS A VARIABLE TO DICTATE THE LENGTH OF THE ARRAY AND BUILD THEM OUT WITH ZEROS */
+const numberSatellites = 100;
+const unknownData = Array(numberSatellites).fill(0);
+const losData = Array(numberSatellites).fill(0);
+const atmoData = Array(numberSatellites).fill(0);
+const interferenceData = Array(numberSatellites).fill(0);
+const latencyData = Array(numberSatellites).fill(0);
+const malfunctionData = Array(numberSatellites).fill(0);
+const powerData = Array(numberSatellites).fill(0);
+const coordinationData = Array(numberSatellites).fill(0);
+
+/* THE FOLLOWING IS CODE EXPERIMENTATION TO FIND WAYS TO GET [numberSATELLITES = satellites.length] */
+// const arrayBuilder = satellites.length;
+// function UseArrayBuilder(){
+//   const{satellites} = useContext(userContext);
+//   const [numberSatellites, setNumberSatellites] = useState(0);
+//   setNumberSatellites = satellites.length;
+//   return numberSatellites;
+// }
+
+// function setNumberSatellites(){
+//   setNumberSatellites = satellites.length;
+// }
+
+// const numberSatellites = satellite.length;
+// const [numberSatellites, setNumberSatellites] = useState(13);
+// const{reports, satellites} = useContext(userContext);
 
 export default function MixedBarChart() {
 
-  const{reports, satellites} = useContext(userContext);
-
+const{ reports, satellites } = useContext(userContext);
     useEffect(() => {
       reports.map((report) => {
         report.reason.map((string) => {
