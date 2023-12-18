@@ -1,4 +1,4 @@
-# PROJECT: **SPACE BRIDGE**
+# PROJECT: **SPACE BRIDGE** 
 Space Bridge is an app that addresses the current lack of centralized information about the status of a satellite, offering a user-friendly platform for users to retrieve and update satellite status in real-time. It allows both users and admin to contribute and access aggregated reports, ensuring an efficient and comprehensive view of all satellites in their AOR.
 
 ## DESCRIPTION
@@ -98,7 +98,6 @@ Space Bridge is an app that addresses the current lack of centralized informatio
   #### USER ACCOUNTS
     - username: user2@gmail.com
     - password: password
-
 
     - username: user3@gmail.com
     - password: password
