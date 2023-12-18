@@ -50,7 +50,8 @@ export const Dashboard = () => {
 				<Typography variant="h5" component="div" className="dashtitle" > USER Dashboard</Typography>
 				<div className="userDisplay">
 					<Box className="tileDisplay" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
-						{satellites.filter((satellite) => satellite.favorites.includes(userUID)).map((sat, index) => {
+					{satellites.filter((satellite) => satellite.favorites.includes(userUID)).length === 0 ? <h2>No Satellites added to Dashboard</h2> :
+						satellites.filter((satellite) => satellite.favorites.includes(userUID)).map((sat, index) => {
 							return (
 								<div id={index}className="tile">
 									<Box className="box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius:"10px"}} 

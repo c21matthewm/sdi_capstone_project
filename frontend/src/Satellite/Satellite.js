@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { userContext } from '../App';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import "./Satellite.css"
@@ -16,6 +16,33 @@ export const Satellite = (props) => {
     const { sat } = location.state;
     const { reports } = useContext(userContext);
     const navigate = useNavigate();
+    const xdata = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const [seriesData, setSeriesData] = useState([0,0,0,0,0,0,0,0,0,0,0,0]);
+
+    useEffect(() => {
+        let newSeriesData = [...seriesData];
+        reports.length === 0 ? fetch(`http://localhost:8080/reports`)
+            .then((res) => res.json())
+            .then((data) => {
+                data.filter((report) => 
+                    report.satelliteID === sat.satelliteID && !report.archived)
+                        .forEach(rpt => {
+                            let date = new Date(rpt.time);
+                            let month = date.getMonth();
+                            newSeriesData[month] += 1;
+                setSeriesData(newSeriesData);
+                })
+            })
+    :
+            reports.filter((report) => 
+                report.satelliteID === sat.satelliteID && !report.archived)
+                    .forEach(rpt => {
+                        let date = new Date(rpt.time);
+                        let month = date.getMonth();
+                        newSeriesData[month] += 1;
+            setSeriesData(newSeriesData);
+            })
+    }, [sat.satelliteID]);
 
     return (
         <>
@@ -63,7 +90,7 @@ export const Satellite = (props) => {
                                             return (
                                                 <>
                                                     <List component={Link} to={`/reports/${report.reportID}`} state={{ report, sat }}>
-                                                        <ListItemText primary={`REPORT#${report.reportID}: ${report.time}`} />
+                                                        <ListItemText key={index} primary={`REPORT#${report.reportID}: ${report.time}`} />
                                                     </List>
                                                 </>
                                             )
@@ -71,7 +98,7 @@ export const Satellite = (props) => {
                                 </div>
                             </Box>
                             <Box className="chart-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
-                                <Chart state={{ sat }}/>
+                                <Chart state={{ sat }} xdata={xdata} seriesData={seriesData}/>
                             </Box>
                         </div>
                         </div>

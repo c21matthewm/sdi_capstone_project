@@ -50,8 +50,13 @@
     transition: all 0.3s ease;
 }
 
-.dashtitle {
+.dashtitle{
     color:white;
+}
+
+h2 {
+    color:white;
+    margin: 25px;
 }
 
 .sat-name {
