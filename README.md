@@ -94,7 +94,7 @@ Space Bridge is an app that addresses the current lack of centralized informatio
     - username: admin@gmail.com
     - password: password
 
-    // OUTSTAR:
+    // OUTSTAR
     - username: user@gmail.com
     - password: password
     
