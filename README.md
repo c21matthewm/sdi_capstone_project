@@ -87,8 +87,7 @@ Space Bridge is an app that addresses the current lack of centralized informatio
     ```
 
 ### DEFAULT ACCOUNTS
---- 
-  #### ADMIN ACCOUNTS
+  **Admin Accounts**
 
     // INSIGHT
     - username: admin@gmail.com
@@ -98,7 +97,8 @@ Space Bridge is an app that addresses the current lack of centralized informatio
     - username: user@gmail.com
     - password: password
     
-  #### USER ACCOUNTS
+  **User Accounts**
+
     - username: user2@gmail.com
     - password: password
 
