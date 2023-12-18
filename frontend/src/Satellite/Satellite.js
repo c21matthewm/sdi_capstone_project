@@ -16,32 +16,32 @@ export const Satellite = (props) => {
     const { sat } = location.state;
     const { reports } = useContext(userContext);
     const navigate = useNavigate();
-    const xdata = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    const [seriesData, setSeriesData] = useState([0,0,0,0,0,0,0,0,0,0,0,0]);
+    const xdata = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const [seriesData, setSeriesData] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
     useEffect(() => {
         let newSeriesData = [...seriesData];
         reports.length === 0 ? fetch(`http://localhost:8080/reports`)
             .then((res) => res.json())
             .then((data) => {
-                data.filter((report) => 
+                data.filter((report) =>
                     report.satelliteID === sat.satelliteID && !report.archived)
-                        .forEach(rpt => {
-                            let date = new Date(rpt.time);
-                            let month = date.getMonth();
-                            newSeriesData[month] += 1;
-                setSeriesData(newSeriesData);
-                })
-            })
-    :
-            reports.filter((report) => 
-                report.satelliteID === sat.satelliteID && !report.archived)
                     .forEach(rpt => {
                         let date = new Date(rpt.time);
                         let month = date.getMonth();
                         newSeriesData[month] += 1;
-            setSeriesData(newSeriesData);
+                        setSeriesData(newSeriesData);
+                    })
             })
+            :
+            reports.filter((report) =>
+                report.satelliteID === sat.satelliteID && !report.archived)
+                .forEach(rpt => {
+                    let date = new Date(rpt.time);
+                    let month = date.getMonth();
+                    newSeriesData[month] += 1;
+                    setSeriesData(newSeriesData);
+                })
     }, [sat.satelliteID]);
 
     return (
@@ -58,8 +58,11 @@ export const Satellite = (props) => {
                                 </div>
                                 <div className="components">
                                     <List sx={{ p: 0, m: 0 }} component="nav" >
-                                        <Typography variant="h6" gutterBottom>Status: {sat.status.toUpperCase()} </Typography>
-                                        <ListItem>
+                                        <Typography variant="h6" gutterBottom display="inline" >Status: 
+                                            <Typography variant="h6" display="inline"
+                                                color={sat.status === 'GREEN' ? "#0FFF50" :
+                                                    sat.status === 'YELLOW' ? "rgb(255, 255, 100)" : "rgb(255, 30, 10)"}> {sat.status.toUpperCase()}</Typography> </Typography>
+                                        <ListItem >
                                             <Typography variant="h7" gutterBottom>{`Orbit: ${sat.orbit}`} </Typography>
                                         </ListItem >
                                         <ListItem >
@@ -83,7 +86,7 @@ export const Satellite = (props) => {
                                 <div className="components" id="reports">
                                     <Typography variant="h6" gutterBottom> Recent Reports:</Typography>
                                     {/* {reports.filter((report) => (report.satelliteID === sat.satelliteID)) */}
-                                    {reports.filter((report) => 
+                                    {reports.filter((report) =>
                                         report.satelliteID === sat.satelliteID &&
                                         report.archived === false)
                                         .map((report, index) => {
@@ -98,10 +101,10 @@ export const Satellite = (props) => {
                                 </div>
                             </Box>
                             <Box className="chart-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
-                                <Chart state={{ sat }} xdata={xdata} seriesData={seriesData}/>
+                                <Chart state={{ sat }} xdata={xdata} seriesData={seriesData} />
                             </Box>
                         </div>
-                        </div>
+                    </div>
                 </Box>
             </div>
         </>
