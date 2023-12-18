@@ -149,8 +149,23 @@ export const Map = () => {
       </div>
       </Box> */}
 
-            <div className="coordinate"></div>
-    
+      <div className="coordinate"></div>
+      <div className="legend">
+      <p className="l-title">LEGEND:</p>
+      <hr></hr>
+      <div className="marks">
+        <img width={15}  height={24} src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png" alt="green"></img>
+        <p>Connection is good</p>
+      </div> 
+      <div className="marks">
+        <img width={15}  height={24}src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png" alt="yellow"></img>
+        <p>Connection is degraded</p>
+      </div>
+      <div className="marks">  
+        <img width={15} height={24} src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png" alt="red"></img>
+        <p>Cannot connect</p>
+      </div>
+      </div>
       <div className="map-title">
         <MapContainer
           className="leaflet-container"
@@ -181,7 +196,7 @@ export const Map = () => {
             className="ion-hide"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-            noWrap={true}
+            noWrap={false}
             
           />
           
