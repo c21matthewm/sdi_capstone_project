@@ -86,10 +86,10 @@ export const Dashboard = () => {
 										</CardActionArea >
 										<CardActions className="buttons">
 											<Link to={`/addreport/${sat.satelliteID}`} state={{ sat }}>
-												<Button variant="contained" color="success" startIcon={<AddIcon />}>Add Report</Button>
+												<Button variant="contained" color="info" startIcon={<AddIcon />}>Add Report</Button>
 											</Link>
 											<Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
-												<Button variant="contained" color="warning" endIcon={<ReportIcon />}>
+												<Button variant="contained" color="secondary" endIcon={<ReportIcon />}>
 													<Typography component="span">{reports.filter((report) => 
 														report.satelliteID === sat.satelliteID &&
 														report.archived === false).length}</Typography>
