@@ -26,6 +26,7 @@ function App() {
   const [userUID, setUserUID] = useState('');
   const [authUser, setAuthUser] = useState(null);
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [admin, setAdmin ] = useState(false);
   const [firstData, setFirstData] = useState(60)
   const [secondData, setSecondData] = useState(40)
   const [thirdData, setThirdData] = useState(30)
@@ -54,7 +55,8 @@ function App() {
       userIsAdmin, setUserIsAdmin,
       userUID, setUserUID,
       authUser, setAuthUser,
-      loggedInUser, setLoggedInUser
+      loggedInUser, setLoggedInUser,
+      admin, setAdmin
     }}>
 
       <Routes>
