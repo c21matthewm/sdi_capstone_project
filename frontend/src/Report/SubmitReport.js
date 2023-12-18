@@ -96,10 +96,22 @@ export const SubmitReport = () => {
         <Box className="submitform" id="add-box" component="section" sx={{  boxShadow: 3, p: 2, border: '1px solid grey' }}>
           <form onSubmit={onSubmit}>
             <InputLabel id="sat-label">Satellite:</InputLabel>
-            <Select id="sat-label" value={satID} name="satellites" onChange={(e) => setSatID(e.target.value)}>
+            <Select 
+                    MenuProps={{
+                      anchorOrigin: {
+                        vertical: "bottom",
+                        horizontal: "left"
+                      },
+                      transformOrigin: {
+                        vertical: "top",
+                        horizontal: "left"
+                      },
+                      getContentAnchorEl: null
+                    }}
+            id="sat-label" value={satID} name="satellites" onChange={(e) => setSatID(e.target.value)}>
               {satellites.map(satellite => {
                 return (
-                  <MenuItem value={satellite.satelliteID}>{satellite.name}</MenuItem>
+                  <MenuItem value={satellite.satelliteID}>{satellite.name.toUpperCase()}</MenuItem>
                 )
               })}
             </Select>
