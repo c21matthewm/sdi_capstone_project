@@ -19,7 +19,7 @@ return (
         {
           // curve: "linear",
           data: seriesData,
-          label: 'Reports',
+          label: 'Number of Reports per Month',
         },
       ]}
       width={500}
