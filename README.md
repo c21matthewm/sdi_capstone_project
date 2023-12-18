@@ -3,9 +3,7 @@
 Space Bridge is an app that addresses the current lack of centralized information about the status of a satellite, offering a user-friendly platform for users to retrieve and update satellite status in real-time. It allows both users and admin to contribute and access aggregated reports, ensuring an efficient and comprehensive view of all satellites in their AOR.
 ---
 
-### FUNCTIONALITY 
----
-
+### DESCRIPTION 
 #### User Stories:
   - Create an account
   - Log into an existing account
@@ -34,6 +32,8 @@ Space Bridge is an app that addresses the current lack of centralized informatio
 ---
 
 1) **Install Support (first time use)**
+
+
   *In Frontend:*
     ```
     npm install
@@ -46,32 +46,24 @@ Space Bridge is an app that addresses the current lack of centralized informatio
     npm install nodemon
   ```
 2) **Configure Docker Support (first time use)**
-  - Open Docker Desktop
-  - From the terminal, cd into backend
-  - Download latest postgres image
+
+
+  *Open Docker Desktop. From the terminal, cd into backend*
     ```
     docker pull postgres:latest
-    ```
-  - Spin up Docker Container (first time use)
-    ```
+
     docker run --rm --name workshop-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 \-v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres
-    ```
-  - Connect Backend to Docker Container
-    ```
+
     docker exec -it <PSQL-Container-ID> bash
     ```
 
 3) **Link Backend Server to Database (first time use)**
-    -- Start a new terminal, cd into backend
+    *Start a new terminal, cd into backend*
     ```
     psql -U postgres
-    ```
-  - Create the Database
-    ```
+
     CREATE database satellite_status;
-    ```
-  - Connect to the Database
-    ```
+
     \c satellite_status
     ```
 
@@ -85,15 +77,11 @@ Space Bridge is an app that addresses the current lack of centralized informatio
   npx knex migrate:rollback
   npx knex migrate:latest
   npx knex seed:run
+
   ```
 
 6) **Launch full stack application**
-  - Launch Backend Server
-    -- In new terminal, *cd backend*
-    ```
-    npm start
-  - Launch Frontend Client
-    -- In new terminal, *cd frontend*
+  *Launch backend and frontend servers*
     ```
     npm start
     ```
