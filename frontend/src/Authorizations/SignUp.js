@@ -11,6 +11,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { Link, useNavigate } from 'react-router-dom';
+import "./Auth.css"
 
 export const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -46,15 +47,16 @@ export const SignUp = () => {
     <>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box
+        <Box className="bg"
           sx={{
             marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
+            alignItems: 'center',boxShadow: 3, p: 2, border: '1px solid grey'
           }}
+          
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1,  bgcolor: '#4169E1' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">

@@ -108,11 +108,13 @@ export const AddSatellite = () => {
             <Divider></Divider>
 
             <InputLabel>Country:</InputLabel>
-            <TextField
-              type="text"
-              onChange={(e) => setCountry(e.target.value)}
-              value={country}
-            />
+            <Select id="countr" onChange={(e) => setCountry(e.target.value)} value={country}>
+              <MenuItem value="USA">United States</MenuItem>
+              <MenuItem value="AUS">Australia</MenuItem>
+              <MenuItem value="CA">Canada</MenuItem>
+              <MenuItem value="NZ">New Zealand</MenuItem>
+              <MenuItem value="UK">United Kingdom</MenuItem>
+            </Select>
             <Divider></Divider>
 
             <InputLabel>Frequency Band:</InputLabel>
