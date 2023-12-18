@@ -23,8 +23,6 @@ export const AddSatellite = () => {
   const [country, setCountry] = useState("");
   const [frequencyBand, setFrequencyBand] = useState("");
   const navigate = useNavigate();
-  // const { userUID } = useContext(userContext)
-  // const [image, setImage] = useState("");
 
   const onSatelliteSubmit = (e) => {
     e.preventDefault();
