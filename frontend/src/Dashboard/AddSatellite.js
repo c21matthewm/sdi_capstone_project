@@ -23,6 +23,9 @@ export const AddSatellite = () => {
   const [country, setCountry] = useState("");
   const [frequencyBand, setFrequencyBand] = useState("");
   const navigate = useNavigate();
+  const { userUID, satellites } = useContext(userContext);
+  // const { userUID } = useContext(userContext)
+  // const [image, setImage] = useState("");
 
   const onSatelliteSubmit = (e) => {
     e.preventDefault();
@@ -40,7 +43,7 @@ export const AddSatellite = () => {
         mission: mission,
         country: country,
         frequency_band: frequencyBand,
-        favorites: ["pMr2t4qkIgMwisegISjdwOMW9UU2"],
+        favorites: [userUID],
         image: "https://spacenews.com/wp-content/uploads/2015/02/DMSP-USAF-e1458009205961.jpg",
       }),
     }).then(() => {

@@ -8,6 +8,7 @@ import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
 import { userContext } from "../App";
+import { Box } from "@mui/system";
 import "./Map.css";
 
 
@@ -38,7 +39,10 @@ export const Map = () => {
       });
 
       map.on('mousemove', function (e) {
-        document.getElementsByClassName('coordinate')[0].innerHTML = 'lat: ' + e.latlng.lat.toFixed(4) + 'lng: ' + e.latlng.lng.toFixed(4);
+        document.getElementsByClassName('coordinate')[0].innerHTML = 
+        'COORDINATES:<hr></hr><br>' +
+        'LATITUDE: <br>' + e.latlng.lat.toFixed(4) + '<br></br>' +
+        'LONGITUDE: <br>' + e.latlng.lng.toFixed(4);
         // console.log('lat: ' + e.latlng.lat, 'lng: ' + e.latlng.lng);
       });
     }
@@ -63,9 +67,15 @@ export const Map = () => {
 
   return (
     <>
-      <NavBar />
+      <NavBar />   
+      {/* <Box className="coord-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
+      <div className="coord-box">
+      </div>
+      </Box> */}
+
+            <div className="coordinate"></div>
+    
       <div className="map-title">
-      <div className="coordinate"></div>
         <MapContainer
           className="leaflet-container"
           center={[0, 0]}

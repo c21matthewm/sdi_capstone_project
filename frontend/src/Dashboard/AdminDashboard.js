@@ -31,8 +31,11 @@ export const AdminDashboard = () => {
           {satellites.filter((satellite) => satellite.favorites.includes(userUID)).map((sat, index) => {
               return (
                 <div id={index} className="tile">
-                 <Box className="box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }} style={{backgroundColor: sat.status === 'GREEN' ? "rgb(60, 179, 113, .8)" :
-											sat.status === 'YELLOW' ? "#facb6c" : "rgb(255, 0, 0, .8)"}}>
+                 		<Box className="box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius:"10px"}} 
+									// style={{backgroundColor: sat.status === 'GREEN' ? "rgb(50, 200, 70, .8)" :
+									// 		sat.status === 'YELLOW' ? "#facb6c" : "rgb(255, 0, 0, .8)"
+									// 	}}
+									variant="outlined">
                     <CardActionArea >
                       <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
                         <CardMedia>
@@ -41,7 +44,9 @@ export const AdminDashboard = () => {
                             sx={{
                               height: '150px',
                               width: '200px',
-                              margin: '20px 0 0 0' ,
+                              margin: '20px 0 0 0' }}
+														style={{border: sat.status === 'GREEN' ? "10px solid rgb(0, 200, 0)" :
+											sat.status === 'YELLOW' ? "10px solid rgb(255, 255, 100)" : "10px solid rgb(255, 30, 10)"
                             }}
                             src={sat.image}
                             alt="satellite image"

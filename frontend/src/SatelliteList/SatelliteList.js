@@ -32,7 +32,7 @@ export const SatelliteList = () => {
                                 <ListItem className="sat-info" sx={{ boxShadow: 1, border: '1px solid grey' }} key={index}>
                                     <ListItemButton component={Link} to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
                                         <ListItemAvatar>
-                                            <Avatar sx={{backgroundColor: "rgb(100,180,255)"}}>
+                                            <Avatar sx={{backgroundColor: "rgb(90,170,255)"}}>
                                                 <SatelliteAltIcon  />
                                             </Avatar>
                                         </ListItemAvatar>
@@ -44,16 +44,16 @@ export const SatelliteList = () => {
                                         <Button
                                             variant="contained"
                                             color="primary"
-                                            className="add">
+                                            id="addB">
                                             Add Report
                                         </ Button>
                                     </Link>
                                     <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
-                                        <Button variant="contained" color="warning" endIcon={<ReportIcon />}>
+                                        {/* <Button variant="contained" color="warning" endIcon={<ReportIcon />}>
                                             <Typography component="span">{reports.filter((report) => 
                                                 report.satelliteID === sat.satelliteID &&
                                                 report.archived === false).length}</Typography>
-                                        </Button>
+                                        </Button> */}
                                     </Link>
                                 </ListItem>
                             )

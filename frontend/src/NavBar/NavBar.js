@@ -66,7 +66,7 @@ export const NavBar = () => {
                             </Box>
                             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                                 <ListItemButton component={Link} to={`/reports`} >
-                                    <ListItemText primary={`REPORT LIST`} />
+                                    <ListItemText primary={`REPORTS`} />
                                 </ListItemButton>
                             </Box>
                             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
