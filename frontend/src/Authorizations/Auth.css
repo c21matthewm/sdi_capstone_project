@@ -1,0 +1,6 @@
+.bg {
+  margin-top:30%;
+  padding: 30px;
+  background-color: var(--component-color);
+  border-radius: 20px;
+}

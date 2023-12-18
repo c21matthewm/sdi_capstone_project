@@ -27,7 +27,7 @@ export const AdminDashboard = () => {
           <Link to={`/addsatellite`}>
             <Button variant="contained" color="info">Add Satellite</Button>
           </Link>
-          <div className="tileDisplay">
+          <Box className="tileDisplay" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
           {satellites.filter((satellite) => satellite.favorites.includes(userUID)).map((sat, index) => {
               return (
                 <div id={index} className="tile">
@@ -90,7 +90,7 @@ export const AdminDashboard = () => {
                 </div>
               )
             })}
-          </div>
+          </Box>
         </div>
       </div>
     </>

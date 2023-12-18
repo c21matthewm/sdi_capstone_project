@@ -9,19 +9,22 @@ import ListItemText from '@mui/material/ListItemText';
 import { userContext } from "../App";
 import ListItemButton from '@mui/material/ListItemButton';
 import { Button, Divider } from '@mui/material';
+import { useNavigate } from "react-router-dom";
 import "./Report.css";
 
 export const Report = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const { report, sat } = location.state;
     const { reports } = useContext(userContext)
+    
     return (
         <>
             <NavBar />
             <Box className="box" id="flex-report" component="section" sx={{ p: 2 }}>
-                <Box className="box" id="report-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
+                <Box className="box" id="report-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}> 
                     <div className="components" >
-                        <Typography variant="h5" gutterBottom>REPORT #{report.reportID}   <Button component={Link} to={`/satellites/${sat.satelliteID}`} state={{ report, sat }} id="return2" variant="contained" color="primary">RETURN</Button></Typography>
+                        <Typography variant="h5" gutterBottom>REPORT #{report.reportID}   <Button id="return" variant='contained' color='primary' onClick={() => navigate(-1)}>RETURN</Button></Typography>
                         <Divider></Divider>
                         <List sx={{ p: 0, m: 0 }} component="nav">
                             <ListItem>

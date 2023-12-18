@@ -3,7 +3,7 @@
 Space Bridge is an app that addresses the current lack of centralized information about the status of a satellite, offering a user-friendly platform for users to retrieve and update satellite status in real-time. It allows both users and admin to contribute and access aggregated reports, ensuring an efficient and comprehensive view of all satellites in their AOR.
 
 ### FUNCTIONALITY 
-
+---
 #### User Stories:
   - Create an account
   - Log into an existing account
@@ -17,27 +17,30 @@ Space Bridge is an app that addresses the current lack of centralized informatio
   - Line chart displays the data trend of number of reports for a satellite submitted over twelve months
   - Bar graph displays ratio of different satellite interference reasons for each satellite 
   - Map displays a user location marker for each report
+  - Selecting a marker will display a popup for a link to the report
   - Submitted a new report automatically populates a new marker
 
 #### Admin Stories:
   - USER abilities extends to ADMIN accounts
   - Add a new satellite to the database 
-  - Manage satellites in a constellation
+  - Remove a satellite
+  - Manage satellites in a constellation (personal dashboard)
   - Change the status of a satellite
   - Archive a report
 
 ### INSTALLATION:
+---
 
 1) **Install Support (first time use)**
   - In Frontend:
   ```
-    -- *npm install*
-    -- *npm install @mui/material @emotion/react @emotion/styled @mui/icons-material react-router-dom chart.js firebase*
-    -- *npm install @mui/x-charts*
+    -- npm install
+    -- npm install @mui/material @emotion/react @emotion/styled @mui/icons-material react-router-dom chart.js firebase
+    -- npm install @mui/x-charts
     ```
   - In Backend:
   ```
-    -- *npm install*
+    -- npm install
     -- *npm install nodemon*
   ```
 2) **Configure Docker Support (first time use)**
