@@ -13,10 +13,31 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import { Divider } from '@mui/material';
 import Button from '@mui/material/Button';
 import { useLocation } from 'react-router-dom';
-import {Typography} from '@mui/material';
+import { Typography } from '@mui/material';
 import "./Report.css"
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Slide from '@mui/material/Slide';
+
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export const AddReport = () => {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
 
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
@@ -55,14 +76,14 @@ export const AddReport = () => {
 
   //   setChecked(isItChecked);
   const reasonsForReport = [
-    {issue: 'Unknown Issue'},
-    {issue: 'Blocked LOS'},
-    {issue: 'Atmospheric Conditions'},
-    {issue: 'Signal Latency'},
-    {issue: 'Signal Interference'},
-    {issue: 'Equipment Malfunction'},
-    {issue: 'Power Supply Issue'},
-    {issue: 'Frequency Coordination'}
+    { issue: 'Unknown Issue' },
+    { issue: 'Blocked LOS' },
+    { issue: 'Atmospheric Conditions' },
+    { issue: 'Signal Latency' },
+    { issue: 'Signal Interference' },
+    { issue: 'Equipment Malfunction' },
+    { issue: 'Power Supply Issue' },
+    { issue: 'Frequency Coordination' }
   ];
 
 
@@ -75,7 +96,7 @@ export const AddReport = () => {
 
 
     // setReason(totalIssues)
-      // On autofill we get a stringified value.
+    // On autofill we get a stringified value.
     //   typeof value === 'string' ? value.split(',') : value,
     // );
   };
@@ -111,6 +132,7 @@ export const AddReport = () => {
         setLong(0);
         setStatus('');
         setReason([]);
+        handleClickOpen();
       })
   }
 
@@ -123,8 +145,8 @@ export const AddReport = () => {
     <>
       <NavBar />
       <div className='report-container'>
-      <Typography className="satT" variant="h5" gutterBottom>Submit Report</Typography>
-        <Box className="box" id="add-box" component="section" sx={{  boxShadow: 3, p: 2, border: '1px solid grey' }}>
+        <Typography className="satT" variant="h5" gutterBottom>Submit Report</Typography>
+        <Box className="box" id="add-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
           <form onSubmit={onSubmit}>
             <InputLabel id="sat-label">Satellite:<b>{sat.name.toUpperCase()}</b></InputLabel>
             {/* <Select id="sat-label" value={satID} name="satellites" onChange={(e) => setSatID(e.target.value)}>
@@ -180,7 +202,7 @@ export const AddReport = () => {
                 id="reason"
                 multiple
                 value={reason}
-                onChange ={ (e) => {
+                onChange={(e) => {
                   console.log(e.target.value);
                   setReason(e.target.value);
                   // handleChange
@@ -198,11 +220,28 @@ export const AddReport = () => {
               </Select>
             </FormControl>
 
-            <Divider/>
+            <Divider />
             <Button type="submit" variant='contained' color='info'>submit</Button>
           </form>
         </Box>
       </div>
+      <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle>{"Report successfully submitted"}</DialogTitle>
+        {/* <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            Report successfully submitted
+          </DialogContentText>
+        </DialogContent> */}
+        <DialogActions>
+          <Button onClick={handleClose}>RETURN</Button>
+        </DialogActions>
+      </Dialog>
     </>
   )
 }
