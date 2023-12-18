@@ -195,4 +195,3 @@ export const Map = () => {
 //     iconSize: point(33, 33, true),
 //   });
 // };
-
