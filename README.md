@@ -81,7 +81,8 @@ Space Bridge is an app that addresses the current lack of centralized informatio
     ```
 
 6) **Launch full stack application**
-  *Launch backend and frontend servers*
+
+    *Launch backend and frontend servers*
     ```
       npm start
     ```
