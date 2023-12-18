@@ -1,6 +1,9 @@
 import React from 'react';
 import { Button } from '@mui/material';
 import '../Dashboard/Dashboard.css';
+import './Status.css'
+import Typography from '@mui/material/Typography';
+import {Divider} from '@mui/material';
 
 export const EditStatus = ({ satellite, onClose }) => {
 
@@ -23,6 +26,9 @@ export const EditStatus = ({ satellite, onClose }) => {
 
     return (
         <div className='popup'>
+            <Typography variant="h5" gutterBottom>Edit Status: <b>{satellite.name.toUpperCase()}</b></Typography>
+            <Divider></Divider>
+            <div className='options'>
             <Button 
                 variant="contained"
                 color="success"
@@ -44,6 +50,7 @@ export const EditStatus = ({ satellite, onClose }) => {
                 onClick={handleButtonClick}>
                 Red
             </Button>
+            </div>
         </div>
     )
 }
