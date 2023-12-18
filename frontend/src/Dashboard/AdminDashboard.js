@@ -117,16 +117,16 @@ export const AdminDashboard = () => {
                           }
                         }}
                       >
-                        <DialogTitle>Edit Status</DialogTitle>
+                        {/* <DialogTitle>Edit Status</DialogTitle>
                         <DialogContent>
                           <DialogContentText>
                             Update status for {selectedSat.name}
                           </DialogContentText>
-                        </DialogContent>
+                        </DialogContent> */}
                         <EditStatus satellite={selectedSat} onClose={handlePopupClose} />
                       </Dialog>
 
-                      <Button variant="contained" color="error" onClick={() => confirmDelete(sat)}><DeleteIcon /></Button>
+      
                       
                       <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
                         <Button variant="contained" color="secondary" endIcon={<ReportIcon />}>
@@ -135,6 +135,8 @@ export const AdminDashboard = () => {
 														report.archived === false).length}</Typography>
                         </Button>
                       </Link>
+
+                      <Button variant="contained" color="error" onClick={() => confirmDelete(sat)}><DeleteIcon /></Button>
                     </CardActions >
                   </Box >
                 </div>
