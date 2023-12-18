@@ -20,6 +20,7 @@ return (
           // curve: "linear",
           data: seriesData,
           label: 'Number of Reports per Month',
+          color: '#fdb462'
         },
       ]}
       width={500}
