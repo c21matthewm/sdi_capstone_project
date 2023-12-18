@@ -116,7 +116,8 @@ export const Map = () => {
                   position={[report.latitude, report.longitude]}
                 >
                   <Popup>
-                    <h3>Report: {report.reportID}</h3>
+                    <h3>{sat.name.toUpperCase()} </h3>
+                    <h3>Report #{report.reportID} </h3>
                     <Link
                       to={`/reports/${report.reportID}`}
                       state={{ report, sat }}
