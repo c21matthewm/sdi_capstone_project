@@ -31,73 +31,74 @@ Space Bridge is an app that addresses the current lack of centralized informatio
 ### INSTALLATION:
 ---
 
-1) **Install Support (first time use)**
+1) **Install Support**
 
 
-  *In Frontend:*
-    ```
-    npm install
-    npm install @mui/material @emotion/react @emotion/styled @mui/icons-material react-router-dom chart.js firebase
-    npm install @mui/x-charts
-    ```
-  *In Backend:*
-  ```
-    npm install
-    npm install nodemon
-  ```
-2) **Configure Docker Support (first time use)**
+    *In Frontend:*
+
+      ```
+        npm install
+        npm install @mui/material @emotion/react @emotion/styled @mui/icons-material react-router-dom chart.js firebase
+        npm install @mui/x-charts
+      ```
 
 
-  *Open Docker Desktop. From the terminal, cd into backend*
-    ```
-    docker pull postgres:latest
+    *In Backend:*
+      ```
+        npm install
+        npm install nodemon
+      ```
+2) **Configure Docker Support**
 
-    docker run --rm --name workshop-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 \-v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres
 
-    docker exec -it <PSQL-Container-ID> bash
-    ```
+    *Open Docker Desktop. From the terminal, cd into backend*
+      ```
+        docker pull postgres:latest
+        docker run --rm --name workshop-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 \-v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres
+        docker exec -it <PSQL-Container-ID> bash
+      ```
 
-3) **Link Backend Server to Database (first time use)**
+3) **Link Backend Server to Database**
+
+
     *Start a new terminal, cd into backend*
     ```
-    psql -U postgres
-
-    CREATE database satellite_status;
-
-    \c satellite_status
+      psql -U postgres
+      CREATE database satellite_status;
+      \c satellite_status
     ```
 
 4) **Note: If Docker is ever closed due to application restart or PC restart, spin up the container from the image again**
-  ```
-  docker run --rm --name workshop-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 \-v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres
-  ```
+    ```
+      docker run --rm --name workshop-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 \-v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres
+    ```
 
-5) **Seed the Database with initial data (every time full stack goes live)**
-  ```
-  npx knex migrate:rollback
-  npx knex migrate:latest
-  npx knex seed:run
-
-  ```
+5) **Seed the Database with initial data**
+    ```
+      npx knex migrate:rollback
+      npx knex migrate:latest
+      npx knex seed:run
+    ```
 
 6) **Launch full stack application**
   *Launch backend and frontend servers*
     ```
-    npm start
+      npm start
     ```
 
-
-    // ADMIN ACCOUNTS
-    INSIGHT:
-      user: admin@gmail.com
+### DEFAULT ACCOUNTS
+    ADMIN ACCOUNTS
+      // INSIGHT
+      username: admin@gmail.com
       password: password
-    OUTSTAR:
-      user: user@gmail.com
+
+      // OUTSTAR:
+      username: user@gmail.com
       password: password
     
-    // USER ACCOUNTS
-      user: user2@gmail.com
+    USER ACCOUNTS
+      username: user2@gmail.com
       password: password
 
-       user: user3@gmail.com
+      username: user3@gmail.com
       password: password
