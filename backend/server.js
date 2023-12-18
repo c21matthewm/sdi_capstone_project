@@ -171,23 +171,6 @@ app.patch('/satellites/favorites/:satelliteID', async(req, res) => {
 })
 
 
-// app.put('/satellites/:satelliteID', (req, res) => {
-//   knex('satellites')
-//   .where('satelliteID', req.params.satelliteID)
-//   .update({
-//     name: req.body.name,
-//     longitude: req.body.longitude,
-//     status: req.body.status,
-//     favorites: req.body.favorites
-//   })
-//   .then(() => {
-//     knex('satellites')
-//     .where('satelliteID', req.params.satelliteID)
-//     .select("*")
-//     .then(data => res.json(data))});
-// })
-
-
 app.patch('/satellites/status/:satelliteID', (req, res) => {
   knex('satellites')
   .where('satelliteID', req.params.satelliteID)
@@ -213,3 +196,29 @@ app.patch('/reports/archived/:reportID', (req, res) => {
     .select("*")
     .then(data => res.json(data))});
 })
+
+app.delete('/satellites/:satelliteID', (req, res) => {
+  knex('satellites').where('satelliteID', req.params.satelliteID)
+  .del()
+  .then(() => {
+      knex('satellites')
+          .select('*')
+          .then(data => {
+              res.json(data);
+          })
+  })
+  .catch(err => res.status(400).json('Error: ' + err));
+})
+
+// app.delete('/reports/:satelliteID', (req, res) => {
+//   knex('reports').where('satelliteID', req.params.satelliteID)
+//   .del()
+//   .then(() => {
+//       knex('reports')
+//           .select('*')
+//           .then(data => {
+//               res.json(data);
+//           })
+//   })
+//   .catch(err => res.status(400).json('Error: ' + err));
+// })
