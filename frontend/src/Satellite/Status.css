@@ -1,0 +1,9 @@
+.popup {
+  padding:30px;
+  background-color: var(--component-color);
+}
+
+.options {
+  margin: 30px;
+
+}

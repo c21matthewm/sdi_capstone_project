@@ -73,7 +73,7 @@ Space Bridge is an app that addresses the current lack of centralized informatio
       docker run --rm --name workshop-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 \-v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres
     ```
 
-5) **Seed the Database with initial data**
+5) **Seed database with initial data**
     ```
       npx knex migrate:rollback
       npx knex migrate:latest
