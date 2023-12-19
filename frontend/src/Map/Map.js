@@ -95,38 +95,41 @@ export const Map = () => {
             <MenuItem value="Yellow">Yellow</MenuItem>
             <MenuItem value="Red">Red</MenuItem>
           </Select> */}
-      <div className="coordinate"></div>
-      <div className="legend">
-      <p className="l-title">LEGEND:</p>
-      <hr></hr>
-      <div className="marks">
-        <img width={15}  height={24} src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png" alt="green"></img>
-        <p>Connection is good</p>
-      </div> 
-      <div className="marks">
-        <img width={15}  height={24}src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png" alt="yellow"></img>
-        <p>Connection is degraded</p>
-      </div>
-      <div className="marks">  
-        <img width={15} height={24} src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png" alt="red"></img>
-        <p>Cannot connect</p>
-      </div>
-      </div>
+      <div className="flex-r">  
       <div className="filter">
-      <InputLabel id="filter-label">Filter By: </InputLabel>
-          <Select id="filter"
-            value={selectedFilter}
-            name="not_sure"
-            onChange={(e) => setSelectedFilter(e.target.value)}
-            style={{ height: '30px' }}
-          >
-            <MenuItem value="">None</MenuItem>
-            <MenuItem value="Archived">Archived</MenuItem>
-            <MenuItem value="Current">Current</MenuItem>
-            <MenuItem value="Green">Green</MenuItem>
-            <MenuItem value="Yellow">Yellow</MenuItem>
-            <MenuItem value="Red">Red</MenuItem>
-          </Select>
+        <InputLabel id="filter-label">Filter By: </InputLabel>
+            <Select id="filter"
+              value={selectedFilter}
+              name="not_sure"
+              onChange={(e) => setSelectedFilter(e.target.value)}
+              style={{ height: '30px' }}
+            >
+              <MenuItem value="">None</MenuItem>
+              <MenuItem value="Archived">Archived</MenuItem>
+              <MenuItem value="Current">Current</MenuItem>
+              <MenuItem value="Green">Green</MenuItem>
+              <MenuItem value="Yellow">Yellow</MenuItem>
+              <MenuItem value="Red">Red</MenuItem>
+            </Select>
+        </div>    
+        <div className="coordinate"></div>
+        <div className="legend">
+        <p className="l-title">LEGEND:</p>
+        <hr></hr>
+        <div className="marks">
+          <img width={15}  height={24} src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png" alt="green"></img>
+          <p>Connection is good</p>
+        </div> 
+        <div className="marks">
+          <img width={15}  height={24}src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png" alt="yellow"></img>
+          <p>Connection is degraded</p>
+        </div>
+        <div className="marks">  
+          <img width={15} height={24} src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png" alt="red"></img>
+          <p>Cannot connect</p>
+        </div>
+        </div>
+  
       </div>
       <div className="map-title">
         <MapContainer

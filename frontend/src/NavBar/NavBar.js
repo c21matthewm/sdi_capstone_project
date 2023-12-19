@@ -23,7 +23,7 @@ export const NavBar = () => {
   return (
     <AppBar sx={{ background: "#4169E1" }} position="static">
       <div className="left-align">
-        <Toolbar disableGutters={true} sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent: 'space-between' } }}>
+        <Toolbar disableGutters={true} sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex', justifyContent: 'space-between' } }}>
           <Typography
             variant="h6"
             noWrap
