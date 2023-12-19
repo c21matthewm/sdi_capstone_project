@@ -13,25 +13,25 @@ import React, { useState, useEffect, useContext } from "react";
 // Frequency Coordination
 
 /* THESE ARE IN THE DEFAULT X-CHART FORMAT AND MUST BE HARD CODED TO HAVE ARRAYS EQUAL TO NUMBER OF SATELLITES*/
-// const unknownData = [0,0,0,0,0,0,0,0,0,0,0,0,0];
-// const losData = [0,0,0,0,0,0,0,0,0,0,0,0,0];
-// const atmoData = [0,0,0,0,0,0,0,0,0,0,0,0,0];
-// const interferenceData = [0,0,0,0,0,0,0,0,0,0,0,0,0];
-// const latencyData = [0,0,0,0,0,0,0,0,0,0,0,0,0];
-// const malfunctionData = [0,0,0,0,0,0,0,0,0,0,0,0,0];
-// const powerData = [0,0,0,0,0,0,0,0,0,0,0,0,0];
-// const coordinationData = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+const unknownData = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+const losData =  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+const atmoData =  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+const interferenceData =  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+const latencyData =  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+const malfunctionData =  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+const powerData =  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+const coordinationData =  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 /* THIS FORMAT ALLOWS A VARIABLE TO DICTATE THE LENGTH OF THE ARRAY AND BUILD THEM OUT WITH ZEROS */
-const numberSatellites = 100;
-const unknownData = Array(numberSatellites).fill(0);
-const losData = Array(numberSatellites).fill(0);
-const atmoData = Array(numberSatellites).fill(0);
-const interferenceData = Array(numberSatellites).fill(0);
-const latencyData = Array(numberSatellites).fill(0);
-const malfunctionData = Array(numberSatellites).fill(0);
-const powerData = Array(numberSatellites).fill(0);
-const coordinationData = Array(numberSatellites).fill(0);
+// const numberSatellites = 30;
+// const unknownData = Array(numberSatellites).fill(0);
+// const losData = Array(numberSatellites).fill(0);
+// const atmoData = Array(numberSatellites).fill(0);
+// const interferenceData = Array(numberSatellites).fill(0);
+// const latencyData = Array(numberSatellites).fill(0);
+// const malfunctionData = Array(numberSatellites).fill(0);
+// const powerData = Array(numberSatellites).fill(0);
+// const coordinationData = Array(numberSatellites).fill(0);
 
 /* THE FOLLOWING IS CODE EXPERIMENTATION TO FIND WAYS TO GET [numberSATELLITES = satellites.length] */
 // const arrayBuilder = satellites.length;
@@ -51,9 +51,12 @@ const coordinationData = Array(numberSatellites).fill(0);
 // const{reports, satellites} = useContext(userContext);
 
 export default function MixedBarChart() {
-
 const{ reports, satellites } = useContext(userContext);
+const [satArr, setSat] = useState([])
     useEffect(() => {
+      let satNames = satellites.map(sat => sat.name)
+      setSat(satNames);
+
       reports.map((report) => {
         report.reason.map((string) => {
           console.log(string);
@@ -83,7 +86,7 @@ const{ reports, satellites } = useContext(userContext);
               coordinationData[report.satelliteID - 1] += 1;
               break;
             default:
-              return true;
+              console.log('none')
           }
         })
       })
@@ -91,19 +94,20 @@ const{ reports, satellites } = useContext(userContext);
 
   return (
     <BarChart
+    // animation={false}
       width={1000}
       height={500}
       series={[
-        { data: unknownData, label: 'Unknown', stack:'stack1' },
-        { data: losData, label: 'User LOS', stack: 'stack1' },
-        { data: atmoData, label: 'User Weather', stack: 'stack1' },
-        { data: interferenceData, label: 'Interference', stack: 'stack1' },
-        { data: latencyData, label: 'Latency', stack: 'stack1' },
-        { data: malfunctionData, label: 'Malfunction', stack: 'stack1' },
-        { data: powerData, label: 'Power', stack: 'stack1' },
-        { data: coordinationData, label: 'Frequency Coord', stack: 'stack1' },
+        { data: [0,3,0], label: 'Unknown', stack:'stack1' },
+        { data: [0,3,1], label: 'User LOS', stack: 'stack1' },
+        { data: [0,0,0], label: 'User Weather', stack: 'stack1' },
+        { data: [0,0,0], label: 'Interference', stack: 'stack1' },
+        { data: [0,0,0], label: 'Latency', stack: 'stack1' },
+        { data:[0,0,0], label: 'Malfunction', stack: 'stack1' },
+        { data: [0,0,0], label: 'Power', stack: 'stack1' },
+        { data: [0,0,0], label: 'Frequency Coord', stack: 'stack1' },
       ]}
-      xAxis={[{ data: satellites.map(sat => sat.name), label: 'Satellite Vehicles', scaleType: 'band' }]}
+      xAxis={[{ data: ["sat1", "sat2", "sat3" ], label: 'Satellite Vehicles', scaleType: 'band' }]}
       yAxis={[{label: 'Reported Problems Per Satellite'}]}
       slotProps={{
         legend: {

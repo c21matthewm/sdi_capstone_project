@@ -24,6 +24,7 @@ li{
   border-radius: 20px;
   width: 40%;
   overflow: auto;
+  height: 700px;
 }
 
 .problems_metric {

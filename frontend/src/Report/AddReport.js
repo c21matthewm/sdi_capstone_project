@@ -232,12 +232,12 @@ export const AddReport = () => {
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle>{"Report successfully submitted"}</DialogTitle>
-        {/* <DialogContent>
+        {/* <DialogTitle>{"Report successfully submitted"}</DialogTitle> */}
+        <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
             Report successfully submitted
           </DialogContentText>
-        </DialogContent> */}
+        </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>RETURN</Button>
         </DialogActions>

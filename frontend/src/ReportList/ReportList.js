@@ -9,10 +9,10 @@ import MixedBarChart from './ProblemMetric'
 import { NavBar } from '../NavBar/NavBar';
 import SatelliteDropDown from './SatelliteDropDown';
 import ReportTableData from './ReportTableData';
-
+import BarsDataset from './BarChart';
 function ReportList() {
 
-  const {satellites, reports, setReports, userUID}= useContext(userContext)
+  const {satellites, reports, setReports, userUID, admin, setAdmin}= useContext(userContext)
   const [selectedFilter, setSelectedFilter] = useState('')
   const [searchValue, setSearchValue] = useState('')
   const [filteredReports, setFilteredReports] = useState([])
@@ -65,7 +65,6 @@ function ReportList() {
               <MenuItem value="current">Current</MenuItem>
               <MenuItem value="archived">Archived</MenuItem>
             </Select>
-
             <ReportTableData tableData={filteredReports} />
             {/* <Box sx={{ margin: '20px 0' }}>
               {reports
@@ -99,7 +98,8 @@ function ReportList() {
           </Box>
           <Box className="metric_view" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
 
-            < MixedBarChart/>
+            {/* < MixedBarChart/> */}
+            <BarsDataset />
             {/* <section>
               <h3 style={{ display: 'flex'}}>Satellite Status</h3>
               <SatelliteDropDown/>

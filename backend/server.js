@@ -72,6 +72,19 @@ app.get('/reports/:reportID', (req, res) =>{
     })
 })
 
+app.get('/satellites/:satelliteID/reports', (req, res) =>{
+  knex('satellites')
+    .join('reports', 'satellites.satelliteID', '=', 'reports.satelliteID')
+    .select('*')
+    .where("satellites.satelliteID", req.params.satelliteID)
+    .then(data => {
+      if (data)
+        res.status(200).json(data);
+      else 
+        res.status(404)
+    })
+})
+
 app.post('/reports', async(req, res) => {
   await knex('reports').insert({
       time: req.body.time,

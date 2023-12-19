@@ -1,10 +1,18 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Box, Table, TableRow, TableCell, TableHead, TableBody, TableContainer } from "@mui/material";
 import ArchiveButtonToggle from "./ArchiveButtonToggle";
 import { userContext } from "../App";
 
 export const ReportTableData = ({ tableData }) => {
-    const { admin, setAdmin}= useContext(userContext)
+    const { userUID, admin } = useContext(userContext)
+    // const [admin, setAdmin] = useState(false);
+
+    // useEffect(() => {
+    //     fetch(`http://localhost:8080/users/${userUID}`)
+    //     .then((res) => res.json())
+    //     .then((user) => setAdmin(user.admin))
+    // }, [])
+
     return (
         <Box sx={{ width: '100%' }}>
             <TableContainer>
@@ -16,7 +24,9 @@ export const ReportTableData = ({ tableData }) => {
                             <TableCell align="right">Status</TableCell>
                             <TableCell align="right">Description</TableCell>
                             <TableCell align="right">Time</TableCell>
-                            <TableCell align="right">Archive</TableCell>
+                            {admin ?
+                                <TableCell align="right">Archive</TableCell>
+                            : <></>}
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -33,8 +43,8 @@ export const ReportTableData = ({ tableData }) => {
                                 <TableCell align="right">{report.reason}</TableCell>
                                 <TableCell align="right">{report.time}</TableCell>
                                 {admin ?
-                                <TableCell align="right"><ArchiveButtonToggle report={report} /></TableCell>
-                                : <TableCell align="right">{report.archived}</TableCell>}
+                                    <TableCell align="right"><ArchiveButtonToggle report={report} /></TableCell>
+                                    : <></>}
                             </TableRow>
                         ))}
                     </TableBody>
