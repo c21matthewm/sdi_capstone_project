@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { Select, MenuItem, InputLabel} from '@mui/material';
 import Button from "@mui/material/Button";
 import { NavBar } from "../NavBar/NavBar";
 import L from "leaflet";
@@ -13,6 +14,30 @@ import "./Map.css";
 export const Map = () => {
   const [map, setMap] = useState(null);
   const { reports, satellites } = useContext(userContext);
+
+  const [selectedFilter, setSelectedFilter] = useState('')
+  const [filteredReports, setFilteredReports] = useState([])
+
+  useEffect(() => {
+    setFilteredReports(reports
+      .filter((report) => {
+        switch (selectedFilter) {
+          case 'Red':
+            return report.status === "RED"
+          case 'Yellow':
+            return report.status === "YELLOW"
+          case 'Green':
+            return report.status === "GREEN"
+          case 'Current':
+            return report.archived === false
+          case 'Archived':
+            return report.archived === true
+          default:
+            return true;
+        }
+      })
+    )
+  }, [selectedFilter, reports]);
 
   var greenIcon = new L.Icon({
     iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
@@ -55,7 +80,21 @@ export const Map = () => {
 
   return (
     <>
-      <NavBar />   
+      <NavBar />
+      <InputLabel id="filter-label">Filter By: </InputLabel>
+          <Select id="filter"
+            value={selectedFilter}
+            name="not_sure"
+            onChange={(e) => setSelectedFilter(e.target.value)}
+            style={{ height: '30px' }}
+          >
+            <MenuItem value="">None</MenuItem>
+            <MenuItem value="Archived">Archived</MenuItem>
+            <MenuItem value="Current">Current</MenuItem>
+            <MenuItem value="Green">Green</MenuItem>
+            <MenuItem value="Yellow">Yellow</MenuItem>
+            <MenuItem value="Red">Red</MenuItem>
+          </Select>
       <div className="coordinate"></div>
       <div className="legend">
       <p className="l-title">LEGEND:</p>
@@ -91,7 +130,7 @@ export const Map = () => {
             
           />
           
-            {reports.map((report) => {
+            {filteredReports.map((report) => {
               const sat = satellites.find(
                 (satellite) => satellite.satelliteID === report.satelliteID,
               );
