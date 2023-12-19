@@ -87,3 +87,15 @@
 .l-title {
   margin-bottom: -15px;
 }
+
+.filter {
+  z-index: 3;
+  color:var(--text-color);
+  position: absolute;
+  left: 3%;
+  top: 25%;
+  padding:5px;
+  background-color: rgba(242,239,233,255);
+  border:dashed 1px grey;
+  font-size: small;
+}

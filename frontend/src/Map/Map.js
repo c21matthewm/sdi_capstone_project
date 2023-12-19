@@ -81,8 +81,8 @@ export const Map = () => {
   return (
     <>
       <NavBar />
-      <InputLabel id="filter-label">Filter By: </InputLabel>
-          <Select id="filter"
+      {/* <InputLabel className='filter' id="filter-label">Filter By: </InputLabel>
+          <Select className='filter' id="filter"
             value={selectedFilter}
             name="not_sure"
             onChange={(e) => setSelectedFilter(e.target.value)}
@@ -94,7 +94,7 @@ export const Map = () => {
             <MenuItem value="Green">Green</MenuItem>
             <MenuItem value="Yellow">Yellow</MenuItem>
             <MenuItem value="Red">Red</MenuItem>
-          </Select>
+          </Select> */}
       <div className="coordinate"></div>
       <div className="legend">
       <p className="l-title">LEGEND:</p>
@@ -111,6 +111,22 @@ export const Map = () => {
         <img width={15} height={24} src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png" alt="red"></img>
         <p>Cannot connect</p>
       </div>
+      </div>
+      <div className="filter">
+      <InputLabel id="filter-label">Filter By: </InputLabel>
+          <Select id="filter"
+            value={selectedFilter}
+            name="not_sure"
+            onChange={(e) => setSelectedFilter(e.target.value)}
+            style={{ height: '30px' }}
+          >
+            <MenuItem value="">None</MenuItem>
+            <MenuItem value="Archived">Archived</MenuItem>
+            <MenuItem value="Current">Current</MenuItem>
+            <MenuItem value="Green">Green</MenuItem>
+            <MenuItem value="Yellow">Yellow</MenuItem>
+            <MenuItem value="Red">Red</MenuItem>
+          </Select>
       </div>
       <div className="map-title">
         <MapContainer
