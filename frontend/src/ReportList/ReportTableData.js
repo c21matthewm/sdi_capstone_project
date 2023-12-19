@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Box, Table, TableRow, TableCell, TableHead, TableBody, TableContainer } from "@mui/material";
 import ArchiveButtonToggle from "./ArchiveButtonToggle";
 import { userContext } from "../App";
@@ -19,7 +19,7 @@ export const ReportTableData = ({ tableData }) => {
                             <TableCell align="right">Time</TableCell>
                             {admin ?
                                 <TableCell align="right">Archive</TableCell>
-                            : <></>}
+                                : <></>}
                         </TableRow>
                     </TableHead>
                     <TableBody>

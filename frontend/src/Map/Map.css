@@ -18,9 +18,12 @@
 }
 
 .leaflet-container {
-  margin: 30px 0 30px 0;
+  /* display:flex; */
+  margin: 50px 0 30px 0;
   height: 80vh;
   width: 95vw;
+  max-width:1600px;
+  max-height:745px;
   border-radius: 20px;
   border: 2px solid grey;
   z-index: 1;
@@ -41,14 +44,15 @@
 }
 
 .coordinate{
-  z-index: 3;
+  /* z-index: 3; */
+  /* display:flex; */
   color:var(--text-color);
-  position: absolute;
-  left: 80%;
-  top: 50%;
+  /* position: absolute; */
+  /* left: 81%; */
+  /* top: 53%; */
   padding:10px;
-  height:140 px;
-  width:140px;
+  height:140px;
+  /* width:140px; */
   background-color: rgba(242,239,233,255);
   border:dashed 1px grey;
   font-size: small;
@@ -56,14 +60,14 @@
 
 .legend {
   display:flex;
-  position: absolute;
-  z-index: 3;
-  left:80%;
+  /* position: absolute; */
+  /* z-index: 3; */
+  /* left:81%; */
   flex-direction: column;
-  top: 70%;
+  /* top: 70%; */
   padding: 10px;
   height: 148px;
-  width: 140px;
+  /* width: 140px; */
   background-color: rgba(242,239,233,255);
   justify-content: center;
   border:dashed 1px grey;
@@ -89,13 +93,25 @@
 }
 
 .filter {
-  z-index: 3;
+  /* z-index: 3; */
   color:var(--text-color);
-  position: absolute;
-  left: 3%;
-  top: 25%;
+  /* position: absolute;
+  left: 12%;
+  top: 25%; */
   padding:5px;
   background-color: rgba(242,239,233,255);
   border:dashed 1px grey;
   font-size: small;
+   
+}
+
+.flex-r{
+  z-index: 3;
+  display:flex;
+  flex-direction: column;
+  width: 140px;
+  gap:10px;
+  position: absolute;
+  top:45%;
+  left:82%;
 }

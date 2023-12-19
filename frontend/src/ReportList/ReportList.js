@@ -5,6 +5,7 @@ import './ReportList.css';
 import { NavBar } from '../NavBar/NavBar';
 import ReportTableData from './ReportTableData';
 import BarsDataset from './BarChart';
+
 function ReportList() {
 
   const { reports } = useContext(userContext)

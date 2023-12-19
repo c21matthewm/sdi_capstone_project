@@ -18,7 +18,6 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -203,9 +202,6 @@ export const SubmitReport = () => {
             <Button type="submit" variant='contained' color='info'>submit</Button>
           </form>
         </Box>
-        {/* <Button variant="outlined" onClick={handleClickOpen}>
-        Slide in alert dialog
-      </Button> */}
         <Dialog
           open={open}
           TransitionComponent={Transition}
@@ -213,12 +209,11 @@ export const SubmitReport = () => {
           onClose={handleClose}
           aria-describedby="alert-dialog-slide-description"
         >
-          {/* <DialogTitle>{"Report successfully submitted"}</DialogTitle> */}
           <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            Report successfully submitted
-          </DialogContentText>
-        </DialogContent>
+            <DialogContentText id="alert-dialog-slide-description">
+              Report successfully submitted
+            </DialogContentText>
+          </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>RETURN</Button>
           </DialogActions>
