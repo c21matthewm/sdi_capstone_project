@@ -12,13 +12,10 @@ import Avatar from '@mui/material/Avatar';
 import { NavBar } from '../NavBar/NavBar';
 import { Typography } from '@mui/material';
 import { Button } from '@mui/material';
-import ReportIcon from '@mui/icons-material/Report';
-import SatelliteDropDown from '../ReportList/SatelliteDropDown';
-import { Satellite } from '../Satellite/Satellite';
 
 export const SatelliteList = () => {
     
-    const { reports, satellites, setSatellites } = useContext(userContext);
+    const { satellites } = useContext(userContext);
 
     return (
         <>
@@ -48,12 +45,7 @@ export const SatelliteList = () => {
                                             Add Report
                                         </ Button>
                                     </Link>
-                                    <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
-                                        {/* <Button variant="contained" color="warning" endIcon={<ReportIcon />}>
-                                            <Typography component="span">{reports.filter((report) => 
-                                                report.satelliteID === sat.satelliteID &&
-                                                report.archived === false).length}</Typography>
-                                        </Button> */}
+                                    <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>                                   
                                     </Link>
                                 </ListItem>
                             )

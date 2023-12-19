@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
-import { axisClasses } from '@mui/x-charts';
 import { useContext, useEffect, useState } from 'react';
 import { userContext } from '../App';
 
@@ -12,30 +11,18 @@ const chartSetting = {
   ],
   xAxes: [
     {
-    ticks: {
-          autoSkip: false,
-          maxRotation: 90,
-          minRotation: 90
-      },
-      // tickLabelStyle: {
-      //   angle: 45,
-      //   textAnchor: 'start',
-      //   fontSize: 12,
-      // }
+      ticks: {
+        autoSkip: false,
+        maxRotation: 90,
+        minRotation: 90
+      }
     }
   ],
-  // width: 500,
-  // height: 300,
-  // sx: {
-  //   [`.${axisClasses.left} .${axisClasses.label}`]: {
-  //     transform: 'translate(-20px, 0)',
-  //   },
-  // },
 };
 
 export default function BarsDataset() {
-  const { reports, satellites } = useContext(userContext);
-  const [reload , setReload] = useState(null)
+  const { satellites } = useContext(userContext);
+  const [reload, setReload] = useState(null)
   const [dataset, setDataset] = useState([{
     unknownData: 0,
     losData: 0,
@@ -47,22 +34,6 @@ export default function BarsDataset() {
     coordinationData: 0,
     satellite: 'sat'
   }])
-
-  //   useEffect(() => {
-  //   let dataset = satellites.map(sat => (
-  //       {
-  //       unknownData: 59,
-  //       losData: 57,
-  //       atmoData: 86,
-  //       interferenceData: 21,
-  //       latencyData: 0,
-  //       malfunctionData: 0,
-  //       powerData: 0,
-  //       coordinationData: 0,
-  //       month: sat.name,
-  //     }
-  //   ))
-  // }, [])
 
   useEffect(() => {
     let temp = [];
@@ -83,7 +54,6 @@ export default function BarsDataset() {
             throw new Error('not found')
           else
             res.json()
-              // .then(data => {data.filter(result => result.reason.length > 0)})
               .then(data => {
                 if (data[0]) {
                   data.map(obj => obj.reason.forEach((string) => {
@@ -142,10 +112,9 @@ export default function BarsDataset() {
                   })
                 }
               }).then(() => {
-                setDataset(temp) 
-                // console.log(dataset)
+                setDataset(temp)
               })
-        }).then(()=>setReload('reload'))
+        }).then(() => setReload('reload'))
     })
   }, [reload])
 
@@ -167,7 +136,7 @@ export default function BarsDataset() {
       slotProps={{
         legend: {
           direction: "column",
-          position:  {vertical: 'top', horizontal: 'right'},
+          position: { vertical: 'top', horizontal: 'right' },
           margin: 20,
           labelStyle: {
             fontsize: 10,
