@@ -8,7 +8,6 @@
 #reports-side{
   display:flex;
   justify-content: flex-start;
-  /* align-items: flex-start; */
   overflow:auto;
   width:400px;
   overflow-x: hidden;

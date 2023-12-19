@@ -1,17 +1,10 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Box, Table, TableRow, TableCell, TableHead, TableBody, TableContainer } from "@mui/material";
 import ArchiveButtonToggle from "./ArchiveButtonToggle";
 import { userContext } from "../App";
 
 export const ReportTableData = ({ tableData }) => {
-    const { userUID, admin } = useContext(userContext)
-    // const [admin, setAdmin] = useState(false);
-
-    // useEffect(() => {
-    //     fetch(`http://localhost:8080/users/${userUID}`)
-    //     .then((res) => res.json())
-    //     .then((user) => setAdmin(user.admin))
-    // }, [])
+    const { admin } = useContext(userContext);
 
     return (
         <Box sx={{ width: '100%' }}>
@@ -26,7 +19,7 @@ export const ReportTableData = ({ tableData }) => {
                             <TableCell align="right">Time</TableCell>
                             {admin ?
                                 <TableCell align="right">Archive</TableCell>
-                            : <></>}
+                                : <></>}
                         </TableRow>
                     </TableHead>
                     <TableBody>
