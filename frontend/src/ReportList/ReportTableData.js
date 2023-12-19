@@ -4,7 +4,7 @@ import ArchiveButtonToggle from "./ArchiveButtonToggle";
 import { userContext } from "../App";
 
 export const ReportTableData = ({ tableData }) => {
-    const { admin } = useContext(userContext);
+    const { userUID, admin } = useContext(userContext)
 
     return (
         <Box sx={{ width: '100%' }}>

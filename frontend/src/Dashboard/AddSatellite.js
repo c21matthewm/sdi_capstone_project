@@ -24,8 +24,6 @@ export const AddSatellite = () => {
   const [frequencyBand, setFrequencyBand] = useState("");
   const navigate = useNavigate();
   const { userUID, satellites } = useContext(userContext);
-  // const { userUID } = useContext(userContext)
-  // const [image, setImage] = useState("");
 
   const onSatelliteSubmit = (e) => {
     e.preventDefault();
