@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 import React, { createContext, useState, useEffect } from 'react';
 import { SatelliteList } from './SatelliteList/SatelliteList';
 import { Satellite } from './Satellite/Satellite';
-import { Dashboard } from './Dashboard/Dashboard';
 import { AddReport } from './Report/AddReport';
 import { Report } from './Report/Report';
 import { AuthDetails } from './Authorizations/AuthDetails';
@@ -27,9 +26,6 @@ function App() {
   const [authUser, setAuthUser] = useState(null);
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [admin, setAdmin ] = useState(false);
-  const [firstData, setFirstData] = useState(60)
-  const [secondData, setSecondData] = useState(40)
-  const [thirdData, setThirdData] = useState(30)
 
   useEffect(() => {
     Promise.all([

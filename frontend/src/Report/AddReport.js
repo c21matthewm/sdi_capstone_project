@@ -19,7 +19,6 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 
 
@@ -50,31 +49,17 @@ export const AddReport = () => {
     },
   };
 
-  const { userUID, satellites } = useContext(userContext);
+  const { userUID } = useContext(userContext);
   const location = useLocation();
   const { sat } = location.state;
-
   const [time, setTime] = useState('');
   const [freq, setFreq] = useState('');
   const [mission, setMission] = useState('');
   const [lat, setLat] = useState(0);
   const [long, setLong] = useState(0);
   const [status, setStatus] = useState('');
-  // const [satID, setSatID] = useState(1);
   const [reason, setReason] = useState([]);
 
-
-
-  // const [checked, setChecked] = useState(
-  //   new Array(reasonsForReport.length).fill(false)
-  // );
-
-  // function handleOnChange(position) {
-  //   let isItChecked = checked.map((item, index) =>
-  //     index === position ? !item : item
-  //   );
-
-  //   setChecked(isItChecked);
   const reasonsForReport = [
     { issue: 'Unknown Issue' },
     { issue: 'Blocked LOS' },
@@ -85,22 +70,6 @@ export const AddReport = () => {
     { issue: 'Power Supply Issue' },
     { issue: 'Frequency Coordination' }
   ];
-
-
-  const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setReason(value);
-
-
-
-    // setReason(totalIssues)
-    // On autofill we get a stringified value.
-    //   typeof value === 'string' ? value.split(',') : value,
-    // );
-  };
-
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -149,13 +118,6 @@ export const AddReport = () => {
         <Box className="box" id="add-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
           <form onSubmit={onSubmit}>
             <InputLabel id="sat-label">Satellite:<b>{sat.name.toUpperCase()}</b></InputLabel>
-            {/* <Select id="sat-label" value={satID} name="satellites" onChange={(e) => setSatID(e.target.value)}>
-              {satellites.map(satellite => {
-                return (
-                  <MenuItem value={satellite.satelliteID}>{satellite.name}</MenuItem>
-                )
-              })}
-            </Select> */}
             <Divider />
             <InputLabel>Time:</InputLabel>
             <TextField variant="outlined" type='datetime-local' onChange={(e) => setTime(e.target.value)} value={time} />
@@ -205,7 +167,7 @@ export const AddReport = () => {
                 onChange={(e) => {
                   console.log(e.target.value);
                   setReason(e.target.value);
-                  // handleChange
+
                 }}
                 input={<OutlinedInput label="Reason" />}
                 renderValue={(selected) => selected.join(', ')}
@@ -232,7 +194,6 @@ export const AddReport = () => {
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        {/* <DialogTitle>{"Report successfully submitted"}</DialogTitle> */}
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
             Report successfully submitted

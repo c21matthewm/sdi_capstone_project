@@ -8,7 +8,6 @@ import { AdminDashboard } from "../Dashboard/AdminDashboard";
 
 export const AuthDetails = () => {
   const { authUser, setAuthUser, setUserUID, admin, setAdmin } = useContext(userContext);
-  // const [admin, setAdmin ] = useState(false);
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
@@ -42,6 +41,3 @@ export const AuthDetails = () => {
     </div>
   )
 }
-
-// accounts PW: password
-// admin@gmail.com, user, user2, user3 @ gmail.com
