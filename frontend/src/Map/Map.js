@@ -12,8 +12,6 @@ import "./Map.css";
 
 export const Map = () => {
   const [map, setMap] = useState(null);
-  const [marker, setMarker] = useState();
-  const [circle, setCircle] = useState();
   const { reports, satellites } = useContext(userContext);
 
   var greenIcon = new L.Icon({
@@ -44,18 +42,7 @@ export const Map = () => {
   });
 
   useEffect(() => {
-    if (!navigator.geolocation) {
-      console.log("Your browser doesn't support geolocation feature!");
-    } else {
-      setInterval(() => {
-        navigator.geolocation.getCurrentPosition(getPosition);
-      }, 5000);
-    }
-
     if (map) {
-      map.on('mouseover', function () {
-        console.log('your mouse is over the map');
-      });
 
       map.on('mousemove', function (e) {
         document.getElementsByClassName('coordinate')[0].innerHTML = 
@@ -65,16 +52,6 @@ export const Map = () => {
       });
     }
   }, [map]);
-
-  function getPosition(position) {
-    const { latitude: lat, longitude: long, accuracy } = position.coords;
-
-    const newMarker = L.redIcon([lat, long]);
-    const newCircle = L.circle([lat, long], { radius: accuracy });
-
-    setMarker(newMarker);
-    setCircle(newCircle);
-  }
 
   return (
     <>

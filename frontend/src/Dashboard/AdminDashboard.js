@@ -47,8 +47,6 @@ export const AdminDashboard = () => {
   return (
     <>
       <NavBar />
-
-      {/* Delete Confirmation Popup */}
       <Dialog open={deletePopupVisible} onClose={handleDeletePopupClose}>
         <DialogTitle>Confirm Deletion</DialogTitle>
         <DialogContent>
@@ -61,22 +59,17 @@ export const AdminDashboard = () => {
           <Button variant="contained" color="error" onClick={handleDeletePopupClose}>No</Button>
         </DialogActions>
       </Dialog>
-
       <div className="big-container">
         <Typography variant="h5" component="div" ><span className="dashtitle">ADMIN Dashboard</span> <Link to={`/addsatellite`}>
-            <Button variant="contained" color="info">Add Satellite</Button>
-          </Link></Typography>
+          <Button variant="contained" color="info">Add Satellite</Button>
+        </Link></Typography>
         <div className="adminDisplay">
-         
           <Box className="tileDisplay" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
-          {satellites.filter((satellite) => satellite.favorites.includes(userUID)).map((sat, index) => {
+            {satellites.filter((satellite) => satellite.favorites.includes(userUID)).map((sat, index) => {
               return (
                 <div id={index} className="tile">
-                 		<Box className="box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius:"10px"}} 
-									// style={{backgroundColor: sat.status === 'GREEN' ? "rgb(50, 200, 70, .8)" :
-									// 		sat.status === 'YELLOW' ? "#facb6c" : "rgb(255, 0, 0, .8)"
-									// 	}}
-									variant="outlined">
+                  <Box className="box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius: "10px" }}
+                    variant="outlined">
                     <CardActionArea >
                       <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
                         <CardMedia>
@@ -85,20 +78,22 @@ export const AdminDashboard = () => {
                             sx={{
                               height: '150px',
                               width: '200px',
-                              margin: '20px 0 0 0' }}
-														style={{border: sat.status === 'GREEN' ? "10px solid rgb(0, 200, 0)" :
-											sat.status === 'YELLOW' ? "10px solid rgb(255, 255, 100)" : "10px solid rgb(255, 30, 10)"
+                              margin: '20px 0 0 0'
+                            }}
+                            style={{
+                              border: sat.status === 'GREEN' ? "10px solid rgb(0, 200, 0)" :
+                                sat.status === 'YELLOW' ? "10px solid rgb(255, 255, 100)" : "10px solid rgb(255, 30, 10)"
                             }}
                             src={sat.image}
                             alt="satellite image"
                           />
                         </CardMedia>
                         <CardContent >
-                        <div className="sat-name">
-                          <Typography variant="h5" component="div" >
-                            {sat.name.toUpperCase()}
-                          </Typography >
-                        </div>
+                          <div className="sat-name">
+                            <Typography variant="h5" component="div" >
+                              {sat.name.toUpperCase()}
+                            </Typography >
+                          </div>
                         </CardContent >
                       </Link>
                     </CardActionArea >
@@ -117,25 +112,15 @@ export const AdminDashboard = () => {
                           }
                         }}
                       >
-                        {/* <DialogTitle>Edit Status</DialogTitle>
-                        <DialogContent>
-                          <DialogContentText>
-                            Update status for {selectedSat.name}
-                          </DialogContentText>
-                        </DialogContent> */}
                         <EditStatus satellite={selectedSat} onClose={handlePopupClose} />
                       </Dialog>
-
-      
-                      
                       <Link to={`/satellites/${sat.satelliteID}`} state={{ sat }}>
                         <Button variant="contained" color="secondary" endIcon={<ReportIcon />}>
-                        <Typography component="span">{reports.filter((report) => 
-														report.satelliteID === sat.satelliteID &&
-														report.archived === false).length}</Typography>
+                          <Typography component="span">{reports.filter((report) =>
+                            report.satelliteID === sat.satelliteID &&
+                            report.archived === false).length}</Typography>
                         </Button>
                       </Link>
-
                       <Button variant="contained" color="error" onClick={() => confirmDelete(sat)}><DeleteIcon /></Button>
                     </CardActions >
                   </Box >

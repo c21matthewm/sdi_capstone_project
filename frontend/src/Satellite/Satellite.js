@@ -58,7 +58,7 @@ export const Satellite = (props) => {
                                 </div>
                                 <div className="components">
                                     <List sx={{ p: 0, m: 0 }} component="nav" >
-                                        <Typography variant="h6" gutterBottom display="inline" >Status: 
+                                        <Typography variant="h6" gutterBottom display="inline" >Status:
                                             <Typography variant="h6" display="inline"
                                                 color={sat.status === 'GREEN' ? "#0FFF50" :
                                                     sat.status === 'YELLOW' ? "rgb(255, 255, 100)" : "rgb(255, 30, 10)"}> {sat.status.toUpperCase()}</Typography> </Typography>
@@ -85,7 +85,6 @@ export const Satellite = (props) => {
                             <Box className="report-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
                                 <div className="components" id="reports">
                                     <Typography variant="h6" gutterBottom> Recent Reports:</Typography>
-                                    {/* {reports.filter((report) => (report.satelliteID === sat.satelliteID)) */}
                                     {reports.filter((report) =>
                                         report.satelliteID === sat.satelliteID &&
                                         report.archived === false)

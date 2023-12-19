@@ -13,64 +13,63 @@ import { useNavigate } from "react-router-dom";
 import "./Report.css";
 
 export const Report = () => {
-    const location = useLocation();
-    const navigate = useNavigate();
-    const { report, sat } = location.state;
-    const { reports } = useContext(userContext)
-    
-    return (
-        <>
-            <NavBar />
-            <Box className="box" id="flex-report" component="section" sx={{ p: 2 }}>
-                <Box className="box" id="report-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}> 
-                    <div className="components" >
-                        <Typography variant="h5" gutterBottom>REPORT #{report.reportID}   <Button id="return" variant='contained' color='primary' onClick={() => navigate(-1)}>RETURN</Button></Typography>
-                        <Divider></Divider>
-                        <List sx={{ p: 0, m: 0 }} component="nav">
-                            <ListItem>
-                                <Typography variant="h6" gutterBottom>{`Satellite: ${sat.name.toUpperCase()}`} </Typography>
-                            </ListItem >
-                            <ListItem>
-                                <Typography variant="h6" gutterBottom>{`Status: ${report.status.toUpperCase()}`} </Typography>
-                            </ListItem >
-                            <ListItem>
-                                <Typography variant="h6" gutterBottom>{`Time: ${report.time}`} </Typography>
-                            </ListItem >
-                            <ListItem>
-                                <Typography variant="h6" gutterBottom>{`Frequency Band: ${report.frequency_band}`}</Typography>
-                            </ListItem >
-                            <ListItem>
-                                <Typography variant="h6" gutterBottom>{`Latitude: ${report.latitude}`} </Typography>
-                            </ListItem >
-                            <ListItem>
-                                <Typography variant="h6" gutterBottom>{`Longitude: ${report.longitude}`} </Typography>
-                            </ListItem >
-                            <ListItem>
-                                <Typography variant="h6" gutterBottom>{`Mission: ${report.mission}`} </Typography>
-                            </ListItem >
-                            <ListItem>
-                                <Typography variant="h6" gutterBottom>{`Reason: ${report.reason}`} </Typography>
-                            </ListItem >
-                        </List>
-                    </div>
-                </Box>
-                <Box className="box" id="reports-side" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
-                    <div className="components" >
-                        <Typography variant="h6" gutterBottom> {sat.name.toUpperCase()} Reports:</Typography>
-                        {reports.filter((report) => (report.satelliteID === sat.satelliteID))
-                            .map((report, index) => {
-                                return (
-                                    <>
-                                        <ListItemButton component={Link} to={`/reports/${report.reportID}`} state={{ report, sat }}>
-                                            <ListItemText primary={`REPORT#${report.reportID}: ${report.time}`} />
-                                        </ListItemButton>
-                                        {/* <li><Link to={`/reports/${report.reportID}`} state={{ report }}>REPORT #{`${report.reportID}`}: {report.time} </Link></li> */}
-                                    </>
-                                )
-                            })}
-                    </div>
-                </Box>
-            </Box>
-        </>
-    )
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { report, sat } = location.state;
+  const { reports } = useContext(userContext)
+
+  return (
+    <>
+      <NavBar />
+      <Box className="box" id="flex-report" component="section" sx={{ p: 2 }}>
+        <Box className="box" id="report-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
+          <div className="components" >
+            <Typography className="t-report" variant="h5" gutterBottom>REPORT #{report.reportID}   <Button id="return" variant='contained' color='primary' onClick={() => navigate(-1)}>RETURN</Button></Typography>
+            <Divider></Divider>
+            <List sx={{ p: 0, m: 0 }} component="nav">
+              <ListItem>
+                <Typography variant="h6" gutterBottom>{`Satellite: ${sat.name.toUpperCase()}`} </Typography>
+              </ListItem >
+              <ListItem>
+                <Typography variant="h6" gutterBottom>{`Status: ${report.status.toUpperCase()}`} </Typography>
+              </ListItem >
+              <ListItem>
+                <Typography variant="h6" gutterBottom>{`Time: ${report.time}`} </Typography>
+              </ListItem >
+              <ListItem>
+                <Typography variant="h6" gutterBottom>{`Frequency Band: ${report.frequency_band}`}</Typography>
+              </ListItem >
+              <ListItem>
+                <Typography variant="h6" gutterBottom>{`Latitude: ${report.latitude}`} </Typography>
+              </ListItem >
+              <ListItem>
+                <Typography variant="h6" gutterBottom>{`Longitude: ${report.longitude}`} </Typography>
+              </ListItem >
+              <ListItem>
+                <Typography variant="h6" gutterBottom>{`Mission: ${report.mission}`} </Typography>
+              </ListItem >
+              <ListItem>
+                <Typography variant="h6" gutterBottom>{`Reason: ${report.reason}`} </Typography>
+              </ListItem >
+            </List>
+          </div>
+        </Box>
+        <Box className="box" id="reports-side" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
+          <div className="components" >
+            <Typography variant="h6" gutterBottom> {sat.name.toUpperCase()} Reports:</Typography>
+            {reports.filter((report) => (report.satelliteID === sat.satelliteID))
+              .map((report, index) => {
+                return (
+                  <>
+                    <ListItemButton component={Link} to={`/reports/${report.reportID}`} state={{ report, sat }}>
+                      <ListItemText primary={`REPORT#${report.reportID}: ${report.time}`} />
+                    </ListItemButton>
+                  </>
+                )
+              })}
+          </div>
+        </Box>
+      </Box>
+    </>
+  )
 }
