@@ -52,7 +52,6 @@ function ReportList() {
             <MenuItem value="archived">Archived</MenuItem>
           </Select>
           <ReportTableData tableData={filteredReports} />
-
         </Box>
         <Box className="metric_view" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
           <BarsDataset />

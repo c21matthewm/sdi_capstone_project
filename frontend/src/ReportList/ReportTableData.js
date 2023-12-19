@@ -5,13 +5,6 @@ import { userContext } from "../App";
 
 export const ReportTableData = ({ tableData }) => {
     const { userUID, admin } = useContext(userContext)
-    // const [admin, setAdmin] = useState(false);
-
-    // useEffect(() => {
-    //     fetch(`http://localhost:8080/users/${userUID}`)
-    //     .then((res) => res.json())
-    //     .then((user) => setAdmin(user.admin))
-    // }, [])
 
     return (
         <Box sx={{ width: '100%' }}>
