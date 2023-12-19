@@ -18,9 +18,9 @@
 }
 
 .leaflet-container {
-  margin:-135px 0 30px 0;
-  height: 750px;
-  width: 1500px;
+  margin: 30px 0 30px 0;
+  height: 80vh;
+  width: 95vw;
   border-radius: 20px;
   border: 2px solid grey;
   z-index: 1;
@@ -44,36 +44,37 @@
   z-index: 3;
   color:var(--text-color);
   position: absolute;
-  left:75%;
-  top: 400px;
-  padding:25px;
-  height:200px;
-  width:190px;
+  left: 80%;
+  top: 50%;
+  padding:10px;
+  height:140 px;
+  width:140px;
   background-color: rgba(242,239,233,255);
-  border:dashed 1px grey
-  
+  border:dashed 1px grey;
+  font-size: small;
 }
 
 .legend {
   display:flex;
-  position: relative;
+  position: absolute;
   z-index: 3;
-  left:75%;
+  left:80%;
   flex-direction: column;
-  top: 550px;
-  padding:25px;
-  height:200px;
-  width:190px;
+  top: 70%;
+  padding: 10px;
+  height: 148px;
+  width: 140px;
   background-color: rgba(242,239,233,255);
   justify-content: center;
   border:dashed 1px grey;
   gap:15px; 
   color:var(--text-color);
+  font-size: small;
 }
 
 .marks {
   display: flex;
-  font-size: medium;
+  font-size: small;
   line-height: 1;
   align-items: center;
 
