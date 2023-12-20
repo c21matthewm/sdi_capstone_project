@@ -23,7 +23,7 @@ export const Report = () => {
       <NavBar />
       <Box className="box" id="flex-report" component="section" sx={{ p: 2 }}>
         <Box className="box" id="report-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius: '10px' }}>
-          <div className="components" >
+          <div className="align-com" >
             <Typography className="t-report" variant="h5" gutterBottom>REPORT #{report.reportID}   <Button id="return" variant='contained' color='primary' onClick={() => navigate(-1)}>RETURN</Button></Typography>
             <Divider></Divider>
             <List sx={{ p: 0, m: 0 }} component="nav">
