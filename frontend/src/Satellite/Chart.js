@@ -16,8 +16,8 @@ return (
           color: '#fdb462'
         },
       ]}
-      width={500}
-      height={300}
+      // width={500}
+      // height={300}
     />}
   </>
 );

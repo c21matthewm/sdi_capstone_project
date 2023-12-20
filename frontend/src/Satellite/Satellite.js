@@ -48,63 +48,77 @@ export const Satellite = (props) => {
         <>
             <NavBar />
             <div className="sat-full">
+                {/* <div className="sat-full">
                 <Box className="box" component="section" sx={{ p: 2 }}>
                     <div className="sat-container">
-                        <div className="sat-box">
-                            <Box className="box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius: '10px' }}>
-                                <div className="components">
-                                    <Typography variant="h5" gutterBottom>{sat.name.toUpperCase()} <Button id="return" variant='contained' color='primary' onClick={() => navigate(-1)}>RETURN</Button></Typography>
-                                    <img src={sat.image} height={300} alt="satellite"></img>
-                                </div>
-                                <div className="components">
-                                    <List sx={{ p: 0, m: 0 }} component="nav" >
-                                        <Typography variant="h6" gutterBottom display="inline" >Status:
-                                            <Typography variant="h6" display="inline"
-                                                color={sat.status === 'GREEN' ? "#0FFF50" :
-                                                    sat.status === 'YELLOW' ? "rgb(255, 255, 100)" : "rgb(255, 30, 10)"}> {sat.status.toUpperCase()}</Typography> </Typography>
-                                        <ListItem >
-                                            <Typography variant="h7" gutterBottom>{`Orbit: ${sat.orbit}`} </Typography>
-                                        </ListItem >
-                                        <ListItem >
-                                            <Typography variant="h7" gutterBottom>{`Frequency Band: ${sat.frequency_band}`} </Typography>
-                                        </ListItem>
-                                        <ListItem >
-                                            <Typography variant="h7" gutterBottom>{`Longitude: ${sat.longitude}`} </Typography>
-                                        </ListItem>
-                                        <ListItem >
-                                            <Typography variant="h7" gutterBottom>{`Mission: ${sat.mission}`}</Typography>
-                                        </ListItem>
-                                        <ListItem >
-                                            <Typography variant="h7" gutterBottom>{`Country: ${sat.country}`}</Typography>
-                                        </ListItem>
-                                    </List>
-                                </div>
-                            </Box>
-                        </div>
-                        <div className="stacked">
-                            <Box className="report-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius: '10px' }}>
-                                <div className="components" id="reports">
-                                    <Typography variant="h6" gutterBottom> Recent Reports:</Typography>
-                                    {reports.filter((report) =>
-                                        report.satelliteID === sat.satelliteID &&
-                                        report.archived === false)
-                                        .map((report, index) => {
-                                            return (
-                                                <>
-                                                    <List component={Link} to={`/reports/${report.reportID}`} state={{ report, sat }}>
-                                                        <ListItemText key={index} primary={`REPORT#${report.reportID}: ${report.time}`} />
-                                                    </List>
-                                                </>
-                                            )
-                                        })}
-                                </div>
-                            </Box>
-                            <Box className="chart-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius: '10px' }}>
-                                <Chart state={{ sat }} xdata={xdata} seriesData={seriesData} />
-                            </Box>
-                        </div>
+                        <div className="sat-box"> */}
+                <div className="sat-container">
+                    <Box className="sat-box" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius: '10px' }}>
+                       
+                        <Typography variant="h5" gutterBottom>{sat.name.toUpperCase()} <Button id="return" variant='contained' color='primary' onClick={() => navigate(-1)}>RETURN</Button></Typography>
+                        <img className="sat-image"src={sat.image}  alt="satellite"></img>
+                        {/* </div> */}
+                        {/* <div className="components"> */}
+                        <List sx={{ p: 0, m: 0 }} component="nav" >
+                            <Typography variant="h6" gutterBottom display="inline" >Status:
+                                <Typography variant="h6" display="inline"
+                                    color={sat.status === 'GREEN' ? "#0FFF50" :
+                                        sat.status === 'YELLOW' ? "rgb(255, 255, 100)" : "rgb(255, 30, 10)"}> {sat.status.toUpperCase()}</Typography> </Typography>
+                            <ListItem >
+                                <Typography variant="h7" gutterBottom>{`Orbit: ${sat.orbit}`} </Typography>
+                            </ListItem >
+                            <ListItem >
+                                <Typography variant="h7" gutterBottom>{`Frequency Band: ${sat.frequency_band}`} </Typography>
+                            </ListItem>
+                            <ListItem >
+                                <Typography variant="h7" gutterBottom>{`Longitude: ${sat.longitude}`} </Typography>
+                            </ListItem>
+                            <ListItem >
+                                <Typography variant="h7" gutterBottom>{`Mission: ${sat.mission}`}</Typography>
+                            </ListItem>
+                            <ListItem >
+                                <Typography variant="h7" gutterBottom>{`Country: ${sat.country}`}</Typography>
+                            </ListItem>
+                        </List>
+                   
+                    </Box>
+                </div>
+
+                {/* </div>
+                            // </Box>
+                        </div> */}
+                {/* <div className="stacked"> */}
+                {/* <Box className="report-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius: '10px' }}>
+                                <div className="components" id="reports"> */}
+                <div className="section">
+                    <Box className="report-box" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius: '10px' }}>
+                        <Typography variant="h6" gutterBottom> Recent Reports:</Typography>
+                        {reports.filter((report) =>
+                            report.satelliteID === sat.satelliteID &&
+                            report.archived === false)
+                            .map((report, index) => {
+                                return (
+                                    <div className="reportlist">
+                                        <List  component={Link} to={`/reports/${report.reportID}`} state={{ report, sat }}>
+                                            <ListItemText key={index} primary={`REPORT#${report.reportID}: ${report.time}`} />
+                                        </List>
+                                    </div>
+                                )
+                            })}
+                        {/* </div> */}
+                        {/* </Box> */}
+                        {/* <div className="chart-box" > */}
+                    </Box>
+                    <Box className="chart-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius: '10px' }}>
+                        <Chart state={{ sat }} xdata={xdata} seriesData={seriesData} />
+                    </Box>
+                    {/* </div> */}
+                </div>
+
+                {/* </div>
                     </div>
                 </Box>
+            </div> */}
             </div>
         </>
 

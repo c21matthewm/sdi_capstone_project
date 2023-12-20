@@ -109,10 +109,10 @@ export const AddSatellite = () => {
 
             <InputLabel>Orbit:</InputLabel>
             <Select id="orbit" value={orbit} name="orbit" onChange={(e) => setOrbit(e.target.value)}>
-              <MenuItem value="UHF">LEO</MenuItem>
-              <MenuItem value="SHF">MEO</MenuItem>
-              <MenuItem value="EHF">GEO</MenuItem>
-              <MenuItem value="EHF">HEO</MenuItem>
+              <MenuItem value="LEO">LEO</MenuItem>
+              <MenuItem value="MEO">MEO</MenuItem>
+              <MenuItem value="GEO">GEO</MenuItem>
+              <MenuItem value="HEO">HEO</MenuItem>
             </Select>
             <Divider></Divider>
 
