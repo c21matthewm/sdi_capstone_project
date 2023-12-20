@@ -1,6 +1,6 @@
 .big-container {
     text-align: center;
-    margin-top:50px;
+    margin-top:25px;
     display:flex;
     flex-direction: column;
 
@@ -12,14 +12,14 @@
     flex-wrap: wrap;
     justify-content:space-around;
     margin:15px 100px 0px 100px;
-    padding:12px;
-    height: 700px;
+    padding:10px;
+    height: 76vh;
     overflow: auto;
     
 }
 
 .tile {
-    width: 320px;
+    width: 330px;
     height: 300px;
     margin: 20px;
     text-decoration: none; 
@@ -39,7 +39,7 @@
 .buttons {
     display: flex;
     flex-direction: row;
-    justify-content:space-around;
+    justify-content:space-between;
     width: 100%;
     margin: 0px 0px 0px 0px;
     padding: 0px;

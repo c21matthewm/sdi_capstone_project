@@ -85,6 +85,30 @@ app.get('/satellites/:satelliteID/reports', (req, res) =>{
     })
 })
 
+// app.get('/reports/satellites', (req, res) =>{
+//   knex('reports')
+//     .select('*')
+//     .join('satellites', 'satellites.satelliteID', '=', 'reports.satelliteID')
+//     .then(data => {
+//       if (data)
+//         res.status(200).json(data);
+//       else 
+//         res.status(404)
+//     })
+// })
+
+app.get('/joinreport/', (req, res) =>{
+  knex('reports')
+    .join('satellites', 'satellites.satelliteID', '=', 'reports.satelliteID')
+    .select('*')
+    .then(data => {
+      if (data)
+        res.status(200).json(data);
+      else
+        res.status(404)
+    })
+})
+
 app.post('/reports', async(req, res) => {
   await knex('reports').insert({
       time: req.body.time,

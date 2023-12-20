@@ -31,7 +31,7 @@ export const ReportTableData = ({ tableData }) => {
                                 <TableCell component="th" scope="row">
                                     {report.reportID}
                                 </TableCell>
-                                <TableCell align="right">{`Insight ${report.satelliteID}`}</TableCell>
+                                <TableCell align="right">{report.name.toUpperCase()}</TableCell>
                                 <TableCell align="right">{report.status}</TableCell>
                                 <TableCell align="right">{report.reason}</TableCell>
                                 <TableCell align="right">{report.time}</TableCell>
