@@ -13,10 +13,19 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import { Divider } from '@mui/material';
 import Button from '@mui/material/Button';
 import {Typography} from "@mui/material";
+import Slide from '@mui/material/Slide';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export const AddSatellite = () => {
   const [name, setName] = useState("");
-  const [longitude, setLongitude] = useState(0);
+  const [longitude, setLongitude] = useState();
   const [status, setStatus] = useState("");
   const [orbit, setOrbit] = useState("");
   const [mission, setMission] = useState("");
@@ -24,6 +33,16 @@ export const AddSatellite = () => {
   const [frequencyBand, setFrequencyBand] = useState("");
   const navigate = useNavigate();
   const { userUID, satellites } = useContext(userContext);
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const onSatelliteSubmit = (e) => {
     e.preventDefault();
@@ -46,13 +65,13 @@ export const AddSatellite = () => {
       }),
     }).then(() => {
       setName("");
-      setLongitude(0);
+      setLongitude();
       setStatus("");
       setOrbit("");
       setMission("");
       setCountry("");
       setFrequencyBand("");
-      navigate('/')
+      handleClickOpen();
     });
   };
 
@@ -127,6 +146,22 @@ export const AddSatellite = () => {
           </form>
         </Box>
       </div>
+      <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            Satellite successfully submitted
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => navigate('/')}>RETURN</Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 };

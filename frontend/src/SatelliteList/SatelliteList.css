@@ -13,7 +13,7 @@
 }
 
 .box-list {
-  max-height: 700px;
+  max-height: 78vh;
   overflow: auto;
   /* border: 2px solid rgb(158, 158, 158); */
   border-radius: 15px;
@@ -21,7 +21,7 @@
 }
 
 .satT {
-  padding: 30px 0 10px 0;
+  padding: 20px 0 5px 0;
   color:var(--title-color)
 }
 

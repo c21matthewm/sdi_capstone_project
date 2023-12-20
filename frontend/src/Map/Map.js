@@ -134,9 +134,9 @@ export const Map = () => {
       <div className="map-title">
         <MapContainer
           className="leaflet-container"
-          center={[0, 0]}
+          center={[20, 0]}
           attributionControl={true}
-          zoom={3}
+          zoom={2}
           minZoom={2}
           scrollWheelZoom={true}
           ref={setMap}
