@@ -22,12 +22,12 @@
   height:650px;
   margin:20px auto;
   gap: 50px;
-  
+
 }
 
 #add-box {
-  width:800px;
-  height: 725px;
+  width:900px;
+  height: 740px;
   margin-bottom: 30px;
   overflow: auto;
   background-color: var(--component-color);
@@ -46,4 +46,19 @@
 
 .t-report {
   padding-top:15px;
+}
+
+.status-organizer{
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 10px;
+}
+
+.status-box{
+  padding-left: 10px;
+}
+
+.reason-organizer{
+  display: flex;
+  justify-content: space-between;
 }
