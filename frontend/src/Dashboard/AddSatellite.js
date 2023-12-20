@@ -142,7 +142,7 @@ export const AddSatellite = () => {
             </Select>
             <Divider></Divider>
 
-            <Button type="submit" variant="contained" color="info">Submit</Button>
+            <Button type="submit" id="submit-button" variant="contained" color="info">Submit</Button>
           </form>
         </Box>
       </div>
