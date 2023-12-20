@@ -37,16 +37,19 @@
   display:flex;
   background-color: var(--component-color);
   color:var(--text-color);
+  border-radius: 10px;
 }
 
 .report-box {
   background-color: var(--component-color);
   color:var(--text-color);
+  border-radius: 10px;
 }
 
 .chart-box {
   background-color: var(--component-color);
   color:var(--text-color);
+  border-radius: 10px;
 }
 #reports{
   min-width:450px;
