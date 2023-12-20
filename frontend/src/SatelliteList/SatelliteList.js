@@ -7,6 +7,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import SatelliteAltIcon from '@mui/icons-material/SatelliteAlt';
+import ReportIcon from '@mui/icons-material/Report';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import { NavBar } from '../NavBar/NavBar';
@@ -41,7 +42,8 @@ export const SatelliteList = () => {
                                         <Button
                                             variant="contained"
                                             color="primary"
-                                            id="addB">
+                                            id="addB"
+                                            endIcon={<ReportIcon />}>
                                             Add Report
                                         </ Button>
                                     </Link>
