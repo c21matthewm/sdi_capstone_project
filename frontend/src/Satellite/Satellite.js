@@ -98,11 +98,11 @@ export const Satellite = (props) => {
                             report.archived === false)
                             .map((report, index) => {
                                 return (
-                                    <>
-                                        <List component={Link} to={`/reports/${report.reportID}`} state={{ report, sat }}>
+                                    <div className="reportlist">
+                                        <List  component={Link} to={`/reports/${report.reportID}`} state={{ report, sat }}>
                                             <ListItemText key={index} primary={`REPORT#${report.reportID}: ${report.time}`} />
                                         </List>
-                                    </>
+                                    </div>
                                 )
                             })}
                         {/* </div> */}
