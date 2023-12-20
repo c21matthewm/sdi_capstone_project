@@ -46,12 +46,12 @@ export const Satellite = (props) => {
 
     return (
         <>
+            <NavBar />
             <div className="sat-full">
-                <NavBar />
                 <Box className="box" component="section" sx={{ p: 2 }}>
                     <div className="sat-container">
                         <div className="sat-box">
-                            <Box className="box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
+                            <Box className="box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius: '10px' }}>
                                 <div className="components">
                                     <Typography variant="h5" gutterBottom>{sat.name.toUpperCase()} <Button id="return" variant='contained' color='primary' onClick={() => navigate(-1)}>RETURN</Button></Typography>
                                     <img src={sat.image} height={300} alt="satellite"></img>
@@ -82,7 +82,7 @@ export const Satellite = (props) => {
                             </Box>
                         </div>
                         <div className="stacked">
-                            <Box className="report-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
+                            <Box className="report-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius: '10px' }}>
                                 <div className="components" id="reports">
                                     <Typography variant="h6" gutterBottom> Recent Reports:</Typography>
                                     {reports.filter((report) =>
@@ -99,7 +99,7 @@ export const Satellite = (props) => {
                                         })}
                                 </div>
                             </Box>
-                            <Box className="chart-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
+                            <Box className="chart-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius: '10px' }}>
                                 <Chart state={{ sat }} xdata={xdata} seriesData={seriesData} />
                             </Box>
                         </div>
@@ -107,5 +107,6 @@ export const Satellite = (props) => {
                 </Box>
             </div>
         </>
+
     )
 }

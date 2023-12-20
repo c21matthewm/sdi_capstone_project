@@ -114,8 +114,8 @@ export const AddReport = () => {
       <NavBar />
       <div className='report-container'>
         <Typography className="satT" variant="h5" gutterBottom>Submit Report</Typography>
-        <Box className="box" id="add-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
-          <form onSubmit={onSubmit}>
+        <Box className="box" id="add-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius: '10px' }}>
+          <form className="form" onSubmit={onSubmit}>
             <InputLabel id="sat-label">Satellite:<b>{sat.name.toUpperCase()}</b></InputLabel>
             <Divider />
             <InputLabel>Time:</InputLabel>

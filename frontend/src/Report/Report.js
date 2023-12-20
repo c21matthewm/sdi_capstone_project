@@ -22,7 +22,7 @@ export const Report = () => {
     <>
       <NavBar />
       <Box className="box" id="flex-report" component="section" sx={{ p: 2 }}>
-        <Box className="box" id="report-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
+        <Box className="box" id="report-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius: '10px' }}>
           <div className="components" >
             <Typography className="t-report" variant="h5" gutterBottom>REPORT #{report.reportID}   <Button id="return" variant='contained' color='primary' onClick={() => navigate(-1)}>RETURN</Button></Typography>
             <Divider></Divider>
@@ -54,7 +54,7 @@ export const Report = () => {
             </List>
           </div>
         </Box>
-        <Box className="box" id="reports-side" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
+        <Box className="box" id="reports-side" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius: '10px' }}>
           <div className="components" >
             <Typography variant="h6" gutterBottom> {sat.name.toUpperCase()} Reports:</Typography>
             {reports.filter((report) => (report.satelliteID === sat.satelliteID))

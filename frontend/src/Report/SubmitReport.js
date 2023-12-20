@@ -113,8 +113,8 @@ export const SubmitReport = () => {
       <NavBar />
       <div className='report-container'>
         <Typography className="satT" variant="h5" gutterBottom>Submit Report</Typography>
-        <Box className="submitform" id="add-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
-          <form onSubmit={onSubmit}>
+        <Box className="submitform" id="add-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius: '10px' }}>
+          <form className="form" onSubmit={onSubmit}>
             <InputLabel id="sat-label">Satellite:</InputLabel>
             <Select
               MenuProps={{
@@ -214,7 +214,7 @@ export const SubmitReport = () => {
             </div>
             </div>
             <Divider />
-            <Button type="submit" variant='contained' color='info'>submit</Button>
+            <Button id='submit-button' type="submit" variant='contained' color='info'>submit</Button>
           </form>
         </Box>
         <Dialog
