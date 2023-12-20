@@ -51,7 +51,7 @@ export const AdminDashboard = () => {
         <DialogTitle>Confirm Deletion</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Are you sure you want to delete {satelliteToDelete?.name}?
+            Are you sure you want to delete {satelliteToDelete?.name.toUpperCase()}?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
