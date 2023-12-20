@@ -23,7 +23,7 @@
 exports.seed = async function (knex) {
   await knex('satellites').del()
   await knex('satellites').insert([
-    { name: "insight_1", longitude: 0, status: "RED", orbit: "GEO", mission: "COMMS", frequency_band: "UHF", country: "USA" , favorites: ["pMr2t4qkIgMwisegISjdwOMW9UU2"], image: "https://discovery.sndimg.com/content/dam/images/discovery/fullset/2021/9/22/ARC-17122-1B%20Communication-Satellite-Orbiti-82926365%201388x1050.jpg.rend.hgtvcom.616.462.suffix/1632351528867.jpeg"},
+    { name: "insight_1", longitude: 0, status: "GREEN", orbit: "GEO", mission: "COMMS", frequency_band: "UHF", country: "USA" , favorites: ["pMr2t4qkIgMwisegISjdwOMW9UU2"], image: "https://discovery.sndimg.com/content/dam/images/discovery/fullset/2021/9/22/ARC-17122-1B%20Communication-Satellite-Orbiti-82926365%201388x1050.jpg.rend.hgtvcom.616.462.suffix/1632351528867.jpeg"},
     { name: "insight_2", longitude: 30, status: "YELLOW", orbit: "GEO", mission: "ISR", frequency_band: "UHF", country: "USA" , favorites: ["pMr2t4qkIgMwisegISjdwOMW9UU2"], image: "https://www.afcea.org/content/sites/default/files/field/image/RKA-USAF%20SATCOM-3-OCT17.jpg"},
     { name: "insight_3", longitude: 60, status: "GREEN", orbit: "GEO", mission: "GPS", frequency_band: "UHF", country: "USA" , favorites: ["pMr2t4qkIgMwisegISjdwOMW9UU2"], image: "https://www.verdict.co.uk/wp-content/uploads/2020/01/satellite-breakthrough.jpg"},
     { name: "insight_4", longitude: 90, status: "YELLOW", orbit: "GEO", mission: "COMMS", frequency_band: "EHF", country: "USA" , favorites: ["pMr2t4qkIgMwisegISjdwOMW9UU2"], image: "https://www.afcea.org/content/sites/default/files/field/image/RKA-USAF%20SATCOM-3-OCT17.jpg"},

@@ -6,7 +6,7 @@ import { userContext } from '../App';
 const chartSetting = {
   yAxis: [
     {
-      label: 'error type',
+      label: 'Reports',
     },
   ],
   xAxes: [
