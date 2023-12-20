@@ -45,6 +45,7 @@
   display:flex;
   flex-direction: column;
   justify-content: center;
+  margin:10px;
   /* background-color: var(--component-color);
   color:var(--text-color);
   border-radius: 10px; */
@@ -54,8 +55,9 @@
 .sat-image{
   height:40%;
   margin-bottom: 10px;
-  padding:12px;
+  padding:0 20px 0 20px;
 }
+
 
 .report-box {
   background-color: var(--component-color);
@@ -89,9 +91,10 @@
   height:342px;
   overflow: auto; */
 }
-.desc {
+/* .desc {
   padding-top:20px;
-}
+
+} */
 a {
   color:var(--text-color);
 }

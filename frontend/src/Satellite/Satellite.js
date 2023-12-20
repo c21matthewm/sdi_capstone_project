@@ -55,11 +55,11 @@ export const Satellite = (props) => {
                 <div className="sat-container">
                     <Box className="sat-box" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius: '10px' }}>
                        
-                        <Typography variant="h5" gutterBottom>{sat.name.toUpperCase()} <Button id="return" variant='contained' color='primary' onClick={() => navigate(-1)}>RETURN</Button></Typography>
+                        <Typography variant="h5"sx={{ p: 1 }}  gutterBottom>{sat.name.toUpperCase()} <Button id="return" variant='contained' color='primary' onClick={() => navigate(-1)}>RETURN</Button></Typography>
                         <img className="sat-image"src={sat.image}  alt="satellite"></img>
                         {/* </div> */}
                         {/* <div className="components"> */}
-                        <List sx={{ p: 0, m: 0 }} component="nav" >
+                        <List>
                             <Typography variant="h6" gutterBottom display="inline" >Status:
                                 <Typography variant="h6" display="inline"
                                     color={sat.status === 'GREEN' ? "#0FFF50" :
