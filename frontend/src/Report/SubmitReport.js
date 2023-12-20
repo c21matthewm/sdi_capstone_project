@@ -113,8 +113,8 @@ export const SubmitReport = () => {
       <NavBar />
       <div className='report-container'>
         <Typography className="satT" variant="h5" gutterBottom>Submit Report</Typography>
-        <Box className="submitform" id="add-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
-          <form onSubmit={onSubmit}>
+        <Box className="submitform" id="add-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius: '10px' }}>
+          <form className="form" onSubmit={onSubmit}>
             <InputLabel id="sat-label">Satellite:</InputLabel>
             <Select
               MenuProps={{
@@ -162,18 +162,22 @@ export const SubmitReport = () => {
             <Divider />
 
             <InputLabel id="status-label">Status:</InputLabel>
+            <div className='status-organizer'>
             <Select id="status-label" value={status} name="status" onChange={(e) => setStatus(e.target.value)}>
               <MenuItem value="GREEN">Green</MenuItem>
               <MenuItem value="YELLOW">Yellow</MenuItem>
               <MenuItem value="RED">Red</MenuItem>
             </Select>
+            <div className='status-box'>
             <h6 >
               *Green: Can Connect. Quality is Good.<br />
               *Yellow: Can Connect. Quality is Degraded.<br />
               *Red: Cannot Connect.
             </h6>
-
+            </div>
+            </div>
             <Divider />
+            < div className='reason-organizer'>
             <FormControl sx={{ m: 1, width: 300 }}>
               <InputLabel id="reason">Reason</InputLabel>
               <Select
@@ -197,9 +201,20 @@ export const SubmitReport = () => {
                 ))}
               </Select>
             </FormControl>
-
+            < div className='guide-box'>
+                <small>
+                  <b>Blocked LOS</b> (line of sight) with target satellite<br/>
+                  <b>Atmospheric Conditions</b> are present (precipitation, thunder or sand storms)<br/>
+                  <b>Signal Interference</b> (waveform is distorted and/or other voices or sounds are mixed in)<br/>
+                  <b>Signal Latency</b> (the voices are late and/or unnaturally stretched in time)<br/>
+                  <b>Equipment Malfunction</b> (the antenna or radio is giving an error code)<br/>
+                  <b>Power Supply Issues</b> (the local power source is weak or recently known to be unreliable)<br/>
+                  <b>Frequency Coordination</b> (there are other users intentionally using the same frequencies)<br/>
+                </small>
+            </div>
+            </div>
             <Divider />
-            <Button type="submit" variant='contained' color='info'>submit</Button>
+            <Button id='submit-button' type="submit" variant='contained' color='info'>submit</Button>
           </form>
         </Box>
         <Dialog

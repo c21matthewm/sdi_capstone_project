@@ -2,14 +2,14 @@
   display: flex;
   justify-content: space-around;
   color: var(--text-color);
-  margin: 0 5% 0 5%;
+  margin: 0 2% 0 2%;
 }
 
 .report_view {
   background-color: var(--component-color);
   padding: 30px;
-  height: 700px;
-  width: 50%;
+  height: 78vh;
+  width: 55%;
   overflow: auto;
   border-radius: 20px;
 }
@@ -22,9 +22,9 @@ li{
   background-color: var(--component-color);
   padding: 30px;
   border-radius: 20px;
-  width: 40%;
+  width: 42%;
   overflow: auto;
-  height: 700px;
+  height: 78vh;
 }
 
 .problems_metric {
@@ -44,4 +44,3 @@ li{
   padding-bottom: 10px;
 
 }
-

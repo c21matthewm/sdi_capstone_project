@@ -19,6 +19,7 @@ function App() {
   const [users, setUsers] = useState([]);
   const [satellites, setSatellites] = useState([]);
   const [reports, setReports] = useState([]);
+  const [joinedReports, setJoinedReports] = useState([]);
   const [userSats, setUserSats] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [userIsAdmin, setUserIsAdmin] = useState(false);
@@ -32,11 +33,13 @@ function App() {
       fetch('http://localhost:8080/users').then((res) => res.json()),
       fetch('http://localhost:8080/satellites').then((res) => res.json()),
       fetch('http://localhost:8080/reports').then((res) => res.json()),
+      fetch('http://localhost:8080/joinreport').then((res) => res.json())
     ])
-      .then(([users, satellites, reports]) => {
+      .then(([users, satellites, reports, joinedReports]) => {
         setUsers(users);
         setSatellites(satellites);
         setReports(reports);
+        setJoinedReports(joinedReports);
       });
   });
 
@@ -52,7 +55,8 @@ function App() {
       userUID, setUserUID,
       authUser, setAuthUser,
       loggedInUser, setLoggedInUser,
-      admin, setAdmin
+      admin, setAdmin,
+      joinedReports, setJoinedReports
     }}>
 
       <Routes>

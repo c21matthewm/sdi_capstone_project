@@ -8,12 +8,12 @@ import BarsDataset from './BarChart';
 
 function ReportList() {
 
-  const { reports } = useContext(userContext)
-  const [selectedFilter, setSelectedFilter] = useState('')
+  const { reports, joinedReports, setJoinedReports } = useContext(userContext)
+  const [selectedFilter, setSelectedFilter] = useState('Date')
   const [filteredReports, setFilteredReports] = useState([])
 
   useEffect(() => {
-    setFilteredReports(reports
+    setFilteredReports(joinedReports
       .filter((report) => {
         switch (selectedFilter) {
           case 'Date':
@@ -26,8 +26,8 @@ function ReportList() {
             return true;
         }
       })
-      .sort((a, b) => selectedFilter === "Date" ? new Date(b.time) - new Date(a.time) : 0))
-  }, [selectedFilter, reports]);
+      .sort((a, b) => selectedFilter === "Date" || "" ? new Date(b.time) - new Date(a.time) : 0))
+  }, [selectedFilter, joinedReports]);
 
   return (
     <div>
@@ -47,13 +47,11 @@ function ReportList() {
             onChange={(e) => setSelectedFilter(e.target.value)}
             style={{ height: '30px' }}
           >
-            <MenuItem value="">None</MenuItem>
             <MenuItem value="Date">Date / Time</MenuItem>
             <MenuItem value="current">Current</MenuItem>
             <MenuItem value="archived">Archived</MenuItem>
           </Select>
           <ReportTableData tableData={filteredReports} />
-
         </Box>
         <Box className="metric_view" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
           <BarsDataset />
