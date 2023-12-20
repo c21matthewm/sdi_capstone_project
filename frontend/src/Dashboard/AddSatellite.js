@@ -78,9 +78,9 @@ export const AddSatellite = () => {
   return (
     <>
       <NavBar />
-      <Typography className="AddSat" variant="h5" gutterBottom>Add Satellite</Typography>
       <div className='report-container'>
-        <Box className="box" id="add-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey' }}>
+      <Typography className="AddSat" variant="h5" gutterBottom>Add Satellite</Typography>
+        <Box className="box" id="add-box" component="section" sx={{ boxShadow: 3, p: 2, border: '1px solid grey', borderRadius: '10px'  }}>
           <form onSubmit={onSatelliteSubmit}>
             <InputLabel>Name:</InputLabel>
             <TextField
